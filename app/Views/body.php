@@ -4,10 +4,10 @@
 <main id="main" class="main">
 
   <div class="pagetitle">
-    <h1>Linimasa</h1>
+    <h1>Beranda</h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item active">Linimasa</li>
+        <li class="breadcrumb-item active">Beranda</li>
       </ol>
     </nav>
   </div><!-- End Page Title -->
