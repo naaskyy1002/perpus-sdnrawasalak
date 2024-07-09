@@ -7,7 +7,7 @@
     <h1>Beranda</h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item active">Beranda</li>
+        <li class="breadcrumb-item active">Linimasa</li>
       </ol>
     </nav>
   </div><!-- End Page Title -->
