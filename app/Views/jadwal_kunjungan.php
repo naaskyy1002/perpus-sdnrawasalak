@@ -16,7 +16,7 @@
 
     <div class="card shadow mb-4"> 
     <div class="card-header py-3 d-flex justify-content-between align-items-center">
-    <a class="btn btn-primary ms-auto" href="#editModal" data-bs-toggle="modal" data-bs-target="#editModal">
+    <a class="btn btn-primary ms-auto" href="#editModal" data-toggle="modal" data-target="#editModal" class="javasc"> <!--data-target harus sama sama id modal, bedanya tambah #-->
     <i class="bi bi-pencil"></i>   Edit </a>
     </div>
     <div class="card-body">
@@ -53,7 +53,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-    <div class="modal-dialog d-flex justify-content-center">
+    <div class="modal-dialog d-flex justify-content-center"> // mau besar tambahin modal-xl
         <div class="modal-content w-75">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel2">Edit Jadwal Kunjungan</h5>

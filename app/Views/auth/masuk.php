@@ -50,19 +50,20 @@
         </nav>
   </header>
 <main>
-<!-- <div class="container-fluid"> -->
+  <!-- <div class="row justify-content-around"> -->
+<div class="container-fluid">
   <!-- <div class="row h-100 align-items-center"> -->
     <div class="col-md-6 d-flex align-items-center">
       <div class="illustration">
           <img src="<?= base_url('assets/img/BUKU.png') ?>" alt="Illustration" class="img-fluid">
         </div>
       </div>
-      <div class="container-fluid">
+      <!-- <div class="container-fluid"> -->
     <!-- <div class="container-fluid col-md-6 d-flex align-items-center ms-auto"> -->
     <!-- <div class="ms-auto"> -->
-    <div class="row w-100">
+    <!-- <div class="row w-100"> -->
       <!-- <div class="login"> -->
-          <div class="col-md-12 mb-12">
+          <div class="col-md-6 mb-12">
             <div class="card ms-auto">
               <div class="card-body">
                 <h3 class="mb-4 text-center heading">SDN RAWASALAK</h3>
