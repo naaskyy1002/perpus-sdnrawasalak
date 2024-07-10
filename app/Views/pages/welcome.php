@@ -41,9 +41,9 @@
         </div>
         <nav>
             <ul>
-                <li><a href=<?=('home');?>>BERANDA</a></li>
-                <li><a href=<?=('tentang_kami');?>>TENTANG KAMI</a></li>
-                <li><a href=<?=('kontak');?>>KONTAK</a></li>
+                <li><a href=<?=base_url('home');?>>BERANDA</a></li>
+                <li><a href=<?=base_url('tentang_kami');?>>TENTANG KAMI</a></li>
+                <li><a href=<?=base_url('kontak');?>>KONTAK</a></li>
             </ul>
         </nav>
     </header>
@@ -54,7 +54,7 @@
             </div>
             <div class="welcome-text">
                 <h1>Selamat Datang Di Perpustakaan Digital</h1>
-                <a href=<?= base_url ('masuk');?> class="button">MASUK</a>
+                <a href=<?= base_url ('login');?> class="button">MASUK</a>
             </div>
         </div>
     </main>
