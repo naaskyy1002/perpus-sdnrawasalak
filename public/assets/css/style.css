@@ -254,6 +254,10 @@ h6 {
   background-color: rgba(255, 255, 255, 0.6);
 }
 
+.detail-link {
+  font-size: 12px; /* atau bisa juga menggunakan ukuran lain seperti '12px', '0.8em', dll. */
+}
+
 /* Alerts */
 .alert-heading {
   font-weight: 500;
@@ -1165,7 +1169,7 @@ h6 {
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
-.footer {
+/* .footer {
   padding: 20px 0;
   font-size: 16px;
   transition: all 0.3s;
@@ -1174,6 +1178,22 @@ h6 {
 .footer .copyright {
   text-align: center;
   color: #000000;
+} */
+
+footer.sticky-footer {
+  padding: 2rem 0;
+  flex-shrink: 0;
+}
+
+footer.sticky-footer .copyright {
+  line-height: 0.1;
+  font-size: 0.8rem;
+  text-align: center;
+  
+}
+
+body.sidebar-toggled footer.sticky-footer {
+  width: 100%;
 }
 
 .button-kirim {

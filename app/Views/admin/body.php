@@ -30,7 +30,7 @@
                 </div>
                 <div class="ps-3">
                   <h6>950 Buku</h6> <!-- MENGGUNAKAN DATABASE -->
-                  <a href=<?=base_url('buku_layak');?> class="card-link small">Lihat Detail</a> 
+                  <a href=<?=base_url('buku_layak');?> class="card-link detail-link">Lihat Detail</a> 
                 </div>
               </div>
             </div>
@@ -48,7 +48,7 @@
                 </div>
                 <div class="ps-3">
                   <h6>5 Buku</h6>
-                  <a href=<?=base_url('buku_rusak');?> class="card-link small">Lihat Detail</a>
+                  <a href=<?=base_url('buku_rusak');?> class="card-link detail-link">Lihat Detail</a>
                 </div>
               </div>
             </div>
@@ -66,7 +66,7 @@
                 </div>
                 <div class="ps-3">
                   <h6>3 Buku</h6>
-                  <a href=<?=base_url('peminjaman');?> class="card-link small">Lihat Detail</a>
+                  <a href=<?=base_url('peminjaman');?> class="card-link detail-link">Lihat Detail</a>
                 </div>
               </div>
             </div>
@@ -84,7 +84,7 @@
                 </div>
                 <div class="ps-3">
                   <h6>1 Buku</h6>
-                  <a href=<?=base_url('pengembalian');?> class="card-link small">Lihat Detail</a>
+                  <a href=<?=base_url('pengembalian');?> class="card-link detail-link">Lihat Detail</a>
                 </div>
               </div>
             </div>

@@ -168,11 +168,18 @@
   <?=$this->renderSection('content');?>
 
   <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer mt-auto">
+  <!-- <footer id="footer" class="footer mt-auto">
     <div class="copyright">
       <p>COPYRIGHT © 2024 SDN RAWASALAK</p>
     </div>
-  </footer><!-- End Footer -->
+  </footer>End Footer -->
+  <footer class="sticky-footer bg-white">
+    <div class="container my-auto">
+      <div class="copyright text-center my-auto">
+        <span>Copyright &copy; <?= date('Y') ?> <a href="">SDN Rawasalak</a>. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
