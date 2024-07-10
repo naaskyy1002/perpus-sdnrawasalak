@@ -35,7 +35,7 @@
         <div class="logo d-flex align-item-center">
             <img src="assets/img/LOGO-BARU.png" alt="Logo SD" class="logo-img">
             <div class="logo-text d-flex flex-column text-center">
-              <span class="d-none d-lg-block">SD NEGERI RAWASALAK</span>
+              <span class="d-none d-lg-block">SD NEGERI RAWASALAK NANA</span>
               <span class="d-none d-lg-block">E-LIBRARY</span>
             </div>
         </div>
