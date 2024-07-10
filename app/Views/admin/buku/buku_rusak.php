@@ -16,7 +16,7 @@
     <div class="card shadow mb-4"> 
     <div class="card-header py-3 d-flex justify-content-between align-items-center">
     <a class="btn btn-primary" href=#tambahModal data-bs-toggle="modal" data-bs-target="#tambahModal">
-    <i class="bi bi-plus"></i> Tambah Buku NANA</a>
+    <i class="bi bi-plus"></i> Tambah Buku</a>
     </div>
     <div class="card-body">
 
