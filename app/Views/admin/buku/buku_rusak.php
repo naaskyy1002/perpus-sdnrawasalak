@@ -1,14 +1,14 @@
-<?=$this->extend('layout')?>
+<?=$this->extend('admin/layout')?>
 <?=$this->section('content')?>
 
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Data Buku Layak</h1>
+      <h1>Data Buku Rusak</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href=<?=('home');?>>Beranda</a></li>
-          <li class="breadcrumb-item">Data Buku Layak</li>
+          <li class="breadcrumb-item"><a href=<?=base_url('home');?>>Beranda</a></li>
+          <li class="breadcrumb-item">Data Buku Rusak</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -16,7 +16,7 @@
     <div class="card shadow mb-4"> 
     <div class="card-header py-3 d-flex justify-content-between align-items-center">
     <a class="btn btn-primary" href=#tambahModal data-bs-toggle="modal" data-bs-target="#tambahModal">
-    <i class="bi bi-plus"></i> Tambah Buku</a>
+    <i class="bi bi-plus"></i> Tambah Buku NANA</a>
     </div>
     <div class="card-body">
 
@@ -36,6 +36,7 @@
                 <option>Oktober</option>
                 <option>November</option>
                 <option>Desember</option>
+                <!-- Tambahkan opsi bulan lainnya -->
               </select>
             </div>
             <div class="col-sm-6 col-md-3">
@@ -47,6 +48,7 @@
                 <option>2023</option>
                 <option>2024</option>
                 <option>2025</option>
+                <!-- Tambahkan opsi tahun lainnya -->
               </select>
             </div>
             <div class="col-sm-12 col-md-6 text-right d-flex align-items-end">
@@ -75,34 +77,32 @@
                 </div>
             </div>
             <table class="table table-striped table-hover table-bordered">
-                <thead>
+                <thead>               
                     <tr>
                         <th>No.</th>
-                        <th>Sampul <i class="fa fa-sort"></i></th>
                         <th>Kode</th>
                         <th>Penulis <i class="fa fa-sort"></i></th>
                         <th>Judul</th>
                         <th>Tahun Terbit <i class="fa fa-sort"></i></th>
-                        <th>Stok</th>
-                        <th>Kategori</th>
-                        <th>Pinjam</th>
+                        <th>Tanggal Pendataan</th>
+                        <th>Kondisi Buku</th>
+                        <th>Foto Kerusakan</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>1</td>
-                        <td>FOTO</td>
                         <td>A2</td>
                         <td>Hanry Manampiring</td>
                         <td>Filosofi Teras</td>
                         <td>2018</td>
-                        <td>6</td>
-                        <td>Filsafat</td>
-                        <td>2</td>
+                        <td>6 Juli 2024</td>
+                        <td>Sobek</td>
+                        <td>FOTO</td>
                         <td>
                             <a href="#editModal" class="edit" title="Edit" data-bs-toggle="modal" data-bs-target="#editModal"><i class="bi bi-pencil"></i></a>
-                            <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="bi bi-trash"></i></a>
+                            <a href="#" class="delete" title="Hapus" data-toggle="tooltip"><i class="bi bi-trash"></i></a>
                         </td>
                     </tr>    
                 </tbody>
@@ -121,7 +121,7 @@
             </div>
         </div>
     </div>  
-</div>   
+</div>
         </div>
       </div>
     </section>
@@ -131,7 +131,7 @@
     <div class="modal-dialog d-flex justify-content-center">
         <div class="modal-content w-75">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel2">Tambah Buku Layak</h5>
+                <h5 class="modal-title" id="exampleModalLabel2">Tambah Buku Rusak</h5>
                 <button  type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body p-3">
@@ -180,7 +180,7 @@
     <div class="modal-dialog d-flex justify-content-center">
         <div class="modal-content w-75">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel2">Edit Buku Layak</h5>
+                <h5 class="modal-title" id="exampleModalLabel2">Edit Buku Rusak</h5>
                 <button  type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body p-3">
@@ -223,6 +223,7 @@
     </div>
 </div>
 <!-- Edit Modal -->
+
 
   </main><!-- End #main -->
 <?=$this->endSection()?>

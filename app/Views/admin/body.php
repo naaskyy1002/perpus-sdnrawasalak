@@ -1,4 +1,4 @@
-<?=$this->extend('layout')?>
+<?=$this->extend('admin/layout')?>
 <?=$this->section('content')?>
 
 <main id="main" class="main">
@@ -30,7 +30,7 @@
                 </div>
                 <div class="ps-3">
                   <h6>950 Buku</h6> <!-- MENGGUNAKAN DATABASE -->
-                  <a href=<?=('buku_layak');?> class="card-link small">Lihat Detail</a> 
+                  <a href=<?=base_url('buku_layak');?> class="card-link small">Lihat Detail</a> 
                 </div>
               </div>
             </div>
@@ -48,7 +48,7 @@
                 </div>
                 <div class="ps-3">
                   <h6>5 Buku</h6>
-                  <a href=<?=('buku_rusak');?> class="card-link small">Lihat Detail</a>
+                  <a href=<?=base_url('buku_rusak');?> class="card-link small">Lihat Detail</a>
                 </div>
               </div>
             </div>
@@ -66,7 +66,7 @@
                 </div>
                 <div class="ps-3">
                   <h6>3 Buku</h6>
-                  <a href=<?=('peminjaman');?> class="card-link small">Lihat Detail</a>
+                  <a href=<?=base_url('peminjaman');?> class="card-link small">Lihat Detail</a>
                 </div>
               </div>
             </div>
@@ -84,7 +84,7 @@
                 </div>
                 <div class="ps-3">
                   <h6>1 Buku</h6>
-                  <a href=<?=('pengembalian');?> class="card-link small">Lihat Detail</a>
+                  <a href=<?=base_url('pengembalian');?> class="card-link small">Lihat Detail</a>
                 </div>
               </div>
             </div>

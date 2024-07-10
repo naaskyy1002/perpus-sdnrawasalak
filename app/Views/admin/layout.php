@@ -10,24 +10,24 @@
   <meta content="" name="keywords"> 
   
   <!-- Favicons -->
-  <link href="assets/img/LOGO-BARU.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="<?= base_url('assets/img/LOGO-BARU.png') ?>" rel="icon">
+  <link href="<?= base_url('assets/img/apple-touch-icon.png') ?>" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
-  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
-  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+  <link href="<?= base_url('assets/vendor/bootstrap/css/bootstrap.min.css') ?>" rel="stylesheet">
+  <link href="<?= base_url('assets/vendor/bootstrap-icons/bootstrap-icons.css') ?>" rel="stylesheet">
+  <link href="<?= base_url('assets/vendor/boxicons/css/boxicons.min.css') ?>" rel="stylesheet">
+  <link href="<?= base_url('assets/vendor/quill/quill.snow.css') ?>" rel="stylesheet">
+  <link href="<?= base_url('assets/vendor/quill/quill.bubble.css') ?>" rel="stylesheet">
+  <link href="<?= base_url('assets/vendor/remixicon/remixicon.css') ?>" rel="stylesheet">
+  <link href="<?= base_url('assets/vendor/simple-datatables/style.css') ?>" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="<?= base_url('assets/css/style.css') ?>" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: NiceAdmin
@@ -90,7 +90,7 @@
     </a>
 
     <li class="nav-item">
-      <a class="nav-link" href=<?=('home');?>>
+      <a class="nav-link" href=<?= base_url('home');?>>
         <i class="bi bi-grid"></i>
         <span>Beranda</span>
       </a>
@@ -102,17 +102,17 @@
       </a>
       <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li>
-          <a href=<?=('peminjaman');?>>
+          <a href=<?= base_url('peminjaman');?>>
             <i class="bi bi-circle"></i><span>Peminjaman</span>
           </a>
         </li>
         <li>
-          <a href=<?=('buku_layak');?>>
+          <a href=<?= base_url('buku_layak');?>>
             <i class="bi bi-circle"></i><span>Buku Layak</span>
           </a>
         </li>
         <li>
-          <a href=<?=('buku_rusak');?>>
+          <a href=<?= base_url('buku_rusak');?>>
             <i class="bi bi-circle"></i><span>Buku Rusak</span>
           </a>
         </li>
@@ -126,17 +126,17 @@
       </a>
       <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li>
-          <a href=<?=('data_admin');?>>
+          <a href=<?= base_url('data_admin');?>>
             <i class="bi bi-circle"></i><span>Data Admin</span>
           </a>
         </li>
         <li>
-          <a href=<?=('data_guru');?>>
+          <a href=<?= base_url('data_guru');?>>
             <i class="bi bi-circle"></i><span>Data Guru</span>
           </a>
         </li>
         <li>
-          <a href=<?=('Data Siswa');?>>
+          <a href=<?= base_url('Data Siswa');?>>
             <i class="bi bi-circle"></i><span>Data Siswa</span>
           </a>
         </li>
@@ -144,19 +144,19 @@
     </li>
 
     <li class="nav-item">
-      <a class="nav-link" href=<?=('daftar_pengunjung');?>>
+      <a class="nav-link" href=<?= base_url('daftar_pengunjung');?>>
         <i class="bi bi-journal-text"></i><span>Daftar Pengunjung</span>
       </a>
     </li><!-- End Forms Nav -->
 
     <li class="nav-item">
-      <a class="nav-link" href=<?=('jadwal_kunjungan');?>>
+      <a class="nav-link" href=<?= base_url('jadwal_kunjungan');?>>
         <i class="bi bi-layout-text-window-reverse"></i><span>Jadwal Kunjungan</span>
       </a>
     </li><!-- End Tables Nav -->
 
     <li class="nav-item">
-        <a class="nav-link" href=<?=('masuk');?>>
+        <a class="nav-link" href=<?= base_url('login');?>>
           <i class="bi bi-box-arrow-in-left"></i>
           <span>Keluar</span>
         </a>
@@ -177,17 +177,17 @@
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
-  <script src=<?=base_url('assets/vendor/apexcharts/apexcharts.min.js')?>></script>
-  <script src=<?=base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')?>></script>
-  <script src=<?=base_url('assets/vendor/chart.js/chart.umd.js')?>></script>
-  <script src=<?=base_url('assets/vendor/echarts/echarts.min.js')?>></script>
-  <script src=<?=base_url('assets/vendor/quill/quill.js')?>></script>
-  <script src=<?=base_url('assets/vendor/simple-datatables/simple-datatables.js')?>></script>
-  <script src=<?=base_url('assets/vendor/tinymce/tinymce.min.js')?>></script>
-  <script src=<?=base_url('assets/vendor/php-email-form/validate.js')?>></script>
+  <script src=<?= base_url('assets/vendor/apexcharts/apexcharts.min.js')?>></script>
+  <script src=<?= base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')?>></script>
+  <script src=<?= base_url('assets/vendor/chart.js/chart.umd.js')?>></script>
+  <script src=<?= base_url('assets/vendor/echarts/echarts.min.js')?>></script>
+  <script src=<?= base_url('assets/vendor/quill/quill.js')?>></script>
+  <script src=<?= base_url('assets/vendor/simple-datatables/simple-datatables.js')?>></script>
+  <script src=<?= base_url('assets/vendor/tinymce/tinymce.min.js')?>></script>
+  <script src=<?= base_url('assets/vendor/php-email-form/validate.js')?>></script>
 
   <!-- Template Main JS File -->
-  <script src=<?=base_url('assets/js/main.js')?>></script>
+  <script src=<?= base_url('assets/js/main.js')?>></script>
 
 </body>
 
