@@ -73,13 +73,13 @@
                       <button type="submit" class="button">MASUK</button>
                     </div>
                   </form>
+                  <div class="pt-4 text-center">
+                    <span>Copyright &copy; <text class="text-primary">SDN Rawasalak</text> <?=date('Y')?></span>
+                  </div>  
                 </div>
               </div>
             </div>
           </div>
-          <div class="pt-4 text-center">
-            <span>Copyright &copy; <text class="text-primary">SDN Rawasalak</text> <?=date('Y')?></span>
-          </div>  
         </div>
       </div>
     </div>

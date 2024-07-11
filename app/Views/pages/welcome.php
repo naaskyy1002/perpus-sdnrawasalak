@@ -50,7 +50,7 @@
         </div>
     </main>
     <footer>
-        <p>COPYRIGHT © 2024 SDN RAWASALAK</p>
+        <p>COPYRIGHT © <?=date('Y')?> SDN RAWASALAK</p>
     </footer>
 </body>
 </html>

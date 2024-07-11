@@ -95,7 +95,7 @@
         <div class="col-12">
           <div class="card recent-sales overflow-auto">
             <div class="card-body">
-              <h5 class="card-title">Peminjaman Buku</h5> <!--HARI INI MENGGUNAKAN DATABASE -->
+              <h5 class="card-title">Peminjaman Buku</h5>
               <table class="table table-borderless datatable">
                 <thead>
                   <tr>

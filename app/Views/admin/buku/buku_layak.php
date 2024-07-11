@@ -57,71 +57,57 @@
             </div>
           </div>
           <div class="table-responsive">
-          <section class="section">    
-      <div class="row">
-        <div class="col-lg-12">
 
-        <div class="container-xl">
-        <div class="table-wrapper">
-            <div class="table-title">
+          <section class="section">    
+        <div class="col-lg-12">
+                <div class="table-title">
                 <div class="row">
                 <div class="col-sm-8"></div>
                     <div class="col-sm-4">
                         <div class="search-box">
                             <i class="bi bi-search"></i> 
-                            <input type="text" class="form-control" placeholder="Search">
+                            <input type="text" class="form-control" placeholder="Cari">
                         </div>
                     </div>
                 </div>
             </div>
-            <table class="table table-striped table-hover table-bordered">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">              
+            </div>
+              <table class="table table-bordered">
                 <thead>
-                    <tr>
-                        <th>No.</th>
-                        <th>Sampul <i class="fa fa-sort"></i></th>
-                        <th>Kode</th>
-                        <th>Penulis <i class="fa fa-sort"></i></th>
-                        <th>Judul</th>
-                        <th>Tahun Terbit <i class="fa fa-sort"></i></th>
-                        <th>Stok</th>
-                        <th>Kategori</th>
-                        <th>Pinjam</th>
-                        <th>Aksi</th>
-                    </tr>
+                  <tr class="text-center">
+                    <th>No.</th>
+                    <th>Sampul</th>
+                    <th>Kode</th>
+                    <th>Penulis</th>
+                    <th>Judul</th>
+                    <th>Stok</th>
+                    <th>Kategori</th>
+                    <th>Aksi</th>
+                  </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>FOTO</td>
-                        <td>A2</td>
-                        <td>Hanry Manampiring</td>
-                        <td>Filosofi Teras</td>
-                        <td>2018</td>
-                        <td>6</td>
-                        <td>Filsafat</td>
-                        <td>2</td>
-                        <td>
-                            <a href="#editModal" class="edit" title="Edit" data-bs-toggle="modal" data-bs-target="#editModal"><i class="bi bi-pencil"></i></a>
-                            <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="bi bi-trash"></i></a>
-                        </td>
-                    </tr>    
+                  <tr class="text-center">
+                    <td>1</td>
+                    <td>FOTO</td>
+                    <td>A2</td>
+                    <td>Henry Manampiring</td>
+                    <td>Filosofi Teras</td>
+                    <td>8</td>
+                    <td>Filsafat</td>
+                    <td>
+                    <a href="#" class="view" title="Detail" data-toggle="tooltip"><i class="bi bi-eye"></i></a>
+                    <a href="#editModal" class="edit" title="Edit" data-bs-toggle="modal" data-bs-target="#editModal"><i class="bi bi-pencil"></i></a>
+                    <a href="#" class="delete" title="Hapus" data-toggle="tooltip"><i class="bi bi-trash"></i></a>
+                    </td>
+                  </tr>
                 </tbody>
-            </table>
-            <div class="clearfix">
-                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-                <ul class="pagination">
-                    <li class="page-item disabled"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
-                    <li class="page-item"><a href="#" class="page-link">1</a></li>
-                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                    <li class="page-item active"><a href="#" class="page-link">3</a></li>
-                    <li class="page-item"><a href="#" class="page-link">4</a></li>
-                    <li class="page-item"><a href="#" class="page-link">5</a></li>
-                    <li class="page-item"><a href="#" class="page-link"><i class="fa fa-angle-double-right"></i></a></li>
-                </ul>
+              </table>
             </div>
+            </div>
+          </div>
         </div>
-    </div>  
-</div>   
+      </div>
         </div>
       </div>
     </section>
@@ -137,6 +123,10 @@
             <div class="modal-body p-3">
             <form class="row g-3">
                 <div class="col-12">
+                  <label>Sampul</label>
+                  <input type="file" name="amhs_photo" accept=".jpg,.png" onchange="ImgFile(this);" class="form-control-file">
+                </div>
+                <div class="col-12">
                   <label for="inputKode" class="form-label">Kode Buku</label>
                   <input type="text" class="form-control" id="inputKode">
                 </div>
@@ -149,20 +139,16 @@
                   <input type="text" class="form-control" id="inputJudul">
                 </div>
                 <div class="col-12">
-                  <label for="inputTahun" class="form-label">Tahun Terbit</label>
+                  <label for="inputTahun" class="form-label">Stok</label>
                   <input type="text" class="form-control" id="inputTahun">
                 </div>
                 <div class="col-12">
-                  <label for="inputTanggal" class="form-label">Tanggal Pendataan</label>
+                  <label for="inputTanggal" class="form-label">Kategori</label>
                   <input type="text" class="form-control" id="inputTanggal">
                 </div>
                 <div class="col-12">
                   <label for="inputKondisi" class="form-label">Kondisi Buku</label>
                   <input type="text" class="form-control" id="inputKondisi">
-                </div>
-                <div class="col-12">
-                  <label for="inputFoto" class="form-label">Foto</label>
-                  <input type="text" class="form-control" id="inputFoto">
                 </div>
                     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
@@ -175,54 +161,48 @@
 </div>
 <!-- Tambah Modal -->
 
-<!-- Edit Modal -->
-<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-    <div class="modal-dialog d-flex justify-content-center">
-        <div class="modal-content w-75">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel2">Edit Buku Layak</h5>
-                <button  type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body p-3">
-            <form class="row g-3">
-                <div class="col-12">
-                  <label for="inputKode" class="form-label">Kode Buku</label>
-                  <input type="text" class="form-control" id="inputKode">
+<!-- Edit Modal-->
+<div class="modal fade" id="editAdmin" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content text-dark bg-warning">
+                <div class="modal-header">
+                    <h5 class="modal-title">Ubah Data Admin</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
                 </div>
-                <div class="col-12">
-                  <label for="inputPenulis" class="form-label">Penulis</label>
-                  <input type="text" class="form-control" id="inputPenulis">
+                <div class="modal-body">
+                    <form method="post" enctype="multipart/form-data" action="/admin/editMhs">
+                        <div class="form-group">
+                            <label>NIP*</label>
+                            <input type="number" id="eadmnip" name="emhs_nim" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Nama*</label>
+                            <input type="text" id="eadmnama" name="emhs_nama" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Jabatan*</label>
+                            <input type="text" id="eadmjabatan" name="emhs_nama" class="form-control" required>
+                        </div>
+
+                        <br>
+                        *Required
+                        
+                        <input type="number" id="eadmid" name="emhs_id" hidden>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-light" data-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-success">Simpan</button>
+                        </div>
+                    </form>
                 </div>
-                <div class="col-12">
-                  <label for="inputJudul" class="form-label">Judul Buku</label>
-                  <input type="text" class="form-control" id="inputJudul">
-                </div>
-                <div class="col-12">
-                  <label for="inputTahun" class="form-label">Tahun Terbit</label>
-                  <input type="text" class="form-control" id="inputTahun">
-                </div>
-                <div class="col-12">
-                  <label for="inputTanggal" class="form-label">Tanggal Pendataan</label>
-                  <input type="text" class="form-control" id="inputTanggal">
-                </div>
-                <div class="col-12">
-                  <label for="inputKondisi" class="form-label">Kondisi Buku</label>
-                  <input type="text" class="form-control" id="inputKondisi">
-                </div>
-                <div class="col-12">
-                  <label for="inputFoto" class="form-label">Foto</label>
-                  <input type="text" class="form-control" id="inputFoto">
-                </div>
-                    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
-        <button type="button" class="btn btn-primary">Simpan</button>
-      </div>
-                </form>
             </div>
         </div>
     </div>
 </div>
-<!-- Edit Modal -->
 
   </main><!-- End #main -->
 <?=$this->endSection()?>
