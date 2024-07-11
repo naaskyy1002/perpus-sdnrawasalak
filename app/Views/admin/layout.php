@@ -69,10 +69,33 @@
           </a>
         </li><!-- End Search Icon-->
 
+        <!-- Nav Item - User Information -->
         <li class="nav-item dropdown pe-3">
-          <a class="nav-link nav-profile d-flex align-items-center pe-0">
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <span class="d-none d-md-block ps-2"><i class="bi bi-people"></i> Raina Rahmawati</span>
           </a>
+          <!-- Dropdown - User Information -->
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <h6>Raina Rahmawati</h6>
+              <span>Admin</span>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="#">
+                <i class="bi bi-person"></i>
+                <span>My Profile</span>
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="#" data-bs-toggle="modal" data-bs-target="#modallogout">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Keluar</span>
+              </a>
+            </li>
+          </ul><!-- End Profile Dropdown Items -->
         </li><!-- End Profile Nav -->
 
       </ul>
@@ -156,8 +179,8 @@
     </li><!-- End Tables Nav -->
 
     <li class="nav-item">
-        <a class="nav-link" href=<?= base_url('login');?>>
-          <i class="bi bi-box-arrow-in-left"></i>
+        <a class="nav-link" href=<?= base_url('login');?> data-bs-toggle="modal" data-bs-target="#modallogout">
+          <i class="bi bi-box-arrow-right"></i>
           <span>Keluar</span>
         </a>
       </li><!-- End Logout Page Nav -->
@@ -172,29 +195,38 @@
     <div class="copyright">
       <p>COPYRIGHT © 2024 SDN RAWASALAK</p>
     </div>
-  </footer>End Footer -->
-  <footer class="sticky-footer bg-white">
-    <div class="container my-auto">
-      <div class="copyright text-center my-auto">
-        <span>Copyright &copy; <?= date('Y') ?> <a href="">SDN Rawasalak</a>. All rights reserved.</span>
-      </div>
-    </div>
-  </footer>
+  </footer> -->
+  <!-- End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
+  <!-- Logout Modal-->
+  <div class="modal fade" id="modallogout" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Apakah anda ingin keluar?</h5>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger" type="button" data-bs-dismiss="modal">Batal</button>
+                    <a class="btn btn-success" href="<?= base_url('login');?>">Keluar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
   <!-- Vendor JS Files -->
-  <script src=<?= base_url('assets/vendor/apexcharts/apexcharts.min.js')?>></script>
-  <script src=<?= base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')?>></script>
-  <script src=<?= base_url('assets/vendor/chart.js/chart.umd.js')?>></script>
-  <script src=<?= base_url('assets/vendor/echarts/echarts.min.js')?>></script>
-  <script src=<?= base_url('assets/vendor/quill/quill.js')?>></script>
-  <script src=<?= base_url('assets/vendor/simple-datatables/simple-datatables.js')?>></script>
-  <script src=<?= base_url('assets/vendor/tinymce/tinymce.min.js')?>></script>
-  <script src=<?= base_url('assets/vendor/php-email-form/validate.js')?>></script>
+  <script src="<?= base_url('assets/vendor/apexcharts/apexcharts.min.js') ?>"></script>
+  <script src="<?= base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
+  <script src="<?= base_url('assets/vendor/chart.js/chart.min.js') ?>"></script>
+  <script src="<?= base_url('assets/vendor/echarts/echarts.min.js') ?>"></script>
+  <script src="<?= base_url('assets/vendor/quill/quill.min.js') ?>"></script>
+  <script src="<?= base_url('assets/vendor/simple-datatables/simple-datatables.js') ?>"></script>
+  <script src="<?= base_url('assets/vendor/tinymce/tinymce.min.js') ?>"></script>
+  <script src="<?= base_url('assets/vendor/php-email-form/validate.js') ?>"></script>
 
   <!-- Template Main JS File -->
-  <script src=<?= base_url('assets/js/main.js')?>></script>
+  <script src="<?= base_url('assets/js/main.js') ?>"></script>
 
 </body>
 
