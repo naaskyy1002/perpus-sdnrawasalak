@@ -7,7 +7,7 @@
       <h1>Peminjaman dan Pengembalian Buku</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href=<?=('home');?>>Beranda</a></li>
+          <li class="breadcrumb-item"><a href=<?=base_url('admin');?>>Beranda</a></li>
           <li class="breadcrumb-item">Peminjaman</li>
         </ol>
       </nav>
@@ -16,7 +16,7 @@
 
     <div class="card shadow mb-4"> 
     <div class="card-header py-3 d-flex justify-content-between align-items-center">
-    <a href="<?=base_url('edit_jadwal');?>" class="btn btn-primary">
+    <a href="<?=base_url('admin/edit_jadwal');?>" class="btn btn-primary">
     <i class="bi bi-plus"></i> Tambah Pinjam</a>
     </div>
     <div class="card-body">

@@ -7,7 +7,7 @@
       <h1>Data Admin</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href=<?=base_url('home');?>>Beranda</a></li>
+          <li class="breadcrumb-item"><a href=<?=base_url('admin');?>>Beranda</a></li>
           <li class="breadcrumb-item">Data Admin</li>
         </ol>
       </nav>

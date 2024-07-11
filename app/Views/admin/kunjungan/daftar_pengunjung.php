@@ -7,7 +7,7 @@
       <h1>Daftar Pengunjung</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href=<?=base_url('home');?>>Beranda</a></li>
+          <li class="breadcrumb-item"><a href=<?=base_url('admin');?>>Beranda</a></li>
           <li class="breadcrumb-item">Daftar Pengunjung</li>
         </ol>
       </nav>

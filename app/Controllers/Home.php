@@ -5,7 +5,7 @@ namespace App\Controllers;
 class Home extends BaseController
 {
     
-    public function login()
+    public function pagelogin()
     {
         return view('auth/login');
     }

@@ -108,12 +108,12 @@
   <ul class="sidebar-nav" id="sidebar-nav">
 
     <a class="nav-link nav-profile d-flex flex-column align-items-center pe-0">
-      <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+      <img src=<?= base_url("assets/img/profile-img.jpg") ?> alt="Profile" class="rounded-circle">
       <span class="d-none d-md-block pt-2">Raina Rahmawati F</span>
     </a>
 
     <li class="nav-item">
-      <a class="nav-link" href=<?= base_url('home');?>>
+      <a class="nav-link" href=<?= base_url('admin');?>>
         <i class="bi bi-grid"></i>
         <span>Beranda</span>
       </a>
@@ -125,17 +125,17 @@
       </a>
       <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li>
-          <a href=<?= base_url('peminjaman');?>>
+          <a href=<?= base_url('admin/peminjaman');?>>
             <i class="bi bi-circle"></i><span>Peminjaman</span>
           </a>
         </li>
         <li>
-          <a href=<?= base_url('buku_layak');?>>
+          <a href=<?= base_url('admin/buku_layak');?>>
             <i class="bi bi-circle"></i><span>Buku Layak</span>
           </a>
         </li>
         <li>
-          <a href=<?= base_url('buku_rusak');?>>
+          <a href=<?= base_url('admin/buku_rusak');?>>
             <i class="bi bi-circle"></i><span>Buku Rusak</span>
           </a>
         </li>
@@ -149,17 +149,17 @@
       </a>
       <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li>
-          <a href=<?= base_url('data_admin');?>>
+          <a href=<?= base_url('admin/data_admin');?>>
             <i class="bi bi-circle"></i><span>Data Admin</span>
           </a>
         </li>
         <li>
-          <a href=<?= base_url('data_guru');?>>
+          <a href=<?= base_url('admin/data_guru');?>>
             <i class="bi bi-circle"></i><span>Data Guru</span>
           </a>
         </li>
         <li>
-          <a href=<?= base_url('Data Siswa');?>>
+          <a href=<?= base_url('admin/Data Siswa');?>>
             <i class="bi bi-circle"></i><span>Data Siswa</span>
           </a>
         </li>
@@ -167,19 +167,19 @@
     </li>
 
     <li class="nav-item">
-      <a class="nav-link" href=<?= base_url('daftar_pengunjung');?>>
+      <a class="nav-link" href=<?= base_url('admin/daftar_pengunjung');?>>
         <i class="bi bi-journal-text"></i><span>Daftar Pengunjung</span>
       </a>
     </li><!-- End Forms Nav -->
 
     <li class="nav-item">
-      <a class="nav-link" href=<?= base_url('jadwal_kunjungan');?>>
+      <a class="nav-link" href=<?= base_url('admin/jadwal_kunjungan');?>>
         <i class="bi bi-layout-text-window-reverse"></i><span>Jadwal Kunjungan</span>
       </a>
     </li><!-- End Tables Nav -->
 
     <li class="nav-item">
-        <a class="nav-link" href=<?= base_url('login');?> data-bs-toggle="modal" data-bs-target="#modallogout">
+        <a class="nav-link" href=<?= base_url('/auth/logout');?> data-bs-toggle="modal" data-bs-target="#modallogout">
           <i class="bi bi-box-arrow-right"></i>
           <span>Keluar</span>
         </a>
@@ -198,6 +198,17 @@
   </footer> -->
   <!-- End Footer -->
 
+  <!-- Footer -->
+  <footer class="sticky-footer bg-white">
+    <div class="container my-auto">
+      <div class="copyright text-center my-auto">
+        <span>Copyright &copy; <text class="text-primary">SDN Rawasalak</text> <?=date('Y')?>. All rights
+        reserved.</span>
+      </div>
+    </div>
+  </footer>
+  <!-- End of Footer -->
+
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Logout Modal-->
@@ -209,7 +220,7 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-danger" type="button" data-bs-dismiss="modal">Batal</button>
-                    <a class="btn btn-success" href="<?= base_url('login');?>">Keluar</a>
+                    <a class="btn btn-success" href="<?= base_url('/auth/logout');?>">Keluar</a>
                 </div>
             </div>
         </div>
