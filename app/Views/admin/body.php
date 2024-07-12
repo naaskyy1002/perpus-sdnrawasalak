@@ -23,13 +23,13 @@
         <div class="col-xxl-4 col-md-3">
           <div class="card info-card revenue-card">
             <div class="card-body">
-              <h5 class="card-title">Total Buku</h5>
+              <h5 class="card-title">TOTAL BUKU</h5>
               <div class="d-flex align-items-center">
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                   <i class="bi bi-book"></i>
                 </div>
                 <div class="ps-3">
-                  <h6>950 Buku</h6> 
+                  <h6>950</h6> 
                   <a href=<?=base_url('admin/buku_layak');?> class="card-link detail-link">Lihat Detail</a> 
                 </div>
               </div>
@@ -41,13 +41,13 @@
         <div class="col-xxl-4 col-md-3">
           <div class="card info-card revenue-card">
             <div class="card-body">
-              <h5 class="card-title">Total Buku Rusak</h5>
+              <h5 class="card-title">TOTAL BUKU RUSAK</h5>
               <div class="d-flex align-items-center">
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                   <i class="bi bi-book"></i>
                 </div>
                 <div class="ps-3">
-                  <h6>5 Buku</h6>
+                  <h6>5</h6>
                   <a href=<?=base_url('admin/buku_rusak');?> class="card-link detail-link">Lihat Detail</a>
                 </div>
               </div>
@@ -59,13 +59,13 @@
         <div class="col-xxl-4 col-md-3">
           <div class="card info-card revenue-card">
             <div class="card-body">
-              <h5 class="card-title">Total Peminjaman</h5> 
+              <h5 class="card-title">TOTAL PEMINJAMAN</h5> 
               <div class="d-flex align-items-center">
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                   <i class="bi bi-people"></i>
                 </div>
                 <div class="ps-3">
-                  <h6>3 Buku</h6>
+                  <h6>3</h6>
                   <a href=<?=base_url('admin/peminjaman');?> class="card-link detail-link">Lihat Detail</a>
                 </div>
               </div>
@@ -77,13 +77,13 @@
         <div class="col-xxl-4 col-md-3">
           <div class="card info-card revenue-card">
             <div class="card-body">
-              <h5 class="card-title">Total Pengembalian</h5> 
+              <h5 class="card-title">TOTAL PENGEMBALIAN</h5> 
               <div class="d-flex align-items-center">
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                   <i class="bi bi-people"></i>
                 </div>
                 <div class="ps-3">
-                  <h6>1 Buku</h6>
+                  <h6>1</h6>
                   <a href=<?=base_url('admin/pengembalian');?> class="card-link detail-link">Lihat Detail</a>
                 </div>
               </div>
@@ -95,7 +95,7 @@
         <div class="col-12">
           <div class="card recent-sales overflow-auto">
             <div class="card-body">
-              <h5 class="card-title">Peminjaman Buku</h5>
+              <h5 class="card-title">Transaksi Buku</h5>
               <table class="table table-borderless datatable">
                 <thead>
                   <tr>

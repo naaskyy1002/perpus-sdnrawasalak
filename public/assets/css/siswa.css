@@ -30,7 +30,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Nunito", sans-serif;
+    font-family: "Open Sans", sans-serif;
 }
 
 /*--------------------------------------------------------------
@@ -38,14 +38,15 @@ h6 {
 --------------------------------------------------------------*/
 #main {
     margin-top: 60px;
-    padding: 20px 30px;
+    padding: 20px;
     transition: all 0.3s;
     flex-grow: 1;
+    margin-left: 20px;
 }
 
-@media (max-width: 1199px) {
+@media (max-width: 768px) {
     #main {
-        padding: 20px;
+        margin-left: 10px;
     }
 }
 
@@ -71,7 +72,7 @@ h6 {
     font-size: 20px;
     font-weight: 700;
     color: #ffffff;
-    font-family: "Nunito", sans-serif;
+    font-family: "Open Sans", sans-serif;
 }
 
 .header {
@@ -110,7 +111,7 @@ h6 {
     top: 60px;
     left: 0;
     bottom: 0;
-    width: 300px;
+    width: 270px;
     z-index: 996;
     transition: all 0.3s;
     padding: 20px;
@@ -126,6 +127,17 @@ h6 {
         left: -300px;
     }
 }
+
+.sidebar-nav .nav-profile {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 600;
+    color: #1a144f;
+    transition: 0.3;
+    padding: 10px 15px;
+    border-radius: 4px;
+  }
 
 .sidebar::-webkit-scrollbar {
     width: 5px;
@@ -190,11 +202,11 @@ h6 {
 .sidebar-nav .nav-link {
     display: flex;
     align-items: center;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
     color: #1a144f;
     transition: 0.3;
-    padding: 10px 15px;
+    padding: 10px 10px;
     border-radius: 4px;
 }
 
@@ -274,7 +286,7 @@ h6 {
 /* Breadcrumbs */
 .breadcrumb {
     font-size: 14px;
-    font-family: "Nunito", sans-serif;
+    font-family: "Open Sans", sans-serif;
     color: #899bbd;
     font-weight: 600;
   }
@@ -434,16 +446,22 @@ h6 {
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
-.footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
+footer.sticky-footer {
     width: 100%;
-    background-color: #ffffff;
-    padding: 3px;
-    text-align: left;
+    padding: 1rem 0;
+    position: relative;
+  }
+  
+  footer.sticky-footer .copyright {
+    line-height: 0.1;
+    font-size: 0.8rem;
+    text-align: center;
     
-}
+  }
+  
+  body.sidebar-toggled footer.sticky-footer {
+    width: 100%;
+  }
 
 /*--------------------------------------------------------------
 # Back to top button

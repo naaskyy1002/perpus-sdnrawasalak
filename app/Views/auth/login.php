@@ -66,9 +66,6 @@
                     <div class="form-group">
                       <input type="password" name="user_pass" placeholder="Kata Sandi" class="form-control" required>
                     </div>
-                    <div class="form-group text-right">
-                      <a href="<?= base_url('lupapw') ?>" class="text-muted">Lupa Kata Sandi?</a>
-                    </div>
                     <div class="row justify-content-center my-3 px-3">
                       <button type="submit" class="button">MASUK</button>
                     </div>

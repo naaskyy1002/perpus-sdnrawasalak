@@ -22,11 +22,12 @@ class Auth extends BaseController
                 return redirect()->to('user');
             }
         }
-
-        $data = [
-            'title' => 'Login | Perpustakaan SDN Rawasalak'
-        ];
-        return view('auth/login', $data);
+        else {
+            $data = [
+                'title' => 'Login | Perpustakaan SDN Rawasalak'
+            ];
+            return view('auth/login', $data);
+        }
     }
 
     public function validLogin()
@@ -46,22 +47,26 @@ class Auth extends BaseController
                 return redirect()->to('login');
             }
 
-            if ($user_check['user_pass'] == $user_pass) {
-                //jika benar, arahkan user sesuai dengan user_level
-                $sessLogin = [
-                    'user_session' => TRUE,
-                    'user_name'    => $user_check['user_name'],
-                    'user_level'   => $user_check['user_level']
-                ];
-                $this->session->set($sessLogin);
-
-                if ($user_check['user_level'] == 0) {
+            if(($user_check['user_pass'] == $user_pass) && ($user_check['user_level'] == 0)) {
+                //jika benar, arahkan user masuk ke halaman admin 
+                    $sessLogin = [
+                        'user_session' => TRUE,
+                        'user_name'    => $user_check['user_name'],
+                        'user_level'   => $user_check['user_level']
+                        ];
+                    $this->session->set($sessLogin);
                     return redirect()->to('admin');
                 }
-                if ($user_check['user_level'] == 1) {
+                if(($user_check['user_pass'] == $user_pass) && ($user_check['user_level'] == 1)) {
+                //jika benar, arahkan user masuk ke halaman user 
+                    $sessLogin = [
+                        'user_session' => TRUE,
+                        'user_name'    => $user_check['user_name'],
+                        'user_level'   => $user_check['user_level']
+                        ];
+                    $this->session->set($sessLogin);
                     return redirect()->to('user');
                 }
-            }
         } else {
             //jika username tidak ditemukan, balikkan ke halaman login
             session()->setFlashdata('login_fail', 'Username tidak ditemukan!');

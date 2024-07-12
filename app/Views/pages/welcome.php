@@ -50,7 +50,7 @@
         </div>
     </main>
     <footer>
-                    <span>Copyright &copy; <text class="text-primary">SDN Rawasalak</text> <?=date('Y')?></span>
-</footer>
+        <span>Copyright &copy; <text class="text-primary">SDN Rawasalak</text> <?=date('Y')?></span>
+    </footer>
 </body>
 </html>

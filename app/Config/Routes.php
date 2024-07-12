@@ -27,9 +27,10 @@ $routes->group('admin', function($routes){
 $routes->get('/tentang_kami', 'Home::tentang_kami');
 $routes->get('/kontak', 'Home::kontak');
 
+$routes->group('user', function($routes){
 // route ke halaman user (siswa)
-$routes->get('/beranda', 'Page::beranda');
-$routes->get('/buku', 'Page::buku');
-$routes->get('/pinjaman', 'Page::pinjaman');
-$routes->get('/sejarah', 'Page::sejarah');
-$routes->get('/detail', 'Page::detail');
+    $routes->get('', 'User::beranda');
+    $routes->get('pinjaman', 'User::pinjaman');
+    $routes->get('riwayat', 'User::riwayat');
+    $routes->get('detail', 'User::detail');
+});
