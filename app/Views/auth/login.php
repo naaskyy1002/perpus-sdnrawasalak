@@ -33,7 +33,7 @@
       </div>
       <nav>
           <ul>
-              <li><a href="<?= base_url('home') ?>">BERANDA</a></li>
+              <li><a href="<?= base_url('/') ?>">BERANDA</a></li>
               <li><a href="<?= base_url('tentang_kami') ?>">TENTANG KAMI</a></li>
               <li><a href="<?= base_url('kontak') ?>">KONTAK</a></li>
           </ul>

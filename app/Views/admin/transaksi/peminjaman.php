@@ -143,7 +143,7 @@
                 </div>
                 <div class="col-12">
                   <label for="inputKondisi" class="form-label">Tanggal Pengembalian</label>
-                  <input type="date" class="form-control" id="inputKondisi">
+                  <input type="date " class="form-control" id="inputKondisi">
                 </div>
                     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
