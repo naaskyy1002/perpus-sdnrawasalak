@@ -6,11 +6,7 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 
-
-
 $routes->get('/', 'Home::welcome');
-$routes->get('login', 'Home::pagelogin');
-
 $routes->get('login', 'Auth::login');
 $routes->post('auth/valid-login', 'Auth::validLogin');
 $routes->get('auth/logout', 'Auth::logout');
@@ -26,7 +22,6 @@ $routes->group('admin', function($routes){
     $routes->get('daftar_pengunjung', 'Admin::daftar_pengunjung');
     $routes->get('jadwal_kunjungan', 'Admin::jadwal_kunjungan');
     $routes->get('profil_admin', 'Admin::profil_admin');
-
 });
 
 $routes->get('/tentang_kami', 'Home::tentang_kami');
