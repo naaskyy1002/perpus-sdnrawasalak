@@ -55,7 +55,7 @@
 
     <div class="search-bar">
       <form class="search-form d-flex align-items-center" method="POST" action="#">
-        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+        <input type="text" name="query" placeholder="Cari" title="Enter search keyword">
         <button type="submit" title="Search"><i class="bi bi-search"></i></button>
       </form>
     </div><!-- End Search Bar -->
@@ -84,9 +84,9 @@
               <hr class="dropdown-divider">
             </li>
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
+              <a class="dropdown-item d-flex align-items-center" href=<?= base_url('admin/profil_admin');?>>
                 <i class="bi bi-person"></i>
-                <span>My Profile</span>
+                <span>Profil</span>
               </a>
             </li>
             <li>
@@ -107,7 +107,7 @@
   <aside id="sidebar" class="sidebar">
   <ul class="sidebar-nav" id="sidebar-nav">
 
-    <a class="nav-link nav-profile d-flex flex-column align-items-center pe-0">
+    <a class="nav-profile d-flex flex-column align-items-center pe-0">
       <img src=<?= base_url("assets/img/profile-img.jpg") ?> alt="Profile" class="rounded-circle">
       <span class="d-none d-md-block pt-2">Raina Rahmawati F</span>
     </a>
@@ -159,7 +159,7 @@
           </a>
         </li>
         <li>
-          <a href=<?= base_url('admin/Data Siswa');?>>
+          <a href=<?= base_url('admin/data_siswa');?>>
             <i class="bi bi-circle"></i><span>Data Siswa</span>
           </a>
         </li>

@@ -15,63 +15,133 @@
 
     <div class="card shadow mb-4"> 
     <div class="card-header py-3 d-flex justify-content-between align-items-center">
-    <a href="<?=base_url('tambah_admin');?>" class="btn btn-primary">
+    <a href="#tambahAdmin" data-bs-toggle="modal" data-bs-target="#tambahAdmin"class="btn btn-primary">
     <i class="bi bi-plus"></i> Tambah Admin</a>
     </div>
-    <div class="table-responsive">
-    <div class="container-xl">
-        <div class="table-wrapper">
-            <div class="table-title">
+
+    <div class="col-lg-12">
+                <div class="table-responsive">
+                    <div class="card-body">
+                <div class="table-title">
                 <div class="row">
                 <div class="col-sm-8"></div>
                     <div class="col-sm-4">
                         <div class="search-box">
                             <i class="bi bi-search"></i> 
-                            <input type="text" class="form-control" placeholder="Search">
+                            <input type="text" class="form-control" placeholder="Cari">
                         </div>
                     </div>
                 </div>
             </div>
-            <table class="table table-striped table-hover table-bordered">
+            <!-- <div class="card-body"> -->
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">              
+            </div>
+              <table class="table table-bordered">
                 <thead>
-                    <tr>
-                        <th>No.</th>
-                        <th>NIP <i class="fa fa-sort"></i></th>
-                        <th>Nama</th>
-                        <th>Jabatan <i class="fa fa-sort"></i></th>
-                        <th>Aksi</th>
-                    </tr>
+                  <tr class="text-center">
+                    <th>No.</th>
+                    <th>NIP</th>
+                    <th>Nama</th>
+                    <th>Jabatan</th>
+                    <th>Aksi</th>
+                  </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>12345</td>
-                        <td>Eni Sukma</td>
-                        <td>Petugas Perpustakaan</td>
-                        <td>
-                            <a href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="bi bi-pencil"></i></a>
-                            <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="bi bi-trash"></i></a>
-                        </td>
-                    </tr>    
+                  <tr class="text-center">
+                    <td>1</td>
+                    <td>123456</td>
+                    <td>Edi Sukma</td>
+                    <td>Petugas Perpustakaan</td>
+                    <td>
+                    <a href="#editModal" class="edit" title="Edit" data-bs-toggle="modal" data-bs-target="#editModal"><i class="bi bi-pencil"></i></a>
+                    <a href="#" class="delete" title="Hapus" data-toggle="tooltip"><i class="bi bi-trash"></i></a>
+                    </td>
+                  </tr>
                 </tbody>
-            </table>
-            <div class="clearfix">
-                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-                <ul class="pagination">
-                    <li class="page-item disabled"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
-                    <li class="page-item"><a href="#" class="page-link">1</a></li>
-                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                    <li class="page-item active"><a href="#" class="page-link">3</a></li>
-                    <li class="page-item"><a href="#" class="page-link">4</a></li>
-                    <li class="page-item"><a href="#" class="page-link">5</a></li>
-                    <li class="page-item"><a href="#" class="page-link"><i class="fa fa-angle-double-right"></i></a></li>
-                </ul>
+              </table>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<!-- Tambah Modal -->
+<div class="modal fade" id="tambahAdmin" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    <div class="modal-dialog d-flex justify-content-center"> <!-- mau besar tambahin modal-xl -->
+        <div class="modal-content w-75">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel2">Tambah Data Admin</h5>
+                <button  type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <form>
+                    <div class="form-floating mb-4">
+                        <input type="text" class="form-control" id="NIP" placeholder="Senin"/>
+                        <label for="NIP">NIP</label>
+                    </div>
+
+                    <div class="form-floating mb-4">
+                        <input type="text" class="form-control" id="Nama" placeholder="Selasa"/>
+                        <label for="Nama">Nama</label>
+                    </div>
+
+                    <div class="form-floating mb-4">
+                        <input type="text" class="form-control" id="Jabatan" placeholder="Rabu"/>
+                        <label for="Jabatan">Jabatan</label>
+                    </div>
+                    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+        <button type="button" class="btn btn-primary">Simpan</button>
+      </div>
+                </form>
             </div>
         </div>
-    </div>  
-</div>   
-      </div>
-    </section>
+    </div>
+</div>
+<!-- Tambah Modal -->
 
+<!-- Edit Modal-->
+<div class="modal fade" id="editAdmin" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content text-dark bg-warning">
+                <div class="modal-header">
+                    <h5 class="modal-title">Ubah Data Admin</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" enctype="multipart/form-data" action="/admin/editMhs">
+                        <div class="form-group">
+                            <label>NIP*</label>
+                            <input type="number" id="eadmnip" name="emhs_nim" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Nama*</label>
+                            <input type="text" id="eadmnama" name="emhs_nama" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Jabatan*</label>
+                            <input type="text" id="eadmjabatan" name="emhs_nama" class="form-control" required>
+                        </div>
+
+                        <br>
+                        *Required
+                        
+                        <input type="number" id="eadmid" name="emhs_id" hidden>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-light" data-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-success">Simpan</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
   </main><!-- End #main -->
 <?=$this->endSection()?>

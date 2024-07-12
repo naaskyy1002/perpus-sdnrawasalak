@@ -21,7 +21,7 @@
 
         <!-- Total Buku Card -->
         <div class="col-xxl-4 col-md-3">
-          <div class="card info-card sales-card">
+          <div class="card info-card revenue-card">
             <div class="card-body">
               <h5 class="card-title">Total Buku</h5>
               <div class="d-flex align-items-center">
@@ -29,7 +29,7 @@
                   <i class="bi bi-book"></i>
                 </div>
                 <div class="ps-3">
-                  <h6>950 Buku</h6> <!-- MENGGUNAKAN DATABASE -->
+                  <h6>950 Buku</h6> 
                   <a href=<?=base_url('admin/buku_layak');?> class="card-link detail-link">Lihat Detail</a> 
                 </div>
               </div>
@@ -95,7 +95,7 @@
         <div class="col-12">
           <div class="card recent-sales overflow-auto">
             <div class="card-body">
-              <h5 class="card-title">Peminjaman Buku</h5> <!--HARI INI MENGGUNAKAN DATABASE -->
+              <h5 class="card-title">Peminjaman Buku</h5>
               <table class="table table-borderless datatable">
                 <thead>
                   <tr>
