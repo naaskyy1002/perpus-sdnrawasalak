@@ -190,22 +190,12 @@
 
   <?=$this->renderSection('content');?>
 
-  <!-- ======= Footer ======= -->
-  <!-- <footer id="footer" class="footer mt-auto">
-    <div class="copyright">
-      <p>COPYRIGHT © 2024 SDN RAWASALAK</p>
-    </div>
-  </footer> -->
-  <!-- End Footer -->
-
   <!-- Footer -->
-  <footer class="sticky-footer bg-white">
-    <div class="container my-auto">
-      <div class="copyright text-center my-auto">
-        <span>Copyright &copy; <text class="text-primary">SDN Rawasalak</text> <?=date('Y')?>. All rights
-        reserved.</span>
+  <footer id="footer" class="sticky-footer bg-white">
+      <div class="copyright">
+      Copyright &copy; <span class="text-primary">SDN Rawasalak</span> <?=date('Y')?>. All rights
+      reserved.
       </div>
-    </div>
   </footer>
   <!-- End of Footer -->
 

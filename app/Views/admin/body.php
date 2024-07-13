@@ -95,38 +95,61 @@
         <div class="col-12">
           <div class="card recent-sales overflow-auto">
             <div class="card-body">
-              <h5 class="card-title">Transaksi Buku</h5>
-              <table class="table table-borderless datatable">
-                <thead>
-                  <tr>
-                    <th scope="col">No.</th>
-                    <th scope="col">Kode Buku</th>
-                    <th scope="col">Penulis</th>
-                    <th scope="col">Judul Buku</th>
-                    <th scope="col">Peminjam</th>
-                    <th scope="col">Status</th>
-                  </tr>
-                </thead>
+              <h2 class="card-title">Transaksi Buku</h2>
+              <div class="row mb-3">
+                    <div class="col-sm-12 col-md-6">
+                            <div class="dataTables_length" id="dataTable_length">
+                                <label> 
+                                    <select name ="dataTable_length" aria-controls="dataTable" class="custom-select-sm from-control from-control-sm">
+                                        <option value="10">10</option>
+                                        <option value="25">25</option>
+                                        <option value="50">50</option>
+                                        <option value="100">100</option>
+                                    </select>
+                                    entri
+                                </label>
+                            </div>
+                        </div>                 
+                    <div class="col-sm-6 mol-md-6 text-right">
+                    <div class="col-sm-12">
+                        <div class="search-box">
+                            <i class="bi bi-search"></i> 
+                            <input type="text" class="form-control" placeholder="Cari">
+                        </div>
+                    </div>
+                </div> 
+            </div>    
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">              
+                            <thead>
+                                <tr class="text-center">
+                                    <th>No.</th>
+                                    <th>Kode Buku</th>
+                                    <th>Penulis</th>
+                                    <th>Judul Buku</th>
+                                    <th>Peminjam</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>          
                 <tbody>
                   <tr>
-                    <th scope="row"><a>1</a></th>
-                    <th scope="row"><a href="#">A2</a></th>
+                    <td><a>1</a></th>
+                    <td><a href="#">A2</a></th>
                     <td>Henry Manampiring</td>
                     <td><a href="#" class="text-primary">Filosofi Teras</a></td>
                     <td>Raina Rahmawati</td>
                     <td><span class="badge bg-warning">Dipinjam</span></td>
                   </tr>
                   <tr>
-                    <th scope="row"><a>2</a></th>
-                    <th scope="row"><a href="#">A7</a></th>
+                    <td><a>2</a></td>
+                    <td><a href="#">A7</a></td>
                     <td>James Clear</td>
                     <td><a href="#" class="text-primary">Atomic Habits</a></td>
                     <td>Siti Nurazizah</td>
                     <td><span class="badge bg-success">Dikembalikan</span></td>
                   </tr>
                   <tr>
-                    <th scope="row"><a>3</a></th>
-                    <th scope="row"><a href="#">E8</a></th>
+                    <td><a>3</a></td>
+                    <td><a href="#">E8</a></td>
                     <td>Francine Jay</td>
                     <td><a href="#" class="text-primary">Seni Hidup Minimalis</a></td>
                     <td>Sarah Syakira</td>
@@ -134,6 +157,29 @@
                   </tr> 
                 </tbody>
               </table>
+              <div class="clearfix">
+				<div class="hint-text">Menampilkan 1 dari 1 entri</div>
+				<ul class="pagination">
+        <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                    </a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+				</ul>
+			</div>
+		</div>
             </div>
           </div>
         </div><!-- End Peminjaman Buku -->

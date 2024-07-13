@@ -975,23 +975,15 @@ h6 {
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
-/* .footer {
+.footer {
   padding: 20px 0;
   font-size: 16px;
   transition: all 0.3s;
 }
 
-.footer .copyright {
-  text-align: center;
-  color: #000000;
-} */
-
 footer.sticky-footer {
-  width: 100%;
   padding: 1rem 0;
   position: relative;
-  /* padding: 2rem 0;
-  flex-shrink: 0; */
 }
 
 footer.sticky-footer .copyright {
@@ -999,10 +991,6 @@ footer.sticky-footer .copyright {
   font-size: 0.8rem;
   text-align: center;
   
-}
-
-body.sidebar-toggled footer.sticky-footer {
-  width: 100%;
 }
 
 .button-kirim {
@@ -1143,7 +1131,7 @@ table.table td i {
 .pagination li a {
   border: none;
   font-size: 95%;
-  width: 30px;
+  width: 28px;
   height: 30px;
   color: #999;
   margin: 0 2px;
