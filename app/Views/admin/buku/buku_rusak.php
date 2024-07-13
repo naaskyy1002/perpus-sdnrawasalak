@@ -7,7 +7,7 @@
       <h1>Data Buku Rusak</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href=<?=base_url('admin');?>>Beranda</a></li>
+          <li class="breadcrumb-item"><a href="<?=base_url('admin');?>">Beranda</a></li>
           <li class="breadcrumb-item">Data Buku Rusak</li>
         </ol>
       </nav>
@@ -15,14 +15,14 @@
 
     <div class="card shadow mb-4"> 
     <div class="card-header py-3 d-flex justify-content-between align-items-center">
-    <a class="btn btn-primary" href=#tambahModal data-bs-toggle="modal" data-bs-target="#tambahModal">
+    <a class="btn btn-primary" href="#tambahModal" data-bs-toggle="modal" data-bs-target="#tambahModal">
     <i class="bi bi-plus"></i> Tambah Buku</a>
     </div>
     <div class="card-body">
 
         <div class="row mb-3">
-                        <div class="col-sm-6 col-md-3">
-                        <label for="pilihBulan">Pilih Bulan</label>
+            <div class="col-sm-6 col-md-3">
+              <label for="pilihBulan">Pilih Bulan</label>
               <select id="pilihBulan" class="form-control">
                 <option>Januari</option>
                 <option>Februari</option>
@@ -57,59 +57,56 @@
             </div>
           </div>
           <section class="section">    
-        <div class="col-lg-12">
+            <div class="col-lg-12">
                 <div class="table-title">
-                <div class="row">
-                <div class="col-sm-8"></div>
+                  <div class="row">
+                    <div class="col-sm-8"></div>
                     <div class="col-sm-4">
                         <div class="search-box">
                             <i class="bi bi-search"></i> 
                             <input type="text" class="form-control" placeholder="Cari">
                         </div>
                     </div>
+                  </div>
                 </div>
-            </div>
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">              
-            </div>
-              <table class="table table-bordered">
-                <thead>
-                  <tr class="text-center">
-                    <th>No.</th>
-                    <th>Kode</th>
-                    <th>Penulis</th>
-                    <th>Judul</th>
-                    <th>Tahun Terbit</th>
-                    <th>Tanggal Pendataan</th>
-                    <th>Kondisi Buku</th>
-                    <th>Foto Kerusakan</th>
-                    <th>Aksi</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="text-center">
-                    <td>1</td>
-                    <td>A2</td>
-                    <td>Henry Manampiring</td>
-                    <td>Filosofi Teras</td>
-                    <td>2018</td>
-                    <td>6 Juli 2024</td>
-                    <td>Sobek</td>
-                    <td>FOTO</td>
-                    <td>
-                    <a href="#editModal" class="edit" title="Edit" data-bs-toggle="modal" data-bs-target="#editModal"><i class="bi bi-pencil"></i></a>
-                    <a href="#" class="delete" title="Hapus" data-toggle="tooltip"><i class="bi bi-trash"></i></a>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">              
+                  <thead>
+                    <tr class="text-center">
+                      <th>No.</th>
+                      <th>Kode</th>
+                      <th>Sampul</th>
+                      <th>Judul</th>
+                      <th>Pengarang</th>
+                      <th>Tanggal Pendataan</th>
+                      <th>Keterangan</th>
+                      <th>Foto Kerusakan</th>
+                      <th>Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php $i = 1; ?>
+                    <?php foreach($bkrusak as $bkr) : ?>
+                    <tr class="text-center">
+                      <td><?= $i++; ?></td>
+                      <td><?= $bkr['kode_buku'] ;?></td>
+                      <td><img src="<?= base_url('assets/img/' . $bkr['sampul']) ?>" alt="sampulBuku" width="50"></td>
+                      <td><?= $bkr['judul_buku'] ;?></td>
+                      <td><?= $bkr['pengarang'] ;?></td>
+                      <td><?= $bkr['tanggal_pendataan'] ;?></td>
+                      <td><?= $bkr['keterangan'] ;?></td>
+                      <td><img src="<?= base_url('assets/img/' . $bkr['foto_bukti']) ?>" alt="sampulBuku" width="50"></td>
+                      <td>
+                        <a href="#editModal" class="edit" title="Edit" data-bs-toggle="modal" data-bs-target="#editModal"><i class="bi bi-pencil"></i></a>
+                        <a href="#" class="delete" title="Hapus" data-bs-toggle="tooltip"><i class="bi bi-trash"></i></a>
+                      </td>
+                    </tr>
+                    <?php endforeach; ?>
+                  </tbody>
+                </table>
             </div>
           </div>
         </div>
-      </div>
-        </div>
-      </div>
-    </section>
+      </section>
 
 <!-- Tambah Modal -->
 <div class="modal fade" id="tambahModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
@@ -147,13 +144,13 @@
                 </div>
                 <div class="col-12">
                   <label>Foto Kerusakan</label>
-                  <input type="file" name="amhs_photo" accept=".jpg,.png" onchange="ImgFile(this);" class="form-control-file">
+                  <input type="file" name="amhs_photo" accept=".jpg,.png" onchange="ImgFile(this);" class="form-control">
                 </div>
-                    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
-        <button type="button" class="btn btn-primary">Simpan</button>
-      </div>
-                </form>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+                  <button type="button" class="btn btn-primary">Simpan</button>
+                </div>
+              </form>
             </div>
         </div>
     </div>
@@ -184,7 +181,7 @@
 
                         <div class="form-group">
                             <label>Jabatan*</label>
-                            <input type="text" id="eadmjabatan" name="emhs_nama" class="form-control" required>
+                            <input type="text" id="eadmjabatan" name="emhs_jabatan" class="form-control" required>
                         </div>
 
                         <br>
@@ -201,10 +198,7 @@
             </div>
         </div>
     </div>
-</div>
-
-
-
 
   </main><!-- End #main -->
 <?=$this->endSection()?>
+

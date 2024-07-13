@@ -13,8 +13,11 @@ $routes->get('auth/logout', 'Auth::logout');
 
 $routes->group('admin', function($routes){
     $routes->get('', 'Admin::home');
-    $routes->get('buku_layak', 'Admin::buku_layak');
-    $routes->get('buku_rusak', 'Admin::buku_rusak');
+    $routes->get('buku_layak', 'Buku::buku_layak');
+    $routes->post('addBuku', 'Buku::addBuku');
+    $routes->post('editBuku', 'Buku::editBuku');
+    $routes->post('deleteBuku', 'Buku::deleteBuku');
+    $routes->get('buku_rusak', 'Buku::buku_rusak');
     $routes->get('peminjaman', 'Admin::peminjaman');
     $routes->get('data_admin', 'Admin::data_admin');
     $routes->get('data_guru', 'Admin::data_guru');
@@ -28,7 +31,7 @@ $routes->get('/tentang_kami', 'Home::tentang_kami');
 $routes->get('/kontak', 'Home::kontak');
 
 $routes->group('user', function($routes){
-// route ke halaman user (siswa)
+    // route ke halaman user (siswa)
     $routes->get('', 'User::beranda');
     $routes->get('pinjaman', 'User::pinjaman');
     $routes->get('riwayat', 'User::riwayat');

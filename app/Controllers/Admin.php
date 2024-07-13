@@ -9,21 +9,16 @@ public function home()
     {
         return view('admin/body');
     }
-    
-    // public function body()
+
+    // public function buku_layak()
     // {
-    //     return view('admin/body');
+    //     return view('admin/buku/buku_layak');
     // }
 
-    public function buku_layak()
-    {
-        return view('admin/buku/buku_layak');
-    }
-
-    public function buku_rusak()
-    {
-        return view('admin/buku/buku_rusak');
-    }
+    // public function buku_rusak()
+    // {
+    //     return view('admin/buku/buku_rusak');
+    // }
 
     public function peminjaman()
     {
