@@ -72,7 +72,7 @@ class Buku extends BaseController
     return redirect()->to('/admin/buku_layak')->with('message', 'Buku berhasil ditambahkan!');
 }
 
-    public function editBuku()
+    public function editBuku($id)
     {
         $check_sampul = $this->validate([
             'sampul' => [

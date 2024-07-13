@@ -285,6 +285,7 @@
   </div>
 
   <script type="text/javascript">
+    $(document).ready(function() {
         $(".viewModalid").click(function() {
             var vkodebuku = $(this).data('vkodebuku');
             $("#vkodebuku").val(vkodebuku);
@@ -315,6 +316,7 @@
 
             $('#viewModal').modal('show');
         });
+    });
   </script>
 
 
