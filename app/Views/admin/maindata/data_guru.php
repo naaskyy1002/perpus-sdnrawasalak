@@ -23,15 +23,28 @@
                 <div class="table-responsive">
                     <div class="card-body">
                 <div class="table-title">
-                <div class="row">
-                <div class="col-sm-8"></div>
-                    <div class="col-sm-4">
+                <div class="row mb-3">
+                    <div class="col-sm-12 col-md-6">
+                            <div class="dataTables_length" id="dataTable_length">
+                                <label> 
+                                    <select name ="dataTable_length" aria-controls="dataTable" class="custom-select-sm from-control from-control-sm">
+                                        <option value="10">10</option>
+                                        <option value="25">25</option>
+                                        <option value="50">50</option>
+                                        <option value="100">100</option>
+                                    </select>
+                                    entri
+                                </label>
+                            </div>
+                        </div>                 
+                    <div class="col-sm-6 mol-md-6 text-right">
+                    <div class="col-sm-12">
                         <div class="search-box">
                             <i class="bi bi-search"></i> 
                             <input type="text" class="form-control" placeholder="Cari">
                         </div>
                     </div>
-                </div>
+                </div> 
             </div>
             <!-- <div class="card-body"> -->
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">              
@@ -59,6 +72,29 @@
                   </tr>
                 </tbody>
               </table>
+              <div class="clearfix">
+				<div class="hint-text">Menampilkan 1 dari 1 entri</div>
+				<ul class="pagination">
+        <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                    </a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+				</ul>
+			</div>
+		</div>
             </div>
             </div>
           </div>
