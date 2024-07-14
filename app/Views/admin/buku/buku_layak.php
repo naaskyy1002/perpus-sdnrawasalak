@@ -83,11 +83,18 @@
                 </div> 
             </div>
 
-                        <?php if (session()->getFlashdata('message')): ?>
-                            <div class="alert alert-success" id="success-message">
-                                <?= session()->getFlashdata('message') ?>
-                            </div>
-                        <?php endif; ?>
+            <?php if (session()->getFlashdata('message')): ?>
+                <div class="alert alert-success" id="success-message">
+                    <?= session()->getFlashdata('message') ?>
+                </div>
+            <?php endif; ?>
+
+            <?php if (session()->getFlashdata('errors')): ?>
+                <div class="alert alert-danger" id="error-message">
+                    <?= session()->getFlashdata('errors') ?>
+                </div>
+            <?php endif; ?>
+
 
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">              
                             <thead>
@@ -129,8 +136,8 @@
                                             <a href="#" data-bs-toggle="modal" data-bs-target="#editModal" class="editModalid" 
                                                 data-eidbuku="<?=$bk['id_buku']?>"
                                                 data-ekodebuku="<?=$bk['kode_buku']?>"
-                                                data-esampul="../buku/<?=$bk['sampul']?>"
-                                                data-eoldsampul="<?=$bk['sampul']?>"
+                                                data-esampul="<?= base_url('assets/img/buku/' . $bk['sampul']) ;?>"
+                                                data-eoldsampul="<?=$bk['sampul'] ;?>"
                                                 data-ejudulbuku="<?=$bk['judul_buku']?>"
                                                 data-epengarang="<?=$bk['pengarang']?>"
                                                 data-epenerbit="<?=$bk['penerbit']?>"
@@ -141,17 +148,7 @@
                                                 <i class="bi bi-pencil"></i>
                                             </a>
                                             <a href="#" data-bs-toggle="modal" data-bs-target="#deleteModal" class="deleteModalid" 
-                                                data-didbuku="<?=$bk['id_buku'] ?>"
-                                                data-dkodebuku="<?=$bk['kode_buku']?>"
-                                                data-dsampul="../buku/<?=$bk['sampul']?>"
-                                                data-doldsampul="<?=$bk['sampul']?>"
-                                                data-djudulbuku="<?=$bk['judul_buku']?>"
-                                                data-dpengarang="<?=$bk['pengarang']?>"
-                                                data-dpenerbit="<?=$bk['penerbit']?>"
-                                                data-dtahunterbit="<?=$bk['tahun_terbit']?>"
-                                                data-dkategori="<?=$bk['kategori']?>"
-                                                data-dnorak="<?=$bk['no_rak']?>"
-                                                data-djumlahbuku="<?=$bk['jumlah_buku'];?>">
+                                                data-idbuku="<?=$bk['id_buku'];?>">
                                                 <i class="bi bi-trash"></i>
                                             </a>
                                         </td>
@@ -204,7 +201,7 @@
                         </div>
                         <div class="col-12">
                             <label>Sampul</label>
-                            <input type="file" name="a_sampul" accept=".jpg,.png" onchange="ImgFile(this);" class="form-control-file">
+                            <input type="file" name="a_sampul" accept=".jpg,.png" onchange="ImgFile(this);" class="form-control-file" required>
                             <img id="previewImage" src="#" alt="Preview Image" style="display:none; width: 200px; margin-top: 10px;">
                         </div>
                         <div class="col-12">
@@ -230,7 +227,6 @@
                                 <option value="Fiksi">Fiksi</option>
                                 <option value="Non-Fiksi">Non-Fiksi</option>
                                 <option value="Referensi">Referensi</option>
-                                <!-- Tambahkan opsi kategori lainnya di sini -->
                             </select>
                         </div>
                         <div class="col-12">
@@ -348,7 +344,6 @@
         });
     </script>
 
-
     <!-- Edit Modal-->
     <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog d-flex justify-content-center">
@@ -360,9 +355,11 @@
                     <div class="modal-body">
                     <form method="post" enctype="multipart/form-data" action="editBuku">
                             <div class="form-group" style="text-align:center;">
-                                <img id="esampul" src="" style="width: 200px;">
-                                <input type="file" name="e_sampul" accept=".jpg,.png" onchange="ImgFile(this);" class="form-control-file">
-                                <input type="text" name="e_oldsampul" class="form-control" id="emhsoldphoto" hidden required>
+                                <div class="form-group">
+                                    <img id="esampul" src="" style="width: 200px;">
+                                </div>
+                                <input type="file" name="e_sampul" accept=".jpg,.png,.jpeg" onchange="ImgFile(this);" class="form-control-file">
+                                <input type="text" name="e_oldsampul" class="form-control" id="eoldsampul" hidden required>
                             </div>
 
                             <div class="col-12">
@@ -408,8 +405,8 @@
                             <input type="number" id="eidbuku" name="e_idbuku" hidden>
 
                             <div class="modal-footer">
-                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Batal</button>
-                            <button type="submit" class="btn btn-success">Update</button>
+                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Batal</button>
+                                <button type="submit" class="btn btn-success">Update</button>
                             </div>
                         </form>
                     </div>
@@ -455,132 +452,29 @@
     </script>
 
     <!-- Delete Modal -->
-    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content text-dark bg-danger">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Hapus Data Buku berikut?</h5>
-                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                    <form method="post" enctype="multipart/form-data" action="deleteBuku">
-                            <div class="form-group" style="text-align:center;">
-                                <img id="dsampul" src="" style="width: 200px;">
-                            </div>
-
-                            <div class="form-group">
-                                <label>Kode Buku</label>
-                                <input type="text" id="dkodebuku" name="e_kodebuku" class="form-control" disabled>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Judul Buku</label>
-                                <input type="text" id="djudulbuku" name="e_judulbuku" class="form-control" disabled>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Pengarang</label>
-                                <input type="text" id="dpengarang" name="e_pengarang" class="form-control" disabled>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Penerbit</label>
-                                <input type="text" id="dpenerbit" name="e_penerbit" class="form-control" disabled>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Tahun Terbit</label>
-                                <input type="number" id="dtahunterbit" name="e_tahunterbit" class="form-control" disabled>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Kategori</label>
-                                <input type="text" id="dkategori" name="e_kategori" class="form-control" disabled>
-                            </div>
-
-                            <div class="form-group">
-                                <label>No Rak</label>
-                                <input type="number" id="dnorak" name="e_norak" class="form-control" disabled>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Jumlah Buku</label>
-                                <input class="form-control" id="djumlahbuku" name="e_jumlahbuku" type="number" disabled></input>
-                            </div>
-
-                            <input type="text" id="doldsampul" name="d_oldsampul" hidden required>
-                            <input type="number" id="didbuku" name="did_buku" hidden required>
-
-                            <div class="modal-footer">
-                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Batal</button>
-                            <button type="submit" class="btn btn-success">Hapus</button>
-                            </div>
-                        </form>
-                    </div>
+    <div class="modal fade" id="deleteModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content text-dark">
+                <div class="modal-body">
+                    Apakah Anda Yakin Ingin Menghapus Data Buku Ini?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    <form method="post" action="<?= base_url('admin/deleteBuku') ?>">
+                        <input type="hidden" id="idbuku" name="id_buku">
+                        <button type="submit" class="btn btn-danger">Hapus</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 
-    <script type="text/javascript">
-            $(".deleteModalid").click(function() {
-                var dkodebuku = $(this).data('dkodebuku');
-                $("#dkodebuku").val(dkodebuku);
-
-                var dsampul = $(this).data('dsampul');
-                $("#dsampul").attr("src", dsampul);
-
-                var djudulbuku = $(this).data('djudulbuku');
-                $("#djudulbuku").val(djudulbuku);
-
-                var dpengarang = $(this).data('dpengarang');
-                $("#dpengarang").val(dpengarang);
-
-                var dpenerbit = $(this).data('dpenerbit');
-                $("#dpenerbit").val(dpenerbit);
-
-                var dtahunterbit = $(this).data('dtahunterbit');
-                $("#dtahunterbit").val(dtahunterbit);
-
-                var dkategori = $(this).data('dkategori');
-                $("#dkategori").val(dkategori);
-
-                var dnorak = $(this).data('dnorak');
-                $("#dnorak").val(dnorak);
-
-                var djumlahbuku = $(this).data('djumlahbuku');
-                $("#djumlahbuku").val(djumlahbuku);
-
-                $('#deleteModal').modal('show');
-            });
+    <script>
+        $(".deleteModalid").click(function() {
+            var idbuku = $(this).data('idbuku');
+            $("#idbuku").val(idbuku);
+        });
     </script>
-
-
-    <script type="text/javascript">
-            var _validFileExtensions = [".jpg", ".jpeg", ".png"];    
-            function ImgFile(oInput) {
-                if (oInput.type == "file") {
-                    var sFileName = oInput.value;
-                    if (sFileName.length > 0) {
-                        var blnValid = false;
-                        for (var j = 0; j < _validFileExtensions.length; j++) {
-                            var sCurExtension = _validFileExtensions[j];
-                            if (sFileName.substr(sFileName.length - sCurExtension.length, sCurExtension.length).toLowerCase() == sCurExtension.toLowerCase()) {
-                                blnValid = true;
-                                break;
-                            }
-                        }
-                        if (!blnValid) {
-                            alert("Maaf, file " + sFileName + " tidak diperbolehkan! Ekstensi file yang diperbolehkan: " + _validFileExtensions.join(", "));
-                            oInput.value = "";
-                            return false;
-                        }
-                    }
-                }
-                return true;
-            }
-        </script>
-
 
     <script>
             function ImgFile(input) {
@@ -593,18 +487,26 @@
                 };
                 reader.readAsDataURL(file);
             }
-        </script>
+    </script>
 
     <script>
-        // Mengecek apakah elemen dengan id 'success-message' ada
-        const message = document.getElementById('success-message');
-        if (message) {
-            // Mengatur timer untuk menghilangkan pesan setelah 5 detik
-            setTimeout(() => {
-                message.style.display = 'none';
-            }, 5000);
+        // Function to hide element after 5 seconds
+        function hideAfterDelay(elementId) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                setTimeout(() => {
+                    element.style.display = 'none';
+                }, 5000);
+            }
         }
+
+        // Hide success message after 5 seconds
+        hideAfterDelay('success-message');
+
+        // Hide error message after 5 seconds
+        hideAfterDelay('error-message');
     </script>
+
 
 </main><!-- End #main -->
 <?=$this->endSection()?>

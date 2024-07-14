@@ -5,8 +5,9 @@ use CodeIgniter\Model;
 
 class BukuModel extends Model
 {
-    protected $table;
+    protected $table ="buku";
     protected $primaryKey = 'id_buku';
+    protected $allowedFields = ['kode_buku', 'sampul', 'judul_buku', 'pengarang', 'penerbit', 'tahun_terbit', 'kategori', 'no_rak', 'jumlah_buku'];
     protected $useTimestamps = true;
     protected $createdField ='created_at';
     protected $updatedField ='updated_at';
@@ -31,6 +32,19 @@ class BukuModel extends Model
     public function deleteBuku($id)
     {
         return $this->db->table('buku')
+                        ->delete(array('id_buku' => $id));
+    } 
+
+    // BUKU RUSAK
+    public function createBkr($data)
+    {
+        return $this->db->table('buku_rusak')
+                        ->insert($data);
+    }
+
+    public function deleteBkr($id)
+    {
+        return $this->db->table('buku_rusak')
                         ->delete(array('id_buku' => $id));
     } 
 
