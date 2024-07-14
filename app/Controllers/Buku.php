@@ -26,6 +26,12 @@ class Buku extends BaseController
 
     public function addBuku() 
     {
+        // $data = [
+        //     'title' => 'Form Tambah Data'
+        // ];
+
+        // return view('admin/buku/addBuku', $data);
+
     $check_sampul = $this->validate([
         'sampul' => [
             'uploaded[a_sampul]',
@@ -74,6 +80,8 @@ class Buku extends BaseController
 
     public function editBuku($id)
     {
+        log_message('debug', 'Data diterima: ' . json_encode($this->request->getPost()));
+
         $check_sampul = $this->validate([
             'sampul' => [
                 'uploaded[e_sampul]',

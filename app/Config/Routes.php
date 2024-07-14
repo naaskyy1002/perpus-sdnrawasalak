@@ -13,18 +13,19 @@ $routes->get('auth/logout', 'Auth::logout');
 
 $routes->group('admin', function($routes){
     $routes->get('', 'Admin::home');
-    $routes->get('buku_layak', 'Buku::buku_layak');
+    $routes->get('buku', 'Buku::buku_layak');
+    // $routes->get('buku/addBuku', 'Buku::addBuku');
     $routes->post('addBuku', 'Buku::addBuku');
     $routes->post('editBuku', 'Buku::editBuku');
     $routes->post('deleteBuku', 'Buku::deleteBuku');
-    $routes->get('buku_rusak', 'Buku::buku_rusak');
+    $routes->get('bukuRusak', 'Buku::buku_rusak');
     $routes->get('peminjaman', 'Admin::peminjaman');
-    $routes->get('data_admin', 'Admin::data_admin');
-    $routes->get('data_guru', 'Admin::data_guru');
-    $routes->get('data_siswa', 'Admin::data_siswa');
-    $routes->get('daftar_pengunjung', 'Admin::daftar_pengunjung');
-    $routes->get('jadwal_kunjungan', 'Admin::jadwal_kunjungan');
-    $routes->get('profil_admin', 'Admin::profil_admin');
+    $routes->get('dataAdmin', 'Admin::data_admin');
+    $routes->get('dataGuru', 'Admin::data_guru');
+    $routes->get('dataSiswa', 'Admin::data_siswa');
+    $routes->get('daftarPengunjung', 'Admin::daftar_pengunjung');
+    $routes->get('jadwalKunjungan', 'Admin::jadwal_kunjungan');
+    $routes->get('profilAdmin', 'Admin::profil_admin');
 });
 
 $routes->get('/tentang_kami', 'Home::tentang_kami');

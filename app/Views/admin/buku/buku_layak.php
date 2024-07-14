@@ -200,7 +200,7 @@
                     <form class="row g-3" method="post" enctype="multipart/form-data" action="addBuku">
                         <div class="col-12">
                             <label for="inputKode" class="form-label">Kode Buku</label>
-                            <input type="text" name="a_kodebuku" class="form-control">
+                            <input type="text" name="a_kodebuku" class="form-control" required>
                         </div>
                         <div class="col-12">
                             <label>Sampul</label>
@@ -209,24 +209,24 @@
                         </div>
                         <div class="col-12">
                             <label for="inputJudul" class="form-label">Judul Buku</label>
-                            <input type="text" name="a_judulbuku" class="form-control" >
+                            <input type="text" name="a_judulbuku" class="form-control" required>
                         </div>
                         <div class="col-12">
                             <label for="inputPenulis" class="form-label">Pengarang</label>
-                            <input type="text" name="a_pengarang" class="form-control" >
+                            <input type="text" name="a_pengarang" class="form-control" required>
                         </div>
                         <div class="col-12">
                             <label for="inputPenerbit" class="form-label">Penerbit</label>
-                            <input type="text" name="a_penerbit" class="form-control" >
+                            <input type="text" name="a_penerbit" class="form-control" required>
                         </div>
                         <div class="col-12">
                             <label for="inputTahun" class="form-label">Tahun Terbit</label>
-                            <input type="number" name="a_tahunterbit" class="form-control" >
+                            <input type="number" name="a_tahunterbit" class="form-control" required>
                         </div>
                         <div class="col-12">
                             <label for="inputKategori" class="form-label">Kategori</label>
-                            <select name="a_kategori" class="form-control" >
-                                <option value="">Pilih Kategori</option>
+                            <select name="a_kategori" class="form-select" required>
+                                <option value="Sejarah">Sejarah</option>
                                 <option value="Fiksi">Fiksi</option>
                                 <option value="Non-Fiksi">Non-Fiksi</option>
                                 <option value="Referensi">Referensi</option>
@@ -235,11 +235,11 @@
                         </div>
                         <div class="col-12">
                             <label for="inputRak" class="form-label">No Rak</label>
-                            <input type="number" name="a_norak" class="form-control" >
+                            <input type="number" name="a_norak" class="form-control" required>
                         </div>
                         <div class="col-12">
                             <label for="inputKondisi" class="form-label">Jumlah Buku</label>
-                            <input type="number" name="a_jumlahbuku" class="form-control" >
+                            <input type="number" name="a_jumlahbuku" class="form-control" required>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
@@ -252,73 +252,72 @@
     </div>
 
 
-  <!-- View Modal -->
-  <div class="modal fade" id="viewModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content text-light bg-success">
-        <div class="modal-header">
-          <h5 class="modal-title">Detail Buku</h5>
-          <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true"> &times; </span>
-          </button>
+    <!-- View Modal -->
+    <div class="modal fade" id="viewModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content text-light bg-success">
+                <div class="modal-header">
+                    <h5 class="modal-title">Detail Buku</h5>
+                    <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="#" enctype="multipart/form-data" action="#">
+                        <div class="form-group" style="text-align:center;">
+                            <img id="vsampul" src="" style="width: 200px;">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Kode Buku</label>
+                            <input type="text" id="vkodebuku" class="form-control" disabled>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Judul Buku</label>
+                            <input type="text" id="vjudulbuku" class="form-control" disabled>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Pengarang</label>
+                            <input type="text" id="vpengarang" class="form-control" disabled>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Penerbit</label>
+                            <input type="text" id="vpenerbit" class="form-control" disabled>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Tahun Terbit</label>
+                            <input type="number" id="vtahunterbit" class="form-control" disabled>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Kategori</label>
+                            <input type="text" id="vkategori" class="form-control" disabled>
+                        </div>
+
+                        <div class="form-group">
+                            <label>No Rak</label>
+                            <input type="number" id="vnorak" class="form-control" disabled>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Jumlah Buku</label>
+                            <input class="form-control" id="vjumlahbuku" type="number" disabled></input>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Tutup</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div class="modal-body">
-                      <form method="#" enctype="multipart/form-data" action="#">
-                          <div class="form-group" style="text-align:center;">
-                              <img id="vsampul" src="" style="width: 200px;">
-                          </div>
-
-                          <div class="form-group">
-                              <label>Kode Buku</label>
-                              <input type="text" id="vkodebuku" class="form-control" disabled>
-                          </div>
-
-                          <div class="form-group">
-                              <label>Judul Buku</label>
-                              <input type="text" id="vjudulbuku" class="form-control" disabled>
-                          </div>
-
-                          <div class="form-group">
-                              <label>Pengarang</label>
-                              <input type="text" id="vpengarang" class="form-control" disabled>
-                          </div>
-
-                          <div class="form-group">
-                              <label>Penerbit</label>
-                              <input type="text" id="vpenerbit" class="form-control" disabled>
-                          </div>
-
-                          <div class="form-group">
-                              <label>Tahun Terbit</label>
-                              <input type="number" id="vtahunterbit" class="form-control" disabled>
-                          </div>
-
-                          <div class="form-group">
-                              <label>Kategori</label>
-                              <input type="text" id="vkategori" class="form-control" disabled>
-                          </div>
-
-                          <div class="form-group">
-                              <label>No Rak</label>
-                              <input type="number" id="vnorak" class="form-control" disabled>
-                          </div>
-
-                          <div class="form-group">
-                              <label>Jumlah Buku</label>
-                              <input class="form-control" id="vjumlahbuku" type="number" disabled></input>
-                          </div>
-
-                          <div class="modal-footer">
-                              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Tutup</button>
-                          </div>
-                      </form>
-        </div>
-      </div>
     </div>
-  </div>
 
-  <script type="text/javascript">
-    $(document).ready(function() {
+    <script type="text/javascript">
         $(".viewModalid").click(function() {
             var vkodebuku = $(this).data('vkodebuku');
             $("#vkodebuku").val(vkodebuku);
@@ -349,267 +348,269 @@
 
             $('#viewModal').modal('show');
         });
-    });
-  </script>
+    </script>
 
 
-  <!-- Edit Modal-->
-  <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-              <div class="modal-content text-dark bg-warning">
-                  <div class="modal-header">
-                      <h5 class="modal-title">Ubah Data Buku</h5>
-                      <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">×</span>
-                      </button>
-                  </div>
-                  <div class="modal-body">
-                  <form method="post" enctype="multipart/form-data" action="editBuku">
-                          <div class="form-group" style="text-align:center;">
-                              <img id="esampul" src="" style="width: 200px;">
-                              <input type="file" name="e_sampul" accept=".jpg,.png" onchange="ImgFile(this);" class="form-control-file">
-                              <input type="text" name="e_oldsampul" class="form-control" id="emhsoldphoto" hidden required>
-                          </div>
+    <!-- Edit Modal-->
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content text-dark bg-warning">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Ubah Data Buku</h5>
+                        <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                    <form method="post" enctype="multipart/form-data" action="editBuku">
+                            <div class="form-group" style="text-align:center;">
+                                <img id="esampul" src="" style="width: 200px;">
+                                <input type="file" name="e_sampul" accept=".jpg,.png" onchange="ImgFile(this);" class="form-control-file">
+                                <input type="text" name="e_oldsampul" class="form-control" id="emhsoldphoto" hidden required>
+                            </div>
 
-                          <div class="form-group">
-                              <label>Kode Buku</label>
-                              <input type="text" id="ekodebuku" name="e_kodebuku" class="form-control" disabled>
-                          </div>
+                            <div class="form-group">
+                                <label>Kode Buku</label>
+                                <input type="text" id="ekodebuku" name="e_kodebuku" class="form-control" disabled>
+                            </div>
 
-                          <div class="form-group">
-                              <label>Judul Buku</label>
-                              <input type="text" id="ejudulbuku" name="e_judulbuku" class="form-control" disabled>
-                          </div>
+                            <div class="form-group">
+                                <label>Judul Buku</label>
+                                <input type="text" id="ejudulbuku" name="e_judulbuku" class="form-control" disabled>
+                            </div>
 
-                          <div class="form-group">
-                              <label>Pengarang</label>
-                              <input type="text" id="epengarang" name="e_pengarang" class="form-control" disabled>
-                          </div>
+                            <div class="form-group">
+                                <label>Pengarang</label>
+                                <input type="text" id="epengarang" name="e_pengarang" class="form-control" disabled>
+                            </div>
 
-                          <div class="form-group">
-                              <label>Penerbit</label>
-                              <input type="text" id="epenerbit" name="e_penerbit" class="form-control" disabled>
-                          </div>
+                            <div class="form-group">
+                                <label>Penerbit</label>
+                                <input type="text" id="epenerbit" name="e_penerbit" class="form-control" disabled>
+                            </div>
 
-                          <div class="form-group">
-                              <label>Tahun Terbit</label>
-                              <input type="number" id="etahunterbit" name="e_tahunterbit" class="form-control" disabled>
-                          </div>
+                            <div class="form-group">
+                                <label>Tahun Terbit</label>
+                                <input type="number" id="etahunterbit" name="e_tahunterbit" class="form-control" disabled>
+                            </div>
 
-                          <div class="form-group">
-                              <label>Kategori</label>
-                              <input type="text" id="ekategori" name="e_kategori" class="form-control" disabled>
-                          </div>
+                            <div class="form-group">
+                                <label>Kategori</label>
+                                <input type="text" id="ekategori" name="e_kategori" class="form-control" disabled>
+                            </div>
 
-                          <div class="form-group">
-                              <label>No Rak</label>
-                              <input type="number" id="enorak" name="e_norak" class="form-control" disabled>
-                          </div>
+                            <div class="form-group">
+                                <label>No Rak</label>
+                                <input type="number" id="enorak" name="e_norak" class="form-control" disabled>
+                            </div>
 
-                          <div class="form-group">
-                              <label>Jumlah Buku</label>
-                              <input class="form-control" id="ejumlahbuku" name="e_jumlahbuku" type="number" disabled></input>
-                          </div>
+                            <div class="form-group">
+                                <label>Jumlah Buku</label>
+                                <input class="form-control" id="ejumlahbuku" name="e_jumlahbuku" type="number" disabled></input>
+                            </div>
 
-                          <input type="number" id="eidbuku" name="e_idbuku" hidden>
+                            <input type="number" id="eidbuku" name="e_idbuku" hidden>
 
-                          <div class="modal-footer">
-                          <button type="button" class="btn btn-light" data-bs-dismiss="modal">Batal</button>
-                          <button type="submit" class="btn btn-success">Update</button>
-                          </div>
-                      </form>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-success">Update</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-  <script type="text/javascript">
-        $(".editModalid").click(function() {
-            var ekodebuku = $(this).data('ekodebuku');
-            $("#ekodebuku").val(ekodebuku);
+    <script type="text/javascript">
+            $(".editModalid").click(function() {
+                var ekodebuku = $(this).data('ekodebuku');
+                $("#ekodebuku").val(ekodebuku);
 
-            var esampul = $(this).data('esampul');
-            $("#esampul").attr("src", esampul);
+                var esampul = $(this).data('esampul');
+                $("#esampul").attr("src", esampul);
 
-            var ejudulbuku = $(this).data('ejudulbuku');
-            $("#ejudulbuku").val(ejudulbuku);
+                var ejudulbuku = $(this).data('ejudulbuku');
+                $("#ejudulbuku").val(ejudulbuku);
 
-            var epengarang = $(this).data('epengarang');
-            $("#epengarang").val(epengarang);
+                var epengarang = $(this).data('epengarang');
+                $("#epengarang").val(epengarang);
 
-            var epenerbit = $(this).data('epenerbit');
-            $("#epenerbit").val(epenerbit);
+                var epenerbit = $(this).data('epenerbit');
+                $("#epenerbit").val(epenerbit);
 
-            var etahunterbit = $(this).data('etahunterbit');
-            $("#etahunterbit").val(etahunterbit);
+                var etahunterbit = $(this).data('etahunterbit');
+                $("#etahunterbit").val(etahunterbit);
 
-            var ekategori = $(this).data('ekategori');
-            $("#ekategori").val(ekategori);
+                var ekategori = $(this).data('ekategori');
+                $("#ekategori").val(ekategori);
 
-            var enorak = $(this).data('enorak');
-            $("#enorak").val(enorak);
+                var enorak = $(this).data('enorak');
+                $("#enorak").val(enorak);
 
-            var ejumlahbuku = $(this).data('ejumlahbuku');
-            $("#ejumlahbuku").val(ejumlahbuku);
+                var ejumlahbuku = $(this).data('ejumlahbuku');
+                $("#ejumlahbuku").val(ejumlahbuku);
 
-            $('#editModal').modal('show');
-        });
-  </script>
+                var eidbuku = $(this).data('eidbuku');
+                $("#eidbuku").val(eidbuku);
 
-  <!-- Delete Modal -->
-  <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-              <div class="modal-content text-dark bg-danger">
-                  <div class="modal-header">
-                      <h5 class="modal-title">Hapus Data Buku berikut?</h5>
-                      <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">×</span>
-                      </button>
-                  </div>
-                  <div class="modal-body">
-                  <form method="post" enctype="multipart/form-data" action="deleteBuku">
-                          <div class="form-group" style="text-align:center;">
-                              <img id="dsampul" src="" style="width: 200px;">
-                          </div>
+                $('#editModal').modal('show');
+            });
+    </script>
 
-                          <div class="form-group">
-                              <label>Kode Buku</label>
-                              <input type="text" id="dkodebuku" name="e_kodebuku" class="form-control" disabled>
-                          </div>
+    <!-- Delete Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content text-dark bg-danger">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Hapus Data Buku berikut?</h5>
+                        <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                    <form method="post" enctype="multipart/form-data" action="deleteBuku">
+                            <div class="form-group" style="text-align:center;">
+                                <img id="dsampul" src="" style="width: 200px;">
+                            </div>
 
-                          <div class="form-group">
-                              <label>Judul Buku</label>
-                              <input type="text" id="djudulbuku" name="e_judulbuku" class="form-control" disabled>
-                          </div>
+                            <div class="form-group">
+                                <label>Kode Buku</label>
+                                <input type="text" id="dkodebuku" name="e_kodebuku" class="form-control" disabled>
+                            </div>
 
-                          <div class="form-group">
-                              <label>Pengarang</label>
-                              <input type="text" id="dpengarang" name="e_pengarang" class="form-control" disabled>
-                          </div>
+                            <div class="form-group">
+                                <label>Judul Buku</label>
+                                <input type="text" id="djudulbuku" name="e_judulbuku" class="form-control" disabled>
+                            </div>
 
-                          <div class="form-group">
-                              <label>Penerbit</label>
-                              <input type="text" id="dpenerbit" name="e_penerbit" class="form-control" disabled>
-                          </div>
+                            <div class="form-group">
+                                <label>Pengarang</label>
+                                <input type="text" id="dpengarang" name="e_pengarang" class="form-control" disabled>
+                            </div>
 
-                          <div class="form-group">
-                              <label>Tahun Terbit</label>
-                              <input type="number" id="dtahunterbit" name="e_tahunterbit" class="form-control" disabled>
-                          </div>
+                            <div class="form-group">
+                                <label>Penerbit</label>
+                                <input type="text" id="dpenerbit" name="e_penerbit" class="form-control" disabled>
+                            </div>
 
-                          <div class="form-group">
-                              <label>Kategori</label>
-                              <input type="text" id="dkategori" name="e_kategori" class="form-control" disabled>
-                          </div>
+                            <div class="form-group">
+                                <label>Tahun Terbit</label>
+                                <input type="number" id="dtahunterbit" name="e_tahunterbit" class="form-control" disabled>
+                            </div>
 
-                          <div class="form-group">
-                              <label>No Rak</label>
-                              <input type="number" id="dnorak" name="e_norak" class="form-control" disabled>
-                          </div>
+                            <div class="form-group">
+                                <label>Kategori</label>
+                                <input type="text" id="dkategori" name="e_kategori" class="form-control" disabled>
+                            </div>
 
-                          <div class="form-group">
-                              <label>Jumlah Buku</label>
-                              <input class="form-control" id="djumlahbuku" name="e_jumlahbuku" type="number" disabled></input>
-                          </div>
+                            <div class="form-group">
+                                <label>No Rak</label>
+                                <input type="number" id="dnorak" name="e_norak" class="form-control" disabled>
+                            </div>
 
-                          <input type="text" id="doldsampul" name="d_oldsampul" hidden required>
-                          <input type="number" id="didbuku" name="did_buku" hidden required>
+                            <div class="form-group">
+                                <label>Jumlah Buku</label>
+                                <input class="form-control" id="djumlahbuku" name="e_jumlahbuku" type="number" disabled></input>
+                            </div>
 
-                          <div class="modal-footer">
-                          <button type="button" class="btn btn-light" data-bs-dismiss="modal">Batal</button>
-                          <button type="submit" class="btn btn-success">Hapus</button>
-                          </div>
-                      </form>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
+                            <input type="text" id="doldsampul" name="d_oldsampul" hidden required>
+                            <input type="number" id="didbuku" name="did_buku" hidden required>
 
-  <script type="text/javascript">
-        $(".deleteModalid").click(function() {
-            var dkodebuku = $(this).data('dkodebuku');
-            $("#dkodebuku").val(dkodebuku);
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-success">Hapus</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-            var dsampul = $(this).data('dsampul');
-            $("#dsampul").attr("src", dsampul);
+    <script type="text/javascript">
+            $(".deleteModalid").click(function() {
+                var dkodebuku = $(this).data('dkodebuku');
+                $("#dkodebuku").val(dkodebuku);
 
-            var djudulbuku = $(this).data('djudulbuku');
-            $("#djudulbuku").val(djudulbuku);
+                var dsampul = $(this).data('dsampul');
+                $("#dsampul").attr("src", dsampul);
 
-            var dpengarang = $(this).data('dpengarang');
-            $("#dpengarang").val(dpengarang);
+                var djudulbuku = $(this).data('djudulbuku');
+                $("#djudulbuku").val(djudulbuku);
 
-            var dpenerbit = $(this).data('dpenerbit');
-            $("#dpenerbit").val(dpenerbit);
+                var dpengarang = $(this).data('dpengarang');
+                $("#dpengarang").val(dpengarang);
 
-            var dtahunterbit = $(this).data('dtahunterbit');
-            $("#dtahunterbit").val(dtahunterbit);
+                var dpenerbit = $(this).data('dpenerbit');
+                $("#dpenerbit").val(dpenerbit);
 
-            var dkategori = $(this).data('dkategori');
-            $("#dkategori").val(dkategori);
+                var dtahunterbit = $(this).data('dtahunterbit');
+                $("#dtahunterbit").val(dtahunterbit);
 
-            var dnorak = $(this).data('dnorak');
-            $("#dnorak").val(dnorak);
+                var dkategori = $(this).data('dkategori');
+                $("#dkategori").val(dkategori);
 
-            var djumlahbuku = $(this).data('djumlahbuku');
-            $("#djumlahbuku").val(djumlahbuku);
+                var dnorak = $(this).data('dnorak');
+                $("#dnorak").val(dnorak);
 
-            $('#deleteModal').modal('show');
-        });
-  </script>
+                var djumlahbuku = $(this).data('djumlahbuku');
+                $("#djumlahbuku").val(djumlahbuku);
+
+                $('#deleteModal').modal('show');
+            });
+    </script>
 
 
-  <script type="text/javascript">
-        var _validFileExtensions = [".jpg", ".jpeg", ".png"];    
-        function ImgFile(oInput) {
-            if (oInput.type == "file") {
-                var sFileName = oInput.value;
-                if (sFileName.length > 0) {
-                    var blnValid = false;
-                    for (var j = 0; j < _validFileExtensions.length; j++) {
-                        var sCurExtension = _validFileExtensions[j];
-                        if (sFileName.substr(sFileName.length - sCurExtension.length, sCurExtension.length).toLowerCase() == sCurExtension.toLowerCase()) {
-                            blnValid = true;
-                            break;
+    <script type="text/javascript">
+            var _validFileExtensions = [".jpg", ".jpeg", ".png"];    
+            function ImgFile(oInput) {
+                if (oInput.type == "file") {
+                    var sFileName = oInput.value;
+                    if (sFileName.length > 0) {
+                        var blnValid = false;
+                        for (var j = 0; j < _validFileExtensions.length; j++) {
+                            var sCurExtension = _validFileExtensions[j];
+                            if (sFileName.substr(sFileName.length - sCurExtension.length, sCurExtension.length).toLowerCase() == sCurExtension.toLowerCase()) {
+                                blnValid = true;
+                                break;
+                            }
+                        }
+                        if (!blnValid) {
+                            alert("Maaf, file " + sFileName + " tidak diperbolehkan! Ekstensi file yang diperbolehkan: " + _validFileExtensions.join(", "));
+                            oInput.value = "";
+                            return false;
                         }
                     }
-                    if (!blnValid) {
-                        alert("Maaf, file " + sFileName + " tidak diperbolehkan! Ekstensi file yang diperbolehkan: " + _validFileExtensions.join(", "));
-                        oInput.value = "";
-                        return false;
-                    }
                 }
+                return true;
             }
-            return true;
+        </script>
+
+
+    <script>
+            function ImgFile(input) {
+                const file = input.files[0];
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const previewImage = document.getElementById('previewImage');
+                    previewImage.src = e.target.result;
+                    previewImage.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        </script>
+
+    <script>
+        // Mengecek apakah elemen dengan id 'success-message' ada
+        const message = document.getElementById('success-message');
+        if (message) {
+            // Mengatur timer untuk menghilangkan pesan setelah 5 detik
+            setTimeout(() => {
+                message.style.display = 'none';
+            }, 5000);
         }
     </script>
-
-
-<script>
-        function ImgFile(input) {
-            const file = input.files[0];
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const previewImage = document.getElementById('previewImage');
-                previewImage.src = e.target.result;
-                previewImage.style.display = 'block';
-            };
-            reader.readAsDataURL(file);
-        }
-    </script>
-
-  <script>
-    // Mengecek apakah elemen dengan id 'success-message' ada
-    const message = document.getElementById('success-message');
-    if (message) {
-        // Mengatur timer untuk menghilangkan pesan setelah 5 detik
-        setTimeout(() => {
-            message.style.display = 'none';
-        }, 5000);
-    }
-  </script>
 
 </main><!-- End #main -->
 <?=$this->endSection()?>

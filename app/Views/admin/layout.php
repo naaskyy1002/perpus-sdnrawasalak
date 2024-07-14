@@ -130,12 +130,12 @@
           </a>
         </li>
         <li>
-          <a href=<?= base_url('admin/buku_layak');?>>
+          <a href=<?= base_url('admin/buku');?>>
             <i class="bi bi-circle"></i><span>Buku Layak</span>
           </a>
         </li>
         <li>
-          <a href=<?= base_url('admin/buku_rusak');?>>
+          <a href=<?= base_url('admin/bukuRusak');?>>
             <i class="bi bi-circle"></i><span>Buku Rusak</span>
           </a>
         </li>
@@ -149,17 +149,17 @@
       </a>
       <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li>
-          <a href=<?= base_url('admin/data_admin');?>>
+          <a href=<?= base_url('admin/dataAdmin');?>>
             <i class="bi bi-circle"></i><span>Data Admin</span>
           </a>
         </li>
         <li>
-          <a href=<?= base_url('admin/data_guru');?>>
+          <a href=<?= base_url('admin/dataGuru');?>>
             <i class="bi bi-circle"></i><span>Data Guru</span>
           </a>
         </li>
         <li>
-          <a href=<?= base_url('admin/data_siswa');?>>
+          <a href=<?= base_url('admin/dataSiswa');?>>
             <i class="bi bi-circle"></i><span>Data Siswa</span>
           </a>
         </li>
@@ -167,13 +167,13 @@
     </li>
 
     <li class="nav-item">
-      <a class="nav-link" href=<?= base_url('admin/daftar_pengunjung');?>>
+      <a class="nav-link" href=<?= base_url('admin/daftarPengunjung');?>>
         <i class="bi bi-journal-text"></i><span>Daftar Pengunjung</span>
       </a>
     </li><!-- End Forms Nav -->
 
     <li class="nav-item">
-      <a class="nav-link" href=<?= base_url('admin/jadwal_kunjungan');?>>
+      <a class="nav-link" href=<?= base_url('admin/jadwalKunjungan');?>>
         <i class="bi bi-layout-text-window-reverse"></i><span>Jadwal Kunjungan</span>
       </a>
     </li><!-- End Tables Nav -->
