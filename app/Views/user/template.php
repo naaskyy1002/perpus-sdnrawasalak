@@ -44,9 +44,37 @@
     </div><!-- End Logo -->
 
     <nav class="header-nav ms-auto">
-        <a class="nav-link nav-profile d-flex align-items-center pe-0">
-            <span class="d-none d-md-block ps-2"><i class="bi bi-people"></i> Siti Nurazizah</span>
-        </a>
+      <ul class="d-flex align-items-center">
+        <!-- Nav Item - User Information -->
+        <li class="nav-item dropdown pe-3">
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <span class="d-none d-md-block ps-2"><i class="bi bi-people"></i> Raina Rahmawati</span>
+          </a>
+          <!-- Dropdown - User Information -->
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <h6>Raina Rahmawati</h6>
+              <span>Admin</span>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href=<?= base_url('admin/profil_admin');?>>
+                <i class="bi bi-person"></i>
+                <span>Profil</span>
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="#" data-bs-toggle="modal" data-bs-target="#modallogout">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Keluar</span>
+              </a>
+            </li>
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
+
+      </ul>
     </nav><!-- End Icons Navigation -->
 
   </header><!-- End Header -->

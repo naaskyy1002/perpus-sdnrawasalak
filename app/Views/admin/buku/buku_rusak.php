@@ -19,7 +19,6 @@
     <i class="bi bi-plus"></i> Tambah Buku</a>
     </div>
     <div class="card-body">
-
         <div class="row mb-3">
             <div class="col-sm-6 col-md-3">
               <label for="pilihBulan">Pilih Bulan</label>
@@ -86,7 +85,6 @@
                     <tr class="text-center">
                       <th>No.</th>
                       <th>Kode</th>
-                      <th>Sampul</th>
                       <th>Judul</th>
                       <th>Pengarang</th>
                       <th>Tanggal Pendataan</th>
@@ -101,14 +99,26 @@
                     <tr class="text-center">
                       <td><?= $i++; ?></td>
                       <td><?= $bkr['kode_buku'] ;?></td>
-                      <td><img src="<?= base_url('assets/img/' . $bkr['sampul']) ?>" alt="sampulBuku" width="50"></td>
                       <td><?= $bkr['judul_buku'] ;?></td>
                       <td><?= $bkr['pengarang'] ;?></td>
                       <td><?= $bkr['tanggal_pendataan'] ;?></td>
                       <td><?= $bkr['keterangan'] ;?></td>
                       <td><img src="<?= base_url('assets/img/' . $bkr['foto_bukti']) ?>" alt="sampulBuku" width="50"></td>
                       <td>
-                        <a href="#editModal" class="edit" title="Edit" data-bs-toggle="modal" data-bs-target="#editModal"><i class="bi bi-pencil"></i></a>
+                        <a href="#editModal" data-bs-toggle="modal" data-bs-target="#editModal" class="editModalid"  
+                                    data-toggle="modal" data-target="#editModal" 
+                                    data-ebkrid="<?=$bkr['id_buku'];?>"
+                                    data-ebkrkode="<?=$bkr['kode_buku'];?>"
+                                    data-ebkrjudul="<?=$bkr['judul_buku'];?>"
+                                    data-ebkrpengarang="<?=$bkr['pengarang'];?>"
+                                    data-ebkrtanggal="<?=$bkr['tanggal_pendataan'];?>"
+                                    data-ebkrketerangan="<?=$bkr['keterangan'];?>"
+                                    data-ebkrbukti="../img/<?=$bkr['foto_bukti']?>"
+                                    data-ebkroldbukti="<?=$bkr['foto_bukti']?>"
+                                    class="edit" title="Edit" data-bs-toggle="tooltip"
+                                >
+                                    <i class="bi bi-pencil"></i>
+                                </a>
                         <a href="#" class="delete" title="Hapus" data-bs-toggle="tooltip"><i class="bi bi-trash"></i></a>
                       </td>
                     </tr>
@@ -152,29 +162,25 @@
                 <button  type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body p-3">
-            <form class="row g-3">
+            <form class="bkr g-3">
                 <div class="col-12">
                   <label for="inputKode" class="form-label">Kode Buku</label>
                   <input type="text" class="form-control" id="inputKode">
                 </div>
                 <div class="col-12">
-                  <label for="inputPenulis" class="form-label">Penulis</label>
+                  <label for="inputPenulis" class="form-label">Judul</label>
                   <input type="text" class="form-control" id="inputPenulis">
                 </div>
                 <div class="col-12">
-                  <label for="inputJudul" class="form-label">Judul Buku</label>
+                  <label for="inputJudul" class="form-label">Pengarang</label>
                   <input type="text" class="form-control" id="inputJudul">
-                </div>
-                <div class="col-12">
-                  <label for="inputTahun" class="form-label">Tahun Terbit</label>
-                  <input type="text" class="form-control" id="inputTahun">
                 </div>
                 <div class="col-12">
                   <label for="inputTanggal" class="form-label">Tanggal Pendataan</label>
                   <input type="text" class="form-control" id="inputTanggal">
                 </div>
                 <div class="col-12">
-                  <label for="inputKondisi" class="form-label">Kondisi Buku</label>
+                  <label for="inputKondisi" class="form-label">Keterangan</label>
                   <input type="text" class="form-control" id="inputKondisi">
                 </div>
                 <div class="col-12">
@@ -193,39 +199,55 @@
 <!-- Tambah Modal -->
 
 <!-- Edit Modal-->
-<div class="modal fade" id="editAdmin" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content text-dark bg-warning">
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel2" role="dialog" aria-hidden="true">
+        <div class="modal-dialog d-flex justify-content-center">
+            <div class="modal-content w-75">
                 <div class="modal-header">
-                    <h5 class="modal-title">Ubah Data Admin</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
+                    <h5 class="modal-title">Ubah Data Buku Rusak</h5>
+                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close">
+                        <!-- <span aria-hidden="true">×</span> -->
                     </button>
                 </div>
-                <div class="modal-body">
-                    <form method="post" enctype="multipart/form-data" action="/admin/editMhs">
-                        <div class="form-group">
-                            <label>NIP*</label>
-                            <input type="number" id="eadmnip" name="emhs_nim" class="form-control" required>
+                <div class="modal-body p-3">
+                    <form class="row g-3" method="post" enctype="multipart/form-data" action="/admin/editBuku">
+                        <div class="col-12">
+                            <label>Kode</label>
+                            <input type="text" id="ebkrkode" name="ebkr_kode" class="form-control" required>
                         </div>
 
-                        <div class="form-group">
-                            <label>Nama*</label>
-                            <input type="text" id="eadmnama" name="emhs_nama" class="form-control" required>
+                        <div class="col-12">
+                            <label>Judul</label>
+                            <input type="text" id="ebkrjudul" name="ebkr_judul" class="form-control" required>
                         </div>
 
-                        <div class="form-group">
-                            <label>Jabatan*</label>
-                            <input type="text" id="eadmjabatan" name="emhs_jabatan" class="form-control" required>
+                        <div class="col-12">
+                            <label>Pengarang</label>
+                            <input type="text" id="ebkrpengarang" name="ebkr_pengarang" class="form-control" required>
                         </div>
 
-                        <br>
-                        *Required
+                        <div class="col-12">
+                            <label>Tanggal Pendataan</label>
+                            <input type="date" id="ebkrtanggal" name="ebkr_tanggal" class="form-control" required>
+                        </div>
+
+                        <div class="col-12">
+                            <label>Keterangan</label>
+                            <input type="text" id="ebkrketerangan" name="ebkr_keterangan" class="form-control" required>
+                        </div>
+
+                        <div class="col-12">
+                            <label>Foto Bukti (.jpg / .png) <br><i>abaikan jika tidak ingin mengubah</i></label>
+                            <!-- <div class="form-group"> -->
+                                <img id="ebkrbukti" src="" style="width:50;">
+                            <!-- </div> -->
+                            <input type="file" name="ebkr_bukti" accept=".jpg,.png" onchange="ImgFile(this);" class="form-control-file">
+                            <input type="text" name="ebkr_oldbukti" class="form-control" id="ebkroldbukti" hidden required>
+                        </div>
                         
-                        <input type="number" id="eadmid" name="emhs_id" hidden>
+                        <input type="number" id="ebkrid" name="ebkr_id" hidden>
 
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-light" data-dismiss="modal">Batal</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                             <button type="submit" class="btn btn-success">Simpan</button>
                         </div>
                     </form>
@@ -233,6 +255,36 @@
             </div>
         </div>
     </div>
+    
+    <script type="text/javascript">
+        $(".modaleditid").click(function() {
+            var ebkrid = $(this).data('ebkrid');
+            $("#ebkrid").val(ebkrid);
+
+            var ebkrkode = $(this).data('ebkrkode');
+            $("#ebkrkode").val(ebkrkode);
+
+            var ebkrjudul = $(this).data('ebkrjudul');
+            $("#ebkrjudul").val(ebkrjudul);
+
+            var ebkrpengarang = $(this).data('ebkrpengarang');
+            $("#ebkrpengarang").val(ebkrpengarang);
+
+            var ebkrtanggal = $(this).data('ebkrtanggal');
+            $("#ebkrtanggal").val(ebkrtanggal);
+
+            var ebkrketerangan = $(this).data('ebkrketerangan');
+            $("#ebkrketerangan").val(ebkrketerangan);
+
+            var ebkrbukti = $(this).data('ebkrbukti');
+            $("#ebkrbukti").attr("src", ebkrbukti);
+            
+            var ebkroldbukti = $(this).data('ebkroldbukti');
+            $("#ebkroldbukti").val(ebkroldbukti);
+
+            $('#modaledit').modal('show');
+        });
+    </script>
 
   </main><!-- End #main -->
 <?=$this->endSection()?>

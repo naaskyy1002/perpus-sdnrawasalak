@@ -99,7 +99,7 @@
                 </tbody>
               </table>
               <div class="clearfix">
-				<div class="hint-text">1 dari 1 entri</div>
+				<div class="hint-text">Menampilkan 1 dari 1 entri</div>
 				<ul class="pagination">
         <nav aria-label="Page navigation example">
                 <ul class="pagination">

@@ -97,8 +97,8 @@
                                     <th>Sampul</th>
                                     <th>Judul</th>
                                     <th>Pengarang</th>
+                                    <th>Kategori</th>
                                     <th>Rak</th>
-                                    <th>Jumlah Buku</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -111,8 +111,8 @@
                                         <td><img src="<?= base_url('assets/img/buku/' . $bk['sampul']) ?>" alt="sampulBuku" width="50"></td>
                                         <td><?= $bk['judul_buku'] ;?></td>
                                         <td><?= $bk['pengarang'] ;?></td>
-                                        <td><?= $bk['jumlah_buku'] ;?></td>
                                         <td><?= $bk['kategori'] ;?></td>
+                                        <td><?= $bk['no_rak'] ;?></td>
                                         <td>
                                             <a href="#" data-bs-toggle="modal" data-bs-target="#viewModal" class="viewModalid" 
                                                 data-vkodebuku="<?=$bk['kode_buku'];?>"
@@ -253,14 +253,12 @@
 
 
     <!-- View Modal -->
-    <div class="modal fade" id="viewModal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+    <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+        <div class="modal-dialog d-flex justify-content-center">
             <div class="modal-content text-light bg-success">
                 <div class="modal-header">
                     <h5 class="modal-title">Detail Buku</h5>
-                    <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form method="#" enctype="multipart/form-data" action="#">
@@ -353,13 +351,11 @@
 
     <!-- Edit Modal-->
     <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog d-flex justify-content-center">
                 <div class="modal-content text-dark bg-warning">
                     <div class="modal-header">
                         <h5 class="modal-title">Ubah Data Buku</h5>
-                        <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
+                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                     <form method="post" enctype="multipart/form-data" action="editBuku">
@@ -369,44 +365,44 @@
                                 <input type="text" name="e_oldsampul" class="form-control" id="emhsoldphoto" hidden required>
                             </div>
 
-                            <div class="form-group">
+                            <div class="col-12">
                                 <label>Kode Buku</label>
-                                <input type="text" id="ekodebuku" name="e_kodebuku" class="form-control" disabled>
+                                <input type="text" id="ekodebuku" name="e_kodebuku" class="form-control" required>
                             </div>
 
                             <div class="form-group">
                                 <label>Judul Buku</label>
-                                <input type="text" id="ejudulbuku" name="e_judulbuku" class="form-control" disabled>
+                                <input type="text" id="ejudulbuku" name="e_judulbuku" class="form-control" required>
                             </div>
 
                             <div class="form-group">
                                 <label>Pengarang</label>
-                                <input type="text" id="epengarang" name="e_pengarang" class="form-control" disabled>
+                                <input type="text" id="epengarang" name="e_pengarang" class="form-control" required>
                             </div>
 
                             <div class="form-group">
                                 <label>Penerbit</label>
-                                <input type="text" id="epenerbit" name="e_penerbit" class="form-control" disabled>
+                                <input type="text" id="epenerbit" name="e_penerbit" class="form-control" required>
                             </div>
 
                             <div class="form-group">
                                 <label>Tahun Terbit</label>
-                                <input type="number" id="etahunterbit" name="e_tahunterbit" class="form-control" disabled>
+                                <input type="number" id="etahunterbit" name="e_tahunterbit" class="form-control" required>
                             </div>
 
                             <div class="form-group">
                                 <label>Kategori</label>
-                                <input type="text" id="ekategori" name="e_kategori" class="form-control" disabled>
+                                <input type="text" id="ekategori" name="e_kategori" class="form-control" required>
                             </div>
 
                             <div class="form-group">
                                 <label>No Rak</label>
-                                <input type="number" id="enorak" name="e_norak" class="form-control" disabled>
+                                <input type="number" id="enorak" name="e_norak" class="form-control" required>
                             </div>
 
                             <div class="form-group">
                                 <label>Jumlah Buku</label>
-                                <input class="form-control" id="ejumlahbuku" name="e_jumlahbuku" type="number" disabled></input>
+                                <input class="form-control" id="ejumlahbuku" name="e_jumlahbuku" type="number" required></input>
                             </div>
 
                             <input type="number" id="eidbuku" name="e_idbuku" hidden>
@@ -464,9 +460,7 @@
                 <div class="modal-content text-dark bg-danger">
                     <div class="modal-header">
                         <h5 class="modal-title">Hapus Data Buku berikut?</h5>
-                        <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
+                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                     <form method="post" enctype="multipart/form-data" action="deleteBuku">
