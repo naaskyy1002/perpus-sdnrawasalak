@@ -414,11 +414,17 @@
 
     <script type="text/javascript">
             $(".editModalid").click(function() {
+                var eidbuku = $(this).data('eidbuku');
+                $("#eidbuku").val(eidbuku);
+
                 var ekodebuku = $(this).data('ekodebuku');
                 $("#ekodebuku").val(ekodebuku);
 
                 var esampul = $(this).data('esampul');
                 $("#esampul").attr("src", esampul);
+
+                var eoldsampul = $(this).data('eoldsampul');
+                $("#eoldsampul").val(eoldsampul);
 
                 var ejudulbuku = $(this).data('ejudulbuku');
                 $("#ejudulbuku").val(ejudulbuku);
@@ -441,8 +447,6 @@
                 var ejumlahbuku = $(this).data('ejumlahbuku');
                 $("#ejumlahbuku").val(ejumlahbuku);
 
-                var eidbuku = $(this).data('eidbuku');
-                $("#eidbuku").val(eidbuku);
 
                 $('#editModal').modal('show');
             });

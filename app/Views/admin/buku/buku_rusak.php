@@ -130,9 +130,9 @@
                       data-ebkrkode="<?=$bkr['kode_buku'];?>"
                       data-ebkrjudul="<?=$bkr['judul_buku'];?>"
                       data-ebkrpengarang="<?=$bkr['pengarang'];?>"
-                      data-ebkrtanggal="<?=$bkr['tanggal_pendataan'];?>"
-                      data-ebkrketerangan="<?=$bkr['keterangan'];?>"
-                      data-ebkrbukti="../img/<?=$bkr['foto_bukti']?>"
+                      data-ebkrtgl="<?=$bkr['tanggal_pendataan'];?>"
+                      data-ebkrket="<?=$bkr['keterangan'];?>"
+                      data-ebkrbukti="<?= base_url('assets/img/bukti/' . $bkr['foto_bukti']) ;?>"
                       data-ebkroldbukti="<?=$bkr['foto_bukti']?>">
                       <i class="bi bi-pencil"></i>
                     </a>
@@ -316,7 +316,7 @@
             <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body p-3">
-            <form class="row g-3" method="post" enctype="multipart/form-data" action="/admin/editBuku">
+            <form class="row g-3" method="post" enctype="multipart/form-data" action="editBkr">
               <div class="col-12">
                 <label>Kode Buku</label>
                 <input type="text" id="ebkrkode" name="ebkr_kode" class="form-control" required>

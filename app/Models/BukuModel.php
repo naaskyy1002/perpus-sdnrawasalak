@@ -42,6 +42,12 @@ class BukuModel extends Model
                         ->insert($data);
     }
 
+    public function updateBkr($data, $id)
+    {
+        return $this->db->table('buku_rusak')
+                        ->update($data, array('id_buku' => $id));
+    }
+
     public function deleteBkr($id)
     {
         return $this->db->table('buku_rusak')

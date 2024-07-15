@@ -77,50 +77,54 @@ class Buku extends BaseController
     }
 
 
-    public function editBuku($id)
+    public function editBuku()
     {
-        // Validasi file sampul
-        $check_sampul = $this->validate([
-            'sampul' => [
-                'uploaded[e_sampul]',
-                'mime_in[e_sampul,image/jpg,image/jpeg,image/png]'
-            ]
-        ]);
-
         // Ambil data dari form
         $id = $this->request->getPost('e_idbuku');
         $data = [
             'id_buku'     => $this->request->getPost('e_idbuku'),
-            'kode_buku'     => $this->request->getPost('e_kodebuku'),
-            'judul_buku'    => $this->request->getPost('e_judulbuku'),
-            'pengarang'     => $this->request->getPost('e_pengarang'),
-            'penerbit'      => $this->request->getPost('e_penerbit'),
-            'tahun_terbit'  => $this->request->getPost('e_tahunterbit'),
-            'kategori'      => $this->request->getPost('e_kategori'),
-            'no_rak'        => $this->request->getPost('e_norak'),
-            'jumlah_buku'   => $this->request->getPost('e_jumlahbuku'),
+            'kode_buku'   => $this->request->getPost('e_kodebuku'),
+            'judul_buku'  => $this->request->getPost('e_judulbuku'),
+            'pengarang'   => $this->request->getPost('e_pengarang'),
+            'penerbit'    => $this->request->getPost('e_penerbit'),
+            'tahun_terbit'=> $this->request->getPost('e_tahunterbit'),
+            'kategori'    => $this->request->getPost('e_kategori'),
+            'no_rak'      => $this->request->getPost('e_norak'),
+            'jumlah_buku' => $this->request->getPost('e_jumlahbuku'),
         ];
 
-        // Jika validasi gagal, gunakan foto sampul lama
-        if (!$check_sampul) {
-            $data['sampul'] = $this->request->getPost('e_oldsampul');
-        } else {
-            // Jika validasi berhasil, hapus foto sampul lama jika ada, dan simpan foto sampul baru
+        // Validasi file sampul
+        if ($this->validate([
+            'sampul' => [
+                'uploaded[e_sampul]',
+                'mime_in[e_sampul,image/jpg,image/jpeg,image/png]',
+                'max_size[e_sampul,2048]', 
+            ]
+        ])) {
+            // Validasi berhasil, hapus foto sampul lama jika ada
             $old_foto = $this->request->getPost('e_oldsampul');
             if ($old_foto && file_exists('assets/img/buku/' . $old_foto)) {
                 unlink('assets/img/buku/' . $old_foto);
             }
 
+            // Simpan foto sampul baru
             $sampul = $this->request->getFile('e_sampul');
             $sampul_name = $this->request->getPost('e_kodebuku') . '.' . $sampul->getExtension();
             $sampul->move('assets/img/buku', $sampul_name);
             $data['sampul'] = $sampul_name;
+        } else {
+            // Validasi gagal, gunakan foto sampul lama
+            $data['sampul'] = $this->request->getPost('e_oldsampul');
+            return redirect()->back()->withInput()
+                                    ->with('errors', 'Maaf, gagal menambahkan data buku. Silakan periksa input Anda.');
         }
 
         // Update data buku di database
         $this->bukuModel->updateBuku($data, $id);
+
         return redirect()->to('/admin/buku')->with('message', 'Buku berhasil diubah!');
     }
+
 
     public function deleteBuku()
     {
@@ -197,7 +201,7 @@ class Buku extends BaseController
         
         // Proses upload foto bukti
         $file = $this->request->getFile('abkr_bukti');
-        $buktiName = $judul_buku . '.' . $file->getExtension(); // Gunakan judul buku sebagai nama file
+        $buktiName = $kode_buku . '.' . $file->getExtension(); // Gunakan judul buku sebagai nama file
         $file->move('assets/img/bukti', $buktiName);
 
         // Data untuk disimpan ke database
@@ -217,6 +221,51 @@ class Buku extends BaseController
 
         // Redirect dengan pesan sukses
         return redirect()->to('/admin/bukuRusak')->with('message', 'Buku rusak berhasil ditambahkan!');
+    }
+
+    public function editBkr()
+    {
+        // Ambil data dari form
+        $id = $this->request->getPost('ebkr_id');
+        $data = [
+            'id_buku'     => $this->request->getPost('ebkr_id'),
+            'kode_buku'   => $this->request->getPost('ebkr_kode'),
+            'judul_buku'  => $this->request->getPost('ebkr_judul'),
+            'pengarang'   => $this->request->getPost('ebkr_pengarang'),
+            'tanggal_pendataan'    => $this->request->getPost('ebkr_tgl'),
+            'keterangan'=> $this->request->getPost('ebkr_ket'),
+        ];
+
+        // Validasi file sampul
+        if ($this->validate([
+            'foto_bukti' => [
+                'uploaded[ebkr_bukti]',
+                'mime_in[ebkr_bukti,image/jpg,image/jpeg,image/png]',
+                'max_size[ebkr_bukti,2048]', 
+            ]
+        ])) {
+            // Validasi berhasil, hapus foto sampul lama jika ada
+            $old_foto = $this->request->getPost('ebkr_oldbukti');
+            if ($old_foto && file_exists('assets/img/bukti/' . $old_foto)) {
+                unlink('assets/img/bukti/' . $old_foto);
+            }
+
+            // Simpan foto sampul baru
+            $sampul = $this->request->getFile('ebkr_bukti');
+            $sampul_name = $this->request->getPost('ebkr_kode') . '.' . $sampul->getExtension();
+            $sampul->move('assets/img/bukti', $sampul_name);
+            $data['foto_bukti'] = $sampul_name;
+        } else {
+            // Validasi gagal, gunakan foto sampul lama
+            $data['foto_bukti'] = $this->request->getPost('ebkr_oldbukti');
+            return redirect()->back()->withInput()
+                                    ->with('errors', 'Maaf, gagal menambahkan data buku. Silakan periksa input Anda.');
+        }
+
+        // Update data buku di database
+        $this->bukuModel->updateBkr($data, $id);
+
+        return redirect()->to('/admin/bukuRusak')->with('message', 'Buku rusak berhasil diubah!');
     }
 
     public function deleteBkr()
