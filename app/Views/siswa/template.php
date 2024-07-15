@@ -94,16 +94,16 @@
   </aside>
   <!-- End Sidebar-->
 
-  <?=$this->renderSection('body');?>
-
+  <div class="min-vh-100">
+    <?=$this->renderSection('body');?>
+  </div>
+  
   <!-- Footer -->
-  <footer class="sticky-footer bg-white">
-    <div class="container my-auto">
-      <div class="copyright text-center my-auto">
-        <span>Copyright &copy; <text class="text-primary">SDN Rawasalak</text> <?=date('Y')?>. All rights
-        reserved.</span>
+  <footer id="footer" class="sticky-footer bg-white">
+      <div class="copyright">
+      Copyright &copy; <span class="text-primary">SDN Rawasalak</span> <?=date('Y')?>. All rights
+      reserved.
       </div>
-    </div>
   </footer>
   <!-- End of Footer -->
 

@@ -36,6 +36,7 @@
               <li><a href="<?= base_url('/') ?>">BERANDA</a></li>
               <li><a href="<?= base_url('tentang_kami') ?>">TENTANG KAMI</a></li>
               <li><a href="<?= base_url('kontak') ?>">KONTAK</a></li>
+              <li><a href="<?= base_url('login') ?>">MASUK</a></li>
           </ul>
       </nav>
   </header>
@@ -118,5 +119,8 @@
 
     </section>
 </main>
+<footer>
+        <span>Copyright &copy; <text class="text-primary">SDN Rawasalak</text> <?=date('Y')?></span>
+    </footer>
 </body>
 </html>
