@@ -61,10 +61,10 @@
 
                   <form method="post" action="<?= base_url('auth/valid-login') ?>">
                     <div class="form-group">
-                      <input type="text" name="user_name" placeholder="Username" class="form-control" required autofocus>
+                      <input type="text" name="username" placeholder="Username" class="form-control" required autofocus>
                     </div>
                     <div class="form-group">
-                      <input type="password" name="user_pass" placeholder="Kata Sandi" class="form-control" required>
+                      <input type="password" name="password" placeholder="Kata Sandi" class="form-control" required>
                     </div>
                     <div class="row justify-content-center my-3 px-3">
                       <button type="submit" class="button">MASUK</button>

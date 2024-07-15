@@ -7,26 +7,26 @@ class Page extends BaseController
 
     public function beranda()
     {
-        return view('user/beranda');
+        return view('siswa/beranda');
     }
 
     public function buku()
     {
-        return view('user/buku');
+        return view('siswa/buku');
     }
 
     public function pinjaman()
     {
-        return view('user/pinjaman');
+        return view('siswa/pinjaman');
     }
 
-    public function sejarah()
+    public function riwayat()
     {
-        return view('user/sejarah');
+        return view('siswa/riwayat');
     }
 
     public function detail()
     {
-        return view('user/detail');
+        return view('siswa/detail');
     }
 }

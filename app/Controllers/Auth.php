@@ -5,8 +5,10 @@ use App\Models\LoginModel;
 
 class Auth extends BaseController
 {
+    // Properti untuk menyimpan session
     protected $session;
 
+    // Konstruktor untuk inisialisasi session
     public function __construct()
     {
         $this->session = \Config\Services::session();
@@ -14,12 +16,15 @@ class Auth extends BaseController
 
     public function login() 
     {
+        // Jika user sudah memiliki session aktif
         if ($this->session->has('user_session')) {
-            if ($this->session->get('user_level') == 0) {
+            // Jika level user adalah 1 (admin atau operator)
+            if ($this->session->get('level') == 1) {
                 return redirect()->to('admin');
             }
-            if ($this->session->get('user_level') == 1) {
-                return redirect()->to('user');
+            // Jika role user adalah siswa
+            if ($this->session->get('role') == 'siswa') {
+                return redirect()->to('siswa');
             }
         }
         else {
@@ -34,49 +39,55 @@ class Auth extends BaseController
     {
         $Login = new LoginModel();
         
-        $user_name = $this->request->getPost('user_name');
-        $user_pass = $this->request->getPost('user_pass');
+        // Mendapatkan data dari form login
+        $username = $this->request->getPost('username');
+        $password = $this->request->getPost('password');
         
-        //ambil data user di database yang user_name nya sama 
-        $user_check = $Login->getUser($user_name);
+        // Cek user di tabel admin
+        $user_check = $Login->getAdmin($username);
         
-        if ($user_check) { //cek apakah username ditemukan
-            if ($user_check['user_pass'] != $user_pass) { 
-            //cek password jika salah arahkan lagi ke halaman login
+        if ($user_check) {
+            // Jika password tidak sesuai
+            if ($user_check['password'] != $password) { 
                 session()->setFlashdata('login_fail', 'Password salah!');
                 return redirect()->to('login');
             }
-
-            if(($user_check['user_pass'] == $user_pass) && ($user_check['user_level'] == 0)) {
-                //jika benar, arahkan user masuk ke halaman admin 
-                    $sessLogin = [
-                        'user_session' => TRUE,
-                        'user_name'    => $user_check['user_name'],
-                        'user_level'   => $user_check['user_level']
-                        ];
-                    $this->session->set($sessLogin);
-                    return redirect()->to('admin');
-                }
-                if(($user_check['user_pass'] == $user_pass) && ($user_check['user_level'] == 1)) {
-                //jika benar, arahkan user masuk ke halaman user 
-                    $sessLogin = [
-                        'user_session' => TRUE,
-                        'user_name'    => $user_check['user_name'],
-                        'user_level'   => $user_check['user_level']
-                        ];
-                    $this->session->set($sessLogin);
-                    return redirect()->to('user');
-                }
+            // Jika valid, set session untuk admin atau operator (level 1)
+            if ($user_check['level'] == 1) {
+                $sessLogin = [
+                    'user_session' => TRUE,
+                    'username'    => $user_check['username'],
+                    'level'   => $user_check['level']
+                ];
+                $this->session->set($sessLogin);
+                return redirect()->to('admin');
+            }
         } else {
-            //jika username tidak ditemukan, balikkan ke halaman login
-            session()->setFlashdata('login_fail', 'Username tidak ditemukan!');
-            return redirect()->to('login');
+            // Cek user di tabel siswa
+            $siswa_check = $Login->getSiswa($username);
+            if ($siswa_check) {
+                // Jika password tidak sesuai
+                if ($siswa_check['password'] != $password) {
+                    session()->setFlashdata('login_fail', 'Password salah!');
+                    return redirect()->to('login');
+                }
+                // Jika valid, set session untuk siswa
+                $sessLogin = [
+                    'user_session' => TRUE,
+                    'username'    => $siswa_check['username'],
+                    'role'         => 'siswa'
+                ];
+                $this->session->set($sessLogin);
+                return redirect()->to('siswa');
+            } else {
+                session()->setFlashdata('login_fail', 'Username tidak ditemukan!');
+                return redirect()->to('login');
+            }
         }
     }
 
     public function logout()
     {
-        //hapus session dan kembali ke halaman login
         $this->session->destroy();
         return redirect()->to('login');
     }

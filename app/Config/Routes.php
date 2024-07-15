@@ -13,9 +13,9 @@ $routes->get('auth/logout', 'Auth::logout');
 
 $routes->group('admin', function($routes) {
     $routes->get('', 'Admin::home');
-    $routes->get('buku', 'Buku::buku_layak');
     
     // BUKU LAYAK
+    $routes->get('buku', 'Buku::buku_layak');
     $routes->post('addBuku', 'Buku::addBuku');
     $routes->post('editBuku', 'Buku::editBuku');
     $routes->post('deleteBuku', 'Buku::deleteBuku');
@@ -26,15 +26,26 @@ $routes->group('admin', function($routes) {
     $routes->post('editBkr', 'Buku::editBkr');
     $routes->post('deleteBkr', 'Buku::deleteBkr');
 
+    // TRANSAKSI
     $routes->get('peminjaman', 'Admin::peminjaman');
+
+    // DATA ADMIN
     $routes->get('dataAdmin', 'Admin::data_admin');
+    $routes->post('addAdmin', 'Admin::addAdmin');
+    $routes->post('deleteAdmin', 'Admin::deleteAdmin');
     $routes->get('dataGuru', 'Admin::data_guru');
-    $routes->get('dataSiswa', 'Admin::data_siswa');
+
+    // DATA SISWA
+    $routes->get('dataSiswa', 'Siswa::data_siswa');
+    $routes->post('addSiswa', 'Siswa::addSiswa');
+    $routes->post('deleteSiswa', 'Siswa::deleteSiswa');
     
     // DAFTAR PENGUNJUNG
-    $routes->get('daftarPengunjung', 'Admin::daftar_pengunjung');
-    $routes->get('pengunjung', 'Kunjungan::index');
-    $routes->post('addPengunjung', 'Kunjungan::addVisitor');
+    
+    $routes->get('daftarPengunjung', 'Visitor::index');
+    $routes->post('addPengunjung', 'Visitor::addVisitor');
+    $routes->get('admin/visitor/getSiswaByNISN/(:any)', 'Visitor::getSiswaByNISN/$1');
+
 
     $routes->get('jadwalKunjungan', 'Admin::jadwal_kunjungan');
     $routes->get('profilAdmin', 'Admin::profil_admin');
@@ -43,9 +54,9 @@ $routes->group('admin', function($routes) {
 $routes->get('/tentang_kami', 'Home::tentang_kami');
 $routes->get('/kontak', 'Home::kontak');
 
-$routes->group('user', function($routes) {
-    $routes->get('', 'User::beranda');
-    $routes->get('pinjaman', 'User::pinjaman');
-    $routes->get('riwayat', 'User::riwayat');
-    $routes->get('detail', 'User::detail');
+$routes->group('siswa', function($routes) {
+    $routes->get('', 'Page::beranda');
+    $routes->get('pinjaman', 'Page::pinjaman');
+    $routes->get('riwayat', 'Page::riwayat');
+    $routes->get('detail', 'Page::detail');
 });

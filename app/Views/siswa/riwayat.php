@@ -1,4 +1,4 @@
-<?=$this->extend('user/template')?>
+<?=$this->extend('siswa/template')?>
 <?=$this->section('body')?>
 
 <main id="main" class="main">

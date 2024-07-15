@@ -19,11 +19,11 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Tambah Pengunjung</h5>
-                        <form method="post" action="<?= base_url('admin/addPengunjung'); ?>">
+                        <form method="post" action="addVisitors">
                             <div class="row mb-3">
                                 <label for="nisn" class="col-sm-2 col-form-label">NIS</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="nisn" class="form-control" required>
+                                    <input type="text" name="nisn" id="nisn" class="form-control" required>
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -79,5 +79,32 @@
         </div>
     </section>
 </main>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#nisn').on('change', function() {
+        var nisn = $(this).val();
+        $.ajax({
+            url: '<?= base_url('admin/visitor/getSiswaByNISN') ?>/' + nisn,
+            type: 'GET',
+            success: function(data) {
+                if (data) {
+                    var siswa = JSON.parse(data);
+                    $('input[name="nama"]').val(siswa.nama);
+                    $('input[name="kelas"]').val(siswa.kelas);
+                } else {
+                    $('input[name="nama"]').val('');
+                    $('input[name="kelas"]').val('');
+                    alert('Data siswa tidak ditemukan.');
+                }
+            },
+            error: function() {
+                alert('Error fetching data.');
+            }
+        });
+    });
+});
+</script>
 
 <?=$this->endSection()?>

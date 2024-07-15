@@ -195,17 +195,10 @@
                 <label for="inputPenulis" class="form-label">Pengarang</label>
                 <input type="text" name="abkr_pengarang" class="form-control" required>
               </div>
-              <!-- <div class="col-12">
-                <label for="inputPenerbit" class="form-label">Penerbit</label>
-                <input type="text" name="abkr_penerbit" class="form-control" required>
-              </div>
-              <div class="col-12">
-                <label for="inputTahun" class="form-label">Tahun Terbit</label>
-                <input type="number" name="abkr_tahun" class="form-control" required>
-              </div> -->
               <div class="col-12">
                 <label for="inputKategori" class="form-label">Kategori</label>
                 <select name="abkr_kategori" class="form-select" required>
+                  <option value="" disabled selected>Pilih kategori Buku</option>
                   <option value="Sejarah">Sejarah</option>
                   <option value="Fiksi">Fiksi</option>
                   <option value="Non-Fiksi">Non-Fiksi</option>
@@ -272,7 +265,6 @@
               <div class="col-12">
                 <img id="vbkrbukti" src="" style="width: 150px;">
               </div>
-
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
               </div>
@@ -420,14 +412,34 @@
     </script>
 
     <script>
-      // Mengecek apakah elemen dengan id 'success-message' ada
-      const message = document.getElementById('success-message');
-      if (message) {
-       // Mengatur timer untuk menghilangkan pesan setelah 5 detik
-        setTimeout(() => {
-          message.style.display = 'none';
-        }, 5000);
+      function ImgFile(input) {
+        const file = input.files[0];
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const previewImage = document.getElementById('previewImage');
+            previewImage.src = e.target.result;
+            previewImage.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
       }
+    </script>
+
+    <script>
+        // Function to hide element after 5 seconds
+        function hideAfterDelay(elementId) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                setTimeout(() => {
+                    element.style.display = 'none';
+                }, 5000);
+            }
+        }
+
+        // Hide success message after 5 seconds
+        hideAfterDelay('success-message');
+
+        // Hide error message after 5 seconds
+        hideAfterDelay('error-message');
     </script>
     
   </main><!-- End #main -->

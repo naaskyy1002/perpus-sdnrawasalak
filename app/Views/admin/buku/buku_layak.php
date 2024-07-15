@@ -59,43 +59,40 @@
             </div>
                 <section class="section">    
                     <div class="col-lg-12">
-                    <div class="row mb-3">
-                    <div class="col-sm-12 col-md-6">
-                            <div class="dataTables_length" id="dataTable_length">
-                                <label> 
-                                    <select name ="dataTable_length" aria-controls="dataTable" class="custom-select-sm from-control from-control-sm">
-                                        <option value="10">10</option>
-                                        <option value="25">25</option>
-                                        <option value="50">50</option>
-                                        <option value="100">100</option>
-                                    </select>
-                                    entri
-                                </label>
-                            </div>
-                        </div>                 
-                    <div class="col-sm-6 mol-md-6 text-right">
-                    <div class="col-sm-12">
-                        <div class="search-box">
-                            <i class="bi bi-search"></i> 
-                            <input type="text" class="form-control" placeholder="Cari">
+                        <div class="row mb-3">
+                            <div class="col-sm-12 col-md-6">
+                                <div class="dataTables_length" id="dataTable_length">
+                                    <label> 
+                                        <select name ="dataTable_length" aria-controls="dataTable" class="custom-select-sm from-control from-control-sm">
+                                            <option value="10">10</option>
+                                            <option value="25">25</option>
+                                            <option value="50">50</option>
+                                            <option value="100">100</option>
+                                        </select>
+                                        entri
+                                    </label>
+                                </div>
+                            </div>                 
+                            <div class="col-sm-6 mol-md-6 text-right">
+                                <div class="col-sm-12">
+                                    <div class="search-box">
+                                        <i class="bi bi-search"></i> 
+                                        <input type="text" class="form-control" placeholder="Cari">
+                                    </div>
+                                </div>
+                            </div> 
                         </div>
-                    </div>
-                </div> 
-            </div>
+                        <?php if (session()->getFlashdata('message')): ?>
+                            <div class="alert alert-success" id="success-message">
+                                <?= session()->getFlashdata('message') ?>
+                            </div>
+                        <?php endif; ?>
 
-            <?php if (session()->getFlashdata('message')): ?>
-                <div class="alert alert-success" id="success-message">
-                    <?= session()->getFlashdata('message') ?>
-                </div>
-            <?php endif; ?>
-
-            <?php if (session()->getFlashdata('errors')): ?>
-                <div class="alert alert-danger" id="error-message">
-                    <?= session()->getFlashdata('errors') ?>
-                </div>
-            <?php endif; ?>
-
-
+                        <?php if (session()->getFlashdata('errors')): ?>
+                            <div class="alert alert-danger" id="error-message">
+                                <?= session()->getFlashdata('errors') ?>
+                            </div>
+                        <?php endif; ?>
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">              
                             <thead>
                                 <tr class="text-center">
@@ -157,29 +154,28 @@
                             </tbody>
                         </table>
                         <div class="clearfix">
-				<div class="hint-text">Menampilkan 1 dari 1 entri</div>
-				<ul class="pagination">
-        <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                      <span aria-hidden="true">&laquo;</span>
-                    </a>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                      <span aria-hidden="true">&raquo;</span>
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-				</ul>
-			</div>
-		</div>
-                    </div>
+				            <div class="hint-text">Menampilkan 1 dari 1 entri</div>
+				            <ul class="pagination">
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination">
+                                        <li class="page-item">
+                                            <a class="page-link" href="#" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                            </a>
+                                        </li>
+                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+				            </ul>
+			            </div>
+		            </div>
                 </section>
             </div>
         </div>
@@ -196,12 +192,12 @@
                 <div class="modal-body p-3">
                     <form class="row g-3" method="post" enctype="multipart/form-data" action="addBuku">
                         <div class="col-12">
-                            <label for="inputKode" class="form-label">Kode Buku</label>
-                            <input type="text" name="a_kodebuku" class="form-control" required>
+                            <label for="inputKode">Kode Buku</label>
+                            <input type="text" name="a_kodebuku" class="form-control"required>
                         </div>
                         <div class="col-12">
                             <label>Sampul</label>
-                            <input type="file" name="a_sampul" accept=".jpg,.png" onchange="ImgFile(this);" class="form-control-file" required>
+                            <input type="file" name="a_sampul" accept=".jpg,.png,.jpeg" onchange="ImgFile(this);" class="form-control-file" required>
                             <img id="previewImage" src="#" alt="Preview Image" style="display:none; width: 200px; margin-top: 10px;">
                         </div>
                         <div class="col-12">
@@ -223,6 +219,7 @@
                         <div class="col-12">
                             <label for="inputKategori" class="form-label">Kategori</label>
                             <select name="a_kategori" class="form-select" required>
+                                <option value="" disabled selected>Pilih Kategori Buku</option>
                                 <option value="Sejarah">Sejarah</option>
                                 <option value="Fiksi">Fiksi</option>
                                 <option value="Non-Fiksi">Non-Fiksi</option>
@@ -303,7 +300,7 @@
                         </div>
 
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Tutup</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                         </div>
                     </form>
                 </div>
@@ -405,7 +402,7 @@
                             <input type="number" id="eidbuku" name="e_idbuku" hidden>
 
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Batal</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                                 <button type="submit" class="btn btn-success">Update</button>
                             </div>
                         </form>

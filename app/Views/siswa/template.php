@@ -60,7 +60,7 @@
               <hr class="dropdown-divider">
             </li>
             <li>
-              <a class="dropdown-item d-flex align-items-center" href=<?= base_url('admin/profil_admin');?>>
+              <a class="dropdown-item d-flex align-items-center" href=<?= base_url('siswa/profil_siswa');?>>
                 <i class="bi bi-person"></i>
                 <span>Profil</span>
               </a>
@@ -86,9 +86,9 @@
             <img src= <?= base_url ('assets/img/profile-img.jpg') ?> alt="Profile" class="rounded-circle">
             <span class="d-none d-md-block pt-2">Siti Nurazizah</span>
         </a>
-        <li class="nav-item"><a class="nav-link" href= <?= base_url('user')?> ><i class="bi bi-book"></i> Koleksi Buku</a></li>
-        <li class="nav-item"><a class="nav-link" href= <?= base_url('user/pinjaman')?> ><i class="bi bi-clock-history"></i> Pinjaman Terkini</a></li>
-        <li class="nav-item"><a class="nav-link" href= <?= base_url('user/riwayat')?> ><i class="bi bi-journal-bookmark"></i> Riwayat Peminjaman</a></li>
+        <li class="nav-item"><a class="nav-link" href= <?= base_url('siswa')?> ><i class="bi bi-book"></i> Koleksi Buku</a></li>
+        <li class="nav-item"><a class="nav-link" href= <?= base_url('siswa/pinjaman')?> ><i class="bi bi-clock-history"></i> Pinjaman Terkini</a></li>
+        <li class="nav-item"><a class="nav-link" href= <?= base_url('siswa/riwayat')?> ><i class="bi bi-journal-bookmark"></i> Riwayat Peminjaman</a></li>
         <li class="nav-item"><a class="nav-link" href= <?= base_url('/auth/logout')?> data-bs-toggle="modal" data-bs-target="#modallogout"><i class="bi bi-box-arrow-right"></i> Keluar</a></li>
     </ul>
   </aside>
