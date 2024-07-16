@@ -310,7 +310,7 @@
     <!-- Edit Modal-->
     <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel2" role="dialog" aria-hidden="true">
       <div class="modal-dialog d-flex justify-content-center">
-        <div class="modal-content w-75">
+        <div class="modal-content text-dark bg-warning">
           <div class="modal-header">
             <h5 class="modal-title">Ubah Data Buku Rusak</h5>
             <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -337,10 +337,12 @@
                 <label>Keterangan</label>
                 <input type="text" id="ebkrket" name="ebkr_ket" class="form-control" required>
               </div>
-              <div class="col-12">
-                <label>Foto Bukti (.jpg / .png) <br><i>abaikan jika tidak ingin mengubah</i></label>
-                <img id="ebkrbukti" src="" style="width:50;">
-                <input type="file" name="ebkr_bukti" accept=".jpg,.png" onchange="ImgFile(this);" class="form-control-file">
+              <div class="form-group">
+                <label>Foto Bukti (.jpg / .png / .jpeg) <br><i>abaikan jika tidak ingin mengubah</i></label>
+                <div class="form-group">
+                  <img id="ebkrbukti" src="" style="width: 200px;">
+                </div>
+                <input type="file" name="ebkr_bukti" accept=".jpg,.png,.jpeg" onchange="ImgFile(this);" class="form-control-file">
                 <input type="text" name="ebkr_oldbukti" class="form-control" id="ebkroldbukti" hidden required>
               </div>
 

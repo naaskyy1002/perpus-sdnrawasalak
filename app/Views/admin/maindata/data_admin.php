@@ -87,7 +87,15 @@
                       data-vpassword="<?=$adm['password'];?>">
                       <i class="bi bi-eye"></i>
                     </a>
-                    <a href="#" class="edit" title="Edit" data-bs-toggle="modal" data-bs-target="#editModal"><i class="bi bi-pencil"></i></a>
+                    <a href="#" title="Edit" data-bs-toggle="modal" data-bs-target="#editModal" class="editModalid"
+                      data-eidadmin="<?=$adm['nip']?>"
+                      data-efoto="<?= base_url('assets/img/admin/' . $adm['foto']);?>"
+                      data-enip="<?=$adm['nip'];?>"
+                      data-enamalengkap="<?=$adm['nama_lengkap'];?>"
+                      data-ejabatan="<?=$adm['jabatan'];?>"
+                      data-eusername="<?=$adm['username'];?>"
+                      data-epassword="<?=$adm['password'];?>">
+                    <i class="bi bi-pencil"></i></a>
                     <a href="#" data-bs-toggle="modal" data-bs-target="#deleteModal" class="deleteModalid" 
                         data-nip="<?=$adm['nip'];?>">
                         <i class="bi bi-trash"></i>
@@ -184,7 +192,7 @@
 
   <!-- View Modal -->
   <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-    <div class="modal-dialog d-flex justify-content-center"> <!-- mau besar tambahin modal-xl -->
+    <div class="modal-dialog d-flex justify-content-center">
       <div class="modal-content text-light bg-success">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel2">Detail Data Admin</h5>
@@ -267,6 +275,105 @@
         });
   </script>
 
+  <!-- Edit Modal -->
+  <div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog d-flex justify-content-center">
+      <div class="modal-content text-dark bg-warning">
+        <div class="modal-header">
+          <h5 class="modal-title">Ubah Data Admin</h5>
+          <button  type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <form method="post" enctype="multipart/form-data" action="editAdmin">
+            <div class="col-12">
+              <label>NIP</label>
+              <input type="number" class="form-control" id="enip" name="e_nip" required/>
+            </div>
+            <div class="col-12">
+              <label>Nama</label>
+              <input type="text" class="form-control" id="enamalengkap" name="e_namalengkap" required/>
+            </div>
+            <div class="col-12">
+              <label>Jabatan</label>
+              <input type="text" class="form-control" id="ejabatan" name="e_jabatan" required/>
+            </div>
+            <div class="col-12">
+              <label>Username</label>
+              <input type="text" class="form-control" id="eusername" name="e_username" required/>
+            </div>
+            <div class="col-12">
+              <label>Password</label>
+              <div class="input-group">
+                <input type="password" class="form-control" id="epassword" name="e_password" required/>
+                <span class="input-group-text" id="togglePassword" style="cursor: pointer;">
+                  <i class="bi bi-eye" id="eyeIcon"></i>
+                </span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Foto Bukti (.jpg / .png / .jpeg) <br><i>abaikan jika tidak ingin mengubah</i></label>
+              <div class="form-group">
+                <img id="efoto" src="" style="width: 200px;">
+              </div>
+              <input type="file" name="e_foto" accept=".jpg,.png,.jpeg" onchange="ImgFile(this);" class="form-control-file">
+              <input type="text" name="e_oldfoto" class="form-control" id="eoldfoto" hidden required>
+            </div>
+
+            <input type="number" id="eidadmin" name="e_idadmin" hidden>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+              <button type="submit" class="btn btn-success">Simpan</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+        $(".editModalid").click(function() {
+            var eidadmin = $(this).data('eidadmin');
+            $("#eidadmin").val(eidadmin);
+
+            var efoto = $(this).data('efoto');
+            $("#efoto").attr("src", efoto);
+
+            var eoldfoto = $(this).data('eoldfoto');
+            $("#eoldfoto").val(eoldfoto);
+
+            var enip = $(this).data('enip');
+            $("#enip").val(enip);
+
+            var enamalengkap = $(this).data('enamalengkap');
+            $("#enamalengkap").val(enamalengkap);
+
+            var ejabatan = $(this).data('ejabatan');
+            $("#ejabatan").val(ejabatan);
+
+            var eusername = $(this).data('eusername');
+            $("#eusername").val(eusername);
+
+            var epassword = $(this).data('epassword');
+            $("#epassword").val(epassword);
+
+            $('#editModal').modal('show');
+        });
+
+        // Toggle password visibility
+        $('#togglePassword').on('click', function () {
+            const passwordInput = $('#epassword');
+            const eyeIcon = $('#eyeIcon');
+            if (passwordInput.attr('type') === 'password') {
+                passwordInput.attr('type', 'text');
+                eyeIcon.removeClass('bi-eye').addClass('bi-eye-slash');
+            } else {
+                passwordInput.attr('type', 'password');
+                eyeIcon.removeClass('bi-eye-slash').addClass('bi-eye');
+            }
+        });
+  </script>
+
   <!-- Delete Modal -->
   <div class="modal fade" id="deleteModal">
     <div class="modal-dialog" role="document">
@@ -291,51 +398,20 @@
             $("#nip").val(nip);
         });
     </script>
-
-
-
-<!-- Edit Modal-->
-<div class="modal fade" id="editAdmin" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content text-dark bg-warning">
-                <div class="modal-header">
-                    <h5 class="modal-title">Ubah Data Admin</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form method="post" enctype="multipart/form-data" action="/admin/editMhs">
-                        <div class="form-group">
-                            <label>NIP*</label>
-                            <input type="number" id="eadmnip" name="emhs_nim" class="form-control" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Nama*</label>
-                            <input type="text" id="eadmnama" name="emhs_nama" class="form-control" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Jabatan*</label>
-                            <input type="text" id="eadmjabatan" name="emhs_nama" class="form-control" required>
-                        </div>
-
-                        <br>
-                        *Required
-                        
-                        <input type="number" id="eadmid" name="emhs_id" hidden>
-
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-light" data-dismiss="modal">Batal</button>
-                            <button type="submit" class="btn btn-success">Simpan</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
     
+    <script>
+            function ImgFile(input) {
+                const file = input.files[0];
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const previewImage = document.getElementById('previewImage');
+                    previewImage.src = e.target.result;
+                    previewImage.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+    </script>
+
     <script>
         // Function to hide element after 5 seconds
         function hideAfterDelay(elementId) {
@@ -353,6 +429,7 @@
         // Hide error message after 5 seconds
         hideAfterDelay('error-message');
     </script>
+
     
   </main><!-- End #main -->
 <?=$this->endSection()?>

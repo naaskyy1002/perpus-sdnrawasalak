@@ -18,6 +18,12 @@ class SiswaModel extends Model
                         ->insert($data); // Menggunakan metode insert bawaan Model
     }
 
+    public function updateSiswa($data, $id)
+    {
+        return $this->db->table('siswa')
+                        ->update($data, array('nisn' => $id));
+    }
+
     public function deleteSiswa($id)
 {
     return $this->db->table('siswa')

@@ -32,12 +32,14 @@ $routes->group('admin', function($routes) {
     // DATA ADMIN
     $routes->get('dataAdmin', 'Admin::data_admin');
     $routes->post('addAdmin', 'Admin::addAdmin');
+    $routes->post('editAdmin', 'Admin::editAdmin');
     $routes->post('deleteAdmin', 'Admin::deleteAdmin');
     $routes->get('dataGuru', 'Admin::data_guru');
 
     // DATA SISWA
     $routes->get('dataSiswa', 'Siswa::data_siswa');
     $routes->post('addSiswa', 'Siswa::addSiswa');
+    $routes->post('editSiswa', 'Siswa::editSiswa');
     $routes->post('deleteSiswa', 'Siswa::deleteSiswa');
     
     // DAFTAR PENGUNJUNG

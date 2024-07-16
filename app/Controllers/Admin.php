@@ -94,6 +94,58 @@ class Admin extends BaseController
         return redirect()->to('/admin/dataAdmin')->with('message', 'Admin berhasil ditambahkan!');
     }
 
+    public function editAdmin()
+    {
+        // Validasi input untuk foto bukti
+        $validation = $this->validate([
+            'e_foto' => [
+                'uploaded[e_foto]',
+                'mime_in[e_foto,image/jpg,image/jpeg,image/png]',
+                'max_size[e_foto,2048]', 
+            ],
+        ]);
+
+        // Ambil data dari form
+        $id = $this->request->getPost('e_nip');
+        $nip = $this->request->getPost('e_nip');
+        $nama = $this->request->getPost('e_namalengkap');
+        $jabatan = $this->request->getPost('e_jabatan');
+        $username = $this->request->getPost('e_username');
+        $password = $this->request->getPost('e_password');
+
+        // Data untuk disimpan ke database
+        $data = [
+            'nip' => $nip,
+            'nama_lengkap' => $nama,
+            'jabatan' => $jabatan,
+            'username' => $username,
+            'password' => $password,
+        ];
+
+        if (!$validation) {
+            // Tidak ada bukti yang diunggah atau validasi gagal, gunakan bukti lama
+            $data['foto'] = $this->request->getPost('e_oldfoto');
+        } else {
+            // Validasi berhasil, hapus foto bukti lama jika ada
+            $old_foto = $this->request->getPost('e_oldfoto');
+            if ($old_foto && file_exists('assets/img/admin/' . $old_foto)) {
+                unlink('assets/img/admin/' . $old_foto);
+            }
+
+            // Simpan foto bukti baru
+            $foto = $this->request->getFile('e_foto');
+            $fotoName = $nip . '.' . $foto->getExtension();
+            $foto->move('assets/img/admin', $fotoName);
+            $data['foto'] = $fotoName;
+        }
+
+        // Update data buku di database
+        $this->adminModel->updateAdmin($data, $id);
+
+        // Redirect dengan pesan sukses
+        return redirect()->to('/admin/dataAdmin')->with('message', 'Data admin berhasil diubah!');
+    }
+
     public function deleteAdmin()
     {
         // mencari admin berdasarkan nip dan dihapuskan

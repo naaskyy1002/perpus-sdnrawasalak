@@ -65,6 +65,58 @@ class Siswa extends BaseController
         return redirect()->to('admin/dataSiswa')->with('message', 'Siswa berhasil ditambahkan!');
     }
 
+    public function editSiswa()
+    {
+        // Validasi input untuk profile
+        $validation = $this->validate([
+            'e_foto' => [
+                'uploaded[e_foto]',
+                'mime_in[e_foto,image/jpg,image/jpeg,image/png]',
+                'max_size[e_foto,2048]', 
+            ],
+        ]);
+
+        // Ambil data dari form
+        $id = $this->request->getPost('e_nisn');
+        $nisn = $this->request->getPost('e_nisn');
+        $username = $this->request->getPost('e_username');
+        $password = $this->request->getPost('e_password');
+        $jenis_kelamin = $this->request->getPost('e_jk');
+        $kelas = $this->request->getPost('e_kelas');
+
+        // Data untuk disimpan ke database
+        $data = [
+            'nisn' => $nisn,
+            'username' => $username,
+            'password' => $password,
+            'jenis_kelamin' => $jenis_kelamin,
+            'kelas' => $kelas,
+        ];
+
+        if (!$validation) {
+            // Tidak ada sampul yang diunggah atau validasi gagal, gunakan sampul lama
+            $data['foto'] = $this->request->getPost('e_oldfoto');
+        } else {
+            // Validasi berhasil, hapus foto sampul lama jika ada
+            $old_foto = $this->request->getPost('e_oldfoto');
+            if ($old_foto && file_exists('assets/img/siswa/' . $old_foto)) {
+                unlink('assets/img/siswa/' . $old_foto);
+            }
+
+            // Simpan foto sampul baru
+            $foto = $this->request->getFile('e_foto');
+            $foto_name = $nisn . '.' . $foto->getExtension();
+            $foto->move('assets/img/buku', $foto_name);
+            $data['foto'] = $foto_name;
+        }
+
+        // Update data buku di database
+        $this->siswaModel->updateSiswa($data, $id);
+
+        // Redirect dengan pesan sukses
+        return redirect()->to('/admin/dataSiswa')->with('message', 'Data siswa berhasil diubah!');
+    }
+
     public function deleteSiswa()
     {
         $id = $this->request->getPost('nisn');

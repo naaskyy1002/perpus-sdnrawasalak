@@ -23,6 +23,12 @@ class AdminModel extends Model
                         ->insert($data);
     }
 
+    public function updateAdmin($data, $id)
+    {
+        return $this->db->table('admin')
+                        ->update($data, array('nip' => $id));
+    }
+
     public function deleteAdmin($id)
     {
         return $this->db->table('admin')

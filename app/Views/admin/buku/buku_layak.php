@@ -351,65 +351,64 @@
                     </div>
                     <div class="modal-body">
                     <form method="post" enctype="multipart/form-data" action="editBuku">
-                            <div class="form-group" style="text-align:center;">
-                                <div class="form-group">
-                                    <img id="esampul" src="" style="width: 200px;">
-                                </div>
-                                <input type="file" name="e_sampul" accept=".jpg,.png,.jpeg" onchange="ImgFile(this);" class="form-control-file">
-                                <input type="text" name="e_oldsampul" class="form-control" id="eoldsampul" hidden required>
-                            </div>
-
-                            <div class="col-12">
-                                <label>Kode Buku</label>
-                                <input type="text" id="ekodebuku" name="e_kodebuku" class="form-control" required>
-                            </div>
-
+                        <div class="col-12">
+                            <label>Kode Buku</label>
+                            <input type="text" id="ekodebuku" name="e_kodebuku" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Judul Buku</label>
+                            <input type="text" id="ejudulbuku" name="e_judulbuku" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Pengarang</label>
+                            <input type="text" id="epengarang" name="e_pengarang" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Penerbit</label>
+                            <input type="text" id="epenerbit" name="e_penerbit" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Tahun Terbit</label>
+                            <input type="number" id="etahunterbit" name="e_tahunterbit" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Kategori</label>
+                            <input type="text" id="ekategori" name="e_kategori" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>No Rak</label>
+                            <input type="number" id="enorak" name="e_norak" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Jumlah Buku</label>
+                            <input class="form-control" id="ejumlahbuku" name="e_jumlahbuku" type="number" required></input>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Foto Bukti (.jpg / .png / .jpeg) <br><i>abaikan jika tidak ingin mengubah</i></label>
                             <div class="form-group">
-                                <label>Judul Buku</label>
-                                <input type="text" id="ejudulbuku" name="e_judulbuku" class="form-control" required>
+                                <img id="esampul" src="" style="width: 200px;">
                             </div>
-
-                            <div class="form-group">
-                                <label>Pengarang</label>
-                                <input type="text" id="epengarang" name="e_pengarang" class="form-control" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Penerbit</label>
-                                <input type="text" id="epenerbit" name="e_penerbit" class="form-control" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Tahun Terbit</label>
-                                <input type="number" id="etahunterbit" name="e_tahunterbit" class="form-control" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Kategori</label>
-                                <input type="text" id="ekategori" name="e_kategori" class="form-control" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label>No Rak</label>
-                                <input type="number" id="enorak" name="e_norak" class="form-control" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Jumlah Buku</label>
-                                <input class="form-control" id="ejumlahbuku" name="e_jumlahbuku" type="number" required></input>
-                            </div>
-
-                            <input type="number" id="eidbuku" name="e_idbuku" hidden>
-
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                                <button type="submit" class="btn btn-success">Update</button>
-                            </div>
-                        </form>
+                            <input type="file" name="e_sampul" accept=".jpg,.png,.jpeg" onchange="ImgFile(this);" class="form-control-file">
+                            <input type="text" name="e_oldsampul" class="form-control" id="eoldsampul" hidden required>
+                        </div>
+                        <input type="number" id="eidbuku" name="e_idbuku" hidden>
+                        
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-success">Update</button>
+                        </div>
+                    </form>
                     </div>
                 </div>
             </div>
-        </div>
     </div>
 
     <script type="text/javascript">
