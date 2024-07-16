@@ -26,13 +26,6 @@
   <link href="<?= base_url('assets/vendor/remixicon/remixicon.css') ?>" rel="stylesheet">
   <link href="<?= base_url('assets/vendor/simple-datatables/style.css') ?>" rel="stylesheet">
 
-  <!-- DataTables CSS -->
-  <link href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet">
-
-  <!-- DataTables JS -->
-  <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-
-
   <!-- Template Main CSS File -->
   <link href="<?= base_url('assets/css/style.css') ?>" rel="stylesheet">
 
@@ -78,7 +71,7 @@
               <hr class="dropdown-divider">
             </li>
             <li>
-              <a class="dropdown-item d-flex align-items-center" href=<?= base_url('admin/profil_admin');?>>
+              <a class="dropdown-item d-flex align-items-center" href=<?= base_url('admin/profilAdmin');?>>
                 <i class="bi bi-person"></i>
                 <span>Profil</span>
               </a>

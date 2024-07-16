@@ -30,7 +30,7 @@
                 </div>
                 <div class="ps-3">
                   <h6><?=$total_buku;?></h6> 
-                  <a href=<?=base_url('admin/buku_layak');?> class="card-link detail-link">Lihat Detail</a> 
+                  <a href=<?=base_url('admin/buku');?> class="card-link detail-link">Lihat Detail</a> 
                 </div>
               </div>
             </div>
@@ -48,7 +48,7 @@
                 </div>
                 <div class="ps-3">
                   <h6><?=$total_bkr;?></h6>
-                  <a href=<?=base_url('admin/buku_rusak');?> class="card-link detail-link">Lihat Detail</a>
+                  <a href=<?=base_url('admin/bukuRusak');?> class="card-link detail-link">Lihat Detail</a>
                 </div>
               </div>
             </div>
