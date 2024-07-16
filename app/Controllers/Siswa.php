@@ -94,23 +94,23 @@ class Siswa extends BaseController
         ];
 
         if (!$validation) {
-            // Tidak ada sampul yang diunggah atau validasi gagal, gunakan sampul lama
+            // Tidak ada foto yang diunggah atau validasi gagal, gunakanfoto lama
             $data['foto'] = $this->request->getPost('e_oldfoto');
         } else {
-            // Validasi berhasil, hapus foto sampul lama jika ada
+            // Validasi berhasil, hapus foto lama jika ada
             $old_foto = $this->request->getPost('e_oldfoto');
             if ($old_foto && file_exists('assets/img/siswa/' . $old_foto)) {
                 unlink('assets/img/siswa/' . $old_foto);
             }
 
-            // Simpan foto sampul baru
+            // Simpan foto baru
             $foto = $this->request->getFile('e_foto');
             $foto_name = $nisn . '.' . $foto->getExtension();
             $foto->move('assets/img/buku', $foto_name);
             $data['foto'] = $foto_name;
         }
 
-        // Update data buku di database
+        // Update data siswa di database
         $this->siswaModel->updateSiswa($data, $id);
 
         // Redirect dengan pesan sukses

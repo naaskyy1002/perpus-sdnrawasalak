@@ -89,7 +89,7 @@ class Buku extends BaseController
         ]);
 
         // Ambil data dari form
-        $id = $this->request->getPost('e_idbuku');
+        $id           = $this->request->getPost('e_idbuku');
         $kode_buku    = $this->request->getPost('e_kodebuku');
         $judul_buku   = $this->request->getPost('e_judulbuku');
         $pengarang    = $this->request->getPost('e_pengarang');

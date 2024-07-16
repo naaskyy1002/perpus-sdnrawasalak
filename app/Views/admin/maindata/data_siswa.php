@@ -87,7 +87,7 @@
                       <i class="bi bi-eye"></i>
                     </a>
                     <a href="#" class="editModalid" title="Edit" data-bs-toggle="modal" data-bs-target="#editModal"
-                      data-eidsiswa="<?=$sw['nisn']?>"
+                      data-eidsiswa="<?=$sw['nisn'];?>"
                       data-efoto="<?= base_url('assets/img/siswa/' . $sw['foto']);?>"
                       data-enisn="<?=$sw['nisn'];?>"
                       data-eusername="<?=$sw['username'];?>"
@@ -287,25 +287,25 @@
     </script>
 
     <!-- Edit Modal -->
-    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog d-flex justify-content-center">
         <div class="modal-content text-dark bg-warning">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel2">Ubah Data Siswa</h5>
+            <h5 class="modal-title">Ubah Data Siswa</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body p-4">
-            <form method="post" enctype="multipart/form-data" action="editSiswa">
+          <div class="modal-body">
+            <form class="row g-3" method="post" enctype="multipart/form-data" action="editSiswa">
               <div class="col-12">
-                <label for="inputNISN">NISN</label>
+                <label>NISN</label>
                 <input type="number" class="form-control" id="enisn" name="e_nisn" required />
               </div>
               <div class="col-12">
-                <label for="inputUsername">Nama</label>
+                <label>Nama</label>
                 <input type="text" class="form-control" id="eusername" name="e_username" required />
               </div>
               <div class="col-12">
-                <label for="Password">Password</label>
+                <label>Password</label>
                 <div class="input-group">
                   <input type="password" class="form-control" id="epassword" name="e_password" required />
                   <span class="input-group-text" id="togglePassword" style="cursor: pointer;">
@@ -314,17 +314,17 @@
                 </div>
               </div>
               <div class="col-12">
-                    <label for="inputJenisKelamin">Jenis Kelamin</label>
+                    <label>Jenis Kelamin</label>
                     <select name="e_jk" class="form-control" required>
-                      <option value="" required selected>Pilih Jenis Kelamin</option>
+                      <option value="" disabled selected>Pilih Jenis Kelamin</option>
                       <option value="Laki-laki">Laki-laki</option>
                       <option value="Perempuan">Perempuan</option>
                     </select>
                   </div>
               <div class="col-12">
-                <label for="inputKelas">Kelas</label>
+                <label>Kelas</label>
                 <select name="e_kelas" class="form-control" required>
-                  <option value="" required selected>Pilih Kelas</option>
+                  <option value="" disabled selected>Pilih Kelas</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
