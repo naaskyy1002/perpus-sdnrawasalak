@@ -17,6 +17,18 @@ class AdminModel extends Model
         $this->table = $table;
     }
 
+    public function totalBuku()
+    {
+        return $this->db->table('buku')
+                        ->countAll();
+    }
+
+    public function totalBkr()
+    {
+        return $this->db->table('buku_rusak')
+                        ->countAll();
+    }
+
     public function createAdmin($data)
     {
         return $this->db->table('admin')

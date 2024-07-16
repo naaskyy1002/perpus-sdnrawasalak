@@ -26,6 +26,13 @@
   <link href="<?= base_url('assets/vendor/remixicon/remixicon.css') ?>" rel="stylesheet">
   <link href="<?= base_url('assets/vendor/simple-datatables/style.css') ?>" rel="stylesheet">
 
+  <!-- DataTables CSS -->
+  <link href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet">
+
+  <!-- DataTables JS -->
+  <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+
   <!-- Template Main CSS File -->
   <link href="<?= base_url('assets/css/style.css') ?>" rel="stylesheet">
 

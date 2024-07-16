@@ -16,9 +16,17 @@ class Admin extends BaseController
     }
 
     public function home()
-        {
-            return view('admin/body');
-        }
+    {
+        $data =[
+            'title' => 'Beranda | Perpustakaan SDN Rawasalak',
+            'total_buku' => $this->adminModel->totalBuku(),
+            'total_bkr' => $this->adminModel->totalBkr(),
+            // 'total_pinjam' => $this->adminModel->totalPinjam(),
+            // 'total_kembali' => $this->adminModel->totalKemabli(),
+        ];
+
+        return view('admin/body', $data);
+    }
 
 
         public function peminjaman()

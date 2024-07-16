@@ -17,6 +17,12 @@ class BukuModel extends Model
         $this->table = $table;
     }
 
+    // public function totalBuku()
+    // {
+    //     return $this->db->table('buku')
+    //                     ->countAll();
+    // }
+
     public function createBuku($data)
     {
         return $this->db->table('buku')

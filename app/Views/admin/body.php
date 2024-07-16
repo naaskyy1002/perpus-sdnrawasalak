@@ -29,7 +29,7 @@
                   <i class="bi bi-book"></i>
                 </div>
                 <div class="ps-3">
-                  <h6>950</h6> 
+                  <h6><?=$total_buku;?></h6> 
                   <a href=<?=base_url('admin/buku_layak');?> class="card-link detail-link">Lihat Detail</a> 
                 </div>
               </div>
@@ -47,7 +47,7 @@
                   <i class="bi bi-book"></i>
                 </div>
                 <div class="ps-3">
-                  <h6>5</h6>
+                  <h6><?=$total_bkr;?></h6>
                   <a href=<?=base_url('admin/buku_rusak');?> class="card-link detail-link">Lihat Detail</a>
                 </div>
               </div>
