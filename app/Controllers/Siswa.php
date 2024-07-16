@@ -114,7 +114,7 @@ class Siswa extends BaseController
         $this->siswaModel->updateSiswa($data, $id);
 
         // Redirect dengan pesan sukses
-        return redirect()->to('/admin/dataSiswa')->with('message', 'Data siswa berhasil diubah!');
+        return redirect()->to('admin/dataSiswa')->with('message', 'Data siswa berhasil diubah!');
     }
 
     public function deleteSiswa()

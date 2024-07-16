@@ -287,114 +287,113 @@
     </script>
 
     <!-- Edit Modal -->
-
-<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-  <div class="modal-dialog d-flex justify-content-center">
-    <div class="modal-content text-dark bg-warning">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel2">Ubah Data Siswa</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body p-4">
-        <form method="post" enctype="multipart/form-data" action="editSiswa">
-          <div class="col-12">
-            <label for="inputNISN">NISN</label>
-            <input type="number" class="form-control" id="enisn" name="e_nisn" required />
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+      <div class="modal-dialog d-flex justify-content-center">
+        <div class="modal-content text-dark bg-warning">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel2">Ubah Data Siswa</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="col-12">
-            <label for="inputUsername">Nama</label>
-            <input type="text" class="form-control" id="eusername" name="e_username" required />
-          </div>
-          <div class="col-12">
-            <label for="Password">Password</label>
-            <div class="input-group">
-              <input type="password" class="form-control" id="epassword" name="e_password" required />
-              <span class="input-group-text" id="togglePassword" style="cursor: pointer;">
-                <i class="bi bi-eye" id="eyeIcon"></i>
-              </span>
-            </div>
-          </div>
-          <div class="col-12">
-                <label for="inputJenisKelamin">Jenis Kelamin</label>
-                <select name="e_jk" class="form-control" required>
-                  <option value="" required selected>Pilih Jenis Kelamin</option>
-                  <option value="Laki-laki">Laki-laki</option>
-                  <option value="Perempuan">Perempuan</option>
+          <div class="modal-body p-4">
+            <form method="post" enctype="multipart/form-data" action="editSiswa">
+              <div class="col-12">
+                <label for="inputNISN">NISN</label>
+                <input type="number" class="form-control" id="enisn" name="e_nisn" required />
+              </div>
+              <div class="col-12">
+                <label for="inputUsername">Nama</label>
+                <input type="text" class="form-control" id="eusername" name="e_username" required />
+              </div>
+              <div class="col-12">
+                <label for="Password">Password</label>
+                <div class="input-group">
+                  <input type="password" class="form-control" id="epassword" name="e_password" required />
+                  <span class="input-group-text" id="togglePassword" style="cursor: pointer;">
+                    <i class="bi bi-eye" id="eyeIcon"></i>
+                  </span>
+                </div>
+              </div>
+              <div class="col-12">
+                    <label for="inputJenisKelamin">Jenis Kelamin</label>
+                    <select name="e_jk" class="form-control" required>
+                      <option value="" required selected>Pilih Jenis Kelamin</option>
+                      <option value="Laki-laki">Laki-laki</option>
+                      <option value="Perempuan">Perempuan</option>
+                    </select>
+                  </div>
+              <div class="col-12">
+                <label for="inputKelas">Kelas</label>
+                <select name="e_kelas" class="form-control" required>
+                  <option value="" required selected>Pilih Kelas</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
                 </select>
               </div>
-          <div class="col-12">
-            <label for="inputKelas">Kelas</label>
-            <select name="e_kelas" class="form-control" required>
-              <option value="" required selected>Pilih Kelas</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-            </select>
+              <div class="form-group">
+                <label>Foto Bukti (.jpg / .png / .jpeg) <br><i>abaikan jika tidak ingin mengubah</i></label>
+                <div class="form-group">
+                  <img id="efoto" src="" style="width: 200px;">
+                </div>
+                <input type="file" name="e_foto" accept=".jpg,.png,.jpeg" onchange="ImgFile(this);" class="form-control-file">
+                <input type="text" name="e_oldfoto" class="form-control" id="eoldsampul" hidden required>
+              </div>
+              <input type="number" id="eidsiswa" name="e_idsiswa" hidden>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                <button type="submit" class="btn btn-success">Simpan</button>
+              </div>
+            </form>
           </div>
-          <div class="form-group">
-            <label>Foto Bukti (.jpg / .png / .jpeg) <br><i>abaikan jika tidak ingin mengubah</i></label>
-            <div class="form-group">
-              <img id="efoto" src="" style="width: 200px;">
-            </div>
-            <input type="file" name="e_foto" accept=".jpg,.png,.jpeg" onchange="ImgFile(this);" class="form-control-file">
-            <input type="text" name="e_oldfoto" class="form-control" id="eoldsampul" hidden required>
-          </div>
-          <input type="number" id="eidsiswa" name="e_idsiswa" hidden>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-            <button type="submit" class="btn btn-success">Simpan</button>
-          </div>
-        </form>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
-<script type="text/javascript">
-  $(".editModalid").click(function() {
-    var eidsiswa = $(this).data('eidsiswa');
-    $("#eidsiswa").val(eidsiswa);
+    <script type="text/javascript">
+      $(".editModalid").click(function() {
+        var eidsiswa = $(this).data('eidsiswa');
+        $("#eidsiswa").val(eidsiswa);
 
-    var efoto = $(this).data('efoto');
-    $("#efoto").attr("src", efoto);
+        var efoto = $(this).data('efoto');
+        $("#efoto").attr("src", efoto);
 
-    var eoldfoto = $(this).data('eoldfoto');
-    $("#eoldfoto").val(eoldfoto);
+        var eoldfoto = $(this).data('eoldfoto');
+        $("#eoldfoto").val(eoldfoto);
 
-    var enisn = $(this).data('enisn');
-    $("#enisn").val(enisn);
+        var enisn = $(this).data('enisn');
+        $("#enisn").val(enisn);
 
-    var eusername = $(this).data('eusername');
-    $("#eusername").val(eusername);
+        var eusername = $(this).data('eusername');
+        $("#eusername").val(eusername);
 
-    var epassword = $(this).data('epassword');
-    $("#epassword").val(epassword);
+        var epassword = $(this).data('epassword');
+        $("#epassword").val(epassword);
 
-    var ejk = $(this).data('ejk');
-    $("#ejk").val(ejk);
+        var ejk = $(this).data('ejk');
+        $("#ejk").val(ejk);
 
-    var ekelas = $(this).data('ekelas');
-    $("#ekelas").val(ekelas);
+        var ekelas = $(this).data('ekelas');
+        $("#ekelas").val(ekelas);
 
-    $('#editModal').modal('show');
-  });
+        $('#editModal').modal('show');
+      });
 
-  // Toggle password visibility
-  $('#togglePassword').on('click', function() {
-    const passwordInput = $('#epassword');
-    const eyeIcon = $('#eyeIcon');
-    if (passwordInput.attr('type') === 'password') {
-      passwordInput.attr('type', 'text');
-      eyeIcon.removeClass('bi-eye').addClass('bi-eye-slash');
-    } else {
-      passwordInput.attr('type', 'password');
-      eyeIcon.removeClass('bi-eye-slash').addClass('bi-eye');
-    }
-  });
-</script>
+      // Toggle password visibility
+      $('#togglePassword').on('click', function() {
+        const passwordInput = $('#epassword');
+        const eyeIcon = $('#eyeIcon');
+        if (passwordInput.attr('type') === 'password') {
+          passwordInput.attr('type', 'text');
+          eyeIcon.removeClass('bi-eye').addClass('bi-eye-slash');
+        } else {
+          passwordInput.attr('type', 'password');
+          eyeIcon.removeClass('bi-eye-slash').addClass('bi-eye');
+        }
+      });
+    </script>
 
 
     <!-- Delete Modal -->
