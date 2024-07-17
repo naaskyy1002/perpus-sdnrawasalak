@@ -12,6 +12,11 @@ class SiswaModel extends Model
     // protected $createdField = 'created_at';
     // protected $updatedField = 'updated_at';
 
+    public function search($keyword)
+    {
+        return $this->table('siswa')->like('username', $keyword)->orLike('nisn', $keyword);
+    }
+
     public function createSiswa($data)
     {
         return $this->db->table('siswa')

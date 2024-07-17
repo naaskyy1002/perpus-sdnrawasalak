@@ -35,15 +35,15 @@
                         entri
                     </label>
                   </div>
-                </div>                 
-                <div class="col-sm-6 mol-md-6 text-right">
-                  <div class="col-sm-12">
-                    <div class="search-box">
-                      <i class="bi bi-search"></i> 
-                      <input type="text" class="form-control" placeholder="Cari">
+                </div>
+                <div class="col-sm-12 col-md-6 text-right">
+                  <form action="" method="post">
+                    <div class="input-group mb-3">
+                      <input type="text" class="form-control" placeholder="Masukkan keyword pencarian" name="keyword">
+                      <button class="btn btn-outline-secondary" type="submit" name="submit">Cari</button>
                     </div>
-                  </div>
-                </div> 
+                  </form>
+                </div>               
               </div>
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">              
             </div>
@@ -69,7 +69,7 @@
                 </tr>
               </thead>
               <tbody>
-                <?php $i = 1; ?>
+                <?php $i = 1 + (1 * ($currentPage - 1)); ?>
                 <?php foreach($siswa as $sw) : ?>
                 <tr class="text-center">
                   <td><?= $i++; ?></td>
@@ -104,28 +104,7 @@
                 <?php endforeach; ?>
               </tbody>
             </table>
-            <div class="clearfix">
-				      <div class="hint-text">Menampilkan 1 dari 1 entri</div>
-				      <ul class="pagination">
-                <nav aria-label="Page navigation example">
-                  <ul class="pagination">
-                    <li class="page-item">
-                      <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                      </a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                      <a class="page-link" href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                      </a>
-                    </li>
-                  </ul>
-                </nav>
-				      </ul>
-			      </div>
+            <?= $pager->links('siswa', 'Pagination');?>
 		      </div>
         </div>
       </div>

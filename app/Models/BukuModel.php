@@ -17,11 +17,15 @@ class BukuModel extends Model
         $this->table = $table;
     }
 
-    // public function totalBuku()
-    // {
-    //     return $this->db->table('buku')
-    //                     ->countAll();
-    // }
+    public function search($keyword)
+    {
+        return $this->table('buku')->like('kode_buku', $keyword)->orLike('judul_buku', $keyword);
+    }
+
+    public function searching($keyword)
+    {
+        return $this->table('buku_rusak')->like('kode_buku', $keyword)->orLike('judul_buku', $keyword);
+    }
 
     public function createBuku($data)
     {

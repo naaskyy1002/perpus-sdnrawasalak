@@ -14,7 +14,7 @@
 
     <div class="card shadow mb-4"> 
       <div class="card-header py-3 d-flex justify-content-between align-items-center">
-        <a href="#tambahPeminjam" data-bs-toggle="modal" data-bs-target="#tambahPeminjam"class="btn btn-primary">
+        <a href="<?= base_url('addPinjam') ?>" data-bs-toggle="modal" data-bs-target="#addModal"class="btn btn-primary">
           <i class="bi bi-plus"></i> Tambah Peminjam
         </a>
       </div>
@@ -71,14 +71,14 @@
                   </label>
                 </div>
               </div>                 
-              <div class="col-sm-6 mol-md-6 text-right">
-                <div class="col-sm-12">
-                  <div class="search-box">
-                    <i class="bi bi-search"></i> 
-                    <input type="text" class="form-control" placeholder="Cari">
+              <div class="col-sm-12 col-md-6 text-right">
+                <form action="" method="post">
+                  <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Masukkan keyword pencarian" name="keyword">
+                    <button class="btn btn-outline-secondary" type="submit" name="submit">Cari</button>
                   </div>
-                </div>
-              </div> 
+                </form>
+              </div>
             </div>
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">              
           </div>
@@ -90,48 +90,33 @@
                   <th>Penulis</th>
                   <th>Judul</th>
                   <th>Nama Peminjam</th>
-                  <th>Tanggal Peminjaman</th>
-                  <th>Tanggal Pengembalian</th>
+                  <th>Tanggal Pinjam</th>
+                  <th>Tanggal Kembali</th>
                   <th>Aksi</th>
                 </tr>
               </thead>
               <tbody>
+                <?php $i = 1 + (10 * ($currentPage - 1)); ?>
+                <?php foreach($peminjaman as $pj) : ?>
                 <tr class="text-center">
-                  <td>1</td>
-                  <td>A2</td>
-                  <td>Henry Manampiring</td>
-                  <td>Filosofi Teras</td>
-                  <td>Sarah Syakira</td>
-                  <td>6 Juli 2024</td>
-                  <td>12 Juli 2024</td>
+                  <td><?= $i++; ?></td>
+                  <td><?= $pj['kode_buku'] ;?></td>
+                  <td><?= $pj['pengarang'] ;?></td>
+                  <td><?= $pj['judul_buku'] ;?></td>
+                  <td><?= $pj['username'] ;?></td>
+                  <td><?= $pj['tgl_pinjam'] ;?></td>
+                  <td><?= $pj['tgl_kembali'] ;?></td>
                   <td>
                     <a href="#editModal" class="edit" title="Edit" data-bs-toggle="modal" data-bs-target="#editModal"><i class="bi bi-pencil"></i></a>
                     <a href="#" class="delete" title="Hapus" data-toggle="tooltip"><i class="bi bi-trash"></i></a>
                   </td>
                 </tr>
+                <?php endforeach; ?>
               </tbody>
             </table>
             <div class="clearfix">
 				      <div class="hint-text">Menampilkan 1 dari 1 entri</div>
-				      <ul class="pagination">
-                <nav aria-label="Page navigation example">
-                  <ul class="pagination">
-                    <li class="page-item">
-                      <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                      </a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                      <a class="page-link" href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                      </a>
-                    </li>
-                  </ul>
-                </nav>
-				      </ul>
+				      <?= $pager->links('transaksi', 'Pagination');?>
 			      </div>
 		      </div>
         </section>
@@ -139,7 +124,7 @@
     </div>
 
     <!-- Tambah Modal -->
-    <div class="modal fade" id="tambahPeminjam" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
         <div class="modal-dialog d-flex justify-content-center">
             <div class="modal-content w-75">
                 <div class="modal-header">
@@ -150,31 +135,31 @@
                 <form class="row g-3">
                     <div class="col-12">
                       <label for="inputKode" class="form-label">Kode Buku</label>
-                      <input type="text" class="form-control" id="inputKode">
+                      <input type="text" class="form-control" name="a_kode" required>
                     </div>
                     <div class="col-12">
-                      <label for="inputPenulis" class="form-label">Penulis</label>
-                      <input type="text" class="form-control" id="inputPenulis">
+                      <label for="inputPengarang" class="form-label">pengarang</label>
+                      <input type="text" class="form-control" name="a_pengarang">
                     </div>
                     <div class="col-12">
                       <label for="inputJudul" class="form-label">Judul Buku</label>
-                      <input type="text" class="form-control" id="inputJudul">
+                      <input type="text" class="form-control" name="a_judulbuku" required>
                     </div>
                     <div class="col-12">
-                      <label for="inputTahun" class="form-label">Nama Peminjam</label>
-                      <input type="text" class="form-control" id="inputTahun">
+                      <label for="inputNama" class="form-label">Nama Peminjam</label>
+                      <input type="text" class="form-control" name="a_nama" required>
                     </div>
                     <div class="col-12">
-                      <label for="inputTanggal" class="form-label">Tanggal Peminjaman</label>
-                      <input type="date" class="form-control" id="inputTanggal">
+                      <label for="inputTanggal" class="form-label">Tanggal Pinjam</label>
+                      <input type="date" class="form-control" name="a_pinjam" required>
                     </div>
                     <div class="col-12">
-                      <label for="inputKondisi" class="form-label">Tanggal Pengembalian</label>
-                      <input type="date " class="form-control" id="inputKondisi">
+                      <label for="inputKondisi" class="form-label">Tanggal Kembali</label>
+                      <input type="date " class="form-control" name="a_kembali" required>
                     </div>
                         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
-            <button type="button" class="btn btn-primary">Simpan</button>
+            <button type="submit" class="btn btn-primary">Simpan</button>
           </div>
                     </form>
                 </div>

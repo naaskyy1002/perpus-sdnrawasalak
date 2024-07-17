@@ -16,21 +16,25 @@ $routes->group('admin', function($routes) {
     
     // BUKU LAYAK
     $routes->get('buku', 'Buku::buku_layak');
+    $routes->post('buku', 'Buku::buku_layak');
     $routes->post('addBuku', 'Buku::addBuku');
     $routes->post('editBuku', 'Buku::editBuku');
     $routes->post('deleteBuku', 'Buku::deleteBuku');
     
     // BUKU RUSAK
     $routes->get('bukuRusak', 'Buku::buku_rusak');
+    $routes->post('bukuRusak', 'Buku::buku_rusak');
     $routes->post('addBkr', 'Buku::addBkr');
     $routes->post('editBkr', 'Buku::editBkr');
     $routes->post('deleteBkr', 'Buku::deleteBkr');
 
     // TRANSAKSI
-    $routes->get('peminjaman', 'Admin::peminjaman');
+    $routes->get('peminjaman', 'Transaksi::peminjaman');
+    $routes->post('peminjaman', 'Transaksi::peminjaman');
 
     // DATA ADMIN
     $routes->get('dataAdmin', 'Admin::data_admin');
+    $routes->post('dataAdmin', 'Admin::data_admin');
     $routes->post('addAdmin', 'Admin::addAdmin');
     $routes->post('editAdmin', 'Admin::editAdmin');
     $routes->post('deleteAdmin', 'Admin::deleteAdmin');
@@ -38,6 +42,7 @@ $routes->group('admin', function($routes) {
 
     // DATA SISWA
     $routes->get('dataSiswa', 'Siswa::data_siswa');
+    $routes->post('dataSiswa', 'Siswa::data_siswa');
     $routes->post('addSiswa', 'Siswa::addSiswa');
     $routes->post('editSiswa', 'Siswa::editSiswa');
     $routes->post('deleteSiswa', 'Siswa::deleteSiswa');

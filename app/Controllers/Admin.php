@@ -28,12 +28,6 @@ class Admin extends BaseController
         return view('admin/body', $data);
     }
 
-
-        public function peminjaman()
-        {
-            return view('admin/transaksi/peminjaman');
-        }
-
         public function daftar_pengunjung()
         {
             return view('admin/kunjungan/daftar_pengunjung');
@@ -47,10 +41,24 @@ class Admin extends BaseController
     // DATA ADMIN
     public function data_admin()
     {
-        $admin = $this->adminModel->findAll();
+        $currentPage = $this->request->getVar('page_admin') ? $this->request->getVar('page_admin') :
+        1;
+
+        $keyword = $this->request->getVar('keyword');
+        if($keyword) {
+            $admin = $this->adminModel->search($keyword);
+        }else {
+            $admin = $this->adminModel;
+        }
+
+        $admin = $this->adminModel->paginate(10, 'admin');
+        $pager = $this->adminModel->pager;
+        // $admin = $this->adminModel->findAll();
         $data = [
             'title' => 'Daftar Admin',
-            'admin' => $admin
+            'admin' => $admin,
+            'pager' => $pager,
+            'currentPage' => $currentPage,
         ];
         return view('admin/maindata/data_admin', $data);
     }

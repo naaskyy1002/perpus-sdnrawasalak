@@ -14,10 +14,24 @@ class Siswa extends BaseController
 
     public function data_siswa()
     {
-        $siswa = $this->siswaModel->findAll();
+        $currentPage = $this->request->getVar('page_siswa') ? $this->request->getVar('page_siswa') :
+        1;
+
+        $keyword = $this->request->getVar('keyword');
+        if($keyword) {
+            $siswa = $this->siswaModel->search($keyword);
+        }else {
+            $siswa = $this->siswaModel;
+        }
+
+        // $siswa = $this->siswaModel->findAll();
+        $siswa = $this->siswaModel->paginate(1, 'siswa');
+        $pager = $this->siswaModel->pager;
         $data = [
             'title' => 'Daftar Siswa',
-            'siswa' => $siswa
+            'siswa' => $siswa,
+            'pager' => $pager,
+            'currentPage' => $currentPage,
         ];
         return view('admin/maindata/data_siswa', $data);
     }

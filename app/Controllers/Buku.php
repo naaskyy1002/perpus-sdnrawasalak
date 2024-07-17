@@ -15,10 +15,24 @@ class Buku extends BaseController
     // BUKU LAYAK
     public function buku_layak()
     {
-        $buku = $this->bukuModel->findAll();
+        $currentPage = $this->request->getVar('page_buku') ? $this->request->getVar('page_buku') :
+        1;
+
+        $keyword = $this->request->getVar('keyword');
+        if($keyword) {
+            $buku = $this->bukuModel->search($keyword);
+        }else {
+            $buku = $this->bukuModel;
+        }
+
+        $buku = $this->bukuModel->paginate(10, 'buku');
+        $pager = $this->bukuModel->pager;
+        // $buku = $this->bukuModel->findAll();
         $data = [
             'title' => 'Daftar Buku',
-            'buku' => $buku
+            'buku' => $buku,
+            'pager' => $pager,
+            'currentPage' => $currentPage,
         ];
 
         return view('admin/buku/buku_layak', $data);
@@ -169,12 +183,27 @@ class Buku extends BaseController
 
     // BUKU RUSAK
     public function buku_rusak()
-    {
-        $this->bukuModel->setTable('buku_rusak');
-        $bkrusak = $this->bukuModel->findAll();
+    {     
+        $currentPage = $this->request->getVar('page_bukuRusak') ? $this->request->getVar('page_bukuRusak') :
+        1;
+
+        $keyword = $this->request->getVar('keyword');
+        if($keyword) {
+            $bkrusak = $this->bukuModel->searching($keyword);
+        }else {
+            $bkrusak = $this->bukuModel;
+            $this->bukuModel->setTable('buku_rusak');
+        }
+
+        $bkrusak = $this->bukuModel->paginate(10, 'buku_rusak');
+        $pager = $this->bukuModel->pager;
+
+        // $bkrusak = $this->bukuModel->findAll();
         $data = [
             'title' => 'Daftar Buku Rusak',
-            'bkrusak' => $bkrusak
+            'bkrusak' => $bkrusak,
+            'pager' => $pager,
+            'currentPage' => $currentPage,
         ];
         
         return view('admin/buku/buku_rusak', $data);

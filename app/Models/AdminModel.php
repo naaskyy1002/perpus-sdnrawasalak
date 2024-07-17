@@ -17,6 +17,13 @@ class AdminModel extends Model
         $this->table = $table;
     }
 
+    public function search($keyword)
+    {
+        return $this->table('admin')
+                    ->like('nip', $keyword)
+                    ->orLike('nama_lengkap', $keyword);
+    }
+
     public function totalBuku()
     {
         return $this->db->table('buku')
