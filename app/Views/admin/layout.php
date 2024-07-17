@@ -11,8 +11,6 @@
   
   <!-- Favicons -->
   <link href="<?= base_url('assets/img/LOGO-BARU.png') ?>" rel="icon">
-  <link href="<?= base_url('assets/img/apple-touch-icon.png') ?>" rel="apple-touch-icon">
-
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -52,7 +50,7 @@
         <!-- Nav Item - User Information -->
         <li class="nav-item dropdown pe-3">
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <span class="d-none d-md-block ps-2"><i class="bi bi-people"></i> Raina Rahmawati</span>
+            <span class="d-none d-md-block ps-2"><i class="ri-user-line"></i> Raina Rahmawati</span>
           </a>
           <!-- Dropdown - User Information -->
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
@@ -65,13 +63,13 @@
             </li>
             <li>
               <a class="dropdown-item d-flex align-items-center" href=<?= base_url('admin/profilAdmin');?>>
-                <i class="bi bi-person"></i>
+                <i class="ri-user-line"></i>
                 <span>Profil</span>
               </a>
             </li>
             <li>
               <a class="dropdown-item d-flex align-items-center" href="#" data-bs-toggle="modal" data-bs-target="#modallogout">
-                <i class="bi bi-box-arrow-right"></i>
+                <i class="ri-logout-circle-r-line"></i>
                 <span>Keluar</span>
               </a>
             </li>
@@ -94,53 +92,57 @@
 
     <li class="nav-item">
       <a class="nav-link" href=<?= base_url('admin');?>>
-        <i class="bi bi-grid"></i>
+        <i class="ri-function-line"></i>
         <span>Beranda</span>
       </a>
     </li><!-- End Dashboard Nav -->
 
     <li class="nav-item">
       <a class="nav-link" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-menu-button-wide"></i><span>Data Buku</span><i class="bi bi-chevron-down ms-auto"></i>
+        <i class="ri-folders-line"></i><span>Data Data Buku</span><i class="bi bi-chevron-down ms-auto"></i>
       </a>
       <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li>
-          <a href=<?= base_url('admin/peminjaman');?>>
-            <i class="bi bi-circle"></i><span>Peminjaman</span>
-          </a>
-        </li>
-        <li>
           <a href=<?= base_url('admin/buku');?>>
-            <i class="bi bi-circle"></i><span>Buku Layak</span>
+            <i class="ri-bookmark-3-line"></i><span>Data Buku Layak</span>
           </a>
         </li>
         <li>
           <a href=<?= base_url('admin/bukuRusak');?>>
-            <i class="bi bi-circle"></i><span>Buku Rusak</span>
+            <i class="ri-bookmark-2-line"></i><span>Data Buku Rusak</span>
           </a>
         </li>
-        
+        <li>
+          <a href=<?= base_url('admin/peminjaman');?>>
+            <i class="ri-folder-shared-line"></i><span>Peminjaman Buku</span>
+          </a>
+        </li>
+        <li>
+          <a href=<?= base_url('admin/peminjaman');?>>
+            <i class="ri-folder-received-line"></i><span>Pengembalian Buku</span>
+          </a>
+        </li>        
       </ul>
     </li><!-- End Components Nav -->
 
     <li class="nav-item">
       <a class="nav-link" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-menu-button-wide"></i><span>Data Pengguna</span><i class="bi bi-chevron-down ms-auto"></i>
+        <i class="ri-contacts-book-2-line"></i><span>Data Pengguna</span><i class="bi bi-chevron-down ms-auto"></i>
       </a>
       <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li>
           <a href=<?= base_url('admin/dataAdmin');?>>
-            <i class="bi bi-circle"></i><span>Data Admin</span>
+            <i class="ri-group-line"></i><span>Data Admin</span>
           </a>
         </li>
         <li>
           <a href=<?= base_url('admin/dataGuru');?>>
-            <i class="bi bi-circle"></i><span>Data Guru</span>
+            <i class="ri-group-line"></i><span>Data Guru</span>
           </a>
         </li>
         <li>
           <a href=<?= base_url('admin/dataSiswa');?>>
-            <i class="bi bi-circle"></i><span>Data Siswa</span>
+            <i class="ri-group-line"></i><span>Data Siswa</span>
           </a>
         </li>
       </ul>
@@ -148,19 +150,19 @@
 
     <li class="nav-item">
       <a class="nav-link" href=<?= base_url('admin/daftarPengunjung');?>>
-        <i class="bi bi-journal-text"></i><span>Daftar Pengunjung</span>
+        <i class="ri-todo-line"></i><span>Daftar Pengunjung</span>
       </a>
     </li><!-- End Forms Nav -->
 
     <li class="nav-item">
       <a class="nav-link" href=<?= base_url('admin/jadwalKunjungan');?>>
-        <i class="bi bi-layout-text-window-reverse"></i><span>Jadwal Kunjungan</span>
+        <i class="ri-calendar-2-line"></i><span>Jadwal Kunjungan</span>
       </a>
     </li><!-- End Tables Nav -->
 
     <li class="nav-item">
         <a class="nav-link" href=<?= base_url('/auth/logout');?> data-bs-toggle="modal" data-bs-target="#modallogout">
-          <i class="bi bi-box-arrow-right"></i>
+          <i class="ri-logout-circle-line"></i>
           <span>Keluar</span>
         </a>
       </li><!-- End Logout Page Nav -->
@@ -171,6 +173,7 @@
   <div class="min-vh-100">
     <?= $this->renderSection('content'); ?>
   </div>
+  
   <!-- Footer -->
   <footer id="footer" class="sticky-footer bg-white">
       <div class="copyright">

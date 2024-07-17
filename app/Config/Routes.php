@@ -66,4 +66,5 @@ $routes->group('siswa', function($routes) {
     $routes->get('pinjaman', 'Page::pinjaman');
     $routes->get('riwayat', 'Page::riwayat');
     $routes->get('detail', 'Page::detail');
+    $routes->get('profil_user', 'Page::profil_user');
 });

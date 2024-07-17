@@ -49,9 +49,9 @@
           </div>
           <div class="col-sm-12 col-md-6 text-right d-flex align-items-end">
             <button class="btn btn-info mr-2">
-              <i class="bi bi-download"></i> Excel</button>
+              <i class="ri-file-excel-2-line"></i> Excel</button>
             <button class="btn btn-warning">
-              <i class="bi bi-printer"></i> Print</button>
+              <i class="ri-printer-line"></i> Print</button>
           </div>
         </div>
         <section class="section">    
@@ -151,7 +151,6 @@
             </div>
           </div>
         </section>
-      </div>
       </div>
       </div>
 

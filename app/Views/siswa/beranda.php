@@ -15,7 +15,7 @@
     <div class="search-bar text-right mb-3"> <!-- Posisi kanan dan tambahkan margin bawah -->
         <form class="search-form d-flex align-items-center" method="GET" action="#">
             <input type="text" name="cari" placeholder="Cari berdasarkan judul.." class="form-control form-control-sm" value="<?= isset($_GET['cari']) ? $_GET['cari'] : '' ?>">
-            <button type="submit" class="btn btn-primary btn-sm ml-2">Cari</button>
+            <button type="submit" class="btn btn-primary btn-sm ml-2">  Cari</button>
         </form>
     </div>
 

@@ -29,4 +29,9 @@ class Page extends BaseController
     {
         return view('siswa/detail');
     }
+
+    public function profil_user()
+    {
+        return view('siswa/profil_user');
+    }
 }

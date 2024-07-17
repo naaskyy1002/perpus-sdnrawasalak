@@ -26,7 +26,7 @@
               <h5 class="card-title">TOTAL BUKU</h5>
               <div class="d-flex align-items-center">
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                  <i class="bi bi-book"></i>
+                  <i class="ri-book-2-line"></i>
                 </div>
                 <div class="ps-3">
                   <h6><?=$total_buku;?></h6> 
@@ -44,7 +44,7 @@
               <h5 class="card-title">TOTAL BUKU RUSAK</h5>
               <div class="d-flex align-items-center">
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                  <i class="bi bi-book"></i>
+                  <i class="ri-book-line"></i>
                 </div>
                 <div class="ps-3">
                   <h6><?=$total_bkr;?></h6>
@@ -62,7 +62,7 @@
               <h5 class="card-title">TOTAL PEMINJAMAN</h5> 
               <div class="d-flex align-items-center">
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                  <i class="bi bi-people"></i>
+                  <i class="ri-folder-shared-line"></i>
                 </div>
                 <div class="ps-3">
                   <h6>3</h6>
@@ -80,7 +80,7 @@
               <h5 class="card-title">TOTAL PENGEMBALIAN</h5> 
               <div class="d-flex align-items-center">
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                  <i class="bi bi-people"></i>
+                  <i class="ri-folder-received-line"></i>
                 </div>
                 <div class="ps-3">
                   <h6>1</h6>

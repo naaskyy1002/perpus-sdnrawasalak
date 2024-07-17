@@ -26,6 +26,8 @@
 
   <!-- Template Main CSS File -->
   <link href= <?= base_url ('assets/css/siswa.css') ?> rel="stylesheet">
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 
 <body class="toggle-sidebar">
@@ -48,26 +50,26 @@
         <!-- Nav Item - User Information -->
         <li class="nav-item dropdown pe-3">
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <span class="d-none d-md-block ps-2"><i class="bi bi-people"></i> Raina Rahmawati</span>
+            <span class="d-none d-md-block ps-2"><i class="ri-user-line"></i> Siti Nurazizah</span>
           </a>
           <!-- Dropdown - User Information -->
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>Raina Rahmawati</h6>
-              <span>Admin</span>
+              <h6>Siti Nurazizah</h6>
+              <span>Siswa</span>
             </li>
             <li>
               <hr class="dropdown-divider">
             </li>
             <li>
-              <a class="dropdown-item d-flex align-items-center" href=<?= base_url('siswa/profil_siswa');?>>
-                <i class="bi bi-person"></i>
+              <a class="dropdown-item d-flex align-items-center" href=<?= base_url('siswa/profil_user');?>>
+                <i class="ri-user-line"></i>
                 <span>Profil</span>
               </a>
             </li>
             <li>
               <a class="dropdown-item d-flex align-items-center" href="#" data-bs-toggle="modal" data-bs-target="#modallogout">
-                <i class="bi bi-box-arrow-right"></i>
+                <i class="ri-logout-circle-r-line"></i>
                 <span>Keluar</span>
               </a>
             </li>
@@ -82,6 +84,7 @@
   <!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
     <ul class="sidebar-nav" id="sidebar-nav">
+
         <a class="nav-profile d-flex flex-column align-items-center pe-0">
             <img src= <?= base_url ('assets/img/profile-img.jpg') ?> alt="Profile" class="rounded-circle">
             <span class="d-none d-md-block pt-2">Siti Nurazizah</span>
