@@ -2,23 +2,44 @@
 
 namespace App\Controllers;
 use App\Models\AdminModel;
+use App\Models\TransaksiModel;
 
 
 
 class Admin extends BaseController
 {
     protected $adminModel;
+    protected $transaksiModel;
     
 
     public function __construct()
     {
         $this->adminModel = new AdminModel();
+        $this->transaksiModel = new TransaksiModel();
     }
 
     public function home()
     {
+        $currentPage = $this->request->getVar('page_transaksi') ? $this->request->getVar('page_transaksi') :
+        1;
+
+        $keyword = $this->request->getVar('keyword');
+        if($keyword) {
+            $pinjam = $this->transaksiModel->search($keyword);
+        }else {
+            $pinjam = $this->transaksiModel;
+        }
+
+        $pinjam = $this->transaksiModel->paginate(10, 'transaksi');
+        $pager = $this->transaksiModel->pager;
+        $pinjam = $this->transaksiModel->getPeminjaman();
         $data =[
             'title' => 'Beranda | Perpustakaan SDN Rawasalak',
+            'peminjaman' => $pinjam,
+            // 'search' => $pinjams,
+            'isi' => 'peminjaman',
+            'pager' => $pager,
+            'currentPage' => $currentPage,
             'total_buku' => $this->adminModel->totalBuku(),
             'total_bkr' => $this->adminModel->totalBkr(),
             // 'total_pinjam' => $this->adminModel->totalPinjam(),

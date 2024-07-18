@@ -104,7 +104,7 @@
                 <?php endforeach; ?>
               </tbody>
             </table>
-            <?= $pager->links('siswa', 'Pagination');?>
+				      <?= $pager->links('siswa', 'Pagination');?>
 		      </div>
         </div>
       </div>

@@ -105,10 +105,7 @@
                 <?php endforeach; ?>
               </tbody>
             </table>
-            <div class="clearfix">
-				      <div class="hint-text">Menampilkan 1 dari 1 entri</div>
 				      <?= $pager->links('admin', 'Pagination');?>
-			      </div>
 		      </div>
         </div>
       </div>
