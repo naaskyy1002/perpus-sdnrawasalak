@@ -6,7 +6,7 @@
         <h1>Riwayat Peminjaman</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?= base_url('user'); ?>">Buku</a></li>
+                <li class="breadcrumb-item"><a href="<?= base_url('user'); ?>">Koleksi Buku</a></li>
                 <li class="breadcrumb-item">Riwayat Peminjaman</li>
             </ol>
         </nav>

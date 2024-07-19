@@ -6,7 +6,7 @@
 }
 
 body {
-    background: linear-gradient(to right, #e9d6b1, #497086);
+    background: linear-gradient(to right, #a8937abb, #921b49b8);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -30,7 +30,7 @@ header .logo {
 }
 
 header .logo .logo-img {
-    width: 60px;
+    width: 80px;
     margin-right: 15px;
 }
 
@@ -41,7 +41,7 @@ header .logo .logo-text {
 header .logo .logo-text span {
     display: block;
     font-weight: bold;
-    color: black;
+    color: white;
 }
 
 header nav ul {
@@ -52,7 +52,7 @@ header nav ul {
 
 header nav ul li a {
     text-decoration: none;
-    color: black;
+    color: white;
     font-weight: bold;
 }
 
@@ -86,7 +86,7 @@ main {
 
 .welcome-section .welcome-text h1 {
     font-size: 2.5em;
-    color: black;
+    color: rgb(255, 255, 255);
     margin-bottom: 20px;
     font-family: "Open Sans",sans-serif;
 }
@@ -94,8 +94,8 @@ main {
 .welcome-section .welcome-text .button {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #165072;
-    color: white;
+    background-color: #D9C8B7;
+    color: black;
     text-decoration: none;
     border-radius: 5px;
     font-weight: bold;
@@ -108,4 +108,5 @@ footer {
     width: 100%;
     position: fixed;
     bottom: 0;
+    color: white;
 }

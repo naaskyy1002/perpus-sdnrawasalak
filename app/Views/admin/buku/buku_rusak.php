@@ -7,6 +7,7 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="<?=base_url('admin');?>">Beranda</a></li>
+          <li class="breadcrumb-item">Data Data Buku</li>
           <li class="breadcrumb-item">Data Buku Rusak</li>
         </ol>
       </nav>
