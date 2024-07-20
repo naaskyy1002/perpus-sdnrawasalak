@@ -42,7 +42,7 @@ class Admin extends BaseController
             'currentPage' => $currentPage,
             'total_buku' => $this->adminModel->totalBuku(),
             'total_bkr' => $this->adminModel->totalBkr(),
-            // 'total_pinjam' => $this->adminModel->totalPinjam(),
+            'total_pinjam' => $this->adminModel->totalPinjam(),
             // 'total_kembali' => $this->adminModel->totalKemabli(),
         ];
 
@@ -54,10 +54,7 @@ class Admin extends BaseController
             return view('admin/kunjungan/daftar_pengunjung');
         }
 
-        public function jadwal_kunjungan()
-        {
-            return view('admin/kunjungan/jadwal_kunjungan');
-        }
+        
 
     // DATA ADMIN
     public function data_admin()

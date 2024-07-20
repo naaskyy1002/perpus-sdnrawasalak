@@ -19,12 +19,17 @@ class BukuModel extends Model
 
     public function search($keyword)
     {
-        return $this->table('buku')->like('kode_buku', $keyword)->orLike('judul_buku', $keyword);
+        return $this->table('buku')
+                    ->like('kode_buku', $keyword)
+                    ->orLike('judul_buku', $keyword)
+                    ->orLike('kategori', $keyword);
     }
 
     public function searching($keyword)
     {
-        return $this->table('buku_rusak')->like('kode_buku', $keyword)->orLike('judul_buku', $keyword);
+        return $this->table('buku_rusak')->like('kode_buku', $keyword)
+                                        ->orLike('judul_buku', $keyword)
+                                        ->orLike('kategori', $keyword);
     }
 
     public function createBuku($data)
@@ -44,6 +49,20 @@ class BukuModel extends Model
         return $this->db->table('buku')
                         ->delete(array('id_buku' => $id));
     } 
+
+    public function decreaseStock($kode_buku)
+    {
+        $this->where('kode_buku', $kode_buku)
+             ->set('jumlah_buku', 'jumlah_buku - 1', false)
+             ->update();
+    }
+
+    public function increaseStock($kode_buku)
+    {
+        $this->where('kode_buku', $kode_buku)
+             ->set('jumlah_buku', 'jumlah_buku + 1', false)
+             ->update();
+    }
 
     // BUKU RUSAK
     public function createBkr($data)

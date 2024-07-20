@@ -19,7 +19,10 @@ class SiswaModel extends Model
 
     public function search($keyword)
     {
-        return $this->table('siswa')->like('username', $keyword)->orLike('nisn', $keyword);
+        return $this->table('siswa')
+                    ->like('username', $keyword)
+                    ->orLike('nisn', $keyword)
+                    ->orLike('kelas', $keyword);
     }
 
     public function createSiswa($data)

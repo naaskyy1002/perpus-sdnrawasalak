@@ -36,6 +36,12 @@ class AdminModel extends Model
                         ->countAll();
     }
 
+    public function totalPinjam()
+    {
+        return $this->db->table('transaksi')
+                        ->countAll();
+    }
+
     public function createAdmin($data)
     {
         return $this->db->table('admin')

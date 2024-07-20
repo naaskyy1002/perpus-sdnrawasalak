@@ -31,6 +31,11 @@ $routes->group('admin', function($routes) {
     // TRANSAKSI
     $routes->get('peminjaman', 'Transaksi::peminjaman');
     $routes->post('peminjaman', 'Transaksi::peminjaman');
+    $routes->post('addTransaksi', 'Transaksi::addTransaksi');
+    $routes->post('deleteTransaksi', 'Transaksi::deleteTransaksi');
+    $routes->get('pengembalian', 'Transaksi::pengembalian');
+    $routes->post('pengembalian', 'Transaksi::pengembalian');
+
 
     // DATA ADMIN
     $routes->get('dataAdmin', 'Admin::data_admin');
@@ -54,7 +59,8 @@ $routes->group('admin', function($routes) {
     $routes->get('admin/visitor/getSiswaByNISN/(:any)', 'Visitor::getSiswaByNISN/$1');
 
 
-    $routes->get('jadwalKunjungan', 'Admin::jadwal_kunjungan');
+    $routes->get('jadwalKunjungan', 'Jadwal::jadwal_kunjungan');
+    $routes->post('editJadwal', 'Jadwal::editJadwal');
     $routes->get('profilAdmin', 'Admin::profil_admin');
 });
 
