@@ -8,6 +8,7 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href=<?=base_url('admin');?>>Beranda</a></li>
+          <li class="breadcrumb-item">Data Data Pengguna</li>
           <li class="breadcrumb-item">Data Admin</li>
         </ol>
       </nav>

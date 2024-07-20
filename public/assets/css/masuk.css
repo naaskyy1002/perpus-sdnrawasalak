@@ -9,7 +9,7 @@
 }
 
 body {
-    background-image: linear-gradient(to right, #e9d6b1, #497086);
+    background-image: linear-gradient(to right, #a8937abb, #921b49b8);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -33,7 +33,7 @@ header .logo {
 }
 
 header .logo .logo-img {
-    width: 60px;
+    width: 80px;
     margin-right: 15px;
 }
 
@@ -44,7 +44,7 @@ header .logo .logo-text {
 header .logo .logo-text span {
     display: block;
     font-weight: bold;
-    color: black;
+    color: white;
 }
 
 header nav ul {
@@ -55,7 +55,7 @@ header nav ul {
 
 header nav ul li a {
     text-decoration: none;
-    color: black;
+    color: white;
     font-weight: bold;
 }
 
@@ -120,7 +120,7 @@ main {
 }
 
 .form-control:focus {
-    border-color: #497086;
+    border-color: #921b49b8;
     box-shadow: none;
     outline: none;
 }
@@ -132,7 +132,7 @@ main {
 .button {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #497086;
+    background-color: #921b49b8;
     color: white;
     text-decoration: none;
     border-radius: 5px;

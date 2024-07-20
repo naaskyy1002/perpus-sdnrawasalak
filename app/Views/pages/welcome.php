@@ -24,7 +24,7 @@
 <body>
     <header class="header fixed-top d-flex align-items-center">
         <div class="logo d-flex align-items-center">
-            <img src="<?= base_url('assets/img/LOGO-BARU.png') ?>" alt="Logo SD" class="logo-img">
+            <img src="<?= base_url('assets/img/LOGO-BARU-RAWASALAK-2024.png') ?>" alt="Logo SD" class="logo-img">
             <div class="logo-text d-flex flex-column text-center">
               <span class="d-none d-lg-block">SD NEGERI RAWASALAK</span>
               <span class="d-none d-lg-block">E-LIBRARY</span>

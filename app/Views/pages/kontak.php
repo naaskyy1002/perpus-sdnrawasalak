@@ -25,7 +25,7 @@
 <body>
   <header class="header fixed-top d-flex align-items-center">
       <div class="logo d-flex align-items-center">
-          <img src="<?= base_url('assets/img/LOGO-BARU.png') ?>" alt="Logo SD" class="logo-img">
+          <img src="<?= base_url('assets/img/LOGO-BARU-RAWASALAK-2024.png') ?>" alt="Logo SD" class="logo-img">
           <div class="logo-text d-flex flex-column text-center">
             <span class="d-none d-lg-block">SD NEGERI RAWASALAK</span>
             <span class="d-none d-lg-block">E-LIBRARY</span>
@@ -57,25 +57,26 @@
             </div>
             <div class="col-lg-6">
               <div class="info-box card">
+                <i class="bi bi-clock"></i>
+                <h3>Jam Buka</h3>
+                <p>Senin - Sabtu<br>08:00 - 14:00</p>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="info-box card">
                 <i class="bi bi-telephone"></i>
                 <h3>Hubungi Kami</h3>
-                <p>+1 5589 55488 55<br>+1 6678 254445 41</p>
+                <p> +62 858-1711-3864</p>
               </div>
             </div>
             <div class="col-lg-6">
               <div class="info-box card">
                 <i class="bi bi-envelope"></i>
                 <h3>Email Kami</h3>
-                <p>info@example.com<br>contact@example.com</p>
+                <p>sdnegerirawasalak@gmail.com</p>
               </div>
             </div>
-            <div class="col-lg-6">
-              <div class="info-box card">
-                <i class="bi bi-clock"></i>
-                <h3>Jam Buka</h3>
-                <p>Senin - Sabtu<br>08:00 - 14:00</p>
-              </div>
-            </div>
+            
           </div>
 
         </div>

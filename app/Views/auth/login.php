@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,10 +23,11 @@
   <link href="<?= base_url('assets/css/masuk.css') ?>" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqk1wZxUp/M5JqYmfL5t+SzJMCfgh84dIx0n0B+7N5qG250TqeCyABrAOq+IRcTxhgmZXt8+g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
   <header class="header fixed-top d-flex align-items-center">
       <div class="logo d-flex align-items-center">
-          <img src="<?= base_url('assets/img/LOGO-BARU.png') ?>" alt="Logo SD" class="logo-img">
+          <img src="<?= base_url('assets/img/LOGO-BARU-RAWASALAK-2024.png') ?>" alt="Logo SD" class="logo-img">
           <div class="logo-text d-flex flex-column text-center">
             <span class="d-none d-lg-block">SD NEGERI RAWASALAK</span>
             <span class="d-none d-lg-block">E-LIBRARY</span>
@@ -39,14 +41,16 @@
           </ul>
       </nav>
   </header>
-  <main>
-      <div class="col-md-6 d-flex align-items-center">
-        <div class="illustration">
-            <img src="<?= base_url('assets/img/BUKU.png') ?>" alt="Illustration" class="img-fluid">
-          </div>
+
+  <main class="container px-0" style="max-width: 1200px;">
+    <div class="row w-100">
+      <div class="col-12 col-md-6 d-flex justify-content-center align-items-center mt-5 mt-md-0">
+        <div class="illustration" style="margin-left: -5px;">
+          <img src="<?= base_url('assets/img/BUKU.png') ?>" alt="Illustration" class="img-fluid" style="max-width: 555px;">
         </div>
-        <div class="container">
-            <div class="col-md-12 mb-12">
+      </div>
+
+            <div class="col-12 col-md-6 d-flex justify-content-center align-items-center">
               <div class="card">
                 <div class="card-body">
                   <h3 class="mb-4 text-center heading">SDN RAWASALAK</h3>

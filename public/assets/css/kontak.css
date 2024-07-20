@@ -9,7 +9,7 @@
 }
 
 body {
-    background: linear-gradient(to right, #e9d6b1, #497086);
+    background: linear-gradient(to right, #a8937abb, #921b49b8);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -33,7 +33,7 @@ header .logo {
 }
 
 header .logo .logo-img {
-    width: 60px;
+    width: 80px;
     margin-right: 15px;
 }
 
@@ -44,7 +44,7 @@ header .logo .logo-text {
 header .logo .logo-text span {
     display: block;
     font-weight: bold;
-    color: black;
+    color: white;
 }
 
 header nav ul {
@@ -55,7 +55,7 @@ header nav ul {
 
 header nav ul li a {
     text-decoration: none;
-    color: black;
+    color: white;
     font-weight: bold;
 }
 
@@ -96,18 +96,18 @@ main {
     background: white;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    padding: 28px;
+    padding: 16px;
 }
   
 .contact .info-box i {
     font-size: 38px;
     line-height: 0;
-    color: #4154f1;
+    color: #921b49b8;
 }
   
 .contact .info-box h3 {
     font-size: 20px;
-    color: #012970;
+    color: #921b49b8;
     font-weight: 700;
     margin: 20px 0 10px 0;
 }
@@ -169,7 +169,7 @@ main {
   
 .contact .php-email-form input:focus,
 .contact .php-email-form textarea:focus {
-    border-color: #4154f1;
+    border-color: #921b49b8;
 }
   
 .contact .php-email-form input {
@@ -181,7 +181,7 @@ main {
 }
   
 .contact .php-email-form button[type=submit] {
-    background: #4154f1;
+    background: #921b49b8;
     border: 0;
     padding: 10px 30px;
     color: #fff;
@@ -190,7 +190,7 @@ main {
 }
   
 .contact .php-email-form button[type=submit]:hover {
-    background: #5969f3;
+    background: #921b49b8;
 }
   
 @keyframes animate-loading {
@@ -209,4 +209,5 @@ footer {
     width: 100%;
     position: fixed;
     bottom: 0;
+    color: white;
 }

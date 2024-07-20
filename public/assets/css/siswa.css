@@ -7,7 +7,7 @@
 
 body {
     font-family: "Open Sans", sans-serif;
-    background: linear-gradient(to right, #e9d6b1, #497086);
+    background: linear-gradient(to right, #a8937abb, #921b49b8);
     color: #444444;
     display: flex;
     flex-direction: column;
@@ -80,7 +80,7 @@ h6 {
     z-index: 997;
     height: 60px;
     box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.1);
-    background-color: #355161;
+    background-color: #b06581;
     padding-left: 20px;
 }
 
@@ -197,7 +197,7 @@ h6 {
     align-items: center;
     font-size: 15px;
     font-weight: 600;
-    color: #1a144f;
+    color: #921b49b8;
     transition: 0.3;
     padding: 10px 15px;
     border-radius: 4px;
@@ -269,7 +269,7 @@ h6 {
     align-items: center;
     font-size: 14px;
     font-weight: 600;
-    color: #1a144f;
+    color: #921b49b8;
     transition: 0.3;
     padding: 10px 10px;
     border-radius: 4px;
@@ -278,25 +278,25 @@ h6 {
 .sidebar-nav .nav-link i {
     font-size: 16px;
     margin-right: 10px;
-    color: #4154f1;
+    color: #921b49b8;
 }
 
 .sidebar-nav .nav-link.collapsed {
-    color: #012970;
+    color: #921b49b8;
     background: #fff;
 }
 
 .sidebar-nav .nav-link.collapsed i {
-    color: #899bbd;
+    color: #921b49b8;
 }
 
 .sidebar-nav .nav-link:hover {
-    color: #4154f1;
+    color: black;
     background: #f6f9ff;
 }
 
 .sidebar-nav .nav-link:hover i {
-    color: #4154f1;
+    color: black;
 }
 
 .sidebar-nav .nav-link .bi-chevron-down {
@@ -319,7 +319,7 @@ h6 {
     align-items: center;
     font-size: 14px;
     font-weight: 600;
-    color: #012970;
+    color: #921b49b8;
     transition: 0.3;
     padding: 10px 0 10px 40px;
     transition: 0.3s;
@@ -327,11 +327,11 @@ h6 {
 
 .sidebar-nav .nav-content a:hover,
 .sidebar-nav .nav-content a.active {
-    color: #4154f1;
+    color: black;
 }
 
 .sidebar-nav .nav-content a.active i {
-    background-color: #4154f1;
+    background-color: black;
 }
 
 /*--------------------------------------------------------------
@@ -345,32 +345,32 @@ h6 {
     font-size: 24px;
     margin-bottom: 0;
     font-weight: 600;
-    color: #012970;
+    color: white;
   }
 
 /* Breadcrumbs */
 .breadcrumb {
     font-size: 14px;
     font-family: "Open Sans", sans-serif;
-    color: #899bbd;
+    color: white;
     font-weight: 600;
   }
   
   .breadcrumb a {
-    color: #899bbd;
+    color: white;
     transition: 0.3s;
   }
   
   .breadcrumb a:hover {
-    color: #51678f;
+    color: #921b49b8;
   }
   
   .breadcrumb .breadcrumb-item::before {
-    color: #899bbd;
+    color: white;
   }
   
   .breadcrumb .active {
-    color: #51678f;
+    color: white;
     font-weight: 600;
   }
 

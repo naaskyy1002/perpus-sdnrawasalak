@@ -17,7 +17,7 @@
     <div class="card shadow mb-4"> 
     <div class="card-header py-3 d-flex justify-content-between align-items-center">
     <a class="btn btn-primary ms-auto" href="#editModal" data-bs-toggle="modal" data-bs-target="#editModal"> <!--data-target harus sama sama id modal, bedanya tambah #-->
-    <i class="bi bi-pencil"></i>   Edit </a>
+    <i class="bi bi-pencil"></i>   Edit</a>
     </div>
     <div class="card-body">
         <!-- <div class="table-responsive"> -->

@@ -114,12 +114,12 @@
         </li>
         <li>
           <a href=<?= base_url('admin/peminjaman');?>>
-            <i class="ri-folder-shared-line"></i><span>Peminjaman Buku</span>
+            <i class="ri-folder-shared-line"></i><span>Data Peminjaman</span>
           </a>
         </li>
         <li>
           <a href=<?= base_url('admin/peminjaman');?>>
-            <i class="ri-folder-received-line"></i><span>Pengembalian Buku</span>
+            <i class="ri-folder-received-line"></i><span>Data Pengembalian</span>
           </a>
         </li>        
       </ul>
@@ -127,7 +127,7 @@
 
     <li class="nav-item">
       <a class="nav-link" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-        <i class="ri-contacts-book-2-line"></i><span>Data Pengguna</span><i class="bi bi-chevron-down ms-auto"></i>
+        <i class="ri-contacts-book-2-line"></i><span>Data Data Pengguna</span><i class="bi bi-chevron-down ms-auto"></i>
       </a>
       <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li>

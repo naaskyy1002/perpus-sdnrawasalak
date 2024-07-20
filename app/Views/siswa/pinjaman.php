@@ -6,8 +6,8 @@
       <h1>Pinjaman Terkini</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="<?= base_url('user'); ?>">Buku</a></li>
-          <li class="breadcrumb-item">Peminjaman</li>
+          <li class="breadcrumb-item"><a href="<?= base_url('user'); ?>">Koleksi Buku</a></li>
+          <li class="breadcrumb-item">Pinjaman Terkini</li>
         </ol>
       </nav>
     </div>

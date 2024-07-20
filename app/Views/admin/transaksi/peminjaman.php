@@ -3,11 +3,12 @@
 
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>Peminjaman dan Pengembalian Buku</h1>
+      <h1>Data Peminjaman</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href=<?=base_url('admin');?>>Beranda</a></li>
-          <li class="breadcrumb-item">Peminjaman</li>
+          <li class="breadcrumb-item">Data Data Buku</li>
+          <li class="breadcrumb-item">Data Peminjaman</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->

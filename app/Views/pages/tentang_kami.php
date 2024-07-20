@@ -28,7 +28,7 @@
 <body>
     <header id="header" class="header fixed-top d-flex align-items-center">
         <div class="logo d-flex align-items-center">
-            <img src="<?= base_url('assets/img/LOGO-BARU.png') ?>" alt="Logo SD" class="logo-img">
+            <img src="<?= base_url('assets/img/LOGO-BARU-RAWASALAK-2024.png') ?>" alt="Logo SD" class="logo-img">
             <div class="logo-text d-flex flex-column text-center">
               <span class="d-none d-lg-block">SD NEGERI RAWASALAK</span>
               <span class="d-none d-lg-block">E-LIBRARY</span>
@@ -50,7 +50,7 @@
 		<div class="h1 text-center text-dark" id="pageHeaderTitle">SEJARAH SDN RAWASALAK</div>
             <article class="postcard light blue">
                 <a class="postcard__img_link" href="#">
-                    <img class="postcard__img" src="<?= base_url('assets/img/LOGO-BARU.png')?>" alt="Image Title" />
+                    <img class="postcard__img" src="<?= base_url('assets/img/LOGO-BARU-RAWASALAK-2024.png')?>" alt="Image Title" />
                 </a>
                 <div class="postcard__text t-dark">
                     <h1 class="postcard__title blue"><a href="#">SD NEGERI RAWASALAK</a></h1>
@@ -68,23 +68,78 @@
     <div class="container py-2">
 		<div class="h1 text-center text-dark" id="pageHeaderTitle">VISI DAN MISI</div>
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-6">    
                     <article class="postcard light blue">
-                        <div class="h1 text-center text-dark">VISI</div>
-                        <div class="resume-item pb-0">
-                            <h4>SMP Negeri 6 Kota Sukabumi</h4>
+                        <div class="postcard__text t-dark">
+                        <div class="postcard__title blue text-center">VISI</div>
+                            <div class="postcard__preview-txt text-center">
+                                Terwujudnya Siswa yang Beriman Kepada Tuhan Yang Maha Esa, Berakhlak Mulia, Mandiri, Cerdas, dan Kreatif
+                            </div>
                         </div>
                     </article>
                 </div>
                 <div class="col-lg-6">
                     <article class="postcard light blue">
-                    <div class="h1 text-center text-dark">MISI</div>
-                        <div class="resume-item pb-0">
-                            <h4>SMP Negeri 6 Kota Sukabumi</h4>
+                        <div class="postcard__text t-dark">
+                        <div class="postcard__title blue text-center">MISI</div>
+                            <div class="postcard__preview-txt">
+                                <ul>
+                                    <li>Meningkatkan Iman dan Taqwa serta Berakhlak Mulia</li>
+                                    <li>Membentuk siswa yang berkarakter dan berperilaku baik</li>
+                                    <li>Membiasakan diri hidup bertoleransi dengan warga sekolah</li>
+                                    <li>Membiasakan perilaku Hidup Bersih dan Sehat (PHBS)</li>
+                                    <li>Memberikan pelayanan terhadap warga sekolah dalam meningkatkan pengembangan belajar secara efisien dan efektif</li>
+                                    <li>Memberikan layanan bagi siswa yang berkebutuhan khusus untuk diterima ke sekolah lanjutan</li>
+                                    <li>Memotivasi siswa untuk meningkatkan prestasi akademik dan non akademik</li>
+                                </ul>
+                            </div>
                         </div>
                     </article>
                 </div>
 	        </div>
+        </div>
+    </div>
+
+    <div class="container py-2">
+    <div class="h1 text-center text-dark" id="pageHeaderTitle">TUJUAN DAN STRATEGI</div>
+            <div class="row">
+                <div class="col-lg-6"> 
+                    <article class="postcard light blue">
+                        <div class="postcard__text t-dark">
+                        <div class="postcard__title blue text-center">TUJUAN</div>
+                            <div class="postcard__preview-txt">
+                                <ul>
+                                    <li>Membentuk siswa yang beriman, santun, dan berakhlak mulia</li>
+                                    <li>Merancang program sekolah untuk mengenalkan implementasi Profil Pelajar Pancasila</li>
+                                    <li>Menerapkan pondasi mandiri dalam kegiatan kelas hingga sekolah</li>
+                                    <li>Menciptakan siswa yang kreatif, terampil, dan dapat mengembangkan diri</li>
+                                    <li>Meningkatkan kompetensi yang sehat, baik dalam bidang Akademik dan Non Akademik</li>
+                                    <li>Meraih juara dalam lomba Pentas PAI, Calistung, MIPA, KOSN, FL2SN, dan Literasi</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </article>
+	            </div>
+                <div class="col-lg-6"> 
+                    <article class="postcard light blue">
+                        <div class="postcard__text t-dark">
+                        <div class="postcard__title blue text-center">STRATEGI</div>
+                        <div class="postcard__preview-txt">
+                            <ul>
+                                <li>Membiasakan berdoa sebelum belajar, sesudah belajar, dan mengucapkan salam setiap hari</li>
+                                <li>Membiasakan membaca Al-Quran surat-surat pendek dan buku perpustakaan (literasi) setiap hari sebelum pembelajaran dimulai</li>
+                                <li>Membiasakan menyanyikan lagu “Indonesia Raya” sebelum pelajaran dimulai</li>
+                                <li>Melaksanakan shalat Dzuhur berjamaah</li>
+                                <li>Melaksanakan kegiatan keagamaan setiap hari Jumat</li>
+                                <li>Menerapkan disiplin dalam berpakaian di sekolah</li>
+                                <li>Mewajibkan peserta didik mengikuti upacara bendera setiap hari Senin dan upacara hari lainnya</li>
+                                <li>Mewajibkan peserta didik mengikuti ekstrakurikuler Pramuka setiap hari Sabtu dan Olahraga</li>
+                                <li>Membina peserta didik untuk mengikuti lomba Pentas PAI, Calistung, MIPA, KOSN, FL2SN, dan Literasi</li>
+                            </ul>
+                        </div>
+                    </article>
+	            </div>
+            </div>
         </div>
     </div>
 
@@ -203,8 +258,42 @@
 
 </section>
 </main>
-<footer>
+
+<footer class="text-center bg-body-tertiary">
+  <div class="container pt-4">
+    <section class="mb-4">
+      <!-- Facebook -->
+      <a
+        data-mdb-ripple-init
+        class="btn btn-link btn-floating btn-lg text-body m-1"
+        href="https://www.facebook.com/sdn.rawasalak?mibextid=ZbWKwL"
+        role="button"
+        data-mdb-ripple-color="dark"
+        ><i class="bi bi-facebook"></i
+      ></a>
+
+      <!-- Instagram -->
+      <a
+        data-mdb-ripple-init
+        class="btn btn-link btn-floating btn-lg text-body m-1"
+        href="https://www.instagram.com/sdnrawasalak_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+        role="button"
+        data-mdb-ripple-color="dark"
+        ><i class="bi bi-instagram"></i
+      ></a>
+
+      <!-- YouTube -->
+      <a
+        data-mdb-ripple-init
+        class="btn btn-link btn-floating btn-lg text-body m-1"
+        href="https://youtube.com/@sdnegerirawasalak8805?si=ZcdSeBzbPTnCKRC5"
+        role="button"
+        data-mdb-ripple-color="dark"
+        ><i class="bi bi-youtube"></i
+      ></a>
+    </section>
     <span>Copyright &copy; <text class="text-primary">SDN Rawasalak</text> <?=date('Y')?></span>
+  </div>
 </footer>
 
 </body>
