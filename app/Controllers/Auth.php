@@ -9,6 +9,7 @@ class Auth extends BaseController
 
     public function __construct()
     {
+        // Menginisialisasi sesi di konstruktor
         $this->session = \Config\Services::session();
     }
 
@@ -38,7 +39,7 @@ class Auth extends BaseController
         
         if ($user_check) {
             if ($user_check['password'] != $password) { 
-                session()->setFlashdata('login_fail', 'Password salah!');
+                $this->session->setFlashdata('login_fail', 'Password salah!');
                 return redirect()->to('login');
             }
             if ($user_check['level'] == 1) {
@@ -55,7 +56,7 @@ class Auth extends BaseController
             $siswa_check = $Login->getSiswa($username);
             if ($siswa_check) {
                 if ($siswa_check['password'] != $password) {
-                    session()->setFlashdata('login_fail', 'Password salah!');
+                    $this->session->setFlashdata('login_fail', 'Password salah!');
                     return redirect()->to('login');
                 }
                 $sessLogin = [
@@ -67,7 +68,7 @@ class Auth extends BaseController
                 $this->session->set($sessLogin);
                 return redirect()->to('siswa');
             } else {
-                session()->setFlashdata('login_fail', 'Username tidak ditemukan!');
+                $this->session->setFlashdata('login_fail', 'Username tidak ditemukan!');
                 return redirect()->to('login');
             }
         }

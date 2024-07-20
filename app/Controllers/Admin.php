@@ -43,7 +43,7 @@ class Admin extends BaseController
             'total_buku' => $this->adminModel->totalBuku(),
             'total_bkr' => $this->adminModel->totalBkr(),
             'total_pinjam' => $this->adminModel->totalPinjam(),
-            // 'total_kembali' => $this->adminModel->totalKemabli(),
+            'total_kembali' => $this->adminModel->totalKembali(),
         ];
 
         return view('admin/body', $data);
@@ -81,6 +81,19 @@ class Admin extends BaseController
         return view('admin/maindata/data_admin', $data);
     }
 
+    public function profil_admin()
+    {
+    $username = $this->session->get('username');
+    $profil = $this->adminModel->getAdmin();
+    $data = [
+        'title' => 'PROFIL SAYA',
+        'profil' => $profil,
+    ];
+    return view('admin/profil_admin', $data);
+    }
+
+
+
     public function addAdmin() 
     {
         $validation = $this->validate([
@@ -99,6 +112,10 @@ class Admin extends BaseController
         // Ambil data dari request
         $nip = $this->request->getPost('a_nip');
         $nama = $this->request->getPost('a_nama');
+        $dob = $this->request->getPost('a_dob');
+        $alamat = $this->request->getPost('a_alamat');
+        $telepon = $this->request->getPost('a_telepon');
+        $email = $this->request->getPost('a_email');
         $jabatan = $this->request->getPost('a_jabatan');
         $username = $this->request->getPost('a_username');
         $password = $this->request->getPost('a_password');
@@ -116,6 +133,10 @@ class Admin extends BaseController
         $data = [
             'nip' => $nip,
             'nama_lengkap' => $nama,
+            'dob' => $dob,
+            'alamat' => $alamat,
+            'telp' => $telepon,
+            'email' => $email,
             'jabatan' => $jabatan,
             'foto' => $fotoName,
             'username' => $username,
@@ -143,6 +164,10 @@ class Admin extends BaseController
         $id = $this->request->getPost('e_nip');
         $nip = $this->request->getPost('e_nip');
         $nama = $this->request->getPost('e_namalengkap');
+        $dob = $this->request->getPost('e_dob');
+        $alamat = $this->request->getPost('e_alamat');
+        $telepon = $this->request->getPost('e_telepon');
+        $email = $this->request->getPost('e_email');
         $jabatan = $this->request->getPost('e_jabatan');
         $username = $this->request->getPost('e_username');
         $password = $this->request->getPost('e_password');
@@ -151,6 +176,10 @@ class Admin extends BaseController
         $data = [
             'nip' => $nip,
             'nama_lengkap' => $nama,
+            'dob' => $dob,
+            'alamat' => $alamat,
+            'telp' => $telepon,
+            'email' => $email,
             'jabatan' => $jabatan,
             'username' => $username,
             'password' => $password,
@@ -209,13 +238,6 @@ class Admin extends BaseController
     
         return redirect()->to('/admin/dataAdmin');
     }
-
-    
-        public function profil_admin()
-        {
-            return view('admin/profil_admin');
-        }
-
         
                 // public function data_guru()
                 // {

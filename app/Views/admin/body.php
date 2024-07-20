@@ -82,7 +82,7 @@
                     <i class="ri-folder-received-line"></i>
                   </div>
                   <div class="ps-3">
-                    <h6>1</h6>
+                    <h6><?=$total_kembali;?></h6>
                     <a href=<?=base_url('admin/pengembalian');?> class="card-link detail-link">Lihat Detail</a>
                   </div>
                 </div>

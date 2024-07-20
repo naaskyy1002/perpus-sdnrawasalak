@@ -83,6 +83,10 @@
                       data-vfoto="<?= base_url('assets/img/admin/' . $adm['foto']);?>"
                       data-vnip="<?=$adm['nip'];?>"
                       data-vnamalengkap="<?=$adm['nama_lengkap'];?>"
+                      data-vdob="<?=$adm['dob'];?>"
+                      data-valamat="<?=$adm['alamat'];?>"
+                      data-vtelepon="<?=$adm['telp'];?>"
+                      data-vemail="<?=$adm['email'];?>"
                       data-vjabatan="<?=$adm['jabatan'];?>"
                       data-vusername="<?=$adm['username'];?>"
                       data-vpassword="<?=$adm['password'];?>">
@@ -93,6 +97,10 @@
                       data-efoto="<?= base_url('assets/img/admin/' . $adm['foto']);?>"
                       data-enip="<?=$adm['nip'];?>"
                       data-enamalengkap="<?=$adm['nama_lengkap'];?>"
+                      data-edob="<?=$adm['dob'];?>"
+                      data-ealamat="<?=$adm['alamat'];?>"
+                      data-etelepon="<?=$adm['telp'];?>"
+                      data-eemail="<?=$adm['email'];?>"
                       data-ejabatan="<?=$adm['jabatan'];?>"
                       data-eusername="<?=$adm['username'];?>"
                       data-epassword="<?=$adm['password'];?>">
@@ -129,11 +137,27 @@
             </div>
             <div class="col-12">
               <label for="NIP">NIP</label>
-              <input type="text" name="a_nip" class="form-control" id="NIP" required/>
+              <input type="number" name="a_nip" class="form-control" id="NIP" required/>
             </div>
             <div class="col-12">
               <label for="Nama">Nama</label>
               <input type="text" name="a_nama" class="form-control" id="Nama" required/>
+            </div>
+            <div class="col-12">
+              <label for="dob">Tanggal Lahir</label>
+              <input type="date" name="a_dob" class="form-control" id="dob" required/>
+            </div>
+            <div class="col-12">
+              <label for="Alamat">Alamat</label>
+              <input type="text" name="a_alamat" class="form-control" id="Alamat" required/>
+            </div>
+            <div class="col-12">
+              <label for="Telepon">Handphone</label>
+              <input type="number" name="a_telepon" class="form-control" id="Telepon" required/>
+            </div>
+            <div class="col-12">
+              <label for="Email">Email</label>
+              <input type="email" name="a_email" class="form-control" id="Email" required/>
             </div>
             <div class="col-12">
               <label for="Jabatan">Jabatan</label>
@@ -192,6 +216,22 @@
               <input type="text" class="form-control" id="vnamalengkap" disabled/>
             </div>
             <div class="col-12">
+              <label for="Dob">Tanggal Lahir</label>
+              <input type="text" class="form-control" id="vdob" disabled/>
+            </div>
+            <div class="col-12">
+              <label for="Alamat">Alamat</label>
+              <input type="text" class="form-control" id="valamat" disabled/>
+            </div>
+            <div class="col-12">
+              <label for="Telepon">Handphone</label>
+              <input type="text" class="form-control" id="vtelepon" disabled/>
+            </div>
+            <div class="col-12">
+              <label for="Email">Email</label>
+              <input type="text" class="form-control" id="vemail" disabled/>
+            </div>
+            <div class="col-12">
               <label for="Jabatan">Jabatan</label>
               <input type="text" class="form-control" id="vjabatan" disabled/>
             </div>
@@ -228,6 +268,18 @@
 
             var vnamalengkap = $(this).data('vnamalengkap');
             $("#vnamalengkap").val(vnamalengkap);
+
+            var vdob = $(this).data('vdob');
+            $("#vdob").val(vdob);
+            
+            var valamat = $(this).data('valamat');
+            $("#valamat").val(valamat);
+            
+            var vtelepon = $(this).data('vtelepon');
+            $("#vtelepon").val(vtelepon);
+
+            var vemail = $(this).data('vemail');
+            $("#vemail").val(vemail);
 
             var vjabatan = $(this).data('vjabatan');
             $("#vjabatan").val(vjabatan);
@@ -272,6 +324,22 @@
             <div class="col-12">
               <label>Nama</label>
               <input type="text" class="form-control" id="enamalengkap" name="e_namalengkap" required/>
+            </div>
+            <div class="col-12">
+              <label>Tanggal lahir</label>
+              <input type="date" class="form-control" id="edob" name="e_dob" required/>
+            </div>
+            <div class="col-12">
+              <label>Alamat</label>
+              <input type="text" class="form-control" id="ealamat" name="e_alamat" required/>
+            </div>
+            <div class="col-12">
+              <label>Handphone</label>
+              <input type="text" class="form-control" id="etelepon" name="e_telepon" required/>
+            </div>
+            <div class="col-12">
+              <label>Email</label>
+              <input type="text" class="form-control" id="eemail" name="e_email" required/>
             </div>
             <div class="col-12">
               <label>Jabatan</label>
@@ -327,6 +395,18 @@
 
             var enamalengkap = $(this).data('enamalengkap');
             $("#enamalengkap").val(enamalengkap);
+
+            var edob = $(this).data('edob');
+            $("#edob").val(edob);
+
+            var ealamat = $(this).data('ealamat');
+            $("#ealamat").val(ealamat);
+
+            var etelepon = $(this).data('etelepon');
+            $("#etelepon").val(etelepon);
+
+            var eemail = $(this).data('eemail');
+            $("#eemail").val(eemail);
 
             var ejabatan = $(this).data('ejabatan');
             $("#ejabatan").val(ejabatan);

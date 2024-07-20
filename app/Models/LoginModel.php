@@ -14,6 +14,7 @@ class LoginModel extends Model
     protected $tableSiswa = 'siswa'; // Tabel siswa
     protected $primaryKeySiswa = 'nisn';
     protected $allowedFieldsSiswa = ['username', 'password', 'role', 'nama_lengkap'];
+    
     public function getAdmin($username)
     {
         return $this->db->table($this->tableAdmin)
