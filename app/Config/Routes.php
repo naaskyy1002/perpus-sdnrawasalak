@@ -44,6 +44,10 @@ $routes->group('admin', function($routes) {
     $routes->post('editAdmin', 'Admin::editAdmin');
     $routes->post('deleteAdmin', 'Admin::deleteAdmin');
     $routes->get('dataGuru', 'Admin::data_guru');
+    $routes->post('dataGuru', 'Admin::data_guru');
+    $routes->post('addGuru', 'Admin::addGuru');
+    $routes->post('editGuru', 'Admin::editGuru');
+    $routes->post('deleteGuru', 'Admin::deleteGuru');
 
     // DATA SISWA
     $routes->get('dataSiswa', 'Siswa::data_siswa');
