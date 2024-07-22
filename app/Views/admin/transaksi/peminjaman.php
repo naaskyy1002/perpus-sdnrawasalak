@@ -59,19 +59,6 @@
       <section class="section">
         <div class="col-lg-12">
           <div class="row mb-3">
-            <div class="col-sm-12 col-md-6">
-              <div class="dataTables_length" id="dataTable_length">
-                <label>
-                  <select name="dataTable_length" aria-controls="dataTable" class="custom-select-sm form-control form-control-sm">
-                    <option value="10">10</option>
-                    <option value="25">25</option>
-                    <option value="50">50</option>
-                    <option value="100">100</option>
-                  </select>
-                  entri
-                </label>
-              </div>
-            </div>
             <div class="col-sm-12 col-md-6 text-right">
               <form action="" method="post">
                 <div class="input-group mb-3">
@@ -197,7 +184,20 @@
             var idtransaksi = $(this).data('idtransaksi');
             $("#idtransaksi").val(idtransaksi);
         });
-    </script>
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const doneLinks = document.querySelectorAll('.doneModalid');
+        doneLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                const idTransaksi = this.getAttribute('data-idtransaksi');
+                document.getElementById('idtransaksi').value = idTransaksi;
+            });
+        });
+    });
+  </script>
+
 
   <!-- Delete Modal -->
   <div class="modal fade" id="deleteModal">
@@ -209,7 +209,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                     <form method="post" action="deleteTransaksi">
-                        <input type="hidden" id="idtransaksi" name="id_transaksi">
+                        <input type="hidden" id="idtransaksi" name="idtransaksi">
                         <button type="submit" class="btn btn-danger">Hapus</button>
                     </form>
                 </div>

@@ -25,19 +25,6 @@
             <div class="table-title">
               <div class="row mb-3">
                 <div class="col-sm-12 col-md-6">
-                  <div class="dataTables_length" id="dataTable_length">
-                    <label>
-                      <select name ="dataTable_length" aria-controls="dataTable" class="custom-select-sm from-control from-control-sm">
-                        <option value="10">10</option>
-                        <option value="25">25</option>
-                        <option value="50">50</option>
-                        <option value="100">100</option>
-                      </select>
-                        entri
-                    </label>
-                  </div>
-                </div>
-                <div class="col-sm-12 col-md-6 text-right">
                   <form action="" method="post">
                     <div class="input-group mb-3">
                       <input type="text" class="form-control" placeholder="Masukkan keyword pencarian" name="keyword">
@@ -86,9 +73,7 @@
                       data-valamat="<?=$gr['alamat'];?>"
                       data-vtelepon="<?=$gr['telp'];?>"
                       data-vemail="<?=$gr['email'];?>"
-                      data-vjabatan="<?=$gr['jabatan'];?>"
-                      data-vusername="<?=$gr['username'];?>"
-                      data-vpasgrord="<?=$gr['password'];?>">
+                      data-vjabatan="<?=$gr['jabatan'];?>">
                       <i class="bi bi-eye"></i>
                     </a>
                     <a href="#" class="editModalid" title="Edit" data-bs-toggle="modal" data-bs-target="#editModal"
@@ -100,9 +85,7 @@
                       data-ealamat="<?=$gr['alamat'];?>"
                       data-etelepon="<?=$gr['telp'];?>"
                       data-eemail="<?=$gr['email'];?>"
-                      data-ejabatan="<?=$gr['jabatan'];?>"
-                      data-eusername="<?=$gr['username'];?>"
-                      data-epassword="<?=$gr['password'];?>">
+                      data-ejabatan="<?=$gr['jabatan'];?>">
                     <i class="bi bi-pencil"></i></a>
                     <a href="#" data-bs-toggle="modal" data-bs-target="#deleteModal" class="deleteModalid"
                         data-nip="<?=$gr['nip'];?>">
@@ -161,14 +144,6 @@
             <div class="col-12">
               <label for="Jabatan">Jabatan</label>
               <input type="text" name="a_jabatan" class="form-control" id="Jabatan" required/>
-            </div>
-            <div class="col-12">
-              <label for="Username">Username</label>
-              <input type="text" name="a_username" class="form-control" id="Username" required/>
-            </div>
-            <div class="col-12">
-              <label for="Password">Password</label>
-              <input type="password" name="a_password" class="form-control" id="Password" required/>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
@@ -234,20 +209,6 @@
               <label for="Jabatan">Jabatan</label>
               <input type="text" class="form-control" id="vjabatan" disabled/>
             </div>
-            <div class="col-12">
-              <label for="Username">Username</label>
-              <input type="text" class="form-control" id="vusername" disabled/>
-            </div>
-            <div class="col-12">
-              <label for="Password">Password</label>
-              <div class="input-group">
-                <input type="password" class="form-control" id="vpassword" disabled/>
-                <span class="input-group-text" id="togglePassword" style="cursor: pointer;">
-                  <i class="bi bi-eye" id="eyeIcon"></i>
-                </span>
-              </div>
-            </div>
-
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
             </div>
@@ -283,26 +244,7 @@
             var vjabatan = $(this).data('vjabatan');
             $("#vjabatan").val(vjabatan);
 
-            var vusername = $(this).data('vusername');
-            $("#vusername").val(vusername);
-
-            var vpassword = $(this).data('vpassword');
-            $("#vpassword").val(vpassword);
-
             $('#viewModal').modal('show');
-        });
-
-        // Toggle password visibility
-        $('#togglePassword').on('click', function () {
-            const passwordInput = $('#vpassword');
-            const eyeIcon = $('#eyeIcon');
-            if (passwordInput.attr('type') === 'password') {
-                passwordInput.attr('type', 'text');
-                eyeIcon.removeClass('bi-eye').addClass('bi-eye-slash');
-            } else {
-                passwordInput.attr('type', 'password');
-                eyeIcon.removeClass('bi-eye-slash').addClass('bi-eye');
-            }
         });
   </script>
 
@@ -343,19 +285,6 @@
             <div class="col-12">
               <label>Jabatan</label>
               <input type="text" class="form-control" id="ejabatan" name="e_jabatan" required/>
-            </div>
-            <div class="col-12">
-              <label>Username</label>
-              <input type="text" class="form-control" id="eusername" name="e_username" required/>
-            </div>
-            <div class="col-12">
-              <label>Password</label>
-              <div class="input-group">
-                <input type="password" class="form-control" id="epassword" name="e_password" required/>
-                <span class="input-group-text" id="togglePassword" style="cursor: pointer;">
-                  <i class="bi bi-eye" id="eyeIcon"></i>
-                </span>
-              </div>
             </div>
             <div class="form-group">
               <label>Foto Bukti (.jpg / .png / .jpeg) <br><i>abaikan jika tidak ingin mengubah</i></label>
@@ -410,26 +339,7 @@
             var ejabatan = $(this).data('ejabatan');
             $("#ejabatan").val(ejabatan);
 
-            var eusername = $(this).data('eusername');
-            $("#eusername").val(eusername);
-
-            var epassword = $(this).data('epassword');
-            $("#epassword").val(epassword);
-
             $('#editModal').modal('show');
-        });
-
-        // Toggle password visibility
-        $('#togglePassword').on('click', function () {
-            const passwordInput = $('#epassword');
-            const eyeIcon = $('#eyeIcon');
-            if (passwordInput.attr('type') === 'password') {
-                passwordInput.attr('type', 'text');
-                eyeIcon.removeClass('bi-eye').addClass('bi-eye-slash');
-            } else {
-                passwordInput.attr('type', 'password');
-                eyeIcon.removeClass('bi-eye-slash').addClass('bi-eye');
-            }
         });
   </script>
 
@@ -459,19 +369,6 @@
     </script>
 
     <script>
-            function ImgFile(input) {
-                const file = input.files[0];
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const previewImage = document.getElementById('previewImage');
-                    previewImage.src = e.target.result;
-                    previewImage.style.display = 'block';
-                };
-                reader.readAsDataURL(file);
-            }
-    </script>
-
-    <script>
         // Function to hide element after 5 seconds
         function hideAfterDelay(elementId) {
             const element = document.getElementById(elementId);
@@ -488,8 +385,6 @@
         // Hide error message after 5 seconds
         hideAfterDelay('error-message');
     </script>
-
-
 
   </main><!-- End #main -->
 <?=$this->endSection()?>

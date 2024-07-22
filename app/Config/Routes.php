@@ -21,6 +21,7 @@ $routes->group('admin', function($routes) {
     $routes->post('editBuku', 'Buku::editBuku');
     $routes->post('deleteBuku', 'Buku::deleteBuku');
     $routes->get('printBuku', 'Buku::printBuku');
+    $routes->get('excelBuku', 'Buku::excelBuku');
     
     // BUKU RUSAK
     $routes->get('bukuRusak', 'Buku::buku_rusak');
@@ -36,6 +37,8 @@ $routes->group('admin', function($routes) {
     $routes->post('peminjaman', 'Transaksi::peminjaman');
     $routes->post('addTransaksi', 'Transaksi::addTransaksi');
     $routes->post('deleteTransaksi', 'Transaksi::deleteTransaksi');
+    $routes->get('excelPinjam', 'Transaksi::excelPinjam');
+
     $routes->get('pengembalian', 'Transaksi::pengembalian');
     $routes->post('pengembalian', 'Transaksi::pengembalian');
     $routes->get('printPinjam', 'Transaksi::printPinjam');
@@ -45,14 +48,17 @@ $routes->group('admin', function($routes) {
     // DATA ADMIN
     $routes->get('dataAdmin', 'Admin::data_admin');
     $routes->post('dataAdmin', 'Admin::data_admin');
+    $routes->post('updateProfil', 'Admin::updateProfil');
     $routes->post('addAdmin', 'Admin::addAdmin');
     $routes->post('editAdmin', 'Admin::editAdmin');
     $routes->post('deleteAdmin', 'Admin::deleteAdmin');
-    $routes->get('dataGuru', 'Admin::data_guru');
-    $routes->post('dataGuru', 'Admin::data_guru');
-    $routes->post('addGuru', 'Admin::addGuru');
-    $routes->post('editGuru', 'Admin::editGuru');
-    $routes->post('deleteGuru', 'Admin::deleteGuru');
+
+    // DATA GURU
+    $routes->get('dataGuru', 'Guru::data_guru');
+    $routes->post('dataGuru', 'Guru::data_guru');
+    $routes->post('addGuru', 'Guru::addGuru');
+    $routes->post('editGuru', 'Guru::editGuru');
+    $routes->post('deleteGuru', 'Guru::deleteGuru');
 
     // DATA SISWA
     $routes->get('dataSiswa', 'Siswa::data_siswa');
@@ -62,7 +68,6 @@ $routes->group('admin', function($routes) {
     $routes->post('deleteSiswa', 'Siswa::deleteSiswa');
     
     // DAFTAR PENGUNJUNG
-    
     $routes->get('daftarPengunjung', 'Visitor::index');
     $routes->post('addPengunjung', 'Visitor::addVisitor');
     $routes->get('admin/visitor/getSiswaByNISN/(:any)', 'Visitor::getSiswaByNISN/$1');

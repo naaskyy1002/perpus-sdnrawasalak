@@ -27,15 +27,18 @@ class TransaksiModel extends Model
     public function getPeminjaman()
     {
         return $this->db->table('transaksi')
+                        ->select('transaksi.*, buku.judul_buku, buku.pengarang, siswa.username') // Menambahkan field yang dibutuhkan
                         ->join('buku', 'buku.kode_buku=transaksi.kode_buku')
                         ->join('siswa', 'siswa.nisn=transaksi.nisn')
-                        ->where('transaksi.tgl_kembali', NULL )              //mengambil data yang belum dikembalikan
+                        ->where('transaksi.tgl_kembali', NULL) // Mengambil data yang belum dikembalikan
                         ->get()->getResultArray();
     }
+    
 
     public function getPengembalian()
     {
         return $this->db->table('transaksi')
+                        ->select('transaksi.*, buku.judul_buku, buku.pengarang, siswa.username') // Menambahkan field yang dibutuhkan
                         ->join('buku', 'buku.kode_buku=transaksi.kode_buku')
                         ->join('siswa', 'siswa.nisn=transaksi.nisn')
                         ->where('transaksi.tgl_kembali !=', NULL )            //mengambil data yang sudah dikembalikan
@@ -49,9 +52,9 @@ class TransaksiModel extends Model
 
     public function deleteTransaksi($id)
     {
-        return $this->db->table('transaksi')
-                        ->delete(array('id_transaksi' => $id));
-    } 
+        return $this->table('transaksi') // Tambahkan ini untuk menentukan tabel
+                    ->delete(['id_transaksi' => $id]);
+    }
 
     public function printPinjam($data)
     {

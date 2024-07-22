@@ -57,21 +57,8 @@
         </div>
         <section class="section">    
           <div class="col-lg-12"> 
-            <div class="row mb-3">
+            <div class="row mb-3">             
               <div class="col-sm-12 col-md-6">
-                <div class="dataTables_length" id="dataTable_length">
-                  <label> 
-                    <select name ="dataTable_length" aria-controls="dataTable" class="custom-select-sm from-control from-control-sm">
-                      <option value="10">10</option>
-                      <option value="25">25</option>
-                      <option value="50">50</option>
-                      <option value="100">100</option>
-                    </select>
-                    entri
-                  </label>
-                </div>
-              </div>                 
-              <div class="col-sm-12 col-md-6 text-right">
                 <form action="" method="post">
                   <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Masukkan keyword pencarian" name="keyword">
@@ -120,8 +107,6 @@
                       data-vbkrjudul="<?=$bkr['judul_buku'] ?>"
                       data-vbkrpengarang="<?=$bkr['pengarang'];?>"
                       data-vbkrtgl="<?=$bkr['tanggal_pendataan'];?>"
-                      data-vbkrkategori="<?=$bkr['kategori'];?>"
-                      data-vbkrhal="<?=$bkr['halaman'];?>"
                       data-vbkrbukti="<?= base_url('assets/img/bukti/' . $bkr['foto_bukti']) ;?>"
                       data-vbkrket="<?=$bkr['keterangan'];?>">
                       <i class="bi bi-eye"></i>
@@ -242,6 +227,9 @@
                 <input type="text" id="vbkrket" name="vbkr_ket" class="form-control" disabled>
               </div>
               <div class="col-12">
+                <div>
+                <label>Foto Bukti Kerusakan</label>
+                </div>
                 <img id="vbkrbukti" src="" style="width: 150px;">
               </div>
               <div class="modal-footer">
@@ -269,12 +257,6 @@
 
         var vbkrtgl = $(this).data('vbkrtgl');
         $("#vbkrtgl").val(vbkrtgl);
-
-        var vbkrkategori = $(this).data('vbkrkategori');
-        $("#vbkrkategori").val(vbkrkategori);
-
-        var vbkrhal = $(this).data('vbkrhal');
-        $("#vbkrhal").attr("src", vbkrhal);
         
         var vbkrbukti = $(this).data('vbkrbukti');
         $("#vbkrbukti").attr("src", vbkrbukti);

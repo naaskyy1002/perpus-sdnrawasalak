@@ -33,11 +33,14 @@
                 <tr class="text-center">
                     <th>No</th>
                     <th>Kode Buku</th>
-                    <th>Judul</th>
+                    <th>Sampul</th>
+                    <th>Judul Buku</th>
                     <th>Pengarang</th>
-                    <th>Tanggal Pendataan</th>
-                    <th>Keterangan</th>
-                    <th>Foto Bukti</th>
+                    <th>Penerbit</th>
+                    <th>Tahun Terbit</th>
+                    <th>Kategori</th>
+                    <th>No Rak</th>
+                    <th>Jumlah Buku</th>
                 </tr>
             </thead>
             <tbody>
@@ -49,8 +52,11 @@
                     <td><img src="<?= base_url('assets/img/buku/' . $bk['sampul']) ?>" alt="sampulBuku" width="50"></td>
                     <td><?= $bk['judul_buku'] ;?></td>
                     <td><?= $bk['pengarang'] ;?></td>
+                    <td><?= $bk['penerbit'] ;?></td>
+                    <td><?= $bk['tahun_terbit'] ;?></td>
                     <td><?= $bk['kategori'] ;?></td>
                     <td><?= $bk['no_rak'] ;?></td>
+                    <td><?= $bk['jumlah_buku'] ;?></td>
                 </tr>
                 <?php endforeach; ?>
             </tbody>

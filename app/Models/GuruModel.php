@@ -7,10 +7,10 @@ class GuruModel extends Model
 {
     protected $table ="guru";
     protected $primaryKey = 'id';
-    protected $allowedFields = ['nip', 'username', 'password', 'nama_lengkap', 'jabatan'];
-    protected $useTimestamps = true;
-    protected $createdField ='created_at';
-    protected $updatedField ='updated_at';
+    protected $allowedFields = ['nip','nama_lengkap', 'jabatan', 'dob', 'alamat', 'telp', 'email', 'foto'];
+    // protected $useTimestamps = true;
+    // protected $createdField ='created_at';
+    // protected $updatedField ='updated_at';
 
     public function setTable($table)
     {

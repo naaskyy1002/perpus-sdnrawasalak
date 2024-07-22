@@ -24,19 +24,6 @@
           <div class="card-body">
             <div class="table-title">
               <div class="row mb-3">
-                <div class="col-sm-12 col-md-6">
-                  <div class="dataTables_length" id="dataTable_length">
-                    <label> 
-                      <select name ="dataTable_length" aria-controls="dataTable" class="custom-select-sm from-control from-control-sm">
-                        <option value="10">10</option>
-                        <option value="25">25</option>
-                        <option value="50">50</option>
-                        <option value="100">100</option>
-                      </select>
-                        entri
-                    </label>
-                  </div>
-                </div>
                 <div class="col-sm-12 col-md-6 text-right">
                   <form action="" method="post">
                     <div class="input-group mb-3">

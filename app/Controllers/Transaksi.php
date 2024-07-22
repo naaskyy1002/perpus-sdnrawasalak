@@ -4,6 +4,11 @@ namespace App\Controllers;
 use App\Models\TransaksiModel;
 use App\Models\BukuModel;
 use App\Models\SiswaModel;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\Style\Alignment;
+use PhpOffice\PhpSpreadsheet\Style\Border;
+use PhpOffice\PhpSpreadsheet\Style\Fill;
 
 class Transaksi extends BaseController
 {
@@ -47,40 +52,141 @@ class Transaksi extends BaseController
         ];
 
         // Simpan data menggunakan model
-        $this->transaksiModel->createTransaksi($data);
+        $result = $this->transaksiModel->createTransaksi($data);
 
-        // Redirect dengan pesan sukses
-        return redirect()->to('/admin/peminjaman')->with('message', 'Transaksi berhasil ditambahkan!');
+        if ($result) {
+            // Redirect dengan pesan sukses
+            return redirect()->to('/admin/peminjaman')->with('message', 'Transaksi berhasil ditambahkan!');
+        } else {
+            // Redirect dengan pesan error jika gagal menyimpan
+            return redirect()->back()->with('errors', 'Gagal menambahkan transaksi.');
+        }
     }
 
-    // public function pinjam()
-    // {
-    //     $currentPage = $this->request->getVar('page_transaksi') ? $this->request->getVar('page_transaksi') : 1;
+    // PEMINJAMAN
+    public function printPinjam()
+    {
+        $currentPage = $this->request->getVar('page_printPinjam') ? $this->request->getVar('page_printPinjam') : 1;
+    
+        $keyword = $this->request->getVar('keyword');
+        if($keyword) {
+            $pinjam = $this->transaksiModel->search($keyword);
+        } else {
+            $pinjam = $this->transaksiModel;
+        }
+    
+        $pinjam = $this->transaksiModel->paginate(10, 'printPinjam');
+        $pager = $this->transaksiModel->pager;
+        $pinjam = $this->transaksiModel->getPeminjaman();
+    
+        $data = [
+            'title' => 'Transaksi Peminjaman',
+            'peminjaman' => $pinjam,
+            'isi' => 'peminjaman',
+            'pager' => $pager,
+            'currentPage' => $currentPage,
+        ];
+        return view('admin/transaksi/printPinjam', $data);
+    }
 
-    //     $keyword = $this->request->getVar('keyword');
-    //     if ($keyword) {
-    //         $transaksi = $this->transaksiModel->search($keyword);
-    //     } else {
-    //         $transaksi = $this->transaksiModel;
-    //     }
+    public function excelPinjam()
+    {
+        $data = $this->transaksiModel->getPeminjaman();
 
-    //     $transaksi = $this->transaksiModel->paginate(10, 'transaksi');
-    //     $pager = $this->transaksiModel->pager;
-    //     $transaksi = $this->transaksiModel->getPeminjaman();
-    //     $data = [
-    //         'title' => 'Transaksi Pinjam',
-    //         'transaksi' => $transaksi,
-    //         'isi' => 'peminjaman',
-    //         'pager' => $pager,
-    //         'currentPage' => $currentPage,
-    //     ];
-    //     return view('admin/body', $data);
-    // }
-
-    // public function kembali()
-    // {
-
-    // }
+        // Membuat instance spreadsheet baru
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+    
+        // Menulis judul tabel
+        $sheet->setCellValue('A1', 'Data Peminjaman');
+        $sheet->mergeCells('A1:F1'); // Merge cells dari A1 sampai G1
+        $sheet->getStyle('A1')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER); // Center align
+        $sheet->getStyle('A1')->getFont()->setBold(true); // Buat teks judul tebal
+    
+        // Menulis header kolom
+        $sheet->setCellValue('A3', 'No');
+        $sheet->setCellValue('B3', 'Kode Buku');
+        $sheet->setCellValue('C3', 'Judul Buku');
+        $sheet->setCellValue('D3', 'Pengarang');
+        $sheet->setCellValue('E3', 'Nama Peminjam');
+        $sheet->setCellValue('F3', 'Tanggal Pinjaman');
+    
+        // Menambahkan style untuk header
+        $headerStyleArray = [
+            'font' => [
+                'bold' => true,
+            ],
+            'fill' => [
+                'fillType' => Fill::FILL_SOLID,
+                'startColor' => [
+                    'argb' => 'FFFF00', // Warna kuning
+                ],
+            ],
+            'alignment' => [
+                'horizontal' => Alignment::HORIZONTAL_CENTER,
+                'vertical' => Alignment::VERTICAL_CENTER,
+            ],
+        ];
+    
+        $sheet->getStyle('A3:F3')->applyFromArray($headerStyleArray);
+    
+        // Menulis data ke dalam spreadsheet
+        $row = 4; // Mulai dari baris kedua setelah header
+        $no = 1;
+    
+        foreach ($data as $item) {
+            $sheet->setCellValue('A' . $row, $no);
+            $sheet->setCellValue('B' . $row, $item['kode_buku']);
+            $sheet->setCellValue('C' . $row, $item['judul_buku']);
+            $sheet->setCellValue('D' . $row, $item['pengarang']);
+            $sheet->setCellValue('E' . $row, $item['username']);
+            
+            // Mengubah format tanggal menjadi d-m-y
+            $formattedDate = date('d-m-Y', strtotime($item['tgl_pinjam']));
+            $sheet->setCellValue('F' . $row, $formattedDate);
+        
+            $row++; // looping data dari database
+            $no++; // looping untuk nomor urut data
+        }
+        
+    
+        // Menambahkan style pada tabel
+        $styleArray = [
+            // menambahkan border
+            'borders' => [
+                'allBorders' => [
+                    'borderStyle' => Border::BORDER_THIN,
+                    'color' => ['argb' => 'FF000000'],
+                ],
+            ],
+            // mengatur perataan teks
+            'alignment' => [
+                'horizontal' => Alignment::HORIZONTAL_LEFT,
+                'vertical' => Alignment::VERTICAL_CENTER,
+            ],
+        ];
+    
+        $sheet->getStyle('A3:F' . ($row - 1))->applyFromArray($styleArray);
+    
+        // Menyesuaikan lebar kolom secara otomatis
+        foreach (range('A', 'F') as $col) {
+            $sheet->getColumnDimension($col)->setAutoSize(true);
+        }
+    
+        // Membuat nama file dengan format yyyymmddhhmmss
+        $timestamp = date('Ymd_His');
+        $filename = 'data_peminjaman_' . $timestamp . '.xlsx';
+    
+        // Mengatur header HTTP untuk download file
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="' . $filename . '"');
+        header('Cache-Control: max-age=0');
+    
+        // Menulis file ke output
+        $writer = new Xlsx($spreadsheet);
+        $writer->save('php://output');
+        exit;
+    }
 
     public function peminjaman()
     {
@@ -143,49 +249,33 @@ class Transaksi extends BaseController
     public function deleteTransaksi()
     {
         $id = $this->request->getPost('id_transaksi');
+     
+        // Debugging
+        error_log("ID Transaksi: " . $id);
+     
+        // Cek apakah id_transaksi ada di database
         $transaksi = $this->transaksiModel->find($id);
-
-        // Pastikan transaksi ditemukan
-        if ($transaksi) {
-            // Hapus data transaksi dari database
-            $success = $this->transaksiModel->delete($id);
-
-            if ($success) {
-                session()->setFlashdata('message', 'Transaksi berhasil dihapus!');
-            } else {
-                session()->setFlashdata('errors', 'Gagal menghapus transaksi.');
-            }
+        if (!$transaksi) {
+            error_log("ID Transaksi tidak ditemukan.");
+            return redirect()->to('/admin/peminjaman')->with('errors', 'ID Transaksi tidak ditemukan.');
+        }
+     
+        // Debugging: Periksa Transaksi yang Ditemukan
+        error_log("Transaksi Ditemukan: " . json_encode($transaksi));
+     
+        // Hapus transaksi
+        $deleted = $this->transaksiModel->deleteTransaksi($id);
+     
+        if ($deleted) {
+            error_log("Transaksi berhasil dihapus.");
+            return redirect()->to('/admin/peminjaman')->with('message', 'Transaksi berhasil dihapus.');
         } else {
-            session()->setFlashdata('errors', 'Transaksi tidak ditemukan.');
+            error_log("Gagal menghapus transaksi.");
+            return redirect()->to('/admin/peminjaman')->with('errors', 'Gagal menghapus transaksi.');
         }
-
-        return redirect()->to('/admin/peminjaman');
     }
-
-    public function printPinjam()
-    {
-        $currentPage = $this->request->getVar('page_printPinjam') ? $this->request->getVar('page_printPinjam') :
-        1;
-
-        $keyword = $this->request->getVar('keyword');
-        if($keyword) {
-            $pinjam = $this->transaksiModel->search($keyword);
-        }else {
-            $pinjam = $this->transaksiModel;
-        }
-
-        $pinjam = $this->transaksiModel->paginate(10, 'printPinjam');
-        $pager = $this->transaksiModel->pager;
-
-        $data = [
-            'title' => 'Transaksi Peminjaman',
-            'peminjaman' => $pinjam,
-            'isi' => 'peminjaman',
-            'pager' => $pager,
-            'currentPage' => $currentPage,
-        ];
-        return view('admin/transaksi/printPinjam', $data);
-    }
+    
+    
 
     public function printKembali()
     {

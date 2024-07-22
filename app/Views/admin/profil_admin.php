@@ -67,59 +67,60 @@
                     <div class="col-lg-9 col-md-8"><?= $profil['email']; ?></div>
                   </div>
                 </div>
+
                 <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
-                  
-                  <form>
+                  <form action="<?= base_url('admin/updateProfil') ?>" method="post" enctype="multipart/form-data">
+                    <?= csrf_field(); ?>
                     <div class="row mb-3">
                       <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Gambar Profil</label>
                       <div class="col-md-8 col-lg-9">
-                        <img src=<?= base_url("assets/img/profile-img.jpg") ?> alt="Profile">
+                        <img src="<?= base_url("assets/img/profile-img.jpg") ?>" alt="Profile" id="profileImagePreview" class="rounded-circle" style="width: 100px; height: 100px;">
                         <div class="pt-2">
-                          <a class="btn btn-primary btn-sm" input type="file" name="amhs_photo" accept=".jpg,.png" onchange="ImgFile(this);" class="form-control"><i class="bi bi-upload"></i></a>
-                          <a href="#" class="btn btn-danger btn-sm" title="Hapus gambar profil saya"><i class="bi bi-trash"></i></a>
+                          <input type="file" name="profile_image" accept=".jpg,.png" class="form-control">
+                          <a href="#" class="btn btn-danger btn-sm mt-2" title="Hapus gambar profil saya"><i class="bi bi-trash"></i></a>
                         </div>
                       </div>
                     </div>
                     <div class="row mb-3">
-                      <label for="fullName" class="col-md-4 col-lg-3 col-form-label">NIP</label>
+                      <label for="nip" class="col-md-4 col-lg-3 col-form-label">NIP</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="fullName" type="text" class="form-control" id="fullName" value="<?= $profil['nip']; ?>">
+                        <input name="nip" type="text" class="form-control" id="nip" value="<?= $profil['nip']; ?>">
                       </div>
                     </div>
                     <div class="row mb-3">
-                      <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Nama Lengkap</label>
+                      <label for="nama_lengkap" class="col-md-4 col-lg-3 col-form-label">Nama Lengkap</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="fullName" type="text" class="form-control" id="fullName" value="<?= $profil['nama_lengkap']; ?>">
+                        <input name="nama_lengkap" type="text" class="form-control" id="nama_lengkap" value="<?= $profil['nama_lengkap']; ?>">
                       </div>
                     </div>
                     <div class="row mb-3">
-                      <label for="company" class="col-md-4 col-lg-3 col-form-label">Jabatan</label>
+                      <label for="jabatan" class="col-md-4 col-lg-3 col-form-label">Jabatan</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="company" type="text" class="form-control" id="company" value="<?= $profil['jabatan']; ?>">
+                        <input name="jabatan" type="text" class="form-control" id="jabatan" value="<?= $profil['jabatan']; ?>">
                       </div>
                     </div>
                     <div class="row mb-3">
-                      <label for="Job" class="col-md-4 col-lg-3 col-form-label">Tanggal Lahir</label>
+                      <label for="dob" class="col-md-4 col-lg-3 col-form-label">Tanggal Lahir</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="job" type="text" class="form-control" id="Job" value="<?= date('d-M-Y', strtotime($profil['dob'])); ?>">
+                        <input name="dob" type="date" class="form-control" id="dob" value="<?= date('Y-m-d', strtotime($profil['dob'])); ?>">
                       </div>
                     </div>
                     <div class="row mb-3">
-                      <label for="Country" class="col-md-4 col-lg-3 col-form-label">Alamat</label>
+                      <label for="alamat" class="col-md-4 col-lg-3 col-form-label">Alamat</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="country" type="text" class="form-control" id="Country" value="<?= $profil['alamat']; ?>">
+                        <input name="alamat" type="text" class="form-control" id="alamat" value="<?= $profil['alamat']; ?>">
                       </div>
                     </div>
                     <div class="row mb-3">
-                      <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Nomor Telepon</label>
+                      <label for="telp" class="col-md-4 col-lg-3 col-form-label">Nomor Telepon</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="phone" type="text" class="form-control" id="Phone" value="<?= $profil['telp']; ?>">
+                        <input name="telp" type="text" class="form-control" id="telp" value="<?= $profil['telp']; ?>">
                       </div>
                     </div>
                     <div class="row mb-3">
-                      <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
+                      <label for="email" class="col-md-4 col-lg-3 col-form-label">Email</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="email" type="email" class="form-control" id="Email" value="<?= $profil['email']; ?>">
+                        <input name="email" type="email" class="form-control" id="email" value="<?= $profil['email']; ?>">
                       </div>
                     </div>
                     <div class="text-center">
