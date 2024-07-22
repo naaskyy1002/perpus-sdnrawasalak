@@ -2,6 +2,11 @@
 
 namespace App\Controllers;
 use App\Models\BukuModel;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\Style\Alignment;
+use PhpOffice\PhpSpreadsheet\Style\Border;
+use PhpOffice\PhpSpreadsheet\Style\Fill;
 
 class Buku extends BaseController
 {
@@ -36,6 +41,30 @@ class Buku extends BaseController
         ];
 
         return view('admin/buku/buku_layak', $data);
+    }
+
+    public function printBuku()
+    {
+        $currentPage = $this->request->getVar('page_printBuku') ? $this->request->getVar('page_printBuku') :
+        1;
+
+        $keyword = $this->request->getVar('keyword');
+        if($keyword) {
+            $buku = $this->bukuModel->searching($keyword);
+        }else {
+            $buku = $this->bukuModel;
+        }
+
+        $buku = $this->bukuModel->paginate(10, 'printBuku');
+        $pager = $this->bukuModel->pager;
+
+        $data = [
+            'title' => 'Daftar Buku Layak',
+            'buku' => $buku,
+            'pager' => $pager,
+            'currentPage' => $currentPage,
+        ];
+        return view('admin/buku/printBuku', $data);
     }
 
     public function addBuku() 
@@ -207,6 +236,133 @@ class Buku extends BaseController
         ];
         
         return view('admin/buku/buku_rusak', $data);
+    }
+
+    public function printBkr()
+    {
+        $currentPage = $this->request->getVar('page_printBkr') ? $this->request->getVar('page_printBkr') :
+        1;
+
+        $keyword = $this->request->getVar('keyword');
+        if($keyword) {
+            $bkrusak = $this->bukuModel->searching($keyword);
+        }else {
+            $bkrusak = $this->bukuModel;
+            $this->bukuModel->setTable('buku_rusak');
+        }
+
+        $bkrusak = $this->bukuModel->paginate(10, 'printBkr');
+        $pager = $this->bukuModel->pager;
+
+        $data = [
+            'title' => 'Daftar Buku Rusak',
+            'bkrusak' => $bkrusak,
+            'pager' => $pager,
+            'currentPage' => $currentPage,
+        ];
+        return view('admin/buku/printBkr', $data);
+    }
+
+    public function excelBkr()
+    {
+        $data = $this->bukuModel->setTable('buku_rusak');
+
+        // Membuat instance spreadsheet baru
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+
+        // Menulis judul tabel
+        $sheet->setCellValue('A1', 'Data Buku Rusak');
+        $sheet->mergeCells('A1:H1'); // Merge cells dari A1 sampai H1
+        $sheet->getStyle('A1')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER); // Center align
+        $sheet->getStyle('A1')->getFont()->setBold(true); // Buat teks judul tebal
+
+        // Menulis header kolom
+        $sheet->setCellValue('A3', 'No');
+        $sheet->setCellValue('B3', 'NIM');
+        $sheet->setCellValue('C3', 'Nama');
+        $sheet->setCellValue('D3', 'Tanggal Lahir');
+        $sheet->setCellValue('E3', 'Jenis Kelamin');
+        $sheet->setCellValue('F3', 'Alamat');
+        $sheet->setCellValue('G3', 'Email');
+        $sheet->setCellValue('H3', 'Foto');
+        // Tambahkan header kolom lainnya sesuai kebutuhan
+
+        // Menambahkan style untuk header
+        $headerStyleArray = [
+            'font' => [
+                'bold' => true,
+            ],
+            'fill' => [
+                'fillType' => Fill::FILL_SOLID,
+                'startColor' => [
+                    'argb' => 'FFFF00', // Warna kuning
+                ],
+            ],
+            'alignment' => [
+                'horizontal' => Alignment::HORIZONTAL_CENTER,
+            ],
+        ];
+
+        $sheet->getStyle('A3:H3')->applyFromArray($headerStyleArray);
+
+        // Menulis data ke dalam spreadsheet
+        $row = 4; // Mulai dari baris kedua setelah header
+        $no = 1;
+
+        // Mendapatkan base_url dari konfigurasi
+        $baseUrl = base_url() . 'mhs-foto/';
+
+        foreach ($data as $item) {
+            $sheet->setCellValue('A' . $row, $no);
+            $sheet->setCellValue('B' . $row, $item['mhs_nim']);
+            $sheet->setCellValue('C' . $row, $item['mhs_nama']);
+            $sheet->setCellValue('D' . $row, $item['mhs_dob']);
+            $sheet->setCellValue('E' . $row, $item['mhs_jk']);
+            $sheet->setCellValue('F' . $row, $item['mhs_alamat']);
+            $sheet->setCellValue('G' . $row, $item['mhs_email']);
+
+            // Menggabungkan teks dan menambahkan hyperlink
+            $photoUrl = $baseUrl . $item['mhs_photo'];
+            $sheet->setCellValue('H' . $row, $photoUrl);
+            $sheet->getCell('H' . $row)->getHyperlink()->setUrl($photoUrl);
+            // Tambahkan data kolom lainnya sesuai kebutuhan
+
+            $row++; // looping data dari database
+            $no++; // looping untuk nomor urut data
+        }
+
+        // Menambahkan style  pada tabel
+        $styleArray = [
+            // menambahkan border
+            'borders' => [
+                'allBorders' => [
+                    'borderStyle' => Border::BORDER_THIN,
+                    'color' => ['argb' => 'FF000000'],
+                ],
+            ],
+            // mengatur perataan teks
+            'alignment' => [
+                'horizontal' => Alignment::HORIZONTAL_LEFT,
+            ],
+        ];
+
+        $sheet->getStyle('A3:H' . ($row - 1))->applyFromArray($styleArray);
+
+
+        // Membuat nama file dengan format yyyymmddhhmmss
+        $timestamp = date('Ymd_His');
+        $filename = 'data_mhs_' . $timestamp . '.xlsx';
+
+        // Mengatur header HTTP untuk download file
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="' . $filename . '"');
+        header('Cache-Control: max-age=0');
+
+        // Menulis file ke output
+        $writer = new Xlsx($spreadsheet);
+        $writer->save('php://output');
+        exit;
     }
 
     public function addBkr()

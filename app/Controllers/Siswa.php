@@ -38,6 +38,7 @@ class Siswa extends BaseController
 
     public function addSiswa()
     {
+        if($this->request->getFile('a_foto')->isValid()) {
         $validation = $this->validate([
             'a_foto' => [
                 'uploaded[a_foto]',
@@ -50,6 +51,10 @@ class Siswa extends BaseController
             return redirect()->back()->withInput()
                 ->with('errors', 'Gagal menambahkan data siswa. Silakan periksa input Anda.');
         }
+    } else {
+        return redirect()->back()->withInput()
+            ->with('errors', 'Gagal menambahkan data siswa. Silahkan unggah foto');
+    }
 
         $nisn = $this->request->getPost('a_nisn');
         $username = $this->request->getPost('a_username');
@@ -81,15 +86,6 @@ class Siswa extends BaseController
 
     public function editSiswa()
     {
-        // Validasi input untuk profile
-        $validation = $this->validate([
-            'e_foto' => [
-                'uploaded[e_foto]',
-                'mime_in[e_foto,image/jpg,image/jpeg,image/png]',
-                'max_size[e_foto,2048]', 
-            ],
-        ]);
-
         // Ambil data dari form
         $id = $this->request->getPost('e_nisn');
         $nisn = $this->request->getPost('e_nisn');
@@ -107,10 +103,21 @@ class Siswa extends BaseController
             'kelas' => $kelas,
         ];
 
+        if($this->request->getFile('e_foto')->isValid()) {
+        // Validasi input untuk profile
+        $validation = $this->validate([
+            'e_foto' => [
+                'uploaded[e_foto]',
+                'mime_in[e_foto,image/jpg,image/jpeg,image/png]',
+                'max_size[e_foto,2048]', 
+            ],
+        ]);
+
         if (!$validation) {
-            // Tidak ada foto yang diunggah atau validasi gagal, gunakanfoto lama
-            $data['foto'] = $this->request->getPost('e_oldfoto');
-        } else {
+            return redirect()->back()->withInput()
+                ->with('errors', 'Gagal menambahkan data siswa. Silahkan periksa input anda.');
+        } 
+
             // Validasi berhasil, hapus foto lama jika ada
             $old_foto = $this->request->getPost('e_oldfoto');
             if ($old_foto && file_exists('assets/img/siswa/' . $old_foto)) {
@@ -122,6 +129,9 @@ class Siswa extends BaseController
             $foto_name = $nisn . '.' . $foto->getExtension();
             $foto->move('assets/img/buku', $foto_name);
             $data['foto'] = $foto_name;
+        } else {
+            // Tidak ada bukti yang diunggah atau validasi gagal, gunakan bukti lama
+            $data['foto'] = $this->request->getPost('e_oldfoto');   
         }
 
         // Update data siswa di database

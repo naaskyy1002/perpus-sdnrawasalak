@@ -49,10 +49,10 @@
             </select>
           </div>
           <div class="col-sm-12 col-md-6 text-right d-flex align-items-end">
-            <button class="btn btn-info mr-2">
-              <i class="ri-file-excel-2-line"></i> Excel</button>
-            <button class="btn btn-warning">
-              <i class="ri-printer-line"></i> Print</button>
+            <a href="/admin/excelBkr" target="_blank" class="btn btn-info mr-2">
+              <i class="ri-file-excel-2-line"></i> Excel</a>
+            <a href="/admin/printBkr" target="_blank" class="btn btn-warning">
+              <i class="ri-printer-line"></i> Print</a>
           </div>
         </div>
         <section class="section">    
@@ -422,7 +422,7 @@
         // Hide error message after 5 seconds
         hideAfterDelay('error-message');
     </script>
-    
+
   </main><!-- End #main -->
 <?=$this->endSection()?>
 

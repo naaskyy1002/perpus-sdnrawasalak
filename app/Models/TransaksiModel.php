@@ -52,4 +52,16 @@ class TransaksiModel extends Model
         return $this->db->table('transaksi')
                         ->delete(array('id_transaksi' => $id));
     } 
+
+    public function printPinjam($data)
+    {
+        return $this->db->table('transaksi')
+                        ->get()->getResultArray();
+    }
+
+    public function printKembali($data)
+    {
+        return $this->db->table('transaksi')
+                        ->get()->getResultArray();
+    }
 }

@@ -161,4 +161,55 @@ class Transaksi extends BaseController
 
         return redirect()->to('/admin/peminjaman');
     }
+
+    public function printPinjam()
+    {
+        $currentPage = $this->request->getVar('page_printPinjam') ? $this->request->getVar('page_printPinjam') :
+        1;
+
+        $keyword = $this->request->getVar('keyword');
+        if($keyword) {
+            $pinjam = $this->transaksiModel->search($keyword);
+        }else {
+            $pinjam = $this->transaksiModel;
+        }
+
+        $pinjam = $this->transaksiModel->paginate(10, 'printPinjam');
+        $pager = $this->transaksiModel->pager;
+
+        $data = [
+            'title' => 'Transaksi Peminjaman',
+            'peminjaman' => $pinjam,
+            'isi' => 'peminjaman',
+            'pager' => $pager,
+            'currentPage' => $currentPage,
+        ];
+        return view('admin/transaksi/printPinjam', $data);
+    }
+
+    public function printKembali()
+    {
+        $currentPage = $this->request->getVar('page_printKembali') ? $this->request->getVar('page_printKembali') :
+        1;
+
+        $keyword = $this->request->getVar('keyword');
+        if($keyword) {
+            $kembali = $this->transaksiModel->search($keyword);
+        }else {
+            $kembali = $this->transaksiModel;
+        }
+
+        $kembali = $this->transaksiModel->paginate(10, 'printPinjam');
+        $pager = $this->transaksiModel->pager;
+        $kembali = $this->transaksiModel->getPeminjaman();
+        $kembali = $this->transaksiModel->getPengembalian();
+        $data = [
+            'title' => 'Transaksi Peminjaman',
+            'peminjaman' => $kembali,
+            'isi' => 'peminjaman',
+            'pager' => $pager,
+            'currentPage' => $currentPage,
+        ];
+        return view('admin/transaksi/printKembali', $data);
+    }
 }

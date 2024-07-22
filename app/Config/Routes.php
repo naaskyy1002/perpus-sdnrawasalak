@@ -20,6 +20,7 @@ $routes->group('admin', function($routes) {
     $routes->post('addBuku', 'Buku::addBuku');
     $routes->post('editBuku', 'Buku::editBuku');
     $routes->post('deleteBuku', 'Buku::deleteBuku');
+    $routes->get('printBuku', 'Buku::printBuku');
     
     // BUKU RUSAK
     $routes->get('bukuRusak', 'Buku::buku_rusak');
@@ -27,6 +28,8 @@ $routes->group('admin', function($routes) {
     $routes->post('addBkr', 'Buku::addBkr');
     $routes->post('editBkr', 'Buku::editBkr');
     $routes->post('deleteBkr', 'Buku::deleteBkr');
+    $routes->get('printBkr', 'Buku::printBkr');
+    $routes->get('excelBkr', 'Buku::excelBkr');
 
     // TRANSAKSI
     $routes->get('peminjaman', 'Transaksi::peminjaman');
@@ -35,6 +38,8 @@ $routes->group('admin', function($routes) {
     $routes->post('deleteTransaksi', 'Transaksi::deleteTransaksi');
     $routes->get('pengembalian', 'Transaksi::pengembalian');
     $routes->post('pengembalian', 'Transaksi::pengembalian');
+    $routes->get('printPinjam', 'Transaksi::printPinjam');
+    $routes->get('printKembali', 'Transaksi::printKembali');
 
 
     // DATA ADMIN

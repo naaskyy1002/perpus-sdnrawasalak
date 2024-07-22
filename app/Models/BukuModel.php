@@ -64,6 +64,13 @@ class BukuModel extends Model
              ->update();
     }
 
+    public function printBuku($data)
+    {
+        return $this->db->table('buku')
+                        ->get()->getResultArray();
+    }
+
+
     // BUKU RUSAK
     public function createBkr($data)
     {
@@ -81,6 +88,12 @@ class BukuModel extends Model
     {
         return $this->db->table('buku_rusak')
                         ->delete(array('id_buku' => $id));
-    } 
+    }
+    
+    public function printBkr($data)
+    {
+        return $this->db->table('buku_rusak')
+                        ->get()->getResultArray();
+    }
 
 }

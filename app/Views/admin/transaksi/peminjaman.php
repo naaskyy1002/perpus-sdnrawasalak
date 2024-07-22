@@ -50,12 +50,11 @@
           </select>
         </div>
         <div class="col-sm-12 col-md-6 text-right d-flex align-items-end">
-          <button class="btn btn-info mr-2">
-            <i class="bi bi-download"></i> Excel
-          </button>
-          <button class="btn btn-warning"><i class="bi bi-printer"></i> Print
-          </button>
-        </div>
+            <a href="/admin/excelPinjam" target="_blank" class="btn btn-info mr-2">
+              <i class="ri-file-excel-2-line"></i> Excel</a>
+            <a href="/admin/printPinjam" target="_blank" class="btn btn-warning">
+              <i class="ri-printer-line"></i> Print</a>
+          </div>
       </div>
       <section class="section">
         <div class="col-lg-12">

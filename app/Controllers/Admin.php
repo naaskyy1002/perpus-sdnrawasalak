@@ -12,13 +12,14 @@ class Admin extends BaseController
     protected $adminModel;
     protected $guruModel;
     protected $transaksiModel;
-    
+    protected $session;
 
     public function __construct()
     {
         $this->adminModel = new AdminModel();
         $this->guruModel = new GuruModel();
         $this->transaksiModel = new TransaksiModel();
+        $this->session = \Config\Services::session();
     }
 
     public function home()
@@ -57,7 +58,7 @@ class Admin extends BaseController
             return view('admin/kunjungan/daftar_pengunjung');
         }
 
-        
+
 
     // DATA ADMIN
     public function data_admin()
@@ -87,21 +88,30 @@ class Admin extends BaseController
     public function profil_admin()
     {
     $username = $this->session->get('username');
-    $profil = $this->adminModel->getAdmin();
+    $allProfil = $this->adminModel->getAdmin();
+
+    $profil = array_filter($allProfil, function ($profil) use ($username) {
+      return $profil['username'] == $username;
+    });
+
+    $profil = reset($profil);
+
     $data = [
-        'title' => 'PROFIL SAYA',
-        'profil' => $profil,
+      'title' => 'PROFIL SAYA',
+      'profil' => $profil,
     ];
+
     return view('admin/profil_admin', $data);
     }
 
-    public function addAdmin() 
+    public function addAdmin()
     {
+        if($this->request->getFile('a_foto')->isValid()) {
         $validation = $this->validate([
             'a_foto' => [
                 'uploaded[a_foto]',
                 'mime_in[a_foto,image/jpg,image/jpeg,image/png]',
-                'max_size[a_foto,2048]', 
+                'max_size[a_foto,2048]',
             ],
         ]);
 
@@ -109,6 +119,10 @@ class Admin extends BaseController
             return redirect()->back()->withInput()
                 ->with('errors', 'Gagal menambahkan data admin. Silakan periksa input Anda.');
         }
+    } else {
+        return redirect()->back()->withInput()
+            ->with('errors', 'Gagal menambahkan data admin. Silahkan unggah foto.');
+    }
 
         // Ambil data dari request
         $nip = $this->request->getPost('a_nip');
@@ -124,7 +138,7 @@ class Admin extends BaseController
         // Proses upload foto
         $file = $this->request->getFile('a_foto');
         $fotoName = $nama . '.' . $file->getExtension();
-        
+
         if (!$file->move('assets/img/admin', $fotoName)) {
             return redirect()->back()->withInput()
                 ->with('errors', 'Upload foto gagal.');
@@ -152,15 +166,6 @@ class Admin extends BaseController
 
     public function editAdmin()
     {
-        // Validasi input untuk foto bukti
-        $validation = $this->validate([
-            'e_foto' => [
-                'uploaded[e_foto]',
-                'mime_in[e_foto,image/jpg,image/jpeg,image/png]',
-                'max_size[e_foto,2048]', 
-            ],
-        ]);
-
         // Ambil data dari form
         $id = $this->request->getPost('e_nip');
         $nip = $this->request->getPost('e_nip');
@@ -186,10 +191,22 @@ class Admin extends BaseController
             'password' => $password,
         ];
 
+        if ($this->request->getFile('e_foto')->isValid()) {
+            // Validasi input untuk foto bukti
+            $validation = $this->validate([
+            'e_foto' => [
+                'uploaded[e_foto]',
+                'mime_in[e_foto,image/jpg,image/jpeg,image/png]',
+                'max_size[e_foto,2048]',
+            ],
+        ]);
+        
+
         if (!$validation) {
-            // Tidak ada bukti yang diunggah atau validasi gagal, gunakan bukti lama
-            $data['foto'] = $this->request->getPost('e_oldfoto');
-        } else {
+            return redirect()->back()->withInput()
+                ->with('errors', 'Gagal menambahkan data admin. Silakan periksa input Anda.');
+        }
+        
             // Validasi berhasil, hapus foto bukti lama jika ada
             $old_foto = $this->request->getPost('e_oldfoto');
             if ($old_foto && file_exists('assets/img/admin/' . $old_foto)) {
@@ -201,6 +218,9 @@ class Admin extends BaseController
             $fotoName = $nip . '.' . $foto->getExtension();
             $foto->move('assets/img/admin', $fotoName);
             $data['foto'] = $fotoName;
+        } else {
+            // Tidak ada bukti yang diunggah atau validasi gagal, gunakan bukti lama
+            $data['foto'] = $this->request->getPost('e_oldfoto');   
         }
 
         // Update data buku di database
@@ -215,19 +235,19 @@ class Admin extends BaseController
         // mencari admin berdasarkan nip dan dihapuskan
         $id = $this->request->getPost('nip');
         $admin = $this->adminModel->where('nip', $id)->first();
-    
+
         // Pastikan buku ditemukan
         if ($admin) {
             $old_foto = $admin['foto']; // Ambil nama sampul buku
-    
+
             // Hapus sampul buku dari folder jika file ada
             if (file_exists('assets/img/admin/' . $old_foto)) {
                 unlink('assets/img/admin/' . $old_foto);
             }
-    
+
             // Hapus data buku dari database
             $success = $this->adminModel->where('nip', $id)->delete();
-    
+
             if ($success) {
                 session()->setFlashdata('message', 'Admin berhasil dihapus!');
             } else {
@@ -236,10 +256,10 @@ class Admin extends BaseController
         } else {
             session()->setFlashdata('errors', 'Admin tidak ditemukan.');
         }
-    
+
         return redirect()->to('/admin/dataAdmin');
     }
-    
+
 
     public function data_guru()
     {
@@ -264,20 +284,25 @@ class Admin extends BaseController
         ];
         return view('admin/maindata/data_guru', $data);
     }
-    
-    public function addGuru() 
-    {
-        $validation = $this->validate([
-            'a_foto' => [
-                'uploaded[a_foto]',
-                'mime_in[a_foto,image/jpg,image/jpeg,image/png]',
-                'max_size[a_foto,2048]', 
-            ],
-        ]);
 
-        if (!$validation) {
+    public function addGuru()
+    {
+        if ($this->request->getFile('a_foto')->isValid()) {
+            $validation = $this->validate([
+                'a_foto' => [
+                    'uploaded[a_foto]',
+                    'mime_in[a_foto,image/jpg,image/jpeg,image/png]',
+                    'max_size[a_foto,2048]',
+                ],
+            ]);
+
+            if (!$validation) {
+                return redirect()->back()->withInput()
+                    ->with('errors', 'Gagal menambahkan data guru. Periksa tipe file dan ukuran foto.');
+            }
+        } else {
             return redirect()->back()->withInput()
-                ->with('errors', 'Gagal menambahkan data guru. Silakan periksa input Anda.');
+                ->with('errors', 'Gagal menambahkan data guru. Silakan unggah foto.');
         }
 
         // Ambil data dari request
@@ -294,7 +319,7 @@ class Admin extends BaseController
         // Proses upload foto
         $file = $this->request->getFile('a_foto');
         $fotoName = $nama . '.' . $file->getExtension();
-        
+
         if (!$file->move('assets/img/guru', $fotoName)) {
             return redirect()->back()->withInput()
                 ->with('errors', 'Upload foto gagal.');
@@ -322,15 +347,6 @@ class Admin extends BaseController
 
     public function editGuru()
     {
-        // Validasi input untuk foto bukti
-        $validation = $this->validate([
-            'e_foto' => [
-                'uploaded[e_foto]',
-                'mime_in[e_foto,image/jpg,image/jpeg,image/png]',
-                'max_size[e_foto,2048]', 
-            ],
-        ]);
-
         // Ambil data dari form
         $id = $this->request->getPost('e_nip');
         $nip = $this->request->getPost('e_nip');
@@ -356,10 +372,20 @@ class Admin extends BaseController
             'password' => $password,
         ];
 
+        if ($this->request->getFile('e_foto')->isValid()) {
+          $validation = $this->validate([
+            'e_foto' => [
+                'uploaded[e_foto]',
+                'mime_in[e_foto,image/jpg,image/jpeg,image/png]',
+                'max_size[e_foto,2048]',
+            ],
+        ]);
+
         if (!$validation) {
-            // Tidak ada bukti yang diunggah atau validasi gagal, gunakan bukti lama
-            $data['foto'] = $this->request->getPost('e_oldfoto');
-        } else {
+            return redirect()->back()->withInput()
+                ->with('errors', 'Gagal menambahkan data guru. Silakan periksa input Anda.');
+        }
+
             // Validasi berhasil, hapus foto bukti lama jika ada
             $old_foto = $this->request->getPost('e_oldfoto');
             if ($old_foto && file_exists('assets/img/guru/' . $old_foto)) {
@@ -371,6 +397,9 @@ class Admin extends BaseController
             $fotoName = $nip . '.' . $foto->getExtension();
             $foto->move('assets/img/guru', $fotoName);
             $data['foto'] = $fotoName;
+        } else {
+            // Tidak ada bukti yang diunggah atau validasi gagal, gunakan bukti lama
+            $data['foto'] = $this->request->getPost('e_oldfoto');
         }
 
         // Update data buku di database
@@ -385,19 +414,19 @@ class Admin extends BaseController
         // mencari admin berdasarkan nip dan dihapuskan
         $id = $this->request->getPost('nip');
         $guru = $this->guruModel->where('nip', $id)->first();
-    
+
         // Pastikan buku ditemukan
         if ($guru) {
             $old_foto = $guru['foto']; // Ambil nama sampul buku
-    
+
             // Hapus sampul buku dari folder jika file ada
             if (file_exists('assets/img/guru/' . $old_foto)) {
                 unlink('assets/img/guru/' . $old_foto);
             }
-    
+
             // Hapus data buku dari database
-            $success = $this->gurunModel->where('nip', $id)->delete();
-    
+            $success = $this->guruModel->where('nip', $id)->delete();
+
             if ($success) {
                 session()->setFlashdata('message', 'Guru berhasil dihapus!');
             } else {
@@ -406,7 +435,7 @@ class Admin extends BaseController
         } else {
             session()->setFlashdata('errors', 'Guru tidak ditemukan.');
         }
-    
+
         return redirect()->to('/admin/dataGuru');
     }
 }

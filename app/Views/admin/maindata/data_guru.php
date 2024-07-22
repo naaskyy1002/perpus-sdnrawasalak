@@ -13,7 +13,7 @@
       </nav>
     </div><!-- End Page Title -->
 
-    <div class="card shadow mb-4"> 
+    <div class="card shadow mb-4">
       <div class="card-header py-3 d-flex justify-content-between align-items-center">
         <a href="<?= base_url('addGuru') ?>" data-bs-toggle="modal" data-bs-target="#addModal" class="btn btn-primary">
           <i class="bi bi-plus"></i> Tambah Guru
@@ -26,7 +26,7 @@
               <div class="row mb-3">
                 <div class="col-sm-12 col-md-6">
                   <div class="dataTables_length" id="dataTable_length">
-                    <label> 
+                    <label>
                       <select name ="dataTable_length" aria-controls="dataTable" class="custom-select-sm from-control from-control-sm">
                         <option value="10">10</option>
                         <option value="25">25</option>
@@ -44,9 +44,9 @@
                       <button class="btn btn-outline-secondary" type="submit" name="submit">Cari</button>
                     </div>
                   </form>
-                </div>               
+                </div>
               </div>
-              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">              
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             </div>
             <?php if (session()->getFlashdata('message')): ?>
                 <div class="alert alert-success" id="success-message">
@@ -104,7 +104,7 @@
                       data-eusername="<?=$gr['username'];?>"
                       data-epassword="<?=$gr['password'];?>">
                     <i class="bi bi-pencil"></i></a>
-                    <a href="#" data-bs-toggle="modal" data-bs-target="#deleteModal" class="deleteModalid" 
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#deleteModal" class="deleteModalid"
                         data-nip="<?=$gr['nip'];?>">
                         <i class="bi bi-trash"></i>
                     </a>
@@ -270,10 +270,10 @@
 
             var vdob = $(this).data('vdob');
             $("#vdob").val(vdob);
-            
+
             var valamat = $(this).data('valamat');
             $("#valamat").val(valamat);
-            
+
             var vtelepon = $(this).data('vtelepon');
             $("#vtelepon").val(vtelepon);
 
@@ -363,7 +363,7 @@
                 <img id="efoto" src="" style="width: 200px;">
               </div>
               <input type="file" name="e_foto" accept=".jpg,.png,.jpeg" onchange="ImgFile(this);" class="form-control-file">
-              <input type="text" name="e_oldfoto" class="form-control" id="eoldfoto" hidden required>
+              <input type="text" name="e_oldfoto" class="form-control" id="eoldfoto" hidden>
             </div>
 
             <input type="number" id="eidguru" name="e_idguru" hidden>
@@ -387,7 +387,7 @@
             $("#efoto").attr("src", efoto);
 
             var eoldfoto = $(this).data('eoldfoto');
-            $("#eoldfoto").val(eoldfoto);
+            $("#eoldfoto").val(efoto.split('/').pop());
 
             var enip = $(this).data('enip');
             $("#enip").val(enip);
@@ -457,7 +457,7 @@
             $("#nip").val(nip);
         });
     </script>
-    
+
     <script>
             function ImgFile(input) {
                 const file = input.files[0];

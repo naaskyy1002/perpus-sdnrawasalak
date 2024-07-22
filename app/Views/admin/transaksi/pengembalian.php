@@ -45,10 +45,10 @@
             </select>
           </div>
           <div class="col-sm-12 col-md-6 text-right d-flex align-items-end">
-            <button class="btn btn-info mr-2">
-              <i class="bi bi-download"></i> Excel</button>
-              <button class="btn btn-warning"><i class="bi bi-printer"></i> Print
-            </button>
+            <a href="/admin/excelKembali" target="_blank" class="btn btn-info mr-2">
+              <i class="ri-file-excel-2-line"></i> Excel</a>
+            <a href="/admin/printKembali" target="_blank" class="btn btn-warning">
+              <i class="ri-printer-line"></i> Print</a>
           </div>
         </div>
         <section class="section">    
@@ -100,12 +100,12 @@
                   <td><?= $kb['pengarang'] ;?></td>
                   <td><?= $kb['judul_buku'] ;?></td>
                   <td><?= $kb['username'] ;?></td>
-                  <td><?= date('d-M-Y', strtotime($pj['tgl_pinjam'])) ?></td>
-                  <td><?= date('d-M-Y', strtotime($pj['tgl_kembali'])) ?></td>
+                  <td><?= date('d-M-Y', strtotime($kb['tgl_pinjam'])) ?></td>
+                  <td><?= date('d-M-Y', strtotime($kb['tgl_kembali'])) ?></td>
                   <td>
-                    <a href="#" class="selesai" title="Selesai" data-bs-toggle="modal" data-bs-target="#doneModal"><i class="bi bi-check-lg"></i></a>
+                    <a href="#" class="doneModalid" title="Selesai" data-bs-toggle="modal" data-bs-target="#doneModal"><i class="bi bi-check-lg"></i></a>
                     <!-- <a href="#editModal" class="edit" title="Edit" data-bs-toggle="modal" data-bs-target="#editModal"><i class="bi bi-pencil"></i></a> -->
-                    <a href="#" class="delete" title="Hapus" data-toggle="tooltip"><i class="bi bi-trash"></i></a>
+                    <a href="#" class="deleteModalid" title="Hapus" data-toggle="tooltip"><i class="bi bi-trash"></i></a>
                   </td>
                 </tr>
                 <?php endforeach; ?>
@@ -116,6 +116,79 @@
         </section>
       </div>
     </div>
+
+    <!-- Selesai Modal-->
+  <div class="modal fade" id="doneModal" tabindex="-1" aria-labelledby="doneModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="doneModalLabel">Konfirmasi Pengembalian</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form action="pengembalian" method="post">
+          <div class="modal-body">
+            Apakah Anda yakin buku ini sudah dikembalikan?
+            <input type="hidden" name="idtransaksi" id="idtransaksi">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+            <button type="submit" class="btn btn-primary">Konfirmasi</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- Selesai Modal-->
+
+  <script>
+        $(".doneModalid").click(function() {
+            var idtransaksi = $(this).data('idtransaksi');
+            $("#idtransaksi").val(idtransaksi);
+        });
+    </script>
+
+  <!-- Delete Modal -->
+  <div class="modal fade" id="deleteModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content text-dark">
+                <div class="modal-body">
+                    Apakah Anda Yakin Ingin Menghapus Data Transaksi Ini?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    <form method="post" action="deleteTransaksi">
+                        <input type="hidden" id="idtransaksi" name="id_transaksi">
+                        <button type="submit" class="btn btn-danger">Hapus</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(".deleteModalid").click(function() {
+            var idtransaksi = $(this).data('idtransaksi');
+            $("#idtransaksi").val(idtransaksi);
+        });
+    </script>
+
+    <script>
+        // Function to hide element after 5 seconds
+        function hideAfterDelay(elementId) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                setTimeout(() => {
+                    element.style.display = 'none';
+                }, 5000);
+            }
+        }
+
+        // Hide success message after 5 seconds
+        hideAfterDelay('success-message');
+
+        // Hide error message after 5 seconds
+        hideAfterDelay('error-message');
+    </script>
 
 
   </main><!-- End #main -->
