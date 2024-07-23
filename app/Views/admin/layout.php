@@ -38,7 +38,7 @@
       <ul class="d-flex align-items-center">
         <li class="nav-item dropdown pe-3">
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <span class="d-none d-md-block ps-2"><i class="ri-user-line"></i> <?= session()->set('nama_lengkap'); ?></span>
+            <span class="d-none d-md-block ps-2"><i class="ri-user-line"></i><?= session()->get('nama_lengkap'); ?></span>
           </a>
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">

@@ -11,7 +11,7 @@ $routes->get('login', 'Auth::login');
 $routes->post('auth/valid-login', 'Auth::validLogin');
 $routes->get('auth/logout', 'Auth::logout');
 
-$routes->group('admin', function($routes) {
+$routes->group('admin',['filter' => 'isLoggedIn'], function($routes) {
     $routes->get('', 'Admin::home');
     
     // BUKU LAYAK
@@ -81,10 +81,10 @@ $routes->group('admin', function($routes) {
 $routes->get('/tentang_kami', 'Home::tentang_kami');
 $routes->get('/kontak', 'Home::kontak');
 
-$routes->group('siswa', function($routes) {
+$routes->group('siswa',['filter' => 'isLoggedIn'], function($routes) {
     $routes->get('', 'Page::beranda');
     $routes->get('pinjaman', 'Page::pinjaman');
     $routes->get('riwayat', 'Page::riwayat');
     $routes->get('detail', 'Page::detail');
-    $routes->get('profil_user', 'Page::profil_user');
+    $routes->get('profilSiswa', 'Page::profil_user');
 });

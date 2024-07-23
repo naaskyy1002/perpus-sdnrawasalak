@@ -50,19 +50,19 @@
         <!-- Nav Item - User Information -->
         <li class="nav-item dropdown pe-3">
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            
+            <span class="d-none d-md-block ps-2"><i class="ri-user-line"></i><?= session()->get('username'); ?></span>  
           </a>
           <!-- Dropdown - User Information -->
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>Siti Nurazizah</h6>
-              <span>Siswa</span>
+              <h6><?= session()->get('username'); ?></h6>
+              <span><?= session()->get('level') == 1 ? 'Admin/Operator' : 'Siswa'; ?></span>
             </li>
             <li>
               <hr class="dropdown-divider">
             </li>
             <li>
-              <a class="dropdown-item d-flex align-items-center" href=<?= base_url('siswa/profil_user');?>>
+              <a class="dropdown-item d-flex align-items-center" href=<?= base_url('siswa/profilSiswa');?>>
                 <i class="ri-user-line"></i>
                 <span>Profil</span>
               </a>
@@ -87,7 +87,7 @@
 
         <a class="nav-profile d-flex flex-column align-items-center pe-0">
             <img src= <?= base_url ('assets/img/profile-img.jpg') ?> alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block pt-2">Siti Nurazizah</span>
+            <span class="d-none d-md-block pt-2"><?= session()->get('username'); ?></span>
         </a>
         <li class="nav-item"><a class="nav-link" href= <?= base_url('siswa')?> ><i class="bi bi-book"></i> Koleksi Buku</a></li>
         <li class="nav-item"><a class="nav-link" href= <?= base_url('siswa/pinjaman')?> ><i class="bi bi-clock-history"></i> Pinjaman Terkini</a></li>

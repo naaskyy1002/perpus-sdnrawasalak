@@ -1,19 +1,33 @@
 <?php
 
 namespace App\Controllers;
+use App\Models\BukuModel;
 class Page extends BaseController
 {
     // halaman yang dapat di akses oleh siswa
 
-    public function beranda()
+    protected $bukuModel;
+
+    public function __construct()
     {
-        return view('siswa/beranda');
+        $this->bukuModel = new BukuModel();
     }
 
-    public function buku()
+    public function beranda()
     {
-        return view('siswa/buku');
+        $buku = $this->bukuModel->getBuku();
+        $data = [
+            'buku' => $buku,
+        ]; // Atau menggunakan paginate jika data banyak
+        return view('siswa/beranda', $data);
     }
+
+    // public function buku()
+    // {
+    //     $model = new BukuModel();
+    //     $data['buku'] = $model->findAll();
+    //     return view('siswa/buku');
+    // }
 
     public function pinjaman()
     {

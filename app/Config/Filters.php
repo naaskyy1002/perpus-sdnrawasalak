@@ -3,6 +3,7 @@
 namespace Config;
 
 use App\Controllers\Auth;
+use App\Filters\LoginFilter;
 use CodeIgniter\Config\Filters as BaseFilters;
 use CodeIgniter\Filters\Cors;
 use CodeIgniter\Filters\CSRF;
@@ -35,7 +36,7 @@ class Filters extends BaseFilters
         'forcehttps'    => ForceHTTPS::class,
         'pagecache'     => PageCache::class,
         'performance'   => PerformanceMetrics::class,
-        // 'auth'          => Auth::class,
+        'isLoggedIn'    => LoginFilter::class,
     ];
 
     /**
@@ -74,11 +75,11 @@ class Filters extends BaseFilters
             // 'honeypot',
             // 'csrf',
             // 'invalidchars',
-            // 'login',
+            // 'isLoggedIn',
         ],
         'after' => [
-            // 'honeypot',
-            // 'secureheaders',
+            'toolbar',
+            'secureheaders',
         ],
     ];
 
@@ -107,6 +108,13 @@ class Filters extends BaseFilters
      * @var array<string, array<string, list<string>>>
      */
     public array $filters = [
+        'isLoggedIn' => ['before' =>
+            [
+                'admin/*',
+                'siswa/*',
 
+            ]
+
+            ],
     ];
 }
