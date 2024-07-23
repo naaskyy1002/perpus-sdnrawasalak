@@ -15,8 +15,8 @@
 
   <?php foreach($jadwal as $jk) : ?>
   <div class="card shadow mb-4"> 
-    <div class="card-header py-3 d-flex justify-content-between align-items-center">
-      <a class="btn btn-warning ms-auto editModalid" href="#" data-bs-toggle="modal" data-bs-target="#editModal"
+    <div class="card-body">
+    <a class="btn btn-warning ms-auto editModalid" href="#" data-bs-toggle="modal" data-bs-target="#editModal"
         data-eidjk="<?= $jk['id_jk']; ?>"
         data-senin="<?= $jk['senin']; ?>"
         data-selasa="<?= $jk['selasa']; ?>"
@@ -26,8 +26,6 @@
         data-sabtu="<?= $jk['sabtu']; ?>">
         <i class="bi bi-pencil"></i> Edit
       </a>
-    </div>
-    <div class="card-body">
       <?php if (session()->getFlashdata('message')): ?>
         <div class="alert alert-success" id="success-message">
           <?= session()->getFlashdata('message') ?>

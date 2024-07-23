@@ -96,7 +96,7 @@
               <div class="card-body">
                 <h2 class="card-title">Transaksi Buku</h2>
                 <div class="row mb-3">                
-                  <div class="col-sm-12 col-md-6">
+                  <div class="col-sm-12 col-md-6 ms-auto">
                     <form action="" method="post">
                       <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="Masukkan keyword pencarian" name="keyword">

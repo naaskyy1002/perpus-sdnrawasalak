@@ -1167,4 +1167,18 @@ table.table td i {
   float: left;
   margin-top: 6px;
   font-size: 95%;
-}    
+}
+
+.pilih {
+  padding-top: 20px;
+}
+
+.ex {
+  padding-right: 15px;
+  padding-top: 10px;
+}
+
+.btn-spacing {
+  margin-left: 0.5rem;
+}
+

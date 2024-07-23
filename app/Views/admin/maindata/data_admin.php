@@ -15,19 +15,16 @@
     </div><!-- End Page Title -->
 
     <div class="card shadow mb-4"> 
-      <div class="card-header py-3 d-flex justify-content-between align-items-center">
-        <a href="<?= base_url('addAdmin') ?>" data-bs-toggle="modal" data-bs-target="#addModal"class="btn btn-primary">
-          <i class="bi bi-plus"></i> Tambah Admin
-        </a>
-      </div>
       <div class="col-lg-12">
         <div class="table-responsive">
           <div class="card-body">
             <div class="table-title">
-              <div class="row mb-3">                
-                <div class="col-sm-12 col-md-6">
-                  <form action="" method="post">
-                    <div class="input-group mb-3">
+              <a href="<?= base_url('addAdmin') ?>" data-bs-toggle="modal" data-bs-target="#addModal"class="btn btn-primary">
+                <i class="ri-add-line"></i> Tambah Admin</a> 
+              <div class="row mb-3">               
+                <div class="col-sm-12 col-md-6 ms-auto">
+                  <form action="" method="post" class="d-flex">
+                    <div class="input-group">
                       <input type="text" class="form-control" placeholder="Masukkan keyword pencarian" name="keyword">
                       <button class="btn btn-outline-secondary" type="submit" name="submit">Cari</button>
                     </div>

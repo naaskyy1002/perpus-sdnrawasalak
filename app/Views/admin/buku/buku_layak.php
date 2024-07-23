@@ -14,14 +14,9 @@
     </div><!-- End Page Title -->
 
     <div class="card shadow mb-4"> 
-        <div class="card-header py-3 d-flex justify-content-between align-items-center">
-            <a class="btn btn-primary" href="<?= base_url('addBuku') ?>" data-bs-toggle="modal" data-bs-target="#addModal">
-                <i class="bi bi-plus"></i> Tambah Buku
-            </a>
-        </div>
         <div class="card-body">
             <div class="row mb-3">
-                <div class="col-sm-6 col-md-3">
+                <div class="pilih col-sm-6 col-md-3">
                     <label for="pilihBulan">Pilih Bulan</label>
                     <select id="pilihBulan" class="form-control">
                         <option>Januari</option>
@@ -38,7 +33,7 @@
                         <option>Desember</option>
                     </select>
                 </div>
-                <div class="col-sm-6 col-md-3">
+                <div class="pilih col-sm-6 col-md-3">
                     <label for="pilihTahun">Pilih Tahun</label>
                     <select id="pilihTahun" class="form-control">
                         <option>2020</option>
@@ -49,17 +44,19 @@
                         <option>2025</option>
                     </select>
                 </div>
-                <div class="col-sm-12 col-md-6 text-right d-flex align-items-end">
-                    <a href="/admin/excelBuku" target="_blank" class="btn btn-info mr-2">
+                <div class="ex col-sm-12 col-md-6 text-right d-flex align-items-end justify-content-end">
+                    <a class="btn btn-primary" href="<?= base_url('addBuku') ?>" data-bs-toggle="modal" data-bs-target="#addModal">
+                        <i class="ri-add-line"></i> Tambah</a>
+                    <a href="/admin/excelBuku" target="_blank" class="btn btn-info btn-spacing">
                         <i class="ri-file-excel-2-line"></i> Excel</a>
-                    <a href="/admin/printBuku" target="_blank" class="btn btn-warning">
+                    <a href="/admin/printBuku" target="_blank" class="btn btn-warning btn-spacing">
                         <i class="ri-printer-line"></i> Print</a>
                 </div>
             </div>
                 <section class="section">    
                     <div class="col-lg-12">
                         <div class="row mb-3">               
-                            <div class="col-sm-12 col-md-6 text-right">
+                            <div class="col-sm-12 col-md-6 ms-auto">
                                 <form action="" method="post">
                                     <div class="input-group mb-3">
                                         <input type="text" class="form-control" placeholder="Masukkan Kata Kunci Pencarian" name="keyword">
@@ -79,6 +76,7 @@
                                 <?= session()->getFlashdata('errors') ?>
                             </div>
                         <?php endif; ?>
+                        <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">              
                             <thead>
                                 <tr class="text-center">
@@ -139,6 +137,7 @@
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
+                        </div>
 				            <?= $pager->links('buku', 'Pagination');?>
 		            </div>
                 </section>

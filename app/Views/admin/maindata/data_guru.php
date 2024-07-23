@@ -14,17 +14,14 @@
     </div><!-- End Page Title -->
 
     <div class="card shadow mb-4">
-      <div class="card-header py-3 d-flex justify-content-between align-items-center">
-        <a href="<?= base_url('addGuru') ?>" data-bs-toggle="modal" data-bs-target="#addModal" class="btn btn-primary">
-          <i class="bi bi-plus"></i> Tambah Guru
-        </a>
-      </div>
       <div class="col-lg-12">
         <div class="table-responsive">
           <div class="card-body">
             <div class="table-title">
+              <a href="<?= base_url('addGuru') ?>" data-bs-toggle="modal" data-bs-target="#addModal" class="btn btn-primary">
+                <i class="ri-add-line"></i> Tambah Guru</a>
               <div class="row mb-3">
-                <div class="col-sm-12 col-md-6">
+                <div class="col-sm-12 col-md-6 ms-auto">
                   <form action="" method="post">
                     <div class="input-group mb-3">
                       <input type="text" class="form-control" placeholder="Masukkan keyword pencarian" name="keyword">
