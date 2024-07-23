@@ -32,6 +32,7 @@
                             <a href="#" data-bs-toggle="modal" data-bs-target="#viewModal" class="btn btn-primary btn-sm viewModalid"
                                 data-vsampul="<?= base_url('assets/img/buku/' . $buku_item['sampul']) ?>"
                                 data-vkodebuku="<?= $buku_item['kode_buku'] ?>"
+                                data-vjudulbuku="<?= $buku_item['judul_buku'] ?>"
                                 data-vpengarang="<?= $buku_item['pengarang'] ?>"
                                 data-vpenerbit="<?= $buku_item['penerbit'] ?>"
                                 data-vtahunterbit="<?= $buku_item['tahun_terbit'] ?>"
@@ -51,7 +52,7 @@
             <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel"><strong><?= esc($buku_item['judul_buku']) ?></strong></h5>
+                        <h5 class="modal-title" id="exampleModalLabel"><strong id="vjudulbuku"></strong></h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body ">
@@ -62,13 +63,13 @@
                             <div class="book-info">
                                 <!-- Ganti dengan deskripsi atau informasi lain -->
                                 <ul class="book-details">
-                                    <li id="vkodebuku"><strong>Kode Buku:</strong> <?= esc($buku_item['kode_buku']) ?> </li>
-                                    <li id="vpengarang"><strong>Pengarang:</strong> <?= esc($buku_item['pengarang']) ?></li>
-                                    <li id="vpenerbit"><strong>Penerbit:</strong> <?= esc($buku_item['penerbit']) ?></li>
-                                    <li id="vtahunterbit"><strong>Tahun Terbit:</strong> <?= esc($buku_item['tahun_terbit']) ?></li>
-                                    <li id="vkategori"><strong>Kategori:</strong> <?= esc($buku_item['kategori']) ?></li>
-                                    <li id="vnorak"><strong>Nomor Rak:</strong> <?= esc($buku_item['no_rak']) ?></li>
-                                    <li id="vjumlahbuku"><strong>Jumlah Buku Tersedia:</strong> <?= esc($buku_item['jumlah_buku']) ?></li>
+                                    <li><strong>Kode Buku:</strong><span id="kodebuku"></span></li>
+                                    <li id="vpengarang"><strong>Pengarang:</strong></li>
+                                    <li id="vpenerbit"><strong>Penerbit:</strong></li>
+                                    <li id="vtahunterbit"><strong>Tahun Terbit:</strong></li>
+                                    <li id="vkategori"><strong>Kategori:</strong></li>
+                                    <li id="vnorak"><strong>Nomor Rak:</strong></li>
+                                    <li id="vjumlahbuku"><strong>Jumlah Buku Tersedia:</strong></li>
                                 </ul>
                             </div>
                         </form>
@@ -85,31 +86,31 @@
     <script type="text/javascript">
         $(".viewModalid").click(function() {
             var vkodebuku = $(this).data('vkodebuku');
-            $("#vkodebuku").val(vkodebuku);
+            $("#vkodebuku").text(vkodebuku);
 
             var vsampul = $(this).data('vsampul');
             $("#vsampul").attr("src", vsampul);
 
             var vjudulbuku = $(this).data('vjudulbuku');
-            $("#vjudulbuku").val(vjudulbuku);
+            $("#vjudulbuku").text(vjudulbuku);
 
             var vpengarang = $(this).data('vpengarang');
-            $("#vpengarang").val(vpengarang);
+            $("#vpengarang").text(vpengarang);
 
             var vpenerbit = $(this).data('vpenerbit');
-            $("#vpenerbit").val(vpenerbit);
+            $("#vpenerbit").text(vpenerbit);
 
             var vtahunterbit = $(this).data('vtahunterbit');
-            $("#vtahunterbit").val(vtahunterbit);
+            $("#vtahunterbit").text(vtahunterbit);
 
             var vkategori = $(this).data('vkategori');
-            $("#vkategori").val(vkategori);
+            $("#vkategori").text(vkategori);
 
             var vnorak = $(this).data('vnorak');
-            $("#vnorak").val(vnorak);
+            $("#vnorak").text(vnorak);
 
             var vjumlahbuku = $(this).data('vjumlahbuku');
-            $("#vjumlahbuku").val(vjumlahbuku);
+            $("#vjumlahbuku").text(vjumlahbuku);
 
             $('#viewModal').modal('show');
         });
