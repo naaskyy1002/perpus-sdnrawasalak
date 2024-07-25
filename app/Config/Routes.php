@@ -83,6 +83,7 @@ $routes->group('admin',['filter' => 'isLoggedIn'], function($routes) {
 
 $routes->group('siswa',['filter' => 'isLoggedIn'], function($routes) {
     $routes->get('', 'Page::beranda');
+    $routes->post('', 'Page::beranda');
     $routes->get('pinjaman', 'Page::pinjaman');
     $routes->get('riwayat', 'Page::riwayat');
     $routes->get('detail', 'Page::detail');

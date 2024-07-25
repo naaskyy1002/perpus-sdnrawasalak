@@ -63,7 +63,7 @@ class Auth extends BaseController
                 $sessLogin = [
                     'user_session' => TRUE,
                     'username'     => $siswa_check['username'],
-                    
+                    'foto'         => $siswa_check['foto'],
                     'role'         => 'siswa'
                 ];
                 $this->session->set($sessLogin);

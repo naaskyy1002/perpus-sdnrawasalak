@@ -36,7 +36,6 @@ class Admin extends BaseController
         $data =[
             'title' => 'Beranda | Perpustakaan SDN Rawasalak',
             'peminjaman' => $pinjam,
-            // 'search' => $pinjams,
             'isi' => 'peminjaman',
             'pager' => $pager,
             'currentPage' => $currentPage,
@@ -71,7 +70,7 @@ class Admin extends BaseController
 
         $admin = $this->adminModel->paginate(10, 'admin');
         $pager = $this->adminModel->pager;
-        // $admin = $this->adminModel->findAll();
+        
         $data = [
             'title' => 'Daftar Admin',
             'admin' => $admin,
@@ -99,58 +98,6 @@ class Admin extends BaseController
 
         return view('admin/profil_admin', $data);
     }
-
-    public function updateProfil()
-    {
-        $session = \Config\Services::session();
-        $username = $session->get('username');
-
-        $validation = \Config\Services::validation();
-        $validation->setRules([
-            'profileImage' => [
-                'uploaded[profileImage]',
-                'mime_in[profileImage,image/jpg,image/jpeg,image/png]',
-                'max_size[profileImage,2048]',
-            ],
-            'nama_lengkap' => 'required',
-            // Add other validation rules if needed
-        ]);
-
-        if (!$validation->withRequest($this->request)->run()) {
-            return redirect()->back()->withInput()->with('errors', $validation->getErrors());
-        }
-
-        // Ambil data dari request
-        $data = [
-            'nama_lengkap' => $this->request->getPost('nama_lengkap'),
-            'jabatan'      => $this->request->getPost('jabatan'),
-            'dob'          => $this->request->getPost('dob'),
-            'alamat'       => $this->request->getPost('alamat'),
-            'telp'         => $this->request->getPost('telp'),
-            'email'        => $this->request->getPost('email'),
-        ];
-
-        if ($this->request->getFile('profileImage')->isValid()) {
-            $file = $this->request->getFile('profileImage');
-            $fotoName = $username . '.' . $file->getExtension();
-
-            // Hapus gambar lama jika ada
-            $oldFoto = $this->adminModel->getAdminByUsername($username)['foto'];
-            if ($oldFoto && file_exists('assets/img/' . $oldFoto)) {
-                unlink('assets/img/' . $oldFoto);
-            }
-
-            // Simpan gambar baru
-            $file->move('assets/img', $fotoName);
-            $data['foto'] = $fotoName;
-        }
-
-        // Update data di database
-        $this->adminModel->updateAdmin($data, $username);
-
-        return redirect()->to('/admin/profil_admin')->with('message', 'Profil berhasil diperbarui!');
-    }
-
 
     public function addAdmin()
     {

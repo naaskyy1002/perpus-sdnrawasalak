@@ -203,6 +203,13 @@ h6 {
     border-radius: 4px;
 }
 
+.sidebar-nav .nav-profile img {
+    width: 150px; /* Ukuran lebar gambar profil */
+    height: 150px; /* Ukuran tinggi gambar profil */
+    object-fit: cover; /* Memastikan gambar tidak terdistorsi */
+    border-radius: 50%; /* Membuat gambar berbentuk bulat */
+  }
+
 .sidebar::-webkit-scrollbar {
     width: 5px;
     height: 8px;

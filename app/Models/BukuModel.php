@@ -40,8 +40,12 @@ class BukuModel extends Model
         return $this->table($this->table)
                     ->like('kode_buku', $keyword)
                     ->orLike('judul_buku', $keyword)
-                    ->orLike('kategori', $keyword)
-                    ->findAll();
+                    ->orLike('pengarang', $keyword)
+                    ->orLike('penerbit', $keyword)
+                    ->orLike('tahun_terbit', $keyword)
+                    ->orLike('no_rak', $keyword)
+                    ->orLike('kategori', $keyword);
+                    // ->findAll();
     }
 
     public function searching($keyword)
@@ -50,8 +54,8 @@ class BukuModel extends Model
         return $this->table($this->table)
                     ->like('kode_buku', $keyword)
                     ->orLike('judul_buku', $keyword)
-                    ->orLike('keterangan', $keyword)
-                    ->findAll();
+                    ->orLike('keterangan', $keyword);
+                    // ->findAll();
     }
 
     // BUKU LAYAK

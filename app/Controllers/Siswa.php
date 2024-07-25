@@ -36,25 +36,6 @@ class Siswa extends BaseController
         return view('admin/maindata/data_siswa', $data);
     }
 
-    public function profil_user()
-    {
-        $username = $this->session->get('username');
-        $allProfils = $this->SiswaModel->getSiswa();
-
-        $profils = array_filter($allProfils, function ($profils) use ($username) {
-        return $profils['username'] == $username;
-        });
-
-        $profils = reset($profils);
-
-        $data = [
-        'title' => 'PROFIL SAYA',
-        'profils' => $profils,
-        ];
-
-        return view('siswa/profil_user', $data);
-    }
-
     public function addSiswa()
     {
         if($this->request->getFile('a_foto')->isValid()) {
@@ -75,14 +56,14 @@ class Siswa extends BaseController
             ->with('errors', 'Gagal menambahkan data siswa. Silahkan unggah foto');
     }
 
-        $nisn = $this->request->getPost('a_nisn');
-        $username = $this->request->getPost('a_username');
-        $password = $this->request->getPost('a_password');
+        $nisn          = $this->request->getPost('a_nisn');
+        $username      = $this->request->getPost('a_username');
+        $password      = $this->request->getPost('a_password');
+        $dob           = $this->request->getPost('a_dob');
         $jenis_kelamin = $this->request->getPost('a_jk');
-        $kelas = $this->request->getPost('a_kelas');
-
-        $file = $this->request->getFile('a_foto');
-        $fotoName = $username . '.' . $file->getExtension();
+        $kelas         = $this->request->getPost('a_kelas');
+        $file          = $this->request->getFile('a_foto');
+        $fotoName      = $username . '.' . $file->getExtension();
         
         if (!$file->move('assets/img/siswa', $fotoName)) {
             return redirect()->back()->withInput()
@@ -90,12 +71,13 @@ class Siswa extends BaseController
         }
 
         $data = [
-            'nisn' => $nisn,
-            'username' => $username,
-            'password' => $password,
+            'nisn'          => $nisn,
+            'username'      => $username,
+            'password'      => $password,
+            'dob'           => $dob,
             'jenis_kelamin' => $jenis_kelamin,
-            'kelas' => $kelas,
-            'foto' => $fotoName,
+            'kelas'         => $kelas,
+            'foto'          => $fotoName,
         ];
 
         $this->siswaModel->createSiswa($data);
@@ -110,6 +92,7 @@ class Siswa extends BaseController
         $nisn = $this->request->getPost('e_nisn');
         $username = $this->request->getPost('e_username');
         $password = $this->request->getPost('e_password');
+        $dob = $this->request->getPost('e_dob');
         $jenis_kelamin = $this->request->getPost('e_jk');
         $kelas = $this->request->getPost('e_kelas');
 
@@ -118,6 +101,7 @@ class Siswa extends BaseController
             'nisn' => $nisn,
             'username' => $username,
             'password' => $password,
+            'dob'           => $dob,
             'jenis_kelamin' => $jenis_kelamin,
             'kelas' => $kelas,
         ];
@@ -146,7 +130,7 @@ class Siswa extends BaseController
             // Simpan foto baru
             $foto = $this->request->getFile('e_foto');
             $foto_name = $nisn . '.' . $foto->getExtension();
-            $foto->move('assets/img/buku', $foto_name);
+            $foto->move('assets/img/siswa', $foto_name);
             $data['foto'] = $foto_name;
         } else {
             // Tidak ada bukti yang diunggah atau validasi gagal, gunakan bukti lama

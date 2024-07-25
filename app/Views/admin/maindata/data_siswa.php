@@ -54,7 +54,7 @@
                 </tr>
               </thead>
               <tbody>
-                <?php $i = 1 + (10 * ($currentPage - 1)); ?>
+                <?php $i = 1 + (1 * ($currentPage - 1)); ?>
                 <?php foreach($siswa as $sw) : ?>
                 <tr class="text-center">
                   <td><?= $i++; ?></td>
@@ -67,6 +67,7 @@
                       data-vnisn="<?=$sw['nisn'];?>"
                       data-vusername="<?=$sw['username'];?>"
                       data-vpassword="<?=$sw['password'];?>"
+                      data-vdob="<?=$sw['dob'];?>"
                       data-vjk="<?=$sw['jenis_kelamin'];?>"
                       data-vkelas="<?=$sw['kelas'];?>">
                       <i class="bi bi-eye"></i>
@@ -77,6 +78,7 @@
                       data-enisn="<?=$sw['nisn'];?>"
                       data-eusername="<?=$sw['username'];?>"
                       data-epassword="<?=$sw['password'];?>"
+                      data-edob="<?=$sw['dob'];?>"
                       data-ejk="<?=$sw['jenis_kelamin'];?>"
                       data-ekelas="<?=$sw['kelas'];?>">
                     <i class="bi bi-pencil"></i></a>
@@ -121,6 +123,10 @@
               <div class="col-12">
                 <label for="inputPassword">Password</label>
                 <input type="password" name="a_password" class="form-control" required/>
+              </div>
+              <div class="col-12">
+                <label for="inputDob">Tanggal Lahit</label>
+                <input type="date" name="a_dob" class="form-control" required/>
               </div>
               <div class="col-12">
                 <label for="inputJenisKelamin">Jenis Kelamin</label>
@@ -196,6 +202,10 @@
                 </div>
               </div>
               <div class="col-12">
+                <label for="inputDob">Tanggal Lahir</label>
+                <input type="date" id="vdob" class="form-control" disabled/>
+              </div>
+              <div class="col-12">
                 <label for="inputJenisKelamin">Jenis Kelamin</label>
                 <input type="text" class="form-control" id="vjk" disabled/>
               </div>
@@ -226,6 +236,9 @@
 
               var vpassword = $(this).data('vpassword');
               $("#vpassword").val(vpassword);
+
+              var vdob = $(this).data('vdob');
+              $("#vdob").val(vdob);
 
               var vjk = $(this).data('vjk');
               $("#vjk").val(vjk);
@@ -276,6 +289,10 @@
                     <i class="bi bi-eye" id="eyeIcon"></i>
                   </span>
                 </div>
+              </div>
+              <div class="col-12">
+                <label>Tanggal Lahir</label>
+                <input type="date" class="form-control" id="edob" name="e_dob" required />
               </div>
               <div class="col-12">
                     <label>Jenis Kelamin</label>
@@ -335,6 +352,9 @@
 
         var epassword = $(this).data('epassword');
         $("#epassword").val(epassword);
+
+        var edob = $(this).data('edob');
+        $("#edob").val(edob);
 
         var ejk = $(this).data('ejk');
         $("#ejk").val(ejk);

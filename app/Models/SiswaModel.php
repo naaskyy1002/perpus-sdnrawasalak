@@ -7,7 +7,7 @@ class SiswaModel extends Model
 {
     protected $table = "siswa";
     protected $primaryKey = 'id';
-    protected $allowedFields = ['nisn', 'username', 'password', 'jenis_kelamin', 'kelas'];
+    protected $allowedFields = ['nisn', 'username', 'password', 'jenis_kelamin', 'kelas', 'dob'];
     protected $useTimestamps = false;
     // protected $createdField = 'created_at';
     // protected $updatedField = 'updated_at';

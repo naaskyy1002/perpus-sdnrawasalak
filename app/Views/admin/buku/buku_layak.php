@@ -184,6 +184,7 @@
                             <label for="inputKategori" class="form-label">Kategori</label>
                             <select name="a_kategori" class="form-select" required>
                                 <option value="" disabled selected>Pilih Kategori Buku</option>
+                                <option value="Tematik">Tematik</option>
                                 <option value="Sejarah">Sejarah</option>
                                 <option value="Fiksi">Fiksi</option>
                                 <option value="Non-Fiksi">Non-Fiksi</option>

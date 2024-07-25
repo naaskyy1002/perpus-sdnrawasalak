@@ -337,7 +337,6 @@ class Buku extends BaseController
         $bkrusak = $this->bukuModel->paginate(10, 'buku_rusak');
         $pager = $this->bukuModel->pager;
 
-        // $bkrusak = $this->bukuModel->findAll();
         $data = [
             'title' => 'Daftar Buku Rusak',
             'bkrusak' => $bkrusak,

@@ -47,67 +47,61 @@
             </div>    
         </div>
 
-        <!-- Modal -->
-        <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel"><strong id="vjudulbuku"></strong></h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body d-flex">
-                        <!-- <form method="#" enctype="multipart/form-data" action="#"> -->
-                            <div class="book-cover-container me-3">
-                                <img src="<?= base_url('assets/img/buku/' . $buku_item['sampul']) ?>" alt="Book Cover" class="book-cover-detail" id="vsampul">
-                            </div>
-                            <div class="book-info">
-                                <!-- Ganti dengan deskripsi atau informasi lain -->
-                                <ul class="book-details">
-                                    <div class="row">
-                                        <div class="col-lg-5 col-md-4 label"><strong>Kode Buku</strong></div>
-                                        <div class="col-lg-7 col-md-8"><span id="kodebuku"></span></div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-5 col-md-4 label">Pengarang</div>
-                                        <div class="col-lg-7 col-md-8"><span id="vpengarang"></span></div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-5 col-md-4 label">Penerbit</div>
-                                        <div class="col-lg-7 col-md-8"><span id="vpenerbit"></span></div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-5 col-md-4 label">Tahun Terbit</div>
-                                        <div class="col-lg-7 col-md-8"><span id="vtahunterbit"></span></div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-5 col-md-4 label">Kategori</div>
-                                        <div class="col-lg-7 col-md-8"><span id="vkategori"></span></div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-5 col-md-4 label">Nomor Rak</div>
-                                        <div class="col-lg-7 col-md-8"><span id="vnorak"></span></div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-5 col-md-4 label">Jumlah Buku Tersedia</div>
-                                        <div class="col-lg-7 col-md-8"><span id="vjumlahbuku"></span></div>
-                                    </div>
+        <?= $pager->links('buku', 'Pagination');?>
 
-                                    <!-- <li><strong>Kode Buku:</strong><span id="kodebuku"></span></li>
-                                    <li><strong>Pengarang:</strong><span id="vpengarang"></span></li>
-                                    <li id="vpenerbit"><strong>Penerbit:</strong></li>
-                                    <li id="vtahunterbit"><strong>Tahun Terbit:</strong></li>
-                                    <li id="vkategori"><strong>Kategori:</strong></li>
-                                    <li id="vnorak"><strong>Nomor Rak:</strong></li>
-                                    <li id="vjumlahbuku"><strong>Jumlah Buku Tersedia:</strong></li> -->
-                                </ul>
-                            </div>
-                            
-                        <!-- </form> -->
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
-                    </div>
-                    </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"><strong id="vjudulbuku"></strong></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body d-flex">
+                    <!-- <form method="#" enctype="multipart/form-data" action="#"> -->
+                        <div class="book-cover-container me-3">
+                            <img src="<?= base_url('assets/img/buku/' . $buku_item['sampul']) ?>" alt="Book Cover" class="book-cover-detail" id="vsampul">
+                        </div>
+                        <div class="book-info">
+                            <!-- Ganti dengan deskripsi atau informasi lain -->
+                            <ul class="book-details">
+                                <div class="row">
+                                    <div class="col-lg-5 col-md-4 label"><strong>Kode Buku</strong></div>
+                                    <div class="col-lg-7 col-md-8">: <span id="vkodebuku"></span></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-5 col-md-4 label"><strong>Pengarang</strong></div>
+                                    <div class="col-lg-7 col-md-8">: <span id="vpengarang"></span></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-5 col-md-4 label"><strong>Penerbit</strong></div>
+                                    <div class="col-lg-7 col-md-8">: <span id="vpenerbit"></span></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-5 col-md-4 label"><strong>Terbit</strong> </div>
+                                    <div class="col-lg-7 col-md-8">: <span id="vtahunterbit"></span></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-5 col-md-4 label"><strong>Kategori</strong></div>
+                                    <div class="col-lg-7 col-md-8">: <span id="vkategori"></span></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-5 col-md-4 label"><strong>Nomor Rak</strong></div>
+                                    <div class="col-lg-7 col-md-8">: <span id="vnorak"></span></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-5 col-md-4 label"><strong>Jumlah Buku Tersedia</strong></div>
+                                    <div class="col-lg-7 col-md-8">: <span id="vjumlahbuku"></span></div>
+                                </div>
+                            </ul>
+                        </div>
+                        
+                    <!-- </form> -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+                </div>
                 </div>
             </div>
         </div>
