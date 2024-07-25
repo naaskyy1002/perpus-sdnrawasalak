@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 use App\Models\BukuModel;
+
 class Page extends BaseController
 {
     // halaman yang dapat di akses oleh siswa
@@ -15,6 +16,17 @@ class Page extends BaseController
 
     public function beranda()
     {
+        // $currentPage = $this->request->getVar('page_buku') ? $this->request->getVar('page_buku') :
+        // 1;
+
+        // $keyword = $this->request->getVar('keyword');
+        // if($keyword) {
+        //     $buku = $this->bukuModel->search($keyword);
+        // }else {
+        //     $buku = $this->bukuModel;
+        // }
+
+        // $buku = $this->bukuModel->paginate(10, 'buku');
         $buku = $this->bukuModel->getBuku();
         $data = [
             'buku' => $buku,

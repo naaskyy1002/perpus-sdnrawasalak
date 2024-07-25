@@ -36,6 +36,25 @@ class Siswa extends BaseController
         return view('admin/maindata/data_siswa', $data);
     }
 
+    public function profil_user()
+    {
+        $username = $this->session->get('username');
+        $allProfils = $this->SiswaModel->getSiswa();
+
+        $profils = array_filter($allProfils, function ($profils) use ($username) {
+        return $profils['username'] == $username;
+        });
+
+        $profils = reset($profils);
+
+        $data = [
+        'title' => 'PROFIL SAYA',
+        'profils' => $profils,
+        ];
+
+        return view('siswa/profil_user', $data);
+    }
+
     public function addSiswa()
     {
         if($this->request->getFile('a_foto')->isValid()) {

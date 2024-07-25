@@ -27,11 +27,11 @@
             <div class="col-xl-8">
                 <div class="card">
                     <div class="card-body pt-3">
-                        <ul class="nav nav-tabs nav-tabs-bordered">
+                        <!-- <ul class="nav nav-tabs nav-tabs-bordered">
                             <li class="nav-item">
                                 <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Detail Profil</button>
                             </li>
-                        </ul>
+                        </ul> -->
                         <div class="tab-content pt-2">
                             <div class="tab-pane fade show active profile-overview" id="profile-overview">
                                 <div class="row">
