@@ -101,7 +101,7 @@
                   <td><?= $bkr['keterangan'] ;?></td>
                   <td><img src="<?= base_url('assets/img/bukti/' . $bkr['foto_bukti']) ?>" alt="fotoBukti" width="50"></td>
                   <td>
-                    <a href="#" data-bs-toggle="modal" data-bs-target="#viewModal" class="viewModalid" 
+                    <a href="#" title="Detail" data-bs-toggle="modal" data-bs-target="#viewModal" class="viewModalid" 
                       data-vbkrkode="<?=$bkr['kode_buku'];?>"
                       data-vbkrjudul="<?=$bkr['judul_buku'] ?>"
                       data-vbkrpengarang="<?=$bkr['pengarang'];?>"
@@ -110,7 +110,7 @@
                       data-vbkrket="<?=$bkr['keterangan'];?>">
                       <i class="bi bi-eye"></i>
                     </a>
-                    <a href="#editModal" data-bs-toggle="modal" data-bs-target="#editModal" class="editModalid"  title="Edit"
+                    <a href="#editModal" title="Edit" data-bs-toggle="modal" data-bs-target="#editModal" class="editModalid"
                       data-ebkrid="<?=$bkr['id_buku'];?>"
                       data-ebkrkode="<?=$bkr['kode_buku'];?>"
                       data-ebkrjudul="<?=$bkr['judul_buku'];?>"
@@ -121,7 +121,7 @@
                       data-ebkroldbukti="<?=$bkr['foto_bukti']?>">
                       <i class="bi bi-pencil"></i>
                     </a>
-                    <a href="#" data-bs-toggle="modal" data-bs-target="#deleteModal" class="deleteModalid" 
+                    <a href="#" title="Hapus" data-bs-toggle="modal" data-bs-target="#deleteModal" class="deleteModalid" 
                       data-idbuku="<?=$bkr['id_buku'];?>">
                       <i class="bi bi-trash"></i>
                     </a>

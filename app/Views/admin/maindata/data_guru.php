@@ -62,7 +62,7 @@
                   <td><?= $gr['nama_lengkap'] ;?></td>
                   <td><?= $gr['jabatan'] ;?></td>
                   <td>
-                    <a href="#" class="viewModalid"  title="View" data-bs-toggle="modal" data-bs-target="#viewModal"
+                    <a href="#" title="Detail" class="viewModalid" data-bs-toggle="modal" data-bs-target="#viewModal"
                       data-vfoto="<?= base_url('assets/img/guru/' . $gr['foto']);?>"
                       data-vnip="<?=$gr['nip'];?>"
                       data-vnamalengkap="<?=$gr['nama_lengkap'];?>"
@@ -73,7 +73,7 @@
                       data-vjabatan="<?=$gr['jabatan'];?>">
                       <i class="bi bi-eye"></i>
                     </a>
-                    <a href="#" class="editModalid" title="Edit" data-bs-toggle="modal" data-bs-target="#editModal"
+                    <a href="#" title="Edit" class="editModalid" data-bs-toggle="modal" data-bs-target="#editModal"
                       data-eidguru="<?=$gr['nip'];?>"
                       data-efoto="<?= base_url('assets/img/guru/' . $gr['foto']);?>"
                       data-enip="<?=$gr['nip'];?>"
@@ -84,7 +84,7 @@
                       data-eemail="<?=$gr['email'];?>"
                       data-ejabatan="<?=$gr['jabatan'];?>">
                     <i class="bi bi-pencil"></i></a>
-                    <a href="#" data-bs-toggle="modal" data-bs-target="#deleteModal" class="deleteModalid"
+                    <a href="#" title="Hapus" data-bs-toggle="modal" data-bs-target="#deleteModal" class="deleteModalid"
                         data-nip="<?=$gr['nip'];?>">
                         <i class="bi bi-trash"></i>
                     </a>

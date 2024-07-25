@@ -188,6 +188,11 @@ class Transaksi extends BaseController
         exit;
     }
 
+    public function getPinjam()
+    {
+
+    }
+
     public function peminjaman()
     {
         $currentPage = $this->request->getVar('page_peminjaman') ? $this->request->getVar('page_peminjaman') : 1;
@@ -212,68 +217,66 @@ class Transaksi extends BaseController
         return view('admin/transaksi/peminjaman', $data);
     }
 
+    public function getKembali()
+    {
+
+    }
+
     public function pengembalian()
     {
-        $currentPage = $this->request->getVar('page_transaksi') ? $this->request->getVar('page_transaksi') : 1;
-
-        $keyword = $this->request->getVar('keyword');
-        if ($keyword) {
-            $kembali = $this->transaksiModel->search($keyword);
-        } else {
-            $kembali = $this->transaksiModel;
+        $id = $this->request->getPost('id_transaksi');
+        $tgl_kembali = $this->request->getPost('tgl_kembali');
+        
+        // Cek apakah id_transaksi ada di database
+        $transaksi = $this->transaksiModel->find($id);
+        if (!$transaksi) {
+            return redirect()->to('/admin/peminjaman')->with('errors', 'ID Transaksi tidak ditemukan.');
         }
-
-        $kembali = $this->transaksiModel->paginate(10, 'transaksi');
-        $pager = $this->transaksiModel->pager;
-        $kembali = $this->transaksiModel->getPeminjaman();
-        $kembali = $this->transaksiModel->getPengembalian();
-        $data = [
-            'title' => 'Transaksi Pengembalian',
-            'pengembalian' => $kembali,
-            'isi' => 'pengembalian',
-            'pager' => $pager,
-            'currentPage' => $currentPage,
+        
+        // Perbarui tanggal kembali
+        $updateData = [
+            'tgl_kembali' => $tgl_kembali
         ];
-        return view('admin/transaksi/pengembalian', $data);
+        $updated = $this->transaksiModel->update($id, $updateData);
+        
+        if ($updated) {
+            return redirect()->to('/admin/peminjaman')->with('message', 'Transaksi berhasil diperbarui.');
+        } else {
+            return redirect()->to('/admin/peminjaman')->with('errors', 'Gagal memperbarui transaksi.');
+        }
     }
+    
+
 
     public function selesai()
     {
-    $id = $this->request->getPost('id_transaksi');
-    $tgl_kembali = date('Y-m-d');
-    $this->transaksiModel->update($id, ['tgl_kembali' => $tgl_kembali]);
-    return redirect()->to(base_url('transaksi/pengembalian'));
+        $id = $this->request->getPost('id_transaksi');
+        $tgl_kembali = date('Y-m-d');
+        $this->transaksiModel->update($id, ['tgl_kembali' => $tgl_kembali]);
+        return redirect()->to(base_url('transaksi/pengembalian'));
     }
 
 
     public function deleteTransaksi()
     {
         $id = $this->request->getPost('id_transaksi');
-     
-        // Debugging
-        error_log("ID Transaksi: " . $id);
-     
+        
         // Cek apakah id_transaksi ada di database
         $transaksi = $this->transaksiModel->find($id);
         if (!$transaksi) {
-            error_log("ID Transaksi tidak ditemukan.");
             return redirect()->to('/admin/peminjaman')->with('errors', 'ID Transaksi tidak ditemukan.');
         }
-     
-        // Debugging: Periksa Transaksi yang Ditemukan
-        error_log("Transaksi Ditemukan: " . json_encode($transaksi));
-     
+        
         // Hapus transaksi
         $deleted = $this->transaksiModel->deleteTransaksi($id);
-     
+        
         if ($deleted) {
-            error_log("Transaksi berhasil dihapus.");
             return redirect()->to('/admin/peminjaman')->with('message', 'Transaksi berhasil dihapus.');
         } else {
-            error_log("Gagal menghapus transaksi.");
             return redirect()->to('/admin/peminjaman')->with('errors', 'Gagal menghapus transaksi.');
         }
     }
+
     
     
 

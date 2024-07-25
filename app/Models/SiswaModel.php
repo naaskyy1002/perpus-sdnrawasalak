@@ -25,10 +25,13 @@ class SiswaModel extends Model
                     ->orLike('kelas', $keyword);
     }
 
-    // public function getSiswaByNama($nama)
-    // {
-    //     return $this->like('nama', $nama)->findAll();
-    // }
+    public function getSiswa()
+    {
+        return $this->table('siswa')
+                    ->select('*')
+                    ->get()
+                    ->getResultArray();
+    }
 
     public function createSiswa($data)
     {

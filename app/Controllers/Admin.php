@@ -167,10 +167,10 @@ class Admin extends BaseController
             return redirect()->back()->withInput()
                 ->with('errors', 'Gagal menambahkan data admin. Silakan periksa input Anda.');
         }
-    } else {
-        return redirect()->back()->withInput()
-            ->with('errors', 'Gagal menambahkan data admin. Silahkan unggah foto.');
-    }
+        } else {
+            return redirect()->back()->withInput()
+                ->with('errors', 'Gagal menambahkan data admin. Silahkan unggah foto.');
+        }
 
         // Ambil data dari request
         $nip      = $this->request->getPost('a_nip');

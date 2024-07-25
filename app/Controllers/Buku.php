@@ -20,20 +20,19 @@ class Buku extends BaseController
     // BUKU LAYAK
     public function buku_layak()
     {
-        $currentPage = $this->request->getVar('page_buku') ? $this->request->getVar('page_buku') :
-        1;
+        $currentPage = $this->request->getVar('page_buku') ? $this->request->getVar('page_buku') : 1;
 
         $keyword = $this->request->getVar('keyword');
         if($keyword) {
             $buku = $this->bukuModel->search($keyword);
-        }else {
+        } else {
+            $this->bukuModel->setTable('buku'); // Pastikan tabel diset sebelum melakukan kueri
             $buku = $this->bukuModel;
-            $this->bukuModel->setTable('buku');
         }
 
         $buku = $this->bukuModel->paginate(10, 'buku');
         $pager = $this->bukuModel->pager;
-        // $buku = $this->bukuModel->findAll();
+
         $data = [
             'title' => 'Daftar Buku',
             'buku' => $buku,
@@ -44,21 +43,22 @@ class Buku extends BaseController
         return view('admin/buku/buku_layak', $data);
     }
 
+
     public function printBuku()
     {
-        $currentPage = $this->request->getVar('page_printBuku') ? $this->request->getVar('page_printBuku') :
-        1;
-
+        $currentPage = $this->request->getVar('page_printBuku') ? $this->request->getVar('page_printBuku') : 1;
+    
         $keyword = $this->request->getVar('keyword');
         if($keyword) {
             $buku = $this->bukuModel->searching($keyword);
-        }else {
+        } else {
+            $this->bukuModel->setTable('buku'); // Pastikan tabel diset sebelum melakukan kueri
             $buku = $this->bukuModel;
         }
-
+    
         $buku = $this->bukuModel->paginate(10, 'printBuku');
         $pager = $this->bukuModel->pager;
-
+    
         $data = [
             'title' => 'Daftar Buku Layak',
             'buku' => $buku,
@@ -67,6 +67,7 @@ class Buku extends BaseController
         ];
         return view('admin/buku/printBuku', $data);
     }
+    
 
     public function excelBuku()
     {
@@ -329,8 +330,8 @@ class Buku extends BaseController
         if($keyword) {
             $bkrusak = $this->bukuModel->searching($keyword);
         }else {
-            $bkrusak = $this->bukuModel;
             $this->bukuModel->setTable('buku_rusak');
+            $bkrusak = $this->bukuModel;
         }
 
         $bkrusak = $this->bukuModel->paginate(10, 'buku_rusak');
@@ -356,8 +357,8 @@ class Buku extends BaseController
         if($keyword) {
             $bkrusak = $this->bukuModel->searching($keyword);
         }else {
-            $bkrusak = $this->bukuModel;
             $this->bukuModel->setTable('buku_rusak');
+            $bkrusak = $this->bukuModel;
         }
 
         $bkrusak = $this->bukuModel->paginate(10, 'printBkr');

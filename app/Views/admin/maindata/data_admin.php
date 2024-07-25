@@ -63,7 +63,7 @@
                   <td><?= $adm['nama_lengkap'] ;?></td>
                   <td><?= $adm['jabatan'] ;?></td>
                   <td>
-                    <a href="#" class="viewModalid"  title="View" data-bs-toggle="modal" data-bs-target="#viewModal"
+                    <a href="#" class="viewModalid"  title="Detail" data-bs-toggle="modal" data-bs-target="#viewModal"
                       data-vfoto="<?= base_url('assets/img/admin/' . $adm['foto']);?>"
                       data-vnip="<?=$adm['nip'];?>"
                       data-vnamalengkap="<?=$adm['nama_lengkap'];?>"
@@ -89,7 +89,7 @@
                       data-eusername="<?=$adm['username'];?>"
                       data-epassword="<?=$adm['password'];?>">
                     <i class="bi bi-pencil"></i></a>
-                    <a href="#" data-bs-toggle="modal" data-bs-target="#deleteModal" class="deleteModalid" 
+                    <a href="#" title="Hapus" data-bs-toggle="modal" data-bs-target="#deleteModal" class="deleteModalid" 
                         data-nip="<?=$adm['nip'];?>">
                         <i class="bi bi-trash"></i>
                     </a>
@@ -364,45 +364,45 @@
   </div>
 
   <script type="text/javascript">
-        $(".editModalid").click(function() {
-            var eidadmin = $(this).data('eidadmin');
-            $("#eidadmin").val(eidadmin);
+    $(".editModalid").click(function() {
+        var eidadmin = $(this).data('eidadmin');
+        $("#eidadmin").val(eidadmin);
 
-            var efoto = $(this).data('efoto');
-            $("#efoto").attr("src", efoto);
+        var efoto = $(this).data('efoto');
+        $("#efoto").attr("src", efoto);
 
-            var eoldfoto = $(this).data('eoldfoto');
-            $("#eoldfoto").val(eoldfoto);
+        var eoldfoto = $(this).data('eoldfoto');
+        $("#eoldfoto").val(eoldfoto);
 
-            var enip = $(this).data('enip');
-            $("#enip").val(enip);
+        var enip = $(this).data('enip');
+        $("#enip").val(enip);
 
-            var enamalengkap = $(this).data('enamalengkap');
-            $("#enamalengkap").val(enamalengkap);
+        var enamalengkap = $(this).data('enamalengkap');
+        $("#enamalengkap").val(enamalengkap);
 
-            var edob = $(this).data('edob');
-            $("#edob").val(edob);
+        var edob = $(this).data('edob');
+        $("#edob").val(edob);
 
-            var ealamat = $(this).data('ealamat');
-            $("#ealamat").val(ealamat);
+        var ealamat = $(this).data('ealamat');
+        $("#ealamat").val(ealamat);
 
-            var etelepon = $(this).data('etelepon');
-            $("#etelepon").val(etelepon);
+        var etelepon = $(this).data('etelepon');
+        $("#etelepon").val(etelepon);
 
-            var eemail = $(this).data('eemail');
-            $("#eemail").val(eemail);
+        var eemail = $(this).data('eemail');
+        $("#eemail").val(eemail);
 
-            var ejabatan = $(this).data('ejabatan');
-            $("#ejabatan").val(ejabatan);
+        var ejabatan = $(this).data('ejabatan');
+        $("#ejabatan").val(ejabatan);
 
-            var eusername = $(this).data('eusername');
-            $("#eusername").val(eusername);
+        var eusername = $(this).data('eusername');
+        $("#eusername").val(eusername);
 
-            var epassword = $(this).data('epassword');
-            $("#epassword").val(epassword);
+        var epassword = $(this).data('epassword');
+        $("#epassword").val(epassword);
 
-            $('#editModal').modal('show');
-        });
+        $('#editModal').modal('show');
+    });
 
         // Toggle password visibility
         $('#togglePassword').on('click', function () {

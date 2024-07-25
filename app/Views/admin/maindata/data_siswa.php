@@ -62,7 +62,7 @@
                   <td><?= $sw['username'] ;?></td>
                   <td><?= $sw['kelas'] ;?></td>
                   <td>
-                    <a href="#" class="viewModalid"  title="View" data-bs-toggle="modal" data-bs-target="#viewModal"
+                    <a href="#"  title="Detail" class="viewModalid" data-bs-toggle="modal" data-bs-target="#viewModal"
                       data-vfoto="<?= base_url('assets/img/siswa/' . $sw['foto']);?>"
                       data-vnisn="<?=$sw['nisn'];?>"
                       data-vusername="<?=$sw['username'];?>"
@@ -71,7 +71,7 @@
                       data-vkelas="<?=$sw['kelas'];?>">
                       <i class="bi bi-eye"></i>
                     </a>
-                    <a href="#" class="editModalid" title="Edit" data-bs-toggle="modal" data-bs-target="#editModal"
+                    <a href="#" title="Edit" class="editModalid" data-bs-toggle="modal" data-bs-target="#editModal"
                       data-eidsiswa="<?=$sw['nisn'];?>"
                       data-efoto="<?= base_url('assets/img/siswa/' . $sw['foto']);?>"
                       data-enisn="<?=$sw['nisn'];?>"
@@ -80,7 +80,7 @@
                       data-ejk="<?=$sw['jenis_kelamin'];?>"
                       data-ekelas="<?=$sw['kelas'];?>">
                     <i class="bi bi-pencil"></i></a>
-                    <a href="#" data-bs-toggle="modal" data-bs-target="#deleteModal" class="deleteModalid" 
+                    <a href="#" title="Hapus" data-bs-toggle="modal" data-bs-target="#deleteModal" class="deleteModalid" 
                         data-nisn="<?=$sw['nisn'];?>">
                         <i class="bi bi-trash"></i>
                     </a>

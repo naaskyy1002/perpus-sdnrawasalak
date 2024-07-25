@@ -57,7 +57,7 @@
                     <div class="col-lg-12">
                         <div class="row mb-3">               
                             <div class="col-sm-12 col-md-6 ms-auto">
-                                <form action="" method="post">
+                                <form action="" method="post" class="d-flex">
                                     <div class="input-group mb-3">
                                         <input type="text" class="form-control" placeholder="Masukkan Kata Kunci Pencarian" name="keyword">
                                         <button class="btn btn-outline-secondary" type="submit" name="submit">Cari</button>
@@ -102,7 +102,7 @@
                                         <td><?= $bk['kategori'] ;?></td>
                                         <td><?= $bk['no_rak'] ;?></td>
                                         <td>
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#viewModal" class="viewModalid" 
+                                            <a href="#" title="Detail" data-bs-toggle="modal" data-bs-target="#viewModal" class="viewModalid" 
                                                 data-vkodebuku="<?=$bk['kode_buku'];?>"
                                                 data-vsampul="<?= base_url('assets/img/buku/' . $bk['sampul']) ;?>"
                                                 data-vjudulbuku="<?=$bk['judul_buku'];?>"
@@ -114,7 +114,7 @@
                                                 data-vjumlahbuku="<?=$bk['jumlah_buku'];?>">
                                                 <i class="bi bi-eye"></i>
                                             </a>
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#editModal" class="editModalid" 
+                                            <a href="#" title="Edit" data-bs-toggle="modal" data-bs-target="#editModal" class="editModalid" 
                                                 data-eidbuku="<?=$bk['id_buku']?>"
                                                 data-ekodebuku="<?=$bk['kode_buku']?>"
                                                 data-esampul="<?= base_url('assets/img/buku/' . $bk['sampul']) ;?>"
@@ -128,7 +128,7 @@
                                                 data-ejumlahbuku="<?=$bk['jumlah_buku'];?>">
                                                 <i class="bi bi-pencil"></i>
                                             </a>
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#deleteModal" class="deleteModalid" 
+                                            <a href="#" title="Hapus" data-bs-toggle="modal" data-bs-target="#deleteModal" class="deleteModalid" 
                                                 data-idbuku="<?=$bk['id_buku'];?>">
                                                 <i class="bi bi-trash"></i>
                                             </a>
@@ -367,12 +367,12 @@
                         
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                            <button type="submit" class="btn btn-success">Update</button>
+                            <button type="submit" class="btn btn-success">Simpan</button>
                         </div>
                     </form>
-                    </div>
                 </div>
             </div>
+        </div>
     </div>
 
     <script type="text/javascript">

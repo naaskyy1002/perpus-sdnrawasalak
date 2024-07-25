@@ -57,9 +57,7 @@
                   <?php if (!empty(session()->getFlashdata('login_fail'))) { ?>
                   <div class="alert alert-danger alert-dismissible fade show alertdismiss" role="alert">
                       <?php echo session()->getFlashdata('login_fail') ?>
-                      <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                      </button>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <?php } ?>
 

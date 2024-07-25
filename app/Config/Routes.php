@@ -11,6 +11,9 @@ $routes->get('login', 'Auth::login');
 $routes->post('auth/valid-login', 'Auth::validLogin');
 $routes->get('auth/logout', 'Auth::logout');
 
+$routes->get('/tentang_kami', 'Home::tentang_kami');
+$routes->get('/kontak', 'Home::kontak');
+
 $routes->group('admin',['filter' => 'isLoggedIn'], function($routes) {
     $routes->get('', 'Admin::home');
     
@@ -77,9 +80,6 @@ $routes->group('admin',['filter' => 'isLoggedIn'], function($routes) {
     $routes->post('editJadwal', 'Jadwal::editJadwal');
     $routes->get('profilAdmin', 'Admin::profil_admin');
 });
-
-$routes->get('/tentang_kami', 'Home::tentang_kami');
-$routes->get('/kontak', 'Home::kontak');
 
 $routes->group('siswa',['filter' => 'isLoggedIn'], function($routes) {
     $routes->get('', 'Page::beranda');

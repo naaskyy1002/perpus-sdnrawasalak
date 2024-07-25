@@ -69,7 +69,7 @@
   <aside id="sidebar" class="sidebar">
     <ul class="sidebar-nav" id="sidebar-nav">
       <a class="nav-profile d-flex flex-column align-items-center pe-0">
-        <img src="<?= base_url('assets/img/profile-img.jpg') ?>" alt="Profile" class="rounded-circle">
+        <img src="<?= base_url('assets/img/admin/' . session()->get('foto')); ?>" alt="Profile" class="rounded-circle">
         <span class="d-none d-md-block pt-2"><?= session()->get('nama_lengkap'); ?></span>
       </a>
       <li class="nav-item">

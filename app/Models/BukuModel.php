@@ -37,7 +37,8 @@ class BukuModel extends Model
     public function search($keyword)
     {
         $this->setTable('buku');
-        return $this->like('kode_buku', $keyword)
+        return $this->table($this->table)
+                    ->like('kode_buku', $keyword)
                     ->orLike('judul_buku', $keyword)
                     ->orLike('kategori', $keyword)
                     ->findAll();
@@ -46,7 +47,8 @@ class BukuModel extends Model
     public function searching($keyword)
     {
         $this->setTable('buku_rusak');
-        return $this->like('kode_buku', $keyword)
+        return $this->table($this->table)
+                    ->like('kode_buku', $keyword)
                     ->orLike('judul_buku', $keyword)
                     ->orLike('keterangan', $keyword)
                     ->findAll();
@@ -55,11 +57,11 @@ class BukuModel extends Model
     // BUKU LAYAK
     public function getBuku()
     {
-    $this->setTable('buku');
-    return $this->table($this->table)
-                ->select('*')
-                ->get()
-                ->getResultArray();
+        $this->setTable('buku');
+        return $this->table($this->table)
+                    ->select('*')
+                    ->get()
+                    ->getResultArray();
     }
 
     public function createBuku($data)
@@ -80,21 +82,21 @@ class BukuModel extends Model
         return $this->delete($id);
     }
 
-    public function decreaseStock($kode_buku)
-    {
-        $this->setTable('buku');
-        return $this->where('kode_buku', $kode_buku)
-                    ->set('jumlah_buku', 'jumlah_buku - 1', false)
-                    ->update();
-    }
+    // public function decreaseStock($kode_buku)
+    // {
+    //     $this->setTable('buku');
+    //     return $this->where('kode_buku', $kode_buku)
+    //                 ->set('jumlah_buku', 'jumlah_buku - 1', false)
+    //                 ->update();
+    // }
 
-    public function increaseStock($kode_buku)
-    {
-        $this->setTable('buku');
-        return $this->where('kode_buku', $kode_buku)
-                    ->set('jumlah_buku', 'jumlah_buku + 1', false)
-                    ->update();
-    }
+    // public function increaseStock($kode_buku)
+    // {
+    //     $this->setTable('buku');
+    //     return $this->where('kode_buku', $kode_buku)
+    //                 ->set('jumlah_buku', 'jumlah_buku + 1', false)
+    //                 ->update();
+    // }
 
     public function printBuku()
     {

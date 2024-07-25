@@ -135,7 +135,7 @@
             </div>
             <div class="col-12">
               <label for="inputNama" class="form-label">NISN</label>
-              <input type="text" class="form-control" name="a_nisn" required>
+              <input type="number" class="form-control" name="a_nisn" required>
             </div>
             <div class="col-12">
               <label for="inputTanggal" class="form-label">Tanggal Pinjam</label>
@@ -166,7 +166,7 @@
         <form action="pengembalian" method="post">
           <div class="modal-body">
             Apakah Anda yakin buku ini sudah dikembalikan?
-            <input type="hidden" name="idtransaksi" id="idtransaksi">
+            <input type="hidden" name="id_transaksi" id="id_transaksi">
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
@@ -181,7 +181,7 @@
   <script>
         $(".doneModalid").click(function() {
             var idtransaksi = $(this).data('idtransaksi');
-            $("#idtransaksi").val(idtransaksi);
+            $("#id_transaksi").val(idtransaksi);
         });
   </script>
 
@@ -200,26 +200,26 @@
 
   <!-- Delete Modal -->
   <div class="modal fade" id="deleteModal">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content text-dark">
-                <div class="modal-body">
-                    Apakah Anda Yakin Ingin Menghapus Data Transaksi Ini?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                    <form method="post" action="deleteTransaksi">
-                        <input type="hidden" id="idtransaksi" name="idtransaksi">
-                        <button type="submit" class="btn btn-danger">Hapus</button>
-                    </form>
-                </div>
-            </div>
+    <div class="modal-dialog" role="document">
+      <div class="modal-content text-dark">
+        <div class="modal-body">
+          Apakah Anda Yakin Ingin Menghapus Data Transaksi Ini?
         </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+          <form method="post" action="deleteTransaksi">
+            <input type="hidden" id="id_transaksi" name="id_transaksi">
+            <button type="submit" class="btn btn-danger">Hapus</button>
+          </form>
+        </div>
+      </div>
     </div>
+  </div>
 
     <script>
         $(".deleteModalid").click(function() {
             var idtransaksi = $(this).data('idtransaksi');
-            $("#idtransaksi").val(idtransaksi);
+            $("#id_transaksi").val(idtransaksi);
         });
     </script>
 
@@ -244,14 +244,4 @@
 
 <?=$this->endSection();?>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const selesaiLinks = document.querySelectorAll('.selesai');
-    selesaiLinks.forEach(link => {
-      link.addEventListener('click', function() {
-        const idTransaksi = this.getAttribute('data-idtransaksi');
-        document.getElementById('id_transaksi').value = idTransaksi;
-      });
-    });
-  });
-</script>
+
