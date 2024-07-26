@@ -79,6 +79,7 @@
                     <a href="#" title="Edit" data-bs-toggle="modal" data-bs-target="#editModal" class="editModalid"
                       data-eidadmin="<?=$adm['nip']?>"
                       data-efoto="<?= base_url('assets/img/admin/' . $adm['foto']);?>"
+                      data-eoldfoto="<?=$adm['foto'] ;?>"
                       data-enip="<?=$adm['nip'];?>"
                       data-enamalengkap="<?=$adm['nama_lengkap'];?>"
                       data-edob="<?=$adm['dob'];?>"
@@ -104,337 +105,320 @@
       </div>
     </div>
 
-  <!-- Tambah Modal -->
-  <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-    <div class="modal-dialog d-flex justify-content-center"> <!-- mau besar tambahin modal-xl -->
-      <div class="modal-content w-75">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel2">Tambah Data Admin</h5>
-          <button  type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body p-4">
-          <form class="row g-3" method="post" enctype="multipart/form-data" action="addAdmin">
-            <div class="mb-4">
-              <label for="Foto">Pas Foto (.jpg / .png / .jpeg)</label>
-              <input type="file" name="a_foto" accept=".jpg,.png,.jpeg" onchange="ImgFile(this);" class="form-control-file" required>
-              <img id="previewImage" src="#" alt="Preview Image" style="display:none; width: 200px; margin-top: 10px;">
-            </div>
-            <div class="col-12">
-              <label for="NIP">NIP</label>
-              <input type="number" name="a_nip" class="form-control" id="NIP" required/>
-            </div>
-            <div class="col-12">
-              <label for="Nama">Nama</label>
-              <input type="text" name="a_nama" class="form-control" id="Nama" required/>
-            </div>
-            <div class="col-12">
-              <label for="dob">Tanggal Lahir</label>
-              <input type="date" name="a_dob" class="form-control" id="dob" required/>
-            </div>
-            <div class="col-12">
-              <label for="Alamat">Alamat</label>
-              <input type="text" name="a_alamat" class="form-control" id="Alamat" required/>
-            </div>
-            <div class="col-12">
-              <label for="Telepon">Handphone</label>
-              <input type="number" name="a_telepon" class="form-control" id="Telepon" required/>
-            </div>
-            <div class="col-12">
-              <label for="Email">Email</label>
-              <input type="email" name="a_email" class="form-control" id="Email" required/>
-            </div>
-            <div class="col-12">
-              <label for="Jabatan">Jabatan</label>
-              <input type="text" name="a_jabatan" class="form-control" id="Jabatan" required/>
-            </div>
-            <div class="col-12">
-              <label for="Username">Username</label>
-              <input type="text" name="a_username" class="form-control" id="Username" required/>
-            </div>
-            <div class="col-12">
-              <label for="Password">Password</label>
-              <input type="password" name="a_password" class="form-control" id="Password" required/>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
-              <button type="submit" class="btn btn-primary">Simpan</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    function ImgFile(input) {
-      const file = input.files[0];
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        const previewImage = document.getElementById('previewImage');
-        previewImage.src = e.target.result;
-        previewImage.style.display = 'block';
-      };
-      reader.readAsDataURL(file);
-    }
-  </script>
-
-  <!-- View Modal -->
-  <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-    <div class="modal-dialog d-flex justify-content-center">
-      <div class="modal-content text-light bg-success">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel2">Detail Data Admin</h5>
-          <button  type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body p-4">
-          <form class="row g-3" method="#" enctype="multipart/form-data" action="#">
-            <div class="form-group" style="text-align:center;">
-              <img id="vfoto" src="" style="width: 200px;">
-            </div>
-            <div class="col-12">
-              <label for="NIP">NIP</label>
-              <input type="text" class="form-control" id="vnip" disabled/>
-            </div>
-            <div class="col-12">
-              <label for="Nama">Nama</label>
-              <input type="text" class="form-control" id="vnamalengkap" disabled/>
-            </div>
-            <div class="col-12">
-              <label for="Dob">Tanggal Lahir</label>
-              <input type="text" class="form-control" id="vdob" disabled/>
-            </div>
-            <div class="col-12">
-              <label for="Alamat">Alamat</label>
-              <input type="text" class="form-control" id="valamat" disabled/>
-            </div>
-            <div class="col-12">
-              <label for="Telepon">Handphone</label>
-              <input type="text" class="form-control" id="vtelepon" disabled/>
-            </div>
-            <div class="col-12">
-              <label for="Email">Email</label>
-              <input type="text" class="form-control" id="vemail" disabled/>
-            </div>
-            <div class="col-12">
-              <label for="Jabatan">Jabatan</label>
-              <input type="text" class="form-control" id="vjabatan" disabled/>
-            </div>
-            <div class="col-12">
-              <label for="Username">Username</label>
-              <input type="text" class="form-control" id="vusername" disabled/>
-            </div>
-            <div class="col-12">
-              <label for="Password">Password</label>
-              <div class="input-group">
-                <input type="password" class="form-control" id="vpassword" disabled/>
-                <span class="input-group-text" id="togglePassword" style="cursor: pointer;">
-                  <i class="bi bi-eye" id="eyeIcon"></i>
-                </span>
+    <!-- Tambah Modal -->
+    <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+      <div class="modal-dialog d-flex justify-content-center"> <!-- mau besar tambahin modal-xl -->
+        <div class="modal-content w-75">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel2">Tambah Data Admin</h5>
+            <button  type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body p-4">
+            <form class="row g-3" method="post" enctype="multipart/form-data" action="addAdmin">
+              <div class="mb-4">
+                <label for="Foto">Pas Foto (.jpg / .png / .jpeg)</label>
+                <input type="file" name="a_foto" accept=".jpg,.png,.jpeg" onchange="ImgFile(this);" class="form-control-file" required>
+                <img id="previewImage" src="#" alt="Preview Image" style="display:none; width: 200px; margin-top: 10px;">
               </div>
-            </div>
-
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script type="text/javascript">
-        $(".viewModalid").click(function() {
-            var vfoto = $(this).data('vfoto');
-            $("#vfoto").attr("src", vfoto);
-
-            var vnip = $(this).data('vnip');
-            $("#vnip").val(vnip);
-
-            var vnamalengkap = $(this).data('vnamalengkap');
-            $("#vnamalengkap").val(vnamalengkap);
-
-            var vdob = $(this).data('vdob');
-            $("#vdob").val(vdob);
-            
-            var valamat = $(this).data('valamat');
-            $("#valamat").val(valamat);
-            
-            var vtelepon = $(this).data('vtelepon');
-            $("#vtelepon").val(vtelepon);
-
-            var vemail = $(this).data('vemail');
-            $("#vemail").val(vemail);
-
-            var vjabatan = $(this).data('vjabatan');
-            $("#vjabatan").val(vjabatan);
-
-            var vusername = $(this).data('vusername');
-            $("#vusername").val(vusername);
-
-            var vpassword = $(this).data('vpassword');
-            $("#vpassword").val(vpassword);
-
-            $('#viewModal').modal('show');
-        });
-
-        // Toggle password visibility
-        $('#togglePassword').on('click', function () {
-            const passwordInput = $('#vpassword');
-            const eyeIcon = $('#eyeIcon');
-            if (passwordInput.attr('type') === 'password') {
-                passwordInput.attr('type', 'text');
-                eyeIcon.removeClass('bi-eye').addClass('bi-eye-slash');
-            } else {
-                passwordInput.attr('type', 'password');
-                eyeIcon.removeClass('bi-eye-slash').addClass('bi-eye');
-            }
-        });
-  </script>
-
-  <!-- Edit Modal -->
-  <div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog d-flex justify-content-center">
-      <div class="modal-content text-dark bg-warning">
-        <div class="modal-header">
-          <h5 class="modal-title">Ubah Data Admin</h5>
-          <button  type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body p-4">
-          <form method="post" enctype="multipart/form-data" action="editAdmin">
-            <div class="col-12">
-              <label>NIP</label>
-              <input type="number" class="form-control" id="enip" name="e_nip" required/>
-            </div>
-            <div class="col-12">
-              <label>Nama</label>
-              <input type="text" class="form-control" id="enamalengkap" name="e_namalengkap" required/>
-            </div>
-            <div class="col-12">
-              <label>Tanggal lahir</label>
-              <input type="date" class="form-control" id="edob" name="e_dob" required/>
-            </div>
-            <div class="col-12">
-              <label>Alamat</label>
-              <input type="text" class="form-control" id="ealamat" name="e_alamat" required/>
-            </div>
-            <div class="col-12">
-              <label>Handphone</label>
-              <input type="text" class="form-control" id="etelepon" name="e_telepon" required/>
-            </div>
-            <div class="col-12">
-              <label>Email</label>
-              <input type="text" class="form-control" id="eemail" name="e_email" required/>
-            </div>
-            <div class="col-12">
-              <label>Jabatan</label>
-              <input type="text" class="form-control" id="ejabatan" name="e_jabatan" required/>
-            </div>
-            <div class="col-12">
-              <label>Username</label>
-              <input type="text" class="form-control" id="eusername" name="e_username" required/>
-            </div>
-            <div class="col-12">
-              <label>Password</label>
-              <div class="input-group">
-                <input type="password" class="form-control" id="epassword" name="e_password" required/>
-                <span class="input-group-text" id="togglePassword" style="cursor: pointer;">
-                  <i class="bi bi-eye" id="eyeIcon"></i>
-                </span>
+              <div class="col-12">
+                <label for="NIP">NIP</label>
+                <input type="number" name="a_nip" class="form-control" id="NIP" required/>
               </div>
-            </div>
-            <div class="form-group">
-              <label>Foto Bukti (.jpg / .png / .jpeg) <br><i>abaikan jika tidak ingin mengubah</i></label>
-              <div class="form-group">
-                <img id="efoto" src="" style="width: 200px;">
+              <div class="col-12">
+                <label for="Nama">Nama</label>
+                <input type="text" name="a_nama" class="form-control" id="Nama" required/>
               </div>
-              <input type="file" name="e_foto" accept=".jpg,.png,.jpeg" onchange="ImgFile(this);" class="form-control-file">
-              <input type="text" name="e_oldfoto" class="form-control" id="eoldfoto" hidden required>
-            </div>
-
-            <input type="number" id="eidadmin" name="e_idadmin" hidden>
-
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-              <button type="submit" class="btn btn-success">Simpan</button>
-            </div>
-          </form>
+              <div class="col-12">
+                <label for="dob">Tanggal Lahir</label>
+                <input type="date" name="a_dob" class="form-control" id="dob" required/>
+              </div>
+              <div class="col-12">
+                <label for="Alamat">Alamat</label>
+                <input type="text" name="a_alamat" class="form-control" id="Alamat" required/>
+              </div>
+              <div class="col-12">
+                <label for="Telepon">Handphone</label>
+                <input type="number" name="a_telepon" class="form-control" id="Telepon" required/>
+              </div>
+              <div class="col-12">
+                <label for="Email">Email</label>
+                <input type="email" name="a_email" class="form-control" id="Email" required/>
+              </div>
+              <div class="col-12">
+                <label for="Jabatan">Jabatan</label>
+                <input type="text" name="a_jabatan" class="form-control" id="Jabatan" required/>
+              </div>
+              <div class="col-12">
+                <label for="Username">Username</label>
+                <input type="text" name="a_username" class="form-control" id="Username" required/>
+              </div>
+              <div class="col-12">
+                <label for="Password">Password</label>
+                <input type="password" name="a_password" class="form-control" id="Password" required/>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+                <button type="submit" class="btn btn-primary">Simpan</button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <script type="text/javascript">
-    $(".editModalid").click(function() {
-        var eidadmin = $(this).data('eidadmin');
-        $("#eidadmin").val(eidadmin);
+    <script>
+      function ImgFile(input) {
+        const file = input.files[0];
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const previewImage = document.getElementById('previewImage');
+          previewImage.src = e.target.result;
+          previewImage.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+      }
+    </script>
 
-        var efoto = $(this).data('efoto');
-        $("#efoto").attr("src", efoto);
+    <!-- View Modal -->
+    <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+      <div class="modal-dialog d-flex justify-content-center">
+        <div class="modal-content text-light bg-success">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel2">Detail Data Admin</h5>
+            <button  type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body p-4">
+            <form class="row g-3" method="#" enctype="multipart/form-data" action="#">
+              <div class="form-group" style="text-align:center;">
+                <img id="vfoto" src="" style="width: 200px;">
+              </div>
+              <div class="col-12">
+                <label for="NIP">NIP</label>
+                <input type="text" class="form-control" id="vnip" disabled/>
+              </div>
+              <div class="col-12">
+                <label for="Nama">Nama</label>
+                <input type="text" class="form-control" id="vnamalengkap" disabled/>
+              </div>
+              <div class="col-12">
+                <label for="Dob">Tanggal Lahir</label>
+                <input type="text" class="form-control" id="vdob" disabled/>
+              </div>
+              <div class="col-12">
+                <label for="Alamat">Alamat</label>
+                <input type="text" class="form-control" id="valamat" disabled/>
+              </div>
+              <div class="col-12">
+                <label for="Telepon">Handphone</label>
+                <input type="text" class="form-control" id="vtelepon" disabled/>
+              </div>
+              <div class="col-12">
+                <label for="Email">Email</label>
+                <input type="text" class="form-control" id="vemail" disabled/>
+              </div>
+              <div class="col-12">
+                <label for="Jabatan">Jabatan</label>
+                <input type="text" class="form-control" id="vjabatan" disabled/>
+              </div>
+              <div class="col-12">
+                <label for="Username">Username</label>
+                <input type="text" class="form-control" id="vusername" disabled/>
+              </div>
+              <div class="col-12">
+                <label for="Password">Password</label>
+                <div class="input-group">
+                  <input type="password" class="form-control" id="vpassword" disabled/>
+                  <span class="input-group-text" id="togglePassword" style="cursor: pointer;">
+                    <i class="bi bi-eye" id="eyeIcon"></i>
+                  </span>
+                </div>
+              </div>
 
-        var eoldfoto = $(this).data('eoldfoto');
-        $("#eoldfoto").val(eoldfoto);
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
 
-        var enip = $(this).data('enip');
-        $("#enip").val(enip);
+    <script type="text/javascript">
+          $(".viewModalid").click(function() {
+              var vfoto = $(this).data('vfoto');
+              $("#vfoto").attr("src", vfoto);
 
-        var enamalengkap = $(this).data('enamalengkap');
-        $("#enamalengkap").val(enamalengkap);
+              var vnip = $(this).data('vnip');
+              $("#vnip").val(vnip);
 
-        var edob = $(this).data('edob');
-        $("#edob").val(edob);
+              var vnamalengkap = $(this).data('vnamalengkap');
+              $("#vnamalengkap").val(vnamalengkap);
 
-        var ealamat = $(this).data('ealamat');
-        $("#ealamat").val(ealamat);
+              var vdob = $(this).data('vdob');
+              $("#vdob").val(vdob);
+              
+              var valamat = $(this).data('valamat');
+              $("#valamat").val(valamat);
+              
+              var vtelepon = $(this).data('vtelepon');
+              $("#vtelepon").val(vtelepon);
 
-        var etelepon = $(this).data('etelepon');
-        $("#etelepon").val(etelepon);
+              var vemail = $(this).data('vemail');
+              $("#vemail").val(vemail);
 
-        var eemail = $(this).data('eemail');
-        $("#eemail").val(eemail);
+              var vjabatan = $(this).data('vjabatan');
+              $("#vjabatan").val(vjabatan);
 
-        var ejabatan = $(this).data('ejabatan');
-        $("#ejabatan").val(ejabatan);
+              var vusername = $(this).data('vusername');
+              $("#vusername").val(vusername);
 
-        var eusername = $(this).data('eusername');
-        $("#eusername").val(eusername);
+              var vpassword = $(this).data('vpassword');
+              $("#vpassword").val(vpassword);
 
-        var epassword = $(this).data('epassword');
-        $("#epassword").val(epassword);
+              $('#viewModal').modal('show');
+          });
 
-        $('#editModal').modal('show');
-    });
+          // Toggle password visibility
+          $('#togglePassword').on('click', function () {
+              const passwordInput = $('#vpassword');
+              const eyeIcon = $('#eyeIcon');
+              if (passwordInput.attr('type') === 'password') {
+                  passwordInput.attr('type', 'text');
+                  eyeIcon.removeClass('bi-eye').addClass('bi-eye-slash');
+              } else {
+                  passwordInput.attr('type', 'password');
+                  eyeIcon.removeClass('bi-eye-slash').addClass('bi-eye');
+              }
+          });
+    </script>
 
-        // Toggle password visibility
-        $('#togglePassword').on('click', function () {
-            const passwordInput = $('#epassword');
-            const eyeIcon = $('#eyeIcon');
-            if (passwordInput.attr('type') === 'password') {
-                passwordInput.attr('type', 'text');
-                eyeIcon.removeClass('bi-eye').addClass('bi-eye-slash');
-            } else {
-                passwordInput.attr('type', 'password');
-                eyeIcon.removeClass('bi-eye-slash').addClass('bi-eye');
-            }
+    <!-- Edit Modal -->
+    <div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog d-flex justify-content-center">
+            <div class="modal-content text-dark bg-warning">
+                <div class="modal-header">
+                    <h5 class="modal-title">Ubah Data Admin</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form method="post" enctype="multipart/form-data" action="<?= base_url('admin/editAdmin'); ?>">
+                        <div class="col-12">
+                            <label>NIP</label>
+                            <input type="number" class="form-control" id="enip" name="e_nip" required/>
+                        </div>
+                        <div class="col-12">
+                            <label>Nama Lengkap</label>
+                            <input type="text" class="form-control" id="enamalengkap" name="e_namalengkap" required/>
+                        </div>
+                        <div class="col-12">
+                            <label>Tanggal lahir</label>
+                            <input type="date" class="form-control" id="edob" name="e_dob" required/>
+                        </div>
+                        <div class="col-12">
+                            <label>Alamat</label>
+                            <input type="text" class="form-control" id="ealamat" name="e_alamat" required/>
+                        </div>
+                        <div class="col-12">
+                            <label>Handphone</label>
+                            <input type="number" class="form-control" id="etelepon" name="e_telepon" required/>
+                        </div>
+                        <div class="col-12">
+                            <label>Email</label>
+                            <input type="email" class="form-control" id="eemail" name="e_email" required/>
+                        </div>
+                        <div class="col-12">
+                            <label>Jabatan</label>
+                            <input type="text" class="form-control" id="ejabatan" name="e_jabatan" required/>
+                        </div>
+                        <div class="col-12">
+                            <label>Username</label>
+                            <input type="text" class="form-control" id="eusername" name="e_username" required/>
+                        </div>
+                        <div class="col-12">
+                            <label>Password</label>
+                            <input type="text" class="form-control" id="epassword" name="e_password" required/>
+                        </div>
+                        <div class="form-group">
+                            <label>Foto Bukti (.jpg / .png / .jpeg) <br><i>abaikan jika tidak ingin mengubah</i></label>
+                            <div class="form-group">
+                                <img id="efoto" src="" style="width: 200px;">
+                            </div>
+                            <input type="file" name="e_foto" accept=".jpg,.png,.jpeg" onchange="ImgFile(this);" class="form-control-file">
+                            <input type="text" name="e_oldfoto" id="eoldfoto" class="form-control" hidden required>
+                        </div>
+
+                        <input type="hidden" id="eidadmin" name="e_idadmin">
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-success">Simpan</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(".editModalid").click(function() {
+            var eidadmin = $(this).data('eidadmin');
+            $("#eidadmin").val(eidadmin);
+
+            var efoto = $(this).data('efoto');
+            $("#efoto").attr("src", efoto);
+
+            var eoldfoto = $(this).data('eoldfoto');
+            $("#eoldfoto").val(eoldfoto);
+
+            var enip = $(this).data('enip');
+            $("#enip").val(enip);
+
+            var enamalengkap = $(this).data('enamalengkap');
+            $("#enamalengkap").val(enamalengkap);
+
+            var edob = $(this).data('edob');
+            $("#edob").val(edob);
+
+            var ealamat = $(this).data('ealamat');
+            $("#ealamat").val(ealamat);
+
+            var etelepon = $(this).data('etelepon');
+            $("#etelepon").val(etelepon);
+
+            var eemail = $(this).data('eemail');
+            $("#eemail").val(eemail);
+
+            var ejabatan = $(this).data('ejabatan');
+            $("#ejabatan").val(ejabatan);
+
+            var eusername = $(this).data('eusername');
+            $("#eusername").val(eusername);
+
+            var epassword = $(this).data('epassword');
+            $("#epassword").val(epassword);
+
+            $('#editModal').modal('show');
         });
-  </script>
+    </script>
 
-  <!-- Delete Modal -->
-  <div class="modal fade" id="deleteModal">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content text-dark">
-        <div class="modal-body">
-          Apakah Anda Yakin Ingin Menghapus Data Admin Ini?
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-          <form method="post" action="deleteAdmin">
-            <input type="hidden" id="nip" name="nip">
-            <button type="submit" class="btn btn-danger">Hapus</button>
-          </form>
+
+    <!-- Delete Modal -->
+    <div class="modal fade" id="deleteModal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content text-dark">
+          <div class="modal-body">
+            Apakah Anda Yakin Ingin Menghapus Data Admin Ini?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            <form method="post" action="deleteAdmin">
+              <input type="hidden" id="nip" name="nip">
+              <button type="submit" class="btn btn-danger">Hapus</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
     <script>
         $(".deleteModalid").click(function() {

@@ -28,7 +28,7 @@ class Siswa extends BaseController
             $siswa = $this->siswaModel;
         }
 
-        $siswa = $this->siswaModel->paginate(1, 'siswa'); // menentukan seberapa banyak data siswa ditampilkan di views
+        $siswa = $this->siswaModel->paginate(3, 'siswa'); // menentukan seberapa banyak data siswa ditampilkan di views
         $pager = $this->siswaModel->pager;
         $data = [
             'title' => 'Data Siswa',
@@ -55,26 +55,26 @@ class Siswa extends BaseController
             return redirect()->back()->withInput()
                 ->with('errors', 'Gagal menambahkan data siswa. Silakan periksa input Anda.');
         }
-    } else {
-        return redirect()->back()->withInput()
-            ->with('errors', 'Gagal menambahkan data siswa. Silahkan unggah foto');
-    }
-
-        // Ambil data dari request
-        $nisn          = $this->request->getPost('a_nisn');
-        $username      = $this->request->getPost('a_username');
-        $password      = $this->request->getPost('a_password');
-        $dob           = $this->request->getPost('a_dob');
-        $jenis_kelamin = $this->request->getPost('a_jk');
-        $kelas         = $this->request->getPost('a_kelas');
-        $file          = $this->request->getFile('a_foto');
-        $fotoName      = $username . '.' . $file->getExtension(); // Nama file foto dengan ekstensi
-        
-        // Proses upload foto
-        if (!$file->move('assets/img/siswa', $fotoName)) {
+        } else {
             return redirect()->back()->withInput()
-                ->with('errors', 'Upload foto gagal.');
+                ->with('errors', 'Gagal menambahkan data siswa. Silahkan unggah foto');
         }
+
+            // Ambil data dari request
+            $nisn          = $this->request->getPost('a_nisn');
+            $username      = $this->request->getPost('a_username');
+            $password      = $this->request->getPost('a_password');
+            $dob           = $this->request->getPost('a_dob');
+            $jenis_kelamin = $this->request->getPost('a_jk');
+            $kelas         = $this->request->getPost('a_kelas');
+            $file          = $this->request->getFile('a_foto');
+            $fotoName      = $username . '.' . $file->getExtension(); // Nama file foto dengan ekstensi
+            
+            // Proses upload foto
+            if (!$file->move('assets/img/siswa', $fotoName)) {
+                return redirect()->back()->withInput()
+                    ->with('errors', 'Upload foto gagal.');
+            }
 
         // Data untuk disimpan ke database
         $data = [
@@ -137,7 +137,7 @@ class Siswa extends BaseController
 
             // Simpan foto baru
             $foto = $this->request->getFile('e_foto');
-            $foto_name = $nisn . '.' . $foto->getExtension();
+            $foto_name = $username . '.' . $foto->getExtension();
             $foto->move('assets/img/siswa', $foto_name);
             $data['foto'] = $foto_name;
         } else {

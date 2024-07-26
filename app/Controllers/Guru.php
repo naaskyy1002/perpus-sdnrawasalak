@@ -146,7 +146,7 @@ class Guru extends BaseController
 
         // Simpan foto baru
         $foto = $this->request->getFile('e_foto');
-        $fotoName = $nip . '.' . $foto->getExtension();
+        $fotoName = $foto . '.' . $foto->getExtension();
         $foto->move('assets/img/guru', $fotoName);
         $data['foto'] = $fotoName;
         } else {

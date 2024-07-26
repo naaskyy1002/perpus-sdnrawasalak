@@ -45,17 +45,16 @@ $routes->group('admin',['filter' => 'isLoggedIn'], function($routes) {
     $routes->post('addTransaksi', 'Transaksi::addTransaksi');
     $routes->post('deleteTransaksi', 'Transaksi::deleteTransaksi');
     $routes->get('excelPinjam', 'Transaksi::excelPinjam');
+    $routes->get('printPinjam', 'Transaksi::printPinjam');
 
     $routes->get('pengembalian', 'Transaksi::pengembalian');
     $routes->post('pengembalian', 'Transaksi::pengembalian');
-    $routes->get('printPinjam', 'Transaksi::printPinjam');
     $routes->get('printKembali', 'Transaksi::printKembali');
 
 
     // DATA ADMIN
     $routes->get('dataAdmin', 'Admin::data_admin');
     $routes->post('dataAdmin', 'Admin::data_admin');
-    $routes->post('updateProfil', 'Admin::updateProfil');
     $routes->post('addAdmin', 'Admin::addAdmin');
     $routes->post('editAdmin', 'Admin::editAdmin');
     $routes->post('deleteAdmin', 'Admin::deleteAdmin');

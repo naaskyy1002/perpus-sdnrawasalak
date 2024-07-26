@@ -54,7 +54,7 @@
                 </tr>
               </thead>
               <tbody>
-                <?php $i = 1 + (1 * ($currentPage - 1)); ?>
+                <?php $i = 1 + (3 * ($currentPage - 1)); ?>
                 <?php foreach($siswa as $sw) : ?>
                 <tr class="text-center">
                   <td><?= $i++; ?></td>
@@ -75,6 +75,7 @@
                     <a href="#" title="Edit" class="editModalid" data-bs-toggle="modal" data-bs-target="#editModal"
                       data-eidsiswa="<?=$sw['nisn'];?>"
                       data-efoto="<?= base_url('assets/img/siswa/' . $sw['foto']);?>"
+                      data-eoldfoto="<?=$sw['foto'] ;?>"
                       data-enisn="<?=$sw['nisn'];?>"
                       data-eusername="<?=$sw['username'];?>"
                       data-epassword="<?=$sw['password'];?>"
@@ -125,7 +126,7 @@
                 <input type="password" name="a_password" class="form-control" required/>
               </div>
               <div class="col-12">
-                <label for="inputDob">Tanggal Lahit</label>
+                <label for="inputDob">Tanggal Lahir</label>
                 <input type="date" name="a_dob" class="form-control" required/>
               </div>
               <div class="col-12">
@@ -173,7 +174,7 @@
 
     <!-- View Modal -->
     <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-      <div class="modal-dialog d-flex justify-content-center"> <!-- mau besar tambahin modal-xl -->
+      <div class="modal-dialog d-flex justify-content-center">
         <div class="modal-content text-light bg-success">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel2">Detail Data Siswa</h5>
@@ -264,47 +265,42 @@
     </script>
 
     <!-- Edit Modal -->
-    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog d-flex justify-content-center">
         <div class="modal-content text-dark bg-warning">
           <div class="modal-header">
             <h5 class="modal-title">Ubah Data Siswa</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body p-4">
             <form class="row g-3" method="post" enctype="multipart/form-data" action="editSiswa">
               <div class="col-12">
-                <label>NISN</label>
+                <label for="enisn">NISN</label>
                 <input type="number" class="form-control" id="enisn" name="e_nisn" required />
               </div>
               <div class="col-12">
-                <label>Nama</label>
+                <label for="eusername">Nama</label>
                 <input type="text" class="form-control" id="eusername" name="e_username" required />
               </div>
               <div class="col-12">
-                <label>Password</label>
-                <div class="input-group">
-                  <input type="password" class="form-control" id="epassword" name="e_password" required />
-                  <span class="input-group-text" id="togglePassword" style="cursor: pointer;">
-                    <i class="bi bi-eye" id="eyeIcon"></i>
-                  </span>
-                </div>
+                <label for="epassword">Password</label>
+                  <input type="text" class="form-control" id="epassword" name="e_password" required />
               </div>
               <div class="col-12">
-                <label>Tanggal Lahir</label>
+                <label for="edob">Tanggal Lahir</label>
                 <input type="date" class="form-control" id="edob" name="e_dob" required />
               </div>
               <div class="col-12">
-                    <label>Jenis Kelamin</label>
-                    <select name="e_jk" class="form-control" required>
-                      <option value="" disabled selected>Pilih Jenis Kelamin</option>
-                      <option value="Laki-laki">Laki-laki</option>
-                      <option value="Perempuan">Perempuan</option>
-                    </select>
-                  </div>
+                <label for="ejk">Jenis Kelamin</label>
+                <select name="e_jk" class="form-control" id="ejk" required>
+                  <option value="" disabled selected>Pilih Jenis Kelamin</option>
+                  <option value="Laki-laki">Laki-laki</option>
+                  <option value="Perempuan">Perempuan</option>
+                </select>
+              </div>
               <div class="col-12">
-                <label>Kelas</label>
-                <select name="e_kelas" class="form-control" required>
+                <label for="ekelas">Kelas</label>
+                <select name="e_kelas" class="form-control" id="ekelas" required>
                   <option value="" disabled selected>Pilih Kelas</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -315,14 +311,14 @@
                 </select>
               </div>
               <div class="form-group">
-                <label>Foto Bukti (.jpg / .png / .jpeg) <br><i>abaikan jika tidak ingin mengubah</i></label>
+                <label for="efoto">Foto Bukti (.jpg / .png / .jpeg) <br><i>abaikan jika tidak ingin mengubah</i></label>
                 <div class="form-group">
                   <img id="efoto" src="" style="width: 200px;">
                 </div>
                 <input type="file" name="e_foto" accept=".jpg,.png,.jpeg" onchange="ImgFile(this);" class="form-control-file">
-                <input type="text" name="e_oldfoto" class="form-control" id="eoldsampul" hidden required>
+                <input type="text" name="e_oldfoto" class="form-control" id="eoldfoto" hidden required>
               </div>
-              <input type="number" id="eidsiswa" name="e_idsiswa" hidden>
+              <input type="hidden" id="eidsiswa" name="e_idsiswa">
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                 <button type="submit" class="btn btn-success">Simpan</button>
@@ -364,21 +360,7 @@
 
         $('#editModal').modal('show');
       });
-
-      // Toggle password visibility
-      $('#togglePassword').on('click', function() {
-        const passwordInput = $('#epassword');
-        const eyeIcon = $('#eyeIcon');
-        if (passwordInput.attr('type') === 'password') {
-          passwordInput.attr('type', 'text');
-          eyeIcon.removeClass('bi-eye').addClass('bi-eye-slash');
-        } else {
-          passwordInput.attr('type', 'password');
-          eyeIcon.removeClass('bi-eye-slash').addClass('bi-eye');
-        }
-      });
     </script>
-
 
     <!-- Delete Modal -->
     <div class="modal fade" id="deleteModal">

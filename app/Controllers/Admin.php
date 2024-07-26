@@ -172,17 +172,17 @@ class Admin extends BaseController
     public function editAdmin()
     {
         // Ambil data dari form
-        $id         = $this->request->getPost('e_nip');
-        $nip        = $this->request->getPost('e_nip');
-        $nama       = $this->request->getPost('e_namalengkap');
-        $dob        = $this->request->getPost('e_dob');
-        $alamat     = $this->request->getPost('e_alamat');
-        $telepon    = $this->request->getPost('e_telepon');
-        $email      = $this->request->getPost('e_email');
-        $jabatan    = $this->request->getPost('e_jabatan');
-        $username   = $this->request->getPost('e_username');
-        $password   = $this->request->getPost('e_password');
-
+        $id       = $this->request->getPost('e_nip');
+        $nip      = $this->request->getPost('e_nip');
+        $nama     = $this->request->getPost('e_namalengkap');
+        $dob      = $this->request->getPost('e_dob');
+        $alamat   = $this->request->getPost('e_alamat');
+        $telepon  = $this->request->getPost('e_telepon');
+        $email    = $this->request->getPost('e_email');
+        $jabatan  = $this->request->getPost('e_jabatan');
+        $username = $this->request->getPost('e_username');
+        $password = $this->request->getPost('e_password');
+    
         // Data untuk disimpan ke database
         $data = [
             'nip'           => $nip,
@@ -195,45 +195,46 @@ class Admin extends BaseController
             'username'      => $username,
             'password'      => $password,
         ];
-
+    
         if ($this->request->getFile('e_foto')->isValid()) {
             // Validasi input untuk foto bukti
             $validation = $this->validate([
-            'e_foto' => [
-                'uploaded[e_foto]',
-                'mime_in[e_foto,image/jpg,image/jpeg,image/png]',
-                'max_size[e_foto,2048]',
-            ],
-        ]);
-        
-
-        if (!$validation) {
-            return redirect()->back()->withInput()
-                ->with('errors', 'Gagal menambahkan data admin. Silakan periksa input Anda.');
-        }
-        
+                'e_foto' => [
+                    'uploaded[e_foto]',
+                    'mime_in[e_foto,image/jpg,image/jpeg,image/png]',
+                    'max_size[e_foto,2048]',
+                ],
+            ]);
+    
+            if (!$validation) {
+                return redirect()->back()->withInput()
+                    ->with('errors', 'Gagal menambahkan data admin. Silakan periksa input Anda.');
+            }
+    
             // Validasi berhasil, hapus foto bukti lama jika ada
             $old_foto = $this->request->getPost('e_oldfoto');
             if ($old_foto && file_exists('assets/img/admin/' . $old_foto)) {
                 unlink('assets/img/admin/' . $old_foto);
             }
-
+    
             // Simpan foto bukti baru
             $foto = $this->request->getFile('e_foto');
-            $fotoName = $nip . '.' . $foto->getExtension();
+            $fotoName = $nama . '.' . $foto->getExtension();
             $foto->move('assets/img/admin', $fotoName);
             $data['foto'] = $fotoName;
         } else {
             // Tidak ada bukti yang diunggah atau validasi gagal, gunakan bukti lama
             $data['foto'] = $this->request->getPost('e_oldfoto');   
         }
-
-        // Update data buku di database
+    
+        // Update data admin di database
         $this->adminModel->updateAdmin($data, $id);
-
+    
         // Redirect dengan pesan sukses
         return redirect()->to('/admin/dataAdmin')->with('message', 'Data admin berhasil diubah!');
     }
+    
+    
 
     public function deleteAdmin()
     {

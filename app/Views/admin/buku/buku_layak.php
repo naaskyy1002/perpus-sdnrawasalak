@@ -343,7 +343,14 @@
                         
                         <div class="form-group">
                             <label>Kategori</label>
-                            <input type="text" id="ekategori" name="e_kategori" class="form-control" required>
+                            <select name="e_kategori" class="form-select" id="ekategori" required>
+                                <option value="" disabled selected>Pilih Kategori Buku</option>
+                                <option value="Tematik">Tematik</option>
+                                <option value="Sejarah">Sejarah</option>
+                                <option value="Fiksi">Fiksi</option>
+                                <option value="Non-Fiksi">Non-Fiksi</option>
+                                <option value="Referensi">Referensi</option>
+                            </select>
                         </div>
                         
                         <div class="form-group">
