@@ -3,10 +3,10 @@
 
 <main id="main" class="main">
     <div class="pagetitle">
-        <h1>Koleksi Buku</h1>
+        <h1><?= $title ?></h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?= base_url('buku'); ?>">Koleksi Buku</a></li>
+                <li class="breadcrumb-item"><a href="<?= base_url('buku'); ?>"><?= $title ?></a></li>
             </ol>
         </nav>
     </div>

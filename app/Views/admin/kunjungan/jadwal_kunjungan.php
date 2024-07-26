@@ -4,11 +4,11 @@
 <main id="main" class="main">
 
   <div class="pagetitle">
-    <h1>Jadwal Kunjungan</h1>
+    <h1><?= $title ?></h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="<?= base_url('admin'); ?>">Beranda</a></li>
-        <li class="breadcrumb-item">Jadwal Kunjungan</li>
+        <li class="breadcrumb-item"><?= $title ?></li>
       </ol>
     </nav>
   </div><!-- End Page Title -->
@@ -149,6 +149,6 @@
 </main><!-- End #main -->
 <?=$this->endSection()?>
 
-<!-- Tambahkan ini di bagian bawah halaman untuk memastikan Bootstrap JavaScript dimuat -->
+<!-- memastikan Bootstrap JavaScript dimuat -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>

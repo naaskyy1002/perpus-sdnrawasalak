@@ -16,6 +16,7 @@ class Transaksi extends BaseController
     protected $bukuModel;
     protected $siswaModel;
 
+    //menginisialisasi beberapa dependensi dan layanan yang diperlukan oleh kelas,
     public function __construct()
     {
         $this->transaksiModel = new TransaksiModel();
@@ -63,7 +64,6 @@ class Transaksi extends BaseController
         }
     }
 
-    // PEMINJAMAN
     public function printPinjam()
     {
         $currentPage = $this->request->getVar('page_printPinjam') ? $this->request->getVar('page_printPinjam') : 1;
@@ -193,10 +193,13 @@ class Transaksi extends BaseController
 
     }
 
+    // PEMINJAMAN
     public function peminjaman()
     {
+        // menampilkan page halaman saat di klik
         $currentPage = $this->request->getVar('page_peminjaman') ? $this->request->getVar('page_peminjaman') : 1;
 
+        // mencari keyword yang sesuai untuk halaman peminjaman
         $keyword = $this->request->getVar('keyword');
         if ($keyword) {
             $pinjam = $this->transaksiModel->search($keyword);
@@ -204,7 +207,7 @@ class Transaksi extends BaseController
             $pinjam = $this->transaksiModel;
         }
 
-        $pinjam = $this->transaksiModel->paginate(10, 'transaksi');
+        $pinjam = $this->transaksiModel->paginate(10, 'transaksi'); // menentukan seberapa banyak pinjam ditampilkan di views
         $pager = $this->transaksiModel->pager;
         $pinjam = $this->transaksiModel->getPeminjaman();
         $data = [
@@ -275,10 +278,7 @@ class Transaksi extends BaseController
         } else {
             return redirect()->to('/admin/peminjaman')->with('errors', 'Gagal menghapus transaksi.');
         }
-    }
-
-    
-    
+    }  
 
     public function printKembali()
     {

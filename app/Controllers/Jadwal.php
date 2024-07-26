@@ -16,6 +16,7 @@ class Jadwal extends BaseController
     {
         $jadwal = $this->jadwalModel->findAll();
         $data = [
+            'title'  => 'Jadwal Kunjungan',
             'jadwal' => $jadwal
         ];
         return view('admin/kunjungan/jadwal_kunjungan', $data);

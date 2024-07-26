@@ -7,16 +7,20 @@ class Siswa extends BaseController
 {
     protected $siswaModel;
 
+    //menginisialisasi beberapa dependensi dan layanan yang diperlukan oleh kelas,
     public function __construct()
     {
         $this->siswaModel = new SiswaModel();
     }
 
+    // DATA SISWA
     public function data_siswa()
     {
+        // menampilkan page halaman saat di klik
         $currentPage = $this->request->getVar('page_siswa') ? $this->request->getVar('page_siswa') :
         1;
 
+        // mencari keyword yang sesuai untuk halaman data siswa
         $keyword = $this->request->getVar('keyword');
         if($keyword) {
             $siswa = $this->siswaModel->search($keyword);
@@ -24,11 +28,10 @@ class Siswa extends BaseController
             $siswa = $this->siswaModel;
         }
 
-        // $siswa = $this->siswaModel->findAll();
-        $siswa = $this->siswaModel->paginate(1, 'siswa');
+        $siswa = $this->siswaModel->paginate(1, 'siswa'); // menentukan seberapa banyak data siswa ditampilkan di views
         $pager = $this->siswaModel->pager;
         $data = [
-            'title' => 'Daftar Siswa',
+            'title' => 'Data Siswa',
             'siswa' => $siswa,
             'pager' => $pager,
             'currentPage' => $currentPage,
@@ -38,6 +41,7 @@ class Siswa extends BaseController
 
     public function addSiswa()
     {
+        // Cek apakah file foto yang diunggah valid
         if($this->request->getFile('a_foto')->isValid()) {
         $validation = $this->validate([
             'a_foto' => [
@@ -56,6 +60,7 @@ class Siswa extends BaseController
             ->with('errors', 'Gagal menambahkan data siswa. Silahkan unggah foto');
     }
 
+        // Ambil data dari request
         $nisn          = $this->request->getPost('a_nisn');
         $username      = $this->request->getPost('a_username');
         $password      = $this->request->getPost('a_password');
@@ -63,13 +68,15 @@ class Siswa extends BaseController
         $jenis_kelamin = $this->request->getPost('a_jk');
         $kelas         = $this->request->getPost('a_kelas');
         $file          = $this->request->getFile('a_foto');
-        $fotoName      = $username . '.' . $file->getExtension();
+        $fotoName      = $username . '.' . $file->getExtension(); // Nama file foto dengan ekstensi
         
+        // Proses upload foto
         if (!$file->move('assets/img/siswa', $fotoName)) {
             return redirect()->back()->withInput()
                 ->with('errors', 'Upload foto gagal.');
         }
 
+        // Data untuk disimpan ke database
         $data = [
             'nisn'          => $nisn,
             'username'      => $username,
@@ -80,6 +87,7 @@ class Siswa extends BaseController
             'foto'          => $fotoName,
         ];
 
+        // Simpan data menggunakan model
         $this->siswaModel->createSiswa($data);
 
         return redirect()->to('admin/dataSiswa')->with('message', 'Siswa berhasil ditambahkan!');
@@ -88,22 +96,22 @@ class Siswa extends BaseController
     public function editSiswa()
     {
         // Ambil data dari form
-        $id = $this->request->getPost('e_nisn');
-        $nisn = $this->request->getPost('e_nisn');
-        $username = $this->request->getPost('e_username');
-        $password = $this->request->getPost('e_password');
-        $dob = $this->request->getPost('e_dob');
-        $jenis_kelamin = $this->request->getPost('e_jk');
-        $kelas = $this->request->getPost('e_kelas');
+        $id             = $this->request->getPost('e_nisn');
+        $nisn           = $this->request->getPost('e_nisn');
+        $username       = $this->request->getPost('e_username');
+        $password       = $this->request->getPost('e_password');
+        $dob            = $this->request->getPost('e_dob');
+        $jenis_kelamin  = $this->request->getPost('e_jk');
+        $kelas          = $this->request->getPost('e_kelas');
 
         // Data untuk disimpan ke database
         $data = [
-            'nisn' => $nisn,
-            'username' => $username,
-            'password' => $password,
+            'nisn'          => $nisn,
+            'username'      => $username,
+            'password'      => $password,
             'dob'           => $dob,
             'jenis_kelamin' => $jenis_kelamin,
-            'kelas' => $kelas,
+            'kelas'         => $kelas,
         ];
 
         if($this->request->getFile('e_foto')->isValid()) {

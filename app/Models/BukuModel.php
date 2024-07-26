@@ -45,7 +45,6 @@ class BukuModel extends Model
                     ->orLike('tahun_terbit', $keyword)
                     ->orLike('no_rak', $keyword)
                     ->orLike('kategori', $keyword);
-                    // ->findAll();
     }
 
     public function searching($keyword)
@@ -55,7 +54,6 @@ class BukuModel extends Model
                     ->like('kode_buku', $keyword)
                     ->orLike('judul_buku', $keyword)
                     ->orLike('keterangan', $keyword);
-                    // ->findAll();
     }
 
     // BUKU LAYAK
@@ -111,12 +109,12 @@ class BukuModel extends Model
     // BUKU RUSAK
     public function getBukuRusak()
     {
-    $this->setTable('buku_rusak');
-    return $this->table($this->table)
-                ->select('*')
-                ->get()
-                ->getResultArray();
-    }
+        $this->setTable('buku_rusak');
+        return $this->table($this->table)
+                    ->select('*')
+                    ->get()
+                    ->getResultArray();
+        }
 
     public function createBkr($data)
     {

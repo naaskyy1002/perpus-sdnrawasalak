@@ -11,6 +11,7 @@ class Admin extends BaseController
     protected $transaksiModel;
     protected $session;
 
+    //menginisialisasi beberapa dependensi dan layanan yang diperlukan oleh kelas,
     public function __construct()
     {
         $this->adminModel = new AdminModel();
@@ -18,11 +19,14 @@ class Admin extends BaseController
         $this->session = \Config\Services::session();
     }
 
+    // Halaman awal admin = beranda
     public function home()
     {
+        // menampilkan page halaman saat di klik
         $currentPage = $this->request->getVar('page_transaksi') ? $this->request->getVar('page_transaksi') :
         1;
 
+        // mencari keyword yang sesuai untuk halaman beranda admin
         $keyword = $this->request->getVar('keyword');
         if($keyword) {
             $pinjam = $this->transaksiModel->search($keyword);
@@ -30,11 +34,11 @@ class Admin extends BaseController
             $pinjam = $this->transaksiModel;
         }
 
-        $pinjam = $this->transaksiModel->paginate(10, 'transaksi');
+        $pinjam = $this->transaksiModel->paginate(10, 'transaksi'); // menentukan seberapa banyak transaksi ditampilkan di views
         $pager = $this->transaksiModel->pager;
         $pinjam = $this->transaksiModel->getPeminjaman();
         $data =[
-            'title' => 'Beranda | Perpustakaan SDN Rawasalak',
+            'title' => 'Beranda',
             'peminjaman' => $pinjam,
             'isi' => 'peminjaman',
             'pager' => $pager,
@@ -48,11 +52,11 @@ class Admin extends BaseController
         return view('admin/body', $data);
     }
 
-        public function daftar_pengunjung()
-        {
-            return view('admin/kunjungan/daftar_pengunjung');
-        }
-
+    // DAFTAR PENGUNJUNG
+    public function daftar_pengunjung()
+    {
+        return view('admin/kunjungan/daftar_pengunjung');
+    }
 
 
     // DATA ADMIN
@@ -72,7 +76,7 @@ class Admin extends BaseController
         $pager = $this->adminModel->pager;
         
         $data = [
-            'title' => 'Daftar Admin',
+            'title' => 'Data Admin',
             'admin' => $admin,
             'pager' => $pager,
             'currentPage' => $currentPage,
@@ -82,13 +86,17 @@ class Admin extends BaseController
 
     public function profil_admin()
     {
+        // Mendapatkan username pengguna yang saat ini masuk dari sesi
         $username = $this->session->get('username');
+        // Mendapatkan semua profil admin dari model admin
         $allProfil = $this->adminModel->getAdmin();
 
+        // Menyaring profil untuk mendapatkan profil yang sesuai dengan username pengguna yang masuk
         $profil = array_filter($allProfil, function ($profil) use ($username) {
         return $profil['username'] == $username;
         });
 
+        // Mengambil elemen pertama dari hasil filter sebagai profil pengguna
         $profil = reset($profil);
 
         $data = [
@@ -101,6 +109,7 @@ class Admin extends BaseController
 
     public function addAdmin()
     {
+        // Cek apakah file foto yang diunggah valid
         if($this->request->getFile('a_foto')->isValid()) {
         $validation = $this->validate([
             'a_foto' => [
@@ -132,8 +141,9 @@ class Admin extends BaseController
 
         // Proses upload foto
         $file = $this->request->getFile('a_foto');
-        $fotoName = $nama . '.' . $file->getExtension();
+        $fotoName = $nama . '.' . $file->getExtension();  // Nama file foto dengan ekstensi
 
+                                        // rename file
         if (!$file->move('assets/img/admin', $fotoName)) {
             return redirect()->back()->withInput()
                 ->with('errors', 'Upload foto gagal.');
@@ -162,28 +172,28 @@ class Admin extends BaseController
     public function editAdmin()
     {
         // Ambil data dari form
-        $id = $this->request->getPost('e_nip');
-        $nip = $this->request->getPost('e_nip');
-        $nama = $this->request->getPost('e_namalengkap');
-        $dob = $this->request->getPost('e_dob');
-        $alamat = $this->request->getPost('e_alamat');
-        $telepon = $this->request->getPost('e_telepon');
-        $email = $this->request->getPost('e_email');
-        $jabatan = $this->request->getPost('e_jabatan');
-        $username = $this->request->getPost('e_username');
-        $password = $this->request->getPost('e_password');
+        $id         = $this->request->getPost('e_nip');
+        $nip        = $this->request->getPost('e_nip');
+        $nama       = $this->request->getPost('e_namalengkap');
+        $dob        = $this->request->getPost('e_dob');
+        $alamat     = $this->request->getPost('e_alamat');
+        $telepon    = $this->request->getPost('e_telepon');
+        $email      = $this->request->getPost('e_email');
+        $jabatan    = $this->request->getPost('e_jabatan');
+        $username   = $this->request->getPost('e_username');
+        $password   = $this->request->getPost('e_password');
 
         // Data untuk disimpan ke database
         $data = [
-            'nip' => $nip,
-            'nama_lengkap' => $nama,
-            'dob' => $dob,
-            'alamat' => $alamat,
-            'telp' => $telepon,
-            'email' => $email,
-            'jabatan' => $jabatan,
-            'username' => $username,
-            'password' => $password,
+            'nip'           => $nip,
+            'nama_lengkap'  => $nama,
+            'dob'           => $dob,
+            'alamat'        => $alamat,
+            'telp'          => $telepon,
+            'email'         => $email,
+            'jabatan'       => $jabatan,
+            'username'      => $username,
+            'password'      => $password,
         ];
 
         if ($this->request->getFile('e_foto')->isValid()) {
@@ -231,16 +241,16 @@ class Admin extends BaseController
         $id = $this->request->getPost('nip');
         $admin = $this->adminModel->where('nip', $id)->first();
 
-        // Pastikan buku ditemukan
+        // Pastikan admin ditemukan
         if ($admin) {
-            $old_foto = $admin['foto']; // Ambil nama sampul buku
+            $old_foto = $admin['foto']; // Ambil nama foto admin
 
-            // Hapus sampul buku dari folder jika file ada
+            // Hapus sampul admin dari folder jika file ada
             if (file_exists('assets/img/admin/' . $old_foto)) {
                 unlink('assets/img/admin/' . $old_foto);
             }
 
-            // Hapus data buku dari database
+            // Hapus data admin dari database
             $success = $this->adminModel->where('nip', $id)->delete();
 
             if ($success) {

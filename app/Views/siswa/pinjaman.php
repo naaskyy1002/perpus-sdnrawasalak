@@ -3,11 +3,11 @@
 
 <main id="main" class="main">
     <div class="pagetitle">
-      <h1>Pinjaman Terkini</h1>
+      <h1><?= $title ?></h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="<?= base_url('user'); ?>">Koleksi Buku</a></li>
-          <li class="breadcrumb-item">Pinjaman Terkini</li>
+          <li class="breadcrumb-item"><a href="<?= base_url('siswa'); ?>">Koleksi Buku</a></li>
+          <li class="breadcrumb-item"><?= $title ?></li>
         </ol>
       </nav>
     </div>
@@ -27,6 +27,7 @@
         <table class="table table-striped">
             <thead>
                 <tr class="text-center">
+                    <th scope="col">No.</th>
                     <th scope="col">Kode Buku</th>
                     <th scope="col">Judul Buku</th>
                     <th scope="col">Tanggal Pinjam</th>
@@ -34,29 +35,27 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Isi tabel bisa diisi sesuai data sejarah peminjaman yang dimiliki -->
-                <tr class="text-center">
-                    <td>001</td>
-                    <td>Buku A</td>
-                    <td>01-01-2023</td>
-                    <td>15-01-2023</td>
-                </tr>
-                <tr class="text-center">
-                    <td>002</td>
-                    <td>Buku B</td>
-                    <td>05-02-2023</td>
-                    <td>20-02-2023</td>
-                </tr>
-                <tr class="text-center">
-                    <td>003</td>
-                    <td>Buku C</td>
-                    <td>10-03-2023</td>
-                    <td>25-03-2023</td>
-                </tr>
+                <?php $i = 1; ?>
+                <?php if (!empty($pinjamanTerkini)): ?>
+                    <?php foreach ($pinjamanTerkini as $pinjaman): ?>
+                        <tr class="text-center">
+                            <td><?= $i++ ?></td>
+                            <td><?= esc($pinjaman['kode_buku']) ?></td>
+                            <td><?= esc($pinjaman['judul_buku']) ?></td>
+                            <td><?= esc($pinjaman['tgl_pinjam']) ?></td>
+                            <td><?= esc($pinjaman['tgl_kembali']) ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="5" class="text-center">Tidak ada data pinjaman terkini</td>
+                    </tr>
+                <?php endif; ?>
             </tbody>
         </table>
-</div>
     </div>
+</div>
+
 </div>
 
 <?=$this->endSection()?>

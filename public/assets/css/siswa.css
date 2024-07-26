@@ -204,8 +204,8 @@ h6 {
 }
 
 .sidebar-nav .nav-profile img {
-    width: 150px; /* Ukuran lebar gambar profil */
-    height: 150px; /* Ukuran tinggi gambar profil */
+    width: 150px; 
+    height: 150px; 
     object-fit: cover; /* Memastikan gambar tidak terdistorsi */
     border-radius: 50%; /* Membuat gambar berbentuk bulat */
   }
@@ -382,26 +382,6 @@ h6 {
   }
 
 /*--------------------------------------------------------------
-# Pencarian
---------------------------------------------------------------*/
-.search-bar {
-    text-align: right;
-    margin-bottom: 20px; /* Jarak antara pencarian dan konten buku */
-}
-
-.search-form {
-    max-width: 300px; /* Lebar maksimum form pencarian */
-}
-
-.search-form .form-control {
-    border-radius: 5px; /* Bentuk sudut input */
-}
-
-.search-form .btn {
-    border-radius: 5px; /* Bentuk sudut tombol */
-}
-
-/*--------------------------------------------------------------
 # Book Container
 --------------------------------------------------------------*/
 .book-container {
@@ -477,21 +457,6 @@ h6 {
     margin-bottom: 5px;
 }
 
-/* Responsiveness
-@media (max-width: 768px) {
-    .book-detail {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-    .book-cover-detail {
-        margin-bottom: 20px;
-    }
-    .book-info {
-        align-items: center;
-    }
-} */
-
 /* Gaya untuk status Telah Selesai */
 .badge-success {
     background-color: #28a745;
@@ -509,10 +474,6 @@ h6 {
     border-radius: 4px;
     text-align: center;
 }
-
-
-
-
 
 /*--------------------------------------------------------------
 # Footer

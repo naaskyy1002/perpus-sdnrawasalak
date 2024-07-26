@@ -8,9 +8,6 @@ class AdminModel extends Model
     protected $table ="admin";
     protected $primaryKey = 'id';
     protected $allowedFields = ['nip', 'username', 'password', 'nama_lengkap', 'jabatan'];
-    protected $useTimestamps = true;
-    protected $createdField ='created_at';
-    protected $updatedField ='updated_at';
 
     public function setTable($table)
     {
@@ -39,13 +36,13 @@ class AdminModel extends Model
     public function totalPinjam()
     {
         return $this->db->table('transaksi')
-        ->countAll();
+                        ->countAll();
     }
     
     public function totalKembali()
     {
         return $this->db->table('transaksi')
-        ->countAll();
+                        ->countAll();
     }
     
     public function getAdmin()
@@ -73,6 +70,5 @@ class AdminModel extends Model
         return $this->db->table('admin')
                         ->delete(array('nip' => $id));
     }
-
 
 }

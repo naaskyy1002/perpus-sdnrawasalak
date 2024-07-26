@@ -5,7 +5,9 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
+// $routes->set404Override(function(){ return view('404.php');});
 
+// TAMPILAN AWAL SEBELUM LOGIN DILAKUKAN
 $routes->get('/', 'Home::welcome');
 $routes->get('login', 'Auth::login');
 $routes->post('auth/valid-login', 'Auth::validLogin');
@@ -14,8 +16,9 @@ $routes->get('auth/logout', 'Auth::logout');
 $routes->get('/tentang_kami', 'Home::tentang_kami');
 $routes->get('/kontak', 'Home::kontak');
 
+// ADMIN
 $routes->group('admin',['filter' => 'isLoggedIn'], function($routes) {
-    $routes->get('', 'Admin::home');
+    $routes->get('/', 'Admin::home');
     
     // BUKU LAYAK
     $routes->get('buku', 'Buku::buku_layak');
@@ -75,17 +78,18 @@ $routes->group('admin',['filter' => 'isLoggedIn'], function($routes) {
     $routes->post('addPengunjung', 'Visitor::addVisitor');
     $routes->get('admin/visitor/getSiswaByNISN/(:any)', 'Visitor::getSiswaByNISN/$1');
 
-
+    // JADWAL KUNJUNGAN
     $routes->get('jadwalKunjungan', 'Jadwal::jadwal_kunjungan');
     $routes->post('editJadwal', 'Jadwal::editJadwal');
     $routes->get('profilAdmin', 'Admin::profil_admin');
 });
 
+
+// SISWA
 $routes->group('siswa',['filter' => 'isLoggedIn'], function($routes) {
-    $routes->get('', 'Page::beranda');
-    $routes->post('', 'Page::beranda');
+    $routes->get('/', 'Page::beranda');
+    $routes->post('/', 'Page::beranda');
     $routes->get('pinjaman', 'Page::pinjaman');
     $routes->get('riwayat', 'Page::riwayat');
-    $routes->get('detail', 'Page::detail');
     $routes->get('profilSiswa', 'Page::profil_user');
 });

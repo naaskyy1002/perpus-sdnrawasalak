@@ -8,6 +8,7 @@ class Visitor extends BaseController
 {
     protected $visitorModel;
 
+    //menginisialisasi beberapa dependensi dan layanan yang diperlukan oleh kelas,
     public function __construct()
     {
         $this->visitorModel = new VisitorModel();

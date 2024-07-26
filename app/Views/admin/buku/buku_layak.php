@@ -3,12 +3,12 @@
 
 <main id="main" class="main">
     <div class="pagetitle">
-        <h1>Data Buku Layak</h1>
+        <h1><?= $title ?></h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<?=base_url('admin');?>">Beranda</a></li>
                 <li class="breadcrumb-item">Data Data Buku</li>
-                <li class="breadcrumb-item">Data Buku Layak</li>
+                <li class="breadcrumb-item"><?= $title ?></li>
             </ol>
         </nav>
     </div><!-- End Page Title -->

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PERPUSTAKAAN SDN RAWASALAK</title>
+  <title><?= $title ?></title>
   
   <!-- Favicons -->
   <link rel="icon" href="<?= base_url('assets/img/LOGO-BARU.png') ?>">

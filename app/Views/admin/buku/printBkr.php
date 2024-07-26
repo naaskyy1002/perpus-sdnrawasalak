@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Buku Rusak</title>
+    <title><?= $title ?></title>
     <link href="<?= base_url('assets/img/LOGO-BARU-RAWASALAK-2024.png') ?>" rel="icon">
     <style>
         .text-center {
@@ -25,7 +25,7 @@
 </head>
 <body>
     <div>
-        <h1 class="text-center">Data Buku Rusak</h1>
+        <h1 class="text-center"><?= $title ?></h1>
     </div>
     <div>
         <table>

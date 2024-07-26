@@ -12,6 +12,7 @@ class Buku extends BaseController
 {
     protected $bukuModel;
 
+    //menginisialisasi beberapa dependensi dan layanan yang diperlukan oleh kelas,
     public function __construct()
     {
         $this->bukuModel = new BukuModel();
@@ -20,21 +21,23 @@ class Buku extends BaseController
     // BUKU LAYAK
     public function buku_layak()
     {
+        // menampilkan page halaman saat di klik
         $currentPage = $this->request->getVar('page_buku') ? $this->request->getVar('page_buku') : 1;
 
+        // mencari keyword yang sesuai untuk halaman buku layak
         $keyword = $this->request->getVar('keyword');
         if($keyword) {
             $buku = $this->bukuModel->search($keyword);
         } else {
-            $this->bukuModel->setTable('buku'); // Pastikan tabel diset sebelum melakukan kueri
+            $this->bukuModel->setTable('buku');
             $buku = $this->bukuModel;
         }
 
-        $buku = $this->bukuModel->paginate(10, 'buku');
+        $buku = $this->bukuModel->paginate(10, 'buku'); // menentukan seberapa banyak buku layak ditampilkan di views
         $pager = $this->bukuModel->pager;
 
         $data = [
-            'title' => 'Daftar Buku',
+            'title' => 'Data Buku Layak',
             'buku' => $buku,
             'pager' => $pager,
             'currentPage' => $currentPage,
@@ -52,7 +55,7 @@ class Buku extends BaseController
         if($keyword) {
             $buku = $this->bukuModel->searching($keyword);
         } else {
-            $this->bukuModel->setTable('buku'); // Pastikan tabel diset sebelum melakukan kueri
+            $this->bukuModel->setTable('buku');
             $buku = $this->bukuModel;
         }
     
@@ -79,7 +82,7 @@ class Buku extends BaseController
 
         // Menulis judul tabel
         $sheet->setCellValue('A1', 'Data Buku Layak');
-        $sheet->mergeCells('A1:J1'); // Merge cells dari A1 sampai G1
+        $sheet->mergeCells('A1:J1'); // Merge cells dari A1 sampai J1
         $sheet->getStyle('A1')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER); // Center align
         $sheet->getStyle('A1')->getFont()->setBold(true); // Buat teks judul tebal
 
@@ -127,7 +130,7 @@ class Buku extends BaseController
             $sheet->setCellValue('C' . $row, $item['judul_buku']);
             $sheet->setCellValue('D' . $row, $item['sampul']);
             $sheet->setCellValue('E' . $row, $item['penerbit']);
-            $sheet->setCellValue('F' . $row, $item['pengarang']); // Leave cell empty for image
+            $sheet->setCellValue('F' . $row, $item['pengarang']);
             $sheet->setCellValue('G' . $row, $item['tahun_terbit']);
             $sheet->setCellValue('H' . $row, $item['kategori']);
             $sheet->setCellValue('I' . $row, $item['no_rak']);
@@ -338,7 +341,7 @@ class Buku extends BaseController
         $pager = $this->bukuModel->pager;
 
         $data = [
-            'title' => 'Daftar Buku Rusak',
+            'title' => 'Data Buku Rusak',
             'bkrusak' => $bkrusak,
             'pager' => $pager,
             'currentPage' => $currentPage,
