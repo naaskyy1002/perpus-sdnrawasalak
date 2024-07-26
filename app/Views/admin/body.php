@@ -110,7 +110,7 @@
                     <tr class="text-center">
                       <th>No.</th>
                       <th>Kode Buku</th>
-                      <th>Penulis</th>
+                      <th>Pengarang</th>
                       <th>Judul Buku</th>
                       <th>Nama Peminjam</th>
                       <th>Tanggal Pinjam</th>

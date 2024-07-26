@@ -19,6 +19,7 @@ $routes->get('/kontak', 'Home::kontak');
 // ADMIN
 $routes->group('admin',['filter' => 'isLoggedIn'], function($routes) {
     $routes->get('/', 'Admin::home');
+    $routes->post('/', 'Admin::home');
     
     // BUKU LAYAK
     $routes->get('buku', 'Buku::buku_layak');

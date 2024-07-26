@@ -138,7 +138,7 @@
                             </tbody>
                         </table>
                         </div>
-				            <?= $pager->links('buku', 'Pagination');?>
+				        <?= $pager->links('buku', 'Pagination');?>
 		            </div>
                 </section>
             </div>
