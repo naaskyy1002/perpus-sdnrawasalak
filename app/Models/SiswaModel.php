@@ -14,7 +14,6 @@ class SiswaModel extends Model
 
     public function getUser()
     {
-        
     }
 
     public function search($keyword)
@@ -51,4 +50,18 @@ class SiswaModel extends Model
                     ->delete(array('nisn' => $id)); // Menggunakan metode delete dengan table
 }
 
+    public function getSiswaByNISN($username)
+    {
+        $result = $this->like('username', $username)->first();
+        
+        if ($result) {
+            return [
+                'id'    => $result['nisn'],
+                'text'  => $result['username'] . ' - ' . $result['username'],
+                'snama' => $result['username'],
+                'skelas'  => $result['kelas'],
+            ];
+        }
+        return [];
+    }
 }

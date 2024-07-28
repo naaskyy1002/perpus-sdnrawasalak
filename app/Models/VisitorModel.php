@@ -13,4 +13,9 @@ class VisitorModel extends Model
     {
         return $this->where('visit', $date)->findAll();
     }
+
+    public function addVisitor($data)
+    {
+        return $this->insert($data);
+    }
 }

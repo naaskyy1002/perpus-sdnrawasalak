@@ -51,26 +51,30 @@ class TransaksiModel extends Model
     // mengambil transaksi peminjaman
     public function getPeminjaman()
     {
-        return $this->select('transaksi.*, buku.judul_buku, buku.pengarang, siswa.username')
+        return $this->db->table('transaksi')
                     ->join('buku', 'buku.kode_buku = transaksi.kode_buku')
                     ->join('siswa', 'siswa.nisn = transaksi.nisn')
                     ->where('transaksi.tgl_kembali', NULL) // Mengambil data yang belum dikembalikan
-                    ->findAll(); // Ganti getResultArray() dengan findAll()
+                    ->get()->getResultArray();
+                    // ->findAll(); // Ganti getResultArray() dengan findAll()
     }
     
     // mengambil transaksi pengembalian 
     public function getPengembalian()
     {
-        return $this->select('transaksi.*, buku.judul_buku, buku.pengarang, siswa.username')
+        return $this->db->table('transaksi')
                     ->join('buku', 'buku.kode_buku = transaksi.kode_buku')
                     ->join('siswa', 'siswa.nisn = transaksi.nisn')
                     ->where('transaksi.tgl_kembali !=', NULL ) //mengambil data yang sudah dikembalikan
-                    ->findAll(); // Ganti getResultArray() dengan findAll()
+                    ->get()->getResultarray();
+                    // ->findAll(); // Ganti getResultArray() dengan findAll()
     }
 
     public function selesai($id, $tgl_kembali)
     {
-        $this->update($id, ['status' => 'kembali', 'tgl_kembali' => $tgl_kembali]);
+        return $this->db->table('transaksi')
+        ->where('id_transaksi', $id)
+        ->update(['status' => 'kembali', 'tgl_kembali' => $tgl_kembali]);
     }
 
     public function updateTransaksi($id, $data)

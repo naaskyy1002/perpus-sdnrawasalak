@@ -16,7 +16,7 @@
   <?php foreach($jadwal as $jk) : ?>
   <div class="card shadow mb-4"> 
     <div class="card-body">
-    <a class="btn btn-warning ms-auto editModalid" href="#" data-bs-toggle="modal" data-bs-target="#editModal"
+    <a class="btn-jk btn btn-warning editModalid" href="#" data-bs-toggle="modal" data-bs-target="#editModal"
         data-eidjk="<?= $jk['id_jk']; ?>"
         data-senin="<?= $jk['senin']; ?>"
         data-selasa="<?= $jk['selasa']; ?>"
@@ -36,7 +36,7 @@
           <?= session()->getFlashdata('errors') ?>
         </div>
       <?php endif; ?>
-      <table class="table table-bordered" width="100%" cellspacing="0">
+      <table class="jk table table-bordered" width="100%" cellspacing="0">
         <thead>
           <tr class="text-center">
             <th>Senin</th>

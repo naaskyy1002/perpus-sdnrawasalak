@@ -883,19 +883,6 @@ h6 {
   font-size: 18px;
 }
 
-.profile .profile-card .social-links a {
-  font-size: 20px;
-  display: inline-block;
-  color: rgba(1, 41, 112, 0.5);
-  line-height: 0;
-  margin-right: 10px;
-  transition: 0.3s;
-}
-
-.profile .profile-card .social-links a:hover {
-  color: #012970;
-}
-
 .profile .profile-overview .row {
   margin-bottom: 20px;
   font-size: 15px;
@@ -945,6 +932,7 @@ footer.sticky-footer .copyright {
 
 .button-kirim {
   display: inline-block;
+  margin-top: 10px;
   padding: 5px 5px;
   background-color: #921b49b8;
   color: white;
@@ -1129,3 +1117,9 @@ table.table td i {
   margin-left: 0.5rem;
 }
 
+.jk {
+  margin-top: 15px;
+}
+.btn-jk {
+  margin-top: 15px;
+}

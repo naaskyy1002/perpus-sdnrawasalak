@@ -7,11 +7,13 @@ use App\Models\SiswaModel;
 class Visitor extends BaseController
 {
     protected $visitorModel;
+    protected $siswaModel;
 
     //menginisialisasi beberapa dependensi dan layanan yang diperlukan oleh kelas,
     public function __construct()
     {
         $this->visitorModel = new VisitorModel();
+        $this->siswaModel = new SiswaModel();
     }
 
     public function index()
@@ -30,32 +32,29 @@ class Visitor extends BaseController
 
     public function addVisitor()
     {
-        if ($this->request->getMethod() == 'post') {
-            $data = [
-                'nisn' => $this->request->getPost('nisn'),
-                'nama' => $this->request->getPost('nama'),
-                'kelas' => $this->request->getPost('kelas'),
-                'visit' => date('Y-m-d'),
-            ];
+        // dd($this->request->getPost());
+        $data = [
+            'nisn' => $this->request->getPost('s_nis'),
+            'nama' => $this->request->getPost('s_nama'),
+            'kelas' => $this->request->getPost('s_kelas'),
+            'visit' => date('Y-m-d'),
+        ];
 
-            $this->visitorModel->insert($data);
-            return redirect()->to('/admin/pengunjung')->with('message', 'Visitor added successfully.');
+        $this->visitorModel->addVisitor($data);
+        return redirect()->to('/admin/daftarPengunjung')->with('message', 'Visitor added successfully.');
+    }
+
+    public function getSiswaByNISN()
+    {
+        if($this->request->isAJAX()) {
+            $searchTerm = $this->request->getGet('searchTerm');
+
+            if ($searchTerm) {
+                $siswa = $this->siswaModel->getSiswaByNISN($searchTerm);
+                return $this->response->setJSON([$siswa]);
+            } 
+                return $this->response->setJSON([]);
         }
+        return $this->response->setJSON(['error' => 'Not Found'])->setStatusCode(404);
     }
-
-    public function getSiswaByNISN($nisn)
-{
-    $siswaModel = new SiswaModel();
-    $siswa = $siswaModel->where('nisn', $nisn)->first();
-
-    if ($siswa) {
-        return $this->response->setJSON([
-            'nama' => $siswa['username'], // Asumsi username adalah nama
-            'kelas' => $siswa['kelas']
-        ]);
-    } else {
-        return $this->response->setJSON(null);
-    }
-}
-
 }

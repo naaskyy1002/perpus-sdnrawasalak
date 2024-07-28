@@ -16,7 +16,7 @@
     <div class="card shadow mb-4"> 
       <div class="card-body">
         <div class="row mb-3">
-          <div class="pilih col-sm-6 col-md-3">
+          <!-- <div class="pilih col-sm-6 col-md-3">
             <label for="pilihBulan">Pilih Bulan</label>
               <select id="pilihBulan" class="form-control">
                 <option>Januari</option>
@@ -43,8 +43,8 @@
               <option>2024</option>
               <option>2025</option>
             </select>
-          </div>
-          <div class="ex col-sm-12 col-md-6 text-right d-flex align-items-end justify-content-end">
+          </div> -->
+          <div class="ex col-sm-12 col-md-6 text-right d-flex align-items-end"> <!--justify-content-end-->
             <a class="btn btn-primary" href="<?= base_url('addBkr') ?>" data-bs-toggle="modal" data-bs-target="#addModal">
               <i class="ri-add-line"></i> Tambah</a>
             <a href="/admin/excelBkr" target="_blank" class="btn btn-info btn-spacing">

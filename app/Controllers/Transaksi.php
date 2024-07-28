@@ -53,7 +53,7 @@ class Transaksi extends BaseController
         ];
 
         // Simpan data menggunakan model
-        $result = $this->transaksiModel->createTransaksi($data);
+        $this->transaksiModel->createTransaksi($data);
 
         if ($result) {
             // Redirect dengan pesan sukses
@@ -227,36 +227,61 @@ class Transaksi extends BaseController
 
     public function pengembalian()
     {
-        $id = $this->request->getPost('id_transaksi');
-        $tgl_kembali = $this->request->getPost('tgl_kembali');
-        
-        // Cek apakah id_transaksi ada di database
-        $transaksi = $this->transaksiModel->find($id);
-        if (!$transaksi) {
-            return redirect()->to('/admin/peminjaman')->with('errors', 'ID Transaksi tidak ditemukan.');
-        }
-        
-        // Perbarui tanggal kembali
-        $updateData = [
-            'tgl_kembali' => $tgl_kembali
-        ];
-        $updated = $this->transaksiModel->update($id, $updateData);
-        
-        if ($updated) {
-            return redirect()->to('/admin/peminjaman')->with('message', 'Transaksi berhasil diperbarui.');
+        $currentPage = $this->request->getVar('page_transaksi') ? $this->request->getVar('page_transaksi') : 1;
+    
+        $keyword = $this->request->getVar('keyword');
+        if ($keyword) {
+          $kembali = $this->transaksiModel->search($keyword);
         } else {
-            return redirect()->to('/admin/peminjaman')->with('errors', 'Gagal memperbarui transaksi.');
+          $kembali = $this->transaksiModel;
         }
-    }
+    
+        $kembali = $this->transaksiModel->paginate(10, 'transaksi');
+        $pager = $this->transaksiModel->pager;
+        $kembali = $this->transaksiModel->getPeminjaman();
+        $kembali = $this->transaksiModel->getPengembalian();
+        $data = [
+          'title' => 'Transaksi Pengembalian',
+          'pengembalian' => $kembali,
+          'isi' => 'pengembalian',
+          'pager' => $pager,
+          'currentPage' => $currentPage,
+        ];
+        return view('admin/transaksi/pengembalian', $data);
+      }
+    // {
+    //     $id = $this->request->getPost('id_transaksi');
+    //     $tgl_kembali = $this->request->getPost('tgl_kembali');
+        
+    //     // Cek apakah id_transaksi ada di database
+    //     $transaksi = $this->transaksiModel->find($id);
+    //     if (!$transaksi) {
+    //         return redirect()->to('/admin/peminjaman')->with('errors', 'ID Transaksi tidak ditemukan.');
+    //     }
+        
+    //     // Perbarui tanggal kembali
+    //     $updateData = [
+    //         'tgl_kembali' => $tgl_kembali
+    //     ];
+    //     $updated = $this->transaksiModel->update($id, $updateData);
+        
+    //     if ($updated) {
+    //         return redirect()->to('/admin/peminjaman')->with('message', 'Transaksi berhasil diperbarui.');
+    //     } else {
+    //         return redirect()->to('/admin/peminjaman')->with('errors', 'Gagal memperbarui transaksi.');
+    //     }
+    // }
     
 
 
     public function selesai()
     {
         $id = $this->request->getPost('id_transaksi');
-        $tgl_kembali = date('Y-m-d');
-        $this->transaksiModel->update($id, ['tgl_kembali' => $tgl_kembali]);
-        return redirect()->to(base_url('transaksi/pengembalian'));
+        $data = [
+            'tgl_kembali' => date('Y-m-d')
+        ];
+        $this->transaksiModel->selesai($id, $data);
+        return redirect()->to(base_url('admin/pengembalian'));
     }
 
 
