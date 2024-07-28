@@ -61,7 +61,7 @@
                   <td><?= date('d-M-Y', strtotime($kb['tgl_pinjam'])) ?></td>
                   <td><?= date('d-M-Y', strtotime($kb['tgl_kembali'])) ?></td>
                   <td>
-                    <a href="#" class="deleteModalid" title="Hapus" data-toggle="tooltip"><i class="bi bi-trash"></i></a>
+                    <a href="#" class="deleteModalid" title="Hapus" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="bi bi-trash"></i></a>
                   </td>
                 </tr>
                 <?php endforeach; ?>

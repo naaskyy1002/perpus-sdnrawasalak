@@ -45,9 +45,38 @@ class TransaksiModel extends Model
     // menambah transaksi pinjam
     public function createTransaksi($data)
     {
-        return $this->db->table('transaksi')
-                        ->insert($data);
-    }
+        $this->db->transStart();
+    
+        // Insert transaction data
+        $this->db->table('transaksi')->insert($data);
+    
+        // Fetch current book stock
+        $book_stock = $this->db->table('buku')
+          ->select('jumlah_buku')
+          ->where('kode_buku', $data['kode_buku'])
+          ->get()
+          ->getRowArray();
+    
+        // Check if the book stock is sufficient
+        if ($book_stock['jumlah_buku'] <= 0) {
+          $this->db->transRollback();
+          return false;
+        }
+    
+        // Update book stock
+        $this->db->table('buku')
+          ->set('jumlah_buku', 'jumlah_buku-1', FALSE)
+          ->where('kode_buku', $data['kode_buku'])
+          ->update();
+    
+        $this->db->transComplete();
+    
+        if ($this->db->transStatus() === FALSE) {
+          return false;
+        }
+    
+        return true;
+      }
 
     // mengambil transaksi peminjaman
     public function getPeminjaman()
@@ -71,16 +100,48 @@ class TransaksiModel extends Model
 
     public function selesai($id, $tgl_kembali)
     {
-        return $this->db->table('transaksi')
-        ->where('id_transaksi', $id)
-        ->update(['status' => 'kembali', 'tgl_kembali' => $tgl_kembali]);
-    }
+        // when the book is returned, the stock will be added by 1
+        $this->db->transStart();
+    
+        // Update transaction data
+        $this->db->table('transaksi')
+          ->where('id_transaksi', $id)
+          ->update(['tgl_kembali' => $tgl_kembali]);
+    
+        // Fetch the book code
+        $book_code = $this->db->table('transaksi')
+          ->select('kode_buku')
+          ->where('id_transaksi', $id)
+          ->get()
+          ->getRowArray();
+    
+        // Update book stock
+        $this->db->table('buku')
+          ->set('jumlah_buku', 'jumlah_buku+1', FALSE)
+          ->where('kode_buku', $book_code['kode_buku'])
+          ->update();
+    
+        $this->db->transComplete();
+    
+        if ($this->db->transStatus() === FALSE) {
+          return false;
+        }
+    
+        return true;
+      }
 
     // menghapus transaksi
     public function deleteTransaksi($id)
     {
+        // Cek apakah id_transaksi ada di database
+        $transaksi = $this->find($id);
+        if (!$transaksi) {
+            return false; // Gagal menghapus transaksi
+        }
+
         return $this->db->table('transaksi')
-                        ->delete($id);
+                        ->delete(['id_transaksi' => $id]);
+                        
     }
 
     public function printPinjam()

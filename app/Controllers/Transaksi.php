@@ -39,6 +39,12 @@ class Transaksi extends BaseController
             return redirect()->back()->withInput(); // Menjaga inputan form
         }
 
+        // cek stok buku
+        if ($buku['jumlah_buku'] == 0) {
+            session()->setFlashdata('errors', 'Stok buku habis.');
+            return redirect()->back()->withInput(); // Menjaga inputan form
+        }
+
         // Cek apakah nisn ada di database
         $siswa = $this->siswaModel->where('nisn', $nisn)->first();
         if (!$siswa) {
@@ -282,7 +288,7 @@ class Transaksi extends BaseController
 
         $kembali = $this->transaksiModel->paginate(10, 'printPinjam');
         $pager = $this->transaksiModel->pager;
-        $kembali = $this->transaksiModel->getPeminjaman();
+        // $kembali = $this->transaksiModel->getPeminjaman();
         $kembali = $this->transaksiModel->getPengembalian();
         $data = [
             'title' => 'Transaksi Peminjaman',
