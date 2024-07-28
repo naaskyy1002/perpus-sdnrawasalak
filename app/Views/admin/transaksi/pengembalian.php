@@ -16,34 +16,6 @@
     <div class="card shadow mb-4"> 
       <div class="card-body">
         <div class="row mb-3">
-          <!-- <div class="pilih col-sm-6 col-md-3">
-            <label for="pilihBulan">Pilih Bulan</label>
-            <select id="pilihBulan" class="form-control">
-              <option>Januari</option>
-              <option>Februari</option>
-              <option>Maret</option>
-              <option>April</option>
-              <option>Mei</option>
-              <option>Juni</option>
-              <option>Juli</option>
-              <option>Agustus</option>
-              <option>September</option>
-              <option>Oktober</option>
-              <option>November</option>
-              <option>Desember</option>
-            </select>
-          </div>
-          <div class="pilih col-sm-6 col-md-3">
-            <label for="pilihTahun">Pilih Tahun</label>
-            <select id="pilihTahun" class="form-control">
-              <option>2020</option>
-              <option>2021</option>
-              <option>2022</option>
-              <option>2023</option>
-              <option>2024</option>
-              <option>2025</option>
-            </select>
-          </div> -->
           <div class="ex col-sm-12 col-md-6 text-right d-flex align-items-end">
             <a href="/admin/excelKembali" target="_blank" class="btn btn-info btn-spacing">
               <i class="ri-file-excel-2-line"></i> Excel</a>
@@ -69,7 +41,7 @@
                 <tr class="text-center">
                   <th>No.</th>
                   <th>Kode</th>
-                  <th>Penulis</th>
+                  <th>Pengarang</th>
                   <th>Judul</th>
                   <th>Nama Peminjam</th>
                   <th>Tanggal Pinjam</th>
@@ -89,8 +61,6 @@
                   <td><?= date('d-M-Y', strtotime($kb['tgl_pinjam'])) ?></td>
                   <td><?= date('d-M-Y', strtotime($kb['tgl_kembali'])) ?></td>
                   <td>
-                    <a href="#" class="doneModalid" title="Selesai" data-bs-toggle="modal" data-bs-target="#doneModal"><i class="bi bi-check-lg"></i></a>
-                    <!-- <a href="#editModal" class="edit" title="Edit" data-bs-toggle="modal" data-bs-target="#editModal"><i class="bi bi-pencil"></i></a> -->
                     <a href="#" class="deleteModalid" title="Hapus" data-toggle="tooltip"><i class="bi bi-trash"></i></a>
                   </td>
                 </tr>
@@ -103,36 +73,6 @@
         </section>
       </div>
     </div>
-
-    <!-- Selesai Modal-->
-  <div class="modal fade" id="doneModal" tabindex="-1" aria-labelledby="doneModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="doneModalLabel">Konfirmasi Pengembalian</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <form action="pengembalian" method="post">
-          <div class="modal-body">
-            Apakah Anda yakin buku ini sudah dikembalikan?
-            <input type="hidden" name="idtransaksi" id="idtransaksi">
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
-            <button type="submit" class="btn btn-primary">Konfirmasi</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-  <!-- Selesai Modal-->
-
-  <script>
-        $(".doneModalid").click(function() {
-            var idtransaksi = $(this).data('idtransaksi');
-            $("#idtransaksi").val(idtransaksi);
-        });
-    </script>
 
   <!-- Delete Modal -->
   <div class="modal fade" id="deleteModal">

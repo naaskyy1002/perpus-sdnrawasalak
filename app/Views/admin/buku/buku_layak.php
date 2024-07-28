@@ -111,7 +111,8 @@
                                                 data-vtahunterbit="<?=$bk['tahun_terbit'];?>"
                                                 data-vkategori="<?=$bk['kategori'];?>"
                                                 data-vnorak="<?=$bk['no_rak'];?>"
-                                                data-vjumlahbuku="<?=$bk['jumlah_buku'];?>">
+                                                data-vjumlahbuku="<?=$bk['jumlah_buku'];?>"
+                                                data-vtanggalmasuk="<?=$bk['tgl_masuk'];?>">
                                                 <i class="bi bi-eye"></i>
                                             </a>
                                             <a href="#" title="Edit" data-bs-toggle="modal" data-bs-target="#editModal" class="editModalid" 
@@ -125,7 +126,8 @@
                                                 data-etahunterbit="<?=$bk['tahun_terbit']?>"
                                                 data-ekategori="<?=$bk['kategori']?>"
                                                 data-enorak="<?=$bk['no_rak']?>"
-                                                data-ejumlahbuku="<?=$bk['jumlah_buku'];?>">
+                                                data-ejumlahbuku="<?=$bk['jumlah_buku'];?>"
+                                                data-etanggalmasuk="<?=$bk['tgl_masuk'];?>">
                                                 <i class="bi bi-pencil"></i>
                                             </a>
                                             <a href="#" title="Hapus" data-bs-toggle="modal" data-bs-target="#deleteModal" class="deleteModalid" 
@@ -199,6 +201,10 @@
                             <label for="inputKondisi" class="form-label">Jumlah Buku</label>
                             <input type="number" name="a_jumlahbuku" class="form-control" required>
                         </div>
+                        <div class="col-12">
+                            <label for="inputMasuk" class="form-label">Tanggal Masuk Buku</label>
+                            <input type="date" name="a_tanggalmasuk" class="form-control" required>
+                        </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
                             <button type="submit" class="btn btn-primary">Simpan</button>
@@ -264,6 +270,11 @@
                             <input class="form-control" id="vjumlahbuku" type="number" disabled></input>
                         </div>
 
+                        <div class="col-12">
+                            <label>Tanggal Masuk Buku</label>
+                            <input type="date" id="vtanggalmasuk" class="form-control" disabled>
+                        </div>
+
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                         </div>
@@ -301,6 +312,9 @@
 
             var vjumlahbuku = $(this).data('vjumlahbuku');
             $("#vjumlahbuku").val(vjumlahbuku);
+
+            var vtanggalmasuk = $(this).data('vtanggalmasuk');
+            $("#vtanggalmasuk").val(vtanggalmasuk);
 
             $('#viewModal').modal('show');
         });
@@ -362,6 +376,11 @@
                             <label>Jumlah Buku</label>
                             <input class="form-control" id="ejumlahbuku" name="e_jumlahbuku" type="number" required></input>
                         </div>
+
+                        <div class="form-group">
+                            <label>Tanggal Masuk Buku</label>
+                            <input type="date" id="etanggalmasuk" name="e_tanggalmasuk" class="form-control" required>
+                        </div>
                         
                         <div class="form-group">
                             <label>Foto Bukti (.jpg / .png / .jpeg) <br><i>abaikan jika tidak ingin mengubah</i></label>
@@ -417,6 +436,9 @@
 
                 var ejumlahbuku = $(this).data('ejumlahbuku');
                 $("#ejumlahbuku").val(ejumlahbuku);
+
+                var etanggalmasuk = $(this).data('etanggalmasuk');
+                $("#etanggalmasuk").val(etanggalmasuk);
 
 
                 $('#editModal').modal('show');

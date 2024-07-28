@@ -42,8 +42,8 @@
                             <td><?= $i++ ?></td>
                             <td><?= esc($pinjaman['kode_buku']) ?></td>
                             <td><?= esc($pinjaman['judul_buku']) ?></td>
-                            <td><?= esc($pinjaman['tgl_pinjam']) ?></td>
-                            <td><?= esc($pinjaman['tgl_kembali']) ?></td>
+                            <td><?= date('d-M-Y', strtotime($pinjaman['tgl_pinjam'])) ?></td>
+                            <td><?= date('d-M-Y', strtotime($pinjaman['tgl_pinjam'] . ' +7 days')) ?></td>
                         </tr>
                     <?php endforeach; ?>
                 <?php else: ?>

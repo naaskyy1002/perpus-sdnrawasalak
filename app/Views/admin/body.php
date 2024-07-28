@@ -120,23 +120,29 @@
                   </thead>          
                   <tbody>
                     <?php $i = 1 + (10 * ($currentPage - 1)); ?>
-                    <?php foreach($peminjaman as $pj) : ?>
+                    <?php if (!empty($peminjaman)): ?>
+                      <?php foreach($peminjaman as $pj) : ?>
+                      <tr>
+                        <td><?= $i++ ?></td>
+                        <td><?= $pj['kode_buku'] ?></td>
+                        <td><?= $pj['pengarang'] ?></td>
+                        <td><?= $pj['judul_buku'] ?></td>
+                        <td><?= $pj['username'] ?></td>
+                        <!-- strtotime -> untuk mengonversi string tanggal/waktu menjadi timestamp Unix -->
+                        <td><?= date('d-M-Y', strtotime($pj['tgl_pinjam'])) ?></td>
+                        <td><?= empty($pj['tgl_kembali']) ? '-' : date('d-M-Y', strtotime($pj['tgl_kembali'])) ?></td>
+                        <td>
+                          <span class="badge <?= empty($pj['tgl_kembali']) ? 'bg-warning' : 'bg-success' ?>">
+                            <?= empty($pj['tgl_kembali']) ? 'Dipinjam' : 'Selesai' ?>
+                          </span>
+                        </td>
+                      </tr>
+                      <?php endforeach; ?>
+                    <?php else: ?>
                     <tr>
-                      <td><?= $i++ ?></td>
-                      <td><?= $pj['kode_buku'] ?></td>
-                      <td><?= $pj['pengarang'] ?></td>
-                      <td><?= $pj['judul_buku'] ?></td>
-                      <td><?= $pj['username'] ?></td>
-                      <!-- strtotime -> untuk mengonversi string tanggal/waktu menjadi timestamp Unix -->
-                      <td><?= date('d-M-Y', strtotime($pj['tgl_pinjam'])) ?></td>
-                      <td><?= empty($pj['tgl_kembali']) ? '-' : date('d-M-Y', strtotime($pj['tgl_kembali'])) ?></td>
-                      <td>
-                        <span class="badge <?= empty($pj['tgl_kembali']) ? 'bg-warning' : 'bg-success' ?>">
-                          <?= empty($pj['tgl_kembali']) ? 'Dipinjam' : 'Selesai' ?>
-                        </span>
-                      </td>
+                        <td colspan="5" class="text-center">Tidak ada data transaksi terkini</td>
                     </tr>
-                    <?php endforeach; ?>
+                    <?php endif; ?>
                   </tbody>
                 </table>
                 <?= $pager->links('transaksi', 'Pagination');?>

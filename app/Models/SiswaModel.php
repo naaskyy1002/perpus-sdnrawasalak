@@ -57,7 +57,7 @@ class SiswaModel extends Model
         if ($result) {
             return [
                 'id'    => $result['nisn'],
-                'text'  => $result['username'] . ' - ' . $result['username'],
+                'text'  => $result['username'] . ' - ' . $result['nisn'],
                 'snama' => $result['username'],
                 'skelas'  => $result['kelas'],
             ];

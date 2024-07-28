@@ -16,34 +16,6 @@
   <div class="card shadow mb-4">
     <div class="card-body">
       <div class="row mb-3">
-        <!-- <div class="pilih col-sm-6 col-md-3">
-          <label for="pilihBulan">Pilih Bulan</label>
-          <select id="pilihBulan" class="form-control">
-            <option>Januari</option>
-            <option>Februari</option>
-            <option>Maret</option>
-            <option>April</option>
-            <option>Mei</option>
-            <option>Juni</option>
-            <option>Juli</option>
-            <option>Agustus</option>
-            <option>September</option>
-            <option>Oktober</option>
-            <option>November</option>
-            <option>Desember</option>
-          </select>
-        </div>
-        <div class="pilih col-sm-6 col-md-3">
-          <label for="pilihTahun">Pilih Tahun</label>
-          <select id="pilihTahun" class="form-control">
-            <option>2020</option>
-            <option>2021</option>
-            <option>2022</option>
-            <option>2023</option>
-            <option>2024</option>
-            <option>2025</option>
-          </select>
-        </div> -->
         <div class="ex col-sm-12 col-md-6 text-right d-flex align-items-end">
           <a href="<?= base_url('addTransaksi') ?>" data-bs-toggle="modal" data-bs-target="#addModal" class="btn btn-primary">
             <i class="ri-add-line"></i> Tambah</a>
@@ -140,9 +112,9 @@
             <div class="col-12">
               <label for="inputTanggal" class="form-label">Tanggal Pinjam</label>
               <input type="date" class="form-control" name="a_pinjam" required>
-              <small class="text-warning">
+              <span class="text-danger">
                 *durasi peminjaman maksimal 7 hari
-              </small>
+              </span>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>

@@ -50,6 +50,7 @@ $routes->group('admin',['filter' => 'isLoggedIn'], function($routes) {
     $routes->get('pengembalian', 'Transaksi::pengembalian');
     $routes->post('pengembalian', 'Transaksi::selesai');
     $routes->get('printKembali', 'Transaksi::printKembali');
+    $routes->get('excelKembali', 'Transaksi::excelKembali');
 
 
     // DATA ADMIN

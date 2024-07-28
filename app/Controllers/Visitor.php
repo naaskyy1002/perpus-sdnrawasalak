@@ -41,7 +41,7 @@ class Visitor extends BaseController
         ];
 
         $this->visitorModel->addVisitor($data);
-        return redirect()->to('/admin/daftarPengunjung')->with('message', 'Visitor added successfully.');
+        return redirect()->to('/admin/daftarPengunjung')->with('message', 'Berhasil menambahkan pengunjung!');
     }
 
     public function getSiswaByNISN()

@@ -209,6 +209,7 @@ class Buku extends BaseController
         $kategori       = $this->request->getPost('a_kategori');
         $no_rak         = $this->request->getPost('a_norak');
         $jumlah_buku    = $this->request->getPost('a_jumlahbuku');
+        $tgl_masuk      = $this->request->getPost('a_tanggalmasuk');
 
         // Proses upload sampul
         $file = $this->request->getFile('a_sampul');
@@ -226,6 +227,7 @@ class Buku extends BaseController
             'kategori'      => $kategori,
             'no_rak'        => $no_rak,
             'jumlah_buku'   => $jumlah_buku,
+            'tgl_masuk'     => $tgl_masuk,
         ];
 
         // Simpan data menggunakan model
@@ -256,6 +258,7 @@ class Buku extends BaseController
         $kategori     = $this->request->getPost('e_kategori');
         $no_rak       = $this->request->getPost('e_norak');
         $jumlah_buku  = $this->request->getPost('e_jumlahbuku');
+        $tgl_masuk    = $this->request->getPost('e_tanggalmasuk');
 
         // Data untuk disimpan ke database
         $data = [
@@ -267,6 +270,7 @@ class Buku extends BaseController
             'kategori'      => $kategori,
             'no_rak'        => $no_rak,
             'jumlah_buku'   => $jumlah_buku,
+            'tgl_masuk'     => $tgl_masuk,
         ];
 
         if (!$validation) {

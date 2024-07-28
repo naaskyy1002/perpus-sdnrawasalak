@@ -16,7 +16,7 @@ class BukuModel extends Model
     // `allowedFields` untuk masing-masing tabel
     protected $allowedFieldsBuku = [
         'kode_buku', 'sampul', 'judul_buku', 'pengarang', 'penerbit', 
-        'tahun_terbit', 'kategori', 'no_rak', 'jumlah_buku'
+        'tahun_terbit', 'kategori', 'no_rak', 'jumlah_buku', 'tgl_masuk'
     ];
     protected $allowedFieldsBukuRusak = [
         'kode_buku', 'judul_buku', 'pengarang', 'tanggal_pendataan', 
@@ -44,6 +44,7 @@ class BukuModel extends Model
                     ->orLike('penerbit', $keyword)
                     ->orLike('tahun_terbit', $keyword)
                     ->orLike('no_rak', $keyword)
+                    ->orLike('tgl_masuk', $keyword)
                     ->orLike('kategori', $keyword);
     }
 
@@ -83,22 +84,6 @@ class BukuModel extends Model
         $this->setTable('buku');
         return $this->delete($id);
     }
-
-    // public function decreaseStock($kode_buku)
-    // {
-    //     $this->setTable('buku');
-    //     return $this->where('kode_buku', $kode_buku)
-    //                 ->set('jumlah_buku', 'jumlah_buku - 1', false)
-    //                 ->update();
-    // }
-
-    // public function increaseStock($kode_buku)
-    // {
-    //     $this->setTable('buku');
-    //     return $this->where('kode_buku', $kode_buku)
-    //                 ->set('jumlah_buku', 'jumlah_buku + 1', false)
-    //                 ->update();
-    // }
 
     public function printBuku()
     {

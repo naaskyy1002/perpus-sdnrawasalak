@@ -71,7 +71,7 @@ class Page extends BaseController
         $riwayat = $this->transaksiModel->getByRiwayat($nisn);
         $data = [
             'title' => 'Riwayat Peminjaman',
-            'pinjamanTerkini' => $riwayat
+            'riwayat' => $riwayat
         ];
         return view('siswa/riwayat', $data);
     }

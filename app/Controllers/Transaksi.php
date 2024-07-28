@@ -25,12 +25,13 @@ class Transaksi extends BaseController
     }
 
     public function addTransaksi()
-    {   
+    {
         // Ambil data dari request
         $kode = $this->request->getPost('a_kode');
         $nisn = $this->request->getPost('a_nisn');
         $tgl_pinjam = $this->request->getPost('a_pinjam');
 
+        $this->bukuModel->setTable('buku');
         // Cek apakah kode buku ada di database
         $buku = $this->bukuModel->where('kode_buku', $kode)->first();
         if (!$buku) {
@@ -55,13 +56,8 @@ class Transaksi extends BaseController
         // Simpan data menggunakan model
         $this->transaksiModel->createTransaksi($data);
 
-        if ($result) {
-            // Redirect dengan pesan sukses
-            return redirect()->to('/admin/peminjaman')->with('message', 'Transaksi berhasil ditambahkan!');
-        } else {
-            // Redirect dengan pesan error jika gagal menyimpan
-            return redirect()->back()->with('errors', 'Gagal menambahkan transaksi.');
-        }
+        // Redirect dengan pesan sukses
+        return redirect()->to('/admin/peminjaman')->with('message', 'Transaksi berhasil ditambahkan!');
     }
 
     public function printPinjam()
@@ -188,11 +184,6 @@ class Transaksi extends BaseController
         exit;
     }
 
-    public function getPinjam()
-    {
-
-    }
-
     // PEMINJAMAN
     public function peminjaman()
     {
@@ -220,11 +211,6 @@ class Transaksi extends BaseController
         return view('admin/transaksi/peminjaman', $data);
     }
 
-    public function getKembali()
-    {
-
-    }
-
     public function pengembalian()
     {
         $currentPage = $this->request->getVar('page_transaksi') ? $this->request->getVar('page_transaksi') : 1;
@@ -248,31 +234,8 @@ class Transaksi extends BaseController
           'currentPage' => $currentPage,
         ];
         return view('admin/transaksi/pengembalian', $data);
-      }
-    // {
-    //     $id = $this->request->getPost('id_transaksi');
-    //     $tgl_kembali = $this->request->getPost('tgl_kembali');
-        
-    //     // Cek apakah id_transaksi ada di database
-    //     $transaksi = $this->transaksiModel->find($id);
-    //     if (!$transaksi) {
-    //         return redirect()->to('/admin/peminjaman')->with('errors', 'ID Transaksi tidak ditemukan.');
-    //     }
-        
-    //     // Perbarui tanggal kembali
-    //     $updateData = [
-    //         'tgl_kembali' => $tgl_kembali
-    //     ];
-    //     $updated = $this->transaksiModel->update($id, $updateData);
-        
-    //     if ($updated) {
-    //         return redirect()->to('/admin/peminjaman')->with('message', 'Transaksi berhasil diperbarui.');
-    //     } else {
-    //         return redirect()->to('/admin/peminjaman')->with('errors', 'Gagal memperbarui transaksi.');
-    //     }
-    // }
+    }
     
-
 
     public function selesai()
     {
@@ -329,5 +292,107 @@ class Transaksi extends BaseController
             'currentPage' => $currentPage,
         ];
         return view('admin/transaksi/printKembali', $data);
+    }
+
+    public function excelKembali()
+    {
+        $data = $this->transaksiModel->getPengembalian();
+
+        // Membuat instance spreadsheet baru
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+    
+        // Menulis judul tabel
+        $sheet->setCellValue('A1', 'Data Pengembalian');
+        $sheet->mergeCells('A1:G1'); // Merge cells dari A1 sampai G1
+        $sheet->getStyle('A1')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER); // Center align
+        $sheet->getStyle('A1')->getFont()->setBold(true); // Buat teks judul tebal
+    
+        // Menulis header kolom
+        $sheet->setCellValue('A3', 'No');
+        $sheet->setCellValue('B3', 'Kode Buku');
+        $sheet->setCellValue('C3', 'Judul Buku');
+        $sheet->setCellValue('D3', 'Pengarang');
+        $sheet->setCellValue('E3', 'Nama Peminjam');
+        $sheet->setCellValue('F3', 'Tanggal Pinjaman');
+        $sheet->setCellValue('G3', 'Tanggal Pengembalian');
+    
+        // Menambahkan style untuk header
+        $headerStyleArray = [
+            'font' => [
+                'bold' => true,
+            ],
+            'fill' => [
+                'fillType' => Fill::FILL_SOLID,
+                'startColor' => [
+                    'argb' => 'FFFF00', // Warna kuning
+                ],
+            ],
+            'alignment' => [
+                'horizontal' => Alignment::HORIZONTAL_CENTER,
+                'vertical' => Alignment::VERTICAL_CENTER,
+            ],
+        ];
+    
+        $sheet->getStyle('A3:G3')->applyFromArray($headerStyleArray);
+    
+        // Menulis data ke dalam spreadsheet
+        $row = 4; // Mulai dari baris kedua setelah header
+        $no = 1;
+    
+        foreach ($data as $item) {
+            $sheet->setCellValue('A' . $row, $no);
+            $sheet->setCellValue('B' . $row, $item['kode_buku']);
+            $sheet->setCellValue('C' . $row, $item['judul_buku']);
+            $sheet->setCellValue('D' . $row, $item['pengarang']);
+            $sheet->setCellValue('E' . $row, $item['username']);
+            
+            // Mengubah format tanggal menjadi d-m-y
+            $formattedDate = date('d-m-Y', strtotime($item['tgl_pinjam']));
+            $sheet->setCellValue('F' . $row, $formattedDate);
+            $formattedDate = date('d-m-Y', strtotime($item['tgl_kembali']));
+            $sheet->setCellValue('G' . $row, $formattedDate);
+        
+            $row++; // looping data dari database
+            $no++; // looping untuk nomor urut data
+        }
+        
+    
+        // Menambahkan style pada tabel
+        $styleArray = [
+            // menambahkan border
+            'borders' => [
+                'allBorders' => [
+                    'borderStyle' => Border::BORDER_THIN,
+                    'color' => ['argb' => 'FF000000'],
+                ],
+            ],
+            // mengatur perataan teks
+            'alignment' => [
+                'horizontal' => Alignment::HORIZONTAL_LEFT,
+                'vertical' => Alignment::VERTICAL_CENTER,
+            ],
+        ];
+    
+        $sheet->getStyle('A3:G' . ($row - 1))->applyFromArray($styleArray);
+    
+        // Menyesuaikan lebar kolom secara otomatis
+        foreach (range('A', 'G') as $col) {
+            $sheet->getColumnDimension($col)->setAutoSize(true);
+        }
+    
+        // Membuat nama file dengan format yyyymmddhhmmss
+        $timestamp = date('Ymd_His');
+        $filename = 'data_pengembalian_' . $timestamp . '.xlsx';
+    
+        // Mengatur header HTTP untuk download file
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="' . $filename . '"');
+        header('Cache-Control: max-age=0');
+    
+        // Menulis file ke output
+        $writer = new Xlsx($spreadsheet);
+        $writer->save('php://output');
+        exit;
     }
 }

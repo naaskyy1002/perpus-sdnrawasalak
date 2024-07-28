@@ -23,8 +23,11 @@ class AdminModel extends Model
 
     public function totalBuku()
     {
-        return $this->db->table('buku')
-                        ->countAll();
+        $result = $this->db->table('buku')
+                           ->selectSum('jumlah_buku')
+                           ->get()
+                           ->getRow();
+        return $result->jumlah_buku;
     }
 
     public function totalBkr()
@@ -36,13 +39,16 @@ class AdminModel extends Model
     public function totalPinjam()
     {
         return $this->db->table('transaksi')
-                        ->countAll();
+                        ->where('tgl_pinjam IS NOT NULL')
+                        ->where('tgl_kembali IS NULL')
+                        ->countAllResults();  //Menghitung jumlah baris dalam tabel berdasarkan kondisi atau filter yang diterapkan.
     }
     
     public function totalKembali()
     {
         return $this->db->table('transaksi')
-                        ->countAll();
+                        ->where('tgl_kembali IS NOT NULL')
+                        ->countAllResults();  //Menghitung jumlah baris dalam tabel berdasarkan kondisi atau filter yang diterapkan.
     }
     
     public function getAdmin()

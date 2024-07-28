@@ -5,7 +5,7 @@ use CodeIgniter\Model;
 
 class TransaksiModel extends Model
 {
-    protected $table = 'transaksi'; // Menetapkan nama tabel
+    protected $table = "transaksi"; // Menetapkan nama tabel
     protected $primaryKey = 'id_transaksi';
     protected $allowedFields = ['kode_buku', 'nisn', 'tgl_pinjam', 'tgl_kembali'];
 
@@ -45,7 +45,8 @@ class TransaksiModel extends Model
     // menambah transaksi pinjam
     public function createTransaksi($data)
     {
-        return $this->insert($data);
+        return $this->db->table('transaksi')
+                        ->insert($data);
     }
 
     // mengambil transaksi peminjaman
@@ -56,7 +57,6 @@ class TransaksiModel extends Model
                     ->join('siswa', 'siswa.nisn = transaksi.nisn')
                     ->where('transaksi.tgl_kembali', NULL) // Mengambil data yang belum dikembalikan
                     ->get()->getResultArray();
-                    // ->findAll(); // Ganti getResultArray() dengan findAll()
     }
     
     // mengambil transaksi pengembalian 
@@ -67,7 +67,6 @@ class TransaksiModel extends Model
                     ->join('siswa', 'siswa.nisn = transaksi.nisn')
                     ->where('transaksi.tgl_kembali !=', NULL ) //mengambil data yang sudah dikembalikan
                     ->get()->getResultarray();
-                    // ->findAll(); // Ganti getResultArray() dengan findAll()
     }
 
     public function selesai($id, $tgl_kembali)
@@ -77,15 +76,11 @@ class TransaksiModel extends Model
         ->update(['status' => 'kembali', 'tgl_kembali' => $tgl_kembali]);
     }
 
-    public function updateTransaksi($id, $data)
-    {
-        return $this->update($id, $data);
-    }
-
     // menghapus transaksi
     public function deleteTransaksi($id)
     {
-        return $this->delete($id);
+        return $this->db->table('transaksi')
+                        ->delete($id);
     }
 
     public function printPinjam()
