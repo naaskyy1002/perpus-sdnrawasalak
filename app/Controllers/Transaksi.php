@@ -74,7 +74,7 @@ class Transaksi extends BaseController
         if($keyword) {
             $pinjam = $this->transaksiModel->search($keyword);
         } else {
-            $pinjam = $this->transaksiModel;
+            $pinjam = $this->transaksiModel->getPeminjaman();
         }
     
         $pinjam = $this->transaksiModel->paginate(10, 'printPinjam');

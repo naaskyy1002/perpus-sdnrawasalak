@@ -15,6 +15,7 @@ class Auth extends BaseController
 
     public function login()
     {
+        // echo password_hash("admin", PASSWORD_DEFAULT)."\n";
         // Memeriksa apakah sesi pengguna aktif
         if ($this->session->has('user_session')) {
             if ($this->session->get('level') == 1) {

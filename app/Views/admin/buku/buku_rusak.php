@@ -97,7 +97,7 @@
                   <td><?= $bkr['kode_buku'] ;?></td>
                   <td><?= $bkr['judul_buku'] ;?></td>
                   <td><?= $bkr['pengarang'] ;?></td>
-                  <td><?= $bkr['tanggal_pendataan'] ;?></td>
+                  <td><?= date('d-M-Y', strtotime($bkr['tanggal_pendataan'])) ?></td>
                   <td><?= $bkr['keterangan'] ;?></td>
                   <td><img src="<?= base_url('assets/img/bukti/' . $bkr['foto_bukti']) ?>" alt="fotoBukti" width="50"></td>
                   <td>

@@ -54,6 +54,7 @@ class BukuModel extends Model
         return $this->table($this->table)
                     ->like('kode_buku', $keyword)
                     ->orLike('judul_buku', $keyword)
+                    ->orLike('tanggal_pendataan', $keyword)
                     ->orLike('keterangan', $keyword);
     }
 
