@@ -49,6 +49,7 @@ $routes->group('admin',['filter' => 'isLoggedIn'], function($routes) {
 
     $routes->get('pengembalian', 'Transaksi::pengembalian');
     $routes->post('pengembalian', 'Transaksi::selesai');
+    $routes->post('deleteTransaksiKB', 'Transaksi::deleteTransaksiKB');
     $routes->get('printKembali', 'Transaksi::printKembali');
     $routes->get('excelKembali', 'Transaksi::excelKembali');
 
@@ -76,6 +77,7 @@ $routes->group('admin',['filter' => 'isLoggedIn'], function($routes) {
     
     // DAFTAR PENGUNJUNG
     $routes->get('daftarPengunjung', 'Visitor::index');
+    $routes->post('daftarPengunjung', 'Visitor::index');
     $routes->post('visitor/addVisitor', 'Visitor::addVisitor');
     $routes->get('visitor/getSiswaByNISN', 'Visitor::getSiswaByNISN');
 

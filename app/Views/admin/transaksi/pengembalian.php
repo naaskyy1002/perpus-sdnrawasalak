@@ -35,6 +35,16 @@
                 </form>
               </div>
             </div>
+            <?php if (session()->getFlashdata('message')): ?>
+            <div class="alert alert-success" id="success-message">
+              <?= session()->getFlashdata('message') ?>
+            </div>
+            <?php endif; ?>
+            <?php if (session()->getFlashdata('errors')): ?>
+              <div class="alert alert-danger" id="error-message">
+                <?= session()->getFlashdata('errors') ?>
+              </div>
+            <?php endif; ?>
           <div class="table-responsive">
           <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
@@ -61,7 +71,10 @@
                   <td><?= date('d-M-Y', strtotime($kb['tgl_pinjam'])) ?></td>
                   <td><?= date('d-M-Y', strtotime($kb['tgl_kembali'])) ?></td>
                   <td>
-                    <a href="#" class="deleteModalid" title="Hapus" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="bi bi-trash"></i></a>
+                    <a href="#" class="deleteModalid" title="Hapus" data-bs-toggle="modal" data-bs-target="#deleteModal"
+                      data-idtransaksi="<?=$kb['id_transaksi'];?>">
+                      <i class="bi bi-trash"></i>
+                    </a>
                   </td>
                 </tr>
                 <?php endforeach; ?>
@@ -83,7 +96,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                    <form method="post" action="deleteTransaksi">
+                    <form method="post" action="deleteTransaksiKB">
                         <input type="hidden" id="idtransaksi" name="id_transaksi">
                         <button type="submit" class="btn btn-danger">Hapus</button>
                     </form>

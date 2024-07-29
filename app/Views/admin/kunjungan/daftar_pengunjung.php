@@ -118,7 +118,7 @@
                 </tr>
               </thead>
               <tbody>
-              <?php $i = 1; ?>
+              <?php $i = 1 + (10 * ($currentPage - 1)); ?>
                 <?php foreach ($visitors as $vs): ?>
                     <tr class="text-center">
                         <td><?= $i++; ?></td>
@@ -129,7 +129,7 @@
                 <?php endforeach; ?>
               </tbody>
             </table>
-            
+            <?= $pager->links('visitor', 'Pagination');?>
           </div>
         </section>
       </div>

@@ -257,22 +257,49 @@ class Transaksi extends BaseController
     public function deleteTransaksi()
     {
         $id = $this->request->getPost('id_transaksi');
-        
+    
         // Cek apakah id_transaksi ada di database
         $transaksi = $this->transaksiModel->find($id);
         if (!$transaksi) {
             return redirect()->to('/admin/peminjaman')->with('errors', 'ID Transaksi tidak ditemukan.');
+        }
+    
+        $this->bukuModel->setTable('buku');
+        // Ambil kode_buku dari transaksi yang akan dihapus
+        $kode_buku = $transaksi['kode_buku'];
+    
+        // Tambah stok buku sebelum menghapus transaksi
+        $this->bukuModel->where('kode_buku', $kode_buku)->set('jumlah_buku', 'jumlah_buku+1', false)->update();
+    
+        // Hapus transaksi
+        $deleted = $this->transaksiModel->deleteTransaksi($id);
+    
+        if ($deleted) {
+            return redirect()->to('/admin/peminjaman')->with('message', 'Transaksi berhasil dihapus.');
+        } else {
+            return redirect()->to('/admin/peminjaman')->with('errors', 'Gagal menghapus transaksi.');
+        }
+    }
+    
+    public function deleteTransaksiKB()
+    {
+        $id = $this->request->getPost('id_transaksi');
+        
+        // Cek apakah id_transaksi ada di database
+        $transaksi = $this->transaksiModel->find($id);
+        if (!$transaksi) {
+            return redirect()->to('/admin/pengembalian')->with('errors', 'ID Transaksi tidak ditemukan.');
         }
         
         // Hapus transaksi
         $deleted = $this->transaksiModel->deleteTransaksi($id);
         
         if ($deleted) {
-            return redirect()->to('/admin/peminjaman')->with('message', 'Transaksi berhasil dihapus.');
+            return redirect()->to('/admin/pengembalian')->with('message', 'Transaksi berhasil dihapus.');
         } else {
-            return redirect()->to('/admin/peminjaman')->with('errors', 'Gagal menghapus transaksi.');
+            return redirect()->to('/admin/pengembalian')->with('errors', 'Gagal menghapus transaksi.');
         }
-    }  
+    }
 
     public function printKembali()
     {

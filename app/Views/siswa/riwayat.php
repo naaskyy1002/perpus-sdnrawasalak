@@ -14,15 +14,6 @@
     <!-- End Page Title -->
 
     <div class="book-collection">
-        <div class="col-sm-12 col-md-4 ms-auto">
-            <form action="<?= base_url('siswa/pinjaman'); ?>" method="post">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Masukkan keyword pencarian" name="keyword">
-                    <button class="btn btn-outline-secondary" type="submit" name="submit">Cari</button>
-                </div>
-            </form>
-        </div>
-
         <div class="history-table">
             <div class="table-responsive">
                 <table class="table table-striped">

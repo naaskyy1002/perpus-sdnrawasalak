@@ -76,7 +76,7 @@
                       <i class="bi bi-check-lg" style="color: green;"></i>
                     </a>
                     <a href="#" title="Hapus" data-bs-toggle="modal" data-bs-target="#deleteModal" class="deleteModalid" 
-                      data-idtransaksi="<?=$pj['id_transaksi'];?>">
+                      data-idtransaksi="<?=$pj['id_transaksi'];?>" data-kodebuku="<?=$pj['kode_buku'];?>">
                       <i class="bi bi-trash"></i>
                     </a>
                   </td>
@@ -169,7 +169,6 @@
     });
   </script>
 
-
   <!-- Delete Modal -->
   <div class="modal fade" id="deleteModal">
     <div class="modal-dialog" role="document">
@@ -180,7 +179,8 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
           <form method="post" action="deleteTransaksi">
-            <input type="hidden" id="id_transaksi" name="id_transaksi">
+            <input type="hidden" id="idtransaksi" name="id_transaksi">
+            <input type="hidden" id="kode_buku" name="kode_buku">
             <button type="submit" class="btn btn-danger">Hapus</button>
           </form>
         </div>
@@ -191,7 +191,10 @@
     <script>
         $(".deleteModalid").click(function() {
             var idtransaksi = $(this).data('idtransaksi');
-            $("#id_transaksi").val(idtransaksi);
+            $("#idtransaksi").val(idtransaksi);
+
+            var kodebuku = $(this).data('kodebuku');
+            $("#kode_buku").val(kodebuku);
         });
     </script>
 

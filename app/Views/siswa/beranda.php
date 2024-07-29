@@ -29,17 +29,21 @@
                         <img src="<?= base_url('assets/img/buku/' . $buku_item['sampul']) ?>" alt="sampulBuku" class="book-cover">
                         <div class="card-body">
                             <h5 class="card-title"><?= esc($buku_item['judul_buku']) ?></h5>
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#viewModal" class="btn btn-primary btn-sm viewModalid"
-                                data-vsampul="<?= base_url('assets/img/buku/' . $buku_item['sampul']) ?>"
-                                data-vkodebuku="<?= $buku_item['kode_buku'] ?>"
-                                data-vjudulbuku="<?= $buku_item['judul_buku'] ?>"
-                                data-vpengarang="<?= $buku_item['pengarang'] ?>"
-                                data-vpenerbit="<?= $buku_item['penerbit'] ?>"
-                                data-vtahunterbit="<?= $buku_item['tahun_terbit'] ?>"
-                                data-vkategori="<?= $buku_item['kategori'] ?>"
-                                data-vnorak="<?= $buku_item['no_rak'] ?>"
-                                data-vjumlahbuku="<?= $buku_item['jumlah_buku'] ?>"
-                            >Lihat Detail</a>
+                            <?php if ($buku_item['jumlah_buku'] > 0): ?>
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#viewModal" class="btn btn-primary btn-sm viewModalid"
+                                    data-vsampul="<?= base_url('assets/img/buku/' . $buku_item['sampul']) ?>"
+                                    data-vkodebuku="<?= $buku_item['kode_buku'] ?>"
+                                    data-vjudulbuku="<?= $buku_item['judul_buku'] ?>"
+                                    data-vpengarang="<?= $buku_item['pengarang'] ?>"
+                                    data-vpenerbit="<?= $buku_item['penerbit'] ?>"
+                                    data-vtahunterbit="<?= $buku_item['tahun_terbit'] ?>"
+                                    data-vkategori="<?= $buku_item['kategori'] ?>"
+                                    data-vnorak="<?= $buku_item['no_rak'] ?>"
+                                    data-vjumlahbuku="<?= $buku_item['jumlah_buku'] ?>"
+                                >Lihat Detail</a>
+                            <?php else: ?>
+                                <p class="text-danger">Stok Buku Habis</p>
+                            <?php endif; ?>
                         </div>
                     </div>
                     <?php endforeach; ?>

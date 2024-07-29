@@ -45,10 +45,10 @@ class SiswaModel extends Model
     }
 
     public function deleteSiswa($id)
-{
-    return $this->db->table('siswa')
-                    ->delete(array('nisn' => $id)); // Menggunakan metode delete dengan table
-}
+    {
+        return $this->db->table('siswa')
+                        ->delete(array('nisn' => $id)); // Menggunakan metode delete dengan table
+    }
 
     public function getSiswaByNISN($username)
     {

@@ -9,7 +9,6 @@ class Visitor extends BaseController
     protected $visitorModel;
     protected $siswaModel;
 
-    //menginisialisasi beberapa dependensi dan layanan yang diperlukan oleh kelas,
     public function __construct()
     {
         $this->visitorModel = new VisitorModel();
@@ -18,21 +17,31 @@ class Visitor extends BaseController
 
     public function index()
     {
+        $currentPage = $this->request->getVar('page_visitor') ? $this->request->getVar('page_visitor') : 1;
+        $keyword = $this->request->getVar('keyword');
+
+        // Memperbaiki pencarian berdasarkan keyword
+        if ($keyword) {
+            $visitors = $this->visitorModel->search($keyword);
+        } else {
+            $visitors = $this->visitorModel->paginate(10, 'visitor');
+        }
+
+        $pager = $this->visitorModel->pager;
         $today = date('Y-m-d');
-        $visitors = $this->visitorModel->getVisitorsByDate($today);
         
         $data = [
             'title' => 'Daftar Pengunjung',
-            'visitors' => $visitors
+            'visitors' => $visitors,
+            'pager' => $pager,
+            'currentPage' => $currentPage,
         ];
 
         return view('admin/kunjungan/daftar_pengunjung', $data);
     }
 
-
     public function addVisitor()
     {
-        // dd($this->request->getPost());
         $data = [
             'nisn' => $this->request->getPost('s_nis'),
             'nama' => $this->request->getPost('s_nama'),
@@ -53,7 +62,7 @@ class Visitor extends BaseController
                 $siswa = $this->siswaModel->getSiswaByNISN($searchTerm);
                 return $this->response->setJSON([$siswa]);
             } 
-                return $this->response->setJSON([]);
+            return $this->response->setJSON([]);
         }
         return $this->response->setJSON(['error' => 'Not Found'])->setStatusCode(404);
     }

@@ -7,7 +7,7 @@ class TransaksiModel extends Model
 {
     protected $table = "transaksi"; // Menetapkan nama tabel
     protected $primaryKey = 'id_transaksi';
-    protected $allowedFields = ['kode_buku', 'nisn', 'tgl_pinjam', 'tgl_kembali'];
+    protected $allowedFields = ['kode_buku', 'nisn', 'tgl_pinjam', 'tgl_kembali', 'status'];
 
     public function search($keyword)
     {
@@ -76,7 +76,7 @@ class TransaksiModel extends Model
         }
     
         return true;
-      }
+    }
 
     // mengambil transaksi peminjaman
     public function getPeminjaman()
@@ -100,7 +100,7 @@ class TransaksiModel extends Model
 
     public function selesai($id, $tgl_kembali)
     {
-        // when the book is returned, the stock will be added by 1
+        // jika buku sudah dikembalikan maka stok akan bertambah 1
         $this->db->transStart();
     
         // Update transaction data
@@ -128,19 +128,14 @@ class TransaksiModel extends Model
         }
     
         return true;
-      }
+    }
 
+    
     // menghapus transaksi
     public function deleteTransaksi($id)
     {
-        // Cek apakah id_transaksi ada di database
-        $transaksi = $this->find($id);
-        if (!$transaksi) {
-            return false; // Gagal menghapus transaksi
-        }
-
         return $this->db->table('transaksi')
-                        ->delete(['id_transaksi' => $id]);
+                        ->delete(array('id_transaksi' => $id));
                         
     }
 
