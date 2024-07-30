@@ -9,14 +9,6 @@ class VisitorModel extends Model
     protected $primaryKey = 'id_pengunjung';
     protected $allowedFields = ['nisn', 'nama', 'kelas', 'visit'];
 
-    public function search($keyword)
-    {
-        return $this->like('nisn', $keyword)
-                    ->orLike('nama', $keyword)
-                    ->orLike('kelas', $keyword)
-                    ->paginate(10, 'visitor');
-    }
-
     public function getVisitorsByDate($date)
     {
         return $this->where('visit', $date)->findAll();

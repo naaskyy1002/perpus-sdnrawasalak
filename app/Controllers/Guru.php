@@ -19,26 +19,10 @@ class Guru extends BaseController
     // DATA GURU
     public function data_guru()
     {
-        // menampilkan page halaman saat di klik
-        $currentPage = $this->request->getVar('page_guru') ? $this->request->getVar('page_guru') :
-        1;
-
-        // mencari keyword yang sesuai untuk halaman data guru
-        $keyword = $this->request->getVar('keyword');
-        if($keyword) {
-            $guru = $this->guruModel->search($keyword);
-        }else {
-            $guru = $this->guruModel;
-        }
-
-        $guru = $this->guruModel->paginate(10, 'guru'); // menentukan seberapa banyak data guru ditampilkan di views
-        $pager = $this->guruModel->pager;
-        
+        $guru = $this->guruModel->getGuru();
         $data = [
             'title' => 'Data Guru',
             'guru' => $guru,
-            'pager' => $pager,
-            'currentPage' => $currentPage,
         ];
         return view('admin/maindata/data_guru', $data);
     }

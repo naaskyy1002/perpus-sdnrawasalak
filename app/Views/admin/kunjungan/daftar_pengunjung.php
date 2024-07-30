@@ -48,33 +48,33 @@
                         <script>
                         $(document).ready(function() {
                             $('#search_nama').select2({
-                            placeholder: 'Ketikkan Nama', 
-                            ajax: { 
-                                url: "<?= base_url('admin/visitor/getSiswaByNISN') ?>",
-                                type: "GET",
-                                dataType: 'json',
-                                delay: 250,
-                                data: function (params) {
-                                    return {
-                                        searchTerm: params.term 
-                                    };
-                                },
-                                processResults: function (response) {
-                                    console.log(response)
-                                    return {
-                                        results: response
-                                    };
-                                },
-                                cache: true
-                            }  
-                        }).on('change', function() {
-                            var data = $(this).select2('data') [0];
+                                placeholder: 'Ketikkan Nama',
+                                ajax: {
+                                    url: "<?= base_url('admin/visitor/getSiswaByNISN') ?>",
+                                    type: "GET",
+                                    dataType: 'json',
+                                    delay: 250,
+                                    data: function (params) {
+                                        return {
+                                            searchTerm: params.term
+                                        };
+                                    },
+                                    processResults: function (response) {
+                                        console.log(response)
+                                        return {
+                                            results: response
+                                        };
+                                    },
+                                    cache: true
+                                }
+                            }).on('change', function() {
+                                var data = $(this).select2('data')[0];
                                 $('#s_nis').val(data.id);
                                 $('#s_nama').val(data.snama);
                                 $('#s_kelas').val(data.skelas);
                             });
                         });
-                    </script>
+                        </script>
 
                     </div>
                 </div>
@@ -83,83 +83,45 @@
     </section>
 
     <div class="card shadow mb-4"> 
-      <div class="card-body">
-        <div class="row mb-3"></div>
-        <section class="section">    
-          <div class="col-lg-12"> 
-            <div class="row mb-3">
-                 
-              <div class="col-sm-12 col-md-6 ms-auto">
-                <form action="" method="post">
-                  <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Masukkan keyword pencarian" name="keyword">
-                    <button class="btn btn-outline-secondary" type="submit" name="submit">Cari</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-            <?php if (session()->getFlashdata('message')): ?>
-              <div class="alert alert-success" id="success-message">
-                <?= session()->getFlashdata('message') ?>
-              </div>
-            <?php endif; ?>
-            <?php if (session()->getFlashdata('errors')): ?>
-                <div class="alert alert-danger" id="error-message">
-                    <?= session()->getFlashdata('errors') ?>
+        <div class="card-body">
+            <div class="row mb-3"></div>
+            <section class="section">    
+                <div class="col-lg-12">
+                    <?php if (session()->getFlashdata('message')): ?>
+                        <div class="alert alert-success" id="success-message">
+                            <?= session()->getFlashdata('message') ?>
+                        </div>
+                    <?php endif; ?>
+                    <?php if (session()->getFlashdata('errors')): ?>
+                        <div class="alert alert-danger" id="error-message">
+                            <?= session()->getFlashdata('errors') ?>
+                        </div>
+                    <?php endif; ?>
+                    <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">              
+                        <thead class="table-light">
+                            <tr class="text-center">
+                                <th>No.</th>
+                                <th>NIS</th>
+                                <th>Nama</th>
+                                <th>Kelas</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $i = 1; ?>
+                            <?php foreach ($visitors as $vs): ?>
+                                <tr class="text-center">
+                                    <td><?= $i++; ?></td>
+                                    <td><?= $vs['nisn'] ?></td>
+                                    <td><?= $vs['nama'] ?></td>
+                                    <td><?= $vs['kelas'] ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
                 </div>
-            <?php endif; ?>
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">              
-              <thead>
-                <tr class="text-center">
-                  <th>No.</th>
-                  <th>NIS</th>
-                  <th>Nama</th>
-                  <th>Kelas</th>
-                </tr>
-              </thead>
-              <tbody>
-              <?php $i = 1 + (10 * ($currentPage - 1)); ?>
-                <?php foreach ($visitors as $vs): ?>
-                    <tr class="text-center">
-                        <td><?= $i++; ?></td>
-                        <td><?= $vs['nisn'] ?></td>
-                        <td><?= $vs['nama'] ?></td>
-                        <td><?= $vs['kelas'] ?></td>
-                    </tr>
-                <?php endforeach; ?>
-              </tbody>
-            </table>
-            <?= $pager->links('visitor', 'Pagination');?>
-          </div>
-        </section>
-      </div>
-      </div>
+            </section>
+        </div>
+    </div>
 </main>
-
-<script>
-$(document).ready(function() {
-    $('#nisn').on('change', function() {
-        var nisn = $(this).val();
-        $.ajax({
-            url: '<?= base_url('admin/visitor/getSiswaByNISN') ?>/' + nisn,
-            type: 'GET',
-            success: function(data) {
-                if (data) {
-                    var siswa = JSON.parse(data);
-                    $('input[name="nama"]').val(siswa.nama);
-                    $('input[name="kelas"]').val(siswa.kelas);
-                } else {
-                    $('input[name="nama"]').val('');
-                    $('input[name="kelas"]').val('');
-                    alert('Data siswa tidak ditemukan.');
-                }
-            },
-            error: function() {
-                alert('Error fetching data.');
-            }
-        });
-    });
-});
-</script>
 
 <?=$this->endSection()?>

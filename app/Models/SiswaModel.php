@@ -12,18 +12,6 @@ class SiswaModel extends Model
     protected $createdField = 'created_at';
     protected $updatedField = 'updated_at';
 
-    public function getUser()
-    {
-    }
-
-    public function search($keyword)
-    {
-        return $this->table('siswa')
-                    ->like('username', $keyword)
-                    ->orLike('nisn', $keyword)
-                    ->orLike('kelas', $keyword);
-    }
-
     public function getSiswa()
     {
         return $this->table('siswa')

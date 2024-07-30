@@ -17,24 +17,14 @@ class Visitor extends BaseController
 
     public function index()
     {
-        $currentPage = $this->request->getVar('page_visitor') ? $this->request->getVar('page_visitor') : 1;
-        $keyword = $this->request->getVar('keyword');
-
-        // Memperbaiki pencarian berdasarkan keyword
-        if ($keyword) {
-            $visitors = $this->visitorModel->search($keyword);
-        } else {
-            $visitors = $this->visitorModel->paginate(10, 'visitor');
-        }
-
-        $pager = $this->visitorModel->pager;
+        // Mengambil tanggal hari ini
         $today = date('Y-m-d');
+        $visitors = $this->visitorModel->getVisitorsByDate($today);
         
         $data = [
             'title' => 'Daftar Pengunjung',
             'visitors' => $visitors,
-            'pager' => $pager,
-            'currentPage' => $currentPage,
+            'date' => $today,
         ];
 
         return view('admin/kunjungan/daftar_pengunjung', $data);

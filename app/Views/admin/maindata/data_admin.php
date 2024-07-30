@@ -15,24 +15,15 @@
     </div><!-- End Page Title -->
 
     <div class="card shadow mb-4"> 
-      <div class="col-lg-12">
-        <div class="table-responsive">
-          <div class="card-body">
-            <div class="table-title">
+      <div class="card-body">
+        <div class="row mb-3">
+          <div class="ex col-sm-12 col-md-6 text-right d-flex align-items-end">
               <a href="<?= base_url('addAdmin') ?>" data-bs-toggle="modal" data-bs-target="#addModal"class="btn btn-primary">
-                <i class="ri-add-line"></i> Tambah Admin</a> 
-              <div class="row mb-3">               
-                <div class="col-sm-12 col-md-6 ms-auto">
-                  <form action="" method="post" class="d-flex">
-                    <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Masukkan keyword pencarian" name="keyword">
-                      <button class="btn btn-outline-secondary" type="submit" name="submit">Cari</button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">              
-            </div>
+                <i class="ri-add-line"></i> Tambah Admin</a>
+          </div> 
+        </div>
+        <section class="section">    
+          <div class="col-lg-12">      
             <?php if (session()->getFlashdata('message')): ?>
                 <div class="alert alert-success" id="success-message">
                     <?= session()->getFlashdata('message') ?>
@@ -44,64 +35,65 @@
                     <?= session()->getFlashdata('errors') ?>
                 </div>
             <?php endif; ?>
-            <table class="table table-bordered">
-              <thead>
-                <tr class="text-center">
-                  <th>No.</th>
-                  <th>NIP</th>
-                  <th>Nama</th>
-                  <th>Jabatan</th>
-                  <th>Aksi</th>
-                </tr>
-              </thead>
-              <tbody>
-                <?php $i = 1 + (10 * ($currentPage - 1)); ?>
-                <?php foreach($admin as $adm) : ?>
-                <tr class="text-center">
-                  <td><?= $i++; ?></td>
-                  <td><?= $adm['nip'] ;?></td>
-                  <td><?= $adm['nama_lengkap'] ;?></td>
-                  <td><?= $adm['jabatan'] ;?></td>
-                  <td>
-                    <a href="#" class="viewModalid"  title="Detail" data-bs-toggle="modal" data-bs-target="#viewModal"
-                      data-vfoto="<?= base_url('assets/img/admin/' . $adm['foto']);?>"
-                      data-vnip="<?=$adm['nip'];?>"
-                      data-vnamalengkap="<?=$adm['nama_lengkap'];?>"
-                      data-vdob="<?=$adm['dob'];?>"
-                      data-valamat="<?=$adm['alamat'];?>"
-                      data-vtelepon="<?=$adm['telp'];?>"
-                      data-vemail="<?=$adm['email'];?>"
-                      data-vjabatan="<?=$adm['jabatan'];?>"
-                      data-vusername="<?=$adm['username'];?>"
-                      data-vpassword="<?=$adm['password'];?>">
-                      <i class="bi bi-eye"></i>
-                    </a>
-                    <a href="#" title="Edit" data-bs-toggle="modal" data-bs-target="#editModal" class="editModalid"
-                      data-eidadmin="<?=$adm['nip']?>"
-                      data-efoto="<?= base_url('assets/img/admin/' . $adm['foto']);?>"
-                      data-eoldfoto="<?=$adm['foto'] ;?>"
-                      data-enip="<?=$adm['nip'];?>"
-                      data-enamalengkap="<?=$adm['nama_lengkap'];?>"
-                      data-edob="<?=$adm['dob'];?>"
-                      data-ealamat="<?=$adm['alamat'];?>"
-                      data-etelepon="<?=$adm['telp'];?>"
-                      data-eemail="<?=$adm['email'];?>"
-                      data-ejabatan="<?=$adm['jabatan'];?>"
-                      data-eusername="<?=$adm['username'];?>"
-                      data-epassword="<?=$adm['password'];?>">
-                    <i class="bi bi-pencil"></i></a>
-                    <a href="#" title="Hapus" data-bs-toggle="modal" data-bs-target="#deleteModal" class="deleteModalid" 
-                        data-nip="<?=$adm['nip'];?>">
-                        <i class="bi bi-trash"></i>
-                    </a>
-                  </td>
-                </tr>
-                <?php endforeach; ?>
-              </tbody>
-            </table>
-				      <?= $pager->links('admin', 'Pagination');?>
-		      </div>
-        </div>
+            <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                  <tr class="text-center">
+                    <th>No.</th>
+                    <th>NIP</th>
+                    <th>Nama</th>
+                    <th>Jabatan</th>
+                    <th>Aksi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php $i = 1; ?>
+                  <?php foreach($admin as $adm) : ?>
+                  <tr class="text-center">
+                    <td><?= $i++; ?></td>
+                    <td><?= $adm['nip'] ;?></td>
+                    <td><?= $adm['nama_lengkap'] ;?></td>
+                    <td><?= $adm['jabatan'] ;?></td>
+                    <td>
+                      <a href="#" class="viewModalid"  title="Detail" data-bs-toggle="modal" data-bs-target="#viewModal"
+                        data-vfoto="<?= base_url('assets/img/admin/' . $adm['foto']);?>"
+                        data-vnip="<?=$adm['nip'];?>"
+                        data-vnamalengkap="<?=$adm['nama_lengkap'];?>"
+                        data-vdob="<?=$adm['dob'];?>"
+                        data-valamat="<?=$adm['alamat'];?>"
+                        data-vtelepon="<?=$adm['telp'];?>"
+                        data-vemail="<?=$adm['email'];?>"
+                        data-vjabatan="<?=$adm['jabatan'];?>"
+                        data-vusername="<?=$adm['username'];?>"
+                        data-vpassword="<?=$adm['password'];?>">
+                        <i class="bi bi-eye"></i>
+                      </a>
+                      <a href="#" title="Edit" data-bs-toggle="modal" data-bs-target="#editModal" class="editModalid"
+                        data-eidadmin="<?=$adm['nip']?>"
+                        data-efoto="<?= base_url('assets/img/admin/' . $adm['foto']);?>"
+                        data-eoldfoto="<?=$adm['foto'] ;?>"
+                        data-enip="<?=$adm['nip'];?>"
+                        data-enamalengkap="<?=$adm['nama_lengkap'];?>"
+                        data-edob="<?=$adm['dob'];?>"
+                        data-ealamat="<?=$adm['alamat'];?>"
+                        data-etelepon="<?=$adm['telp'];?>"
+                        data-eemail="<?=$adm['email'];?>"
+                        data-ejabatan="<?=$adm['jabatan'];?>"
+                        data-eusername="<?=$adm['username'];?>"
+                        data-epassword="<?=$adm['password'];?>">
+                      <i class="bi bi-pencil"></i></a>
+                      <a href="#" title="Hapus" data-bs-toggle="modal" data-bs-target="#deleteModal" class="deleteModalid" 
+                          data-nip="<?=$adm['nip'];?>">
+                          <i class="bi bi-trash"></i>
+                      </a>
+                    </td>
+                  </tr>
+                  <?php endforeach; ?>
+                </tbody>
+              </table>
+		        </div>
+          </div>
+        </section>
       </div>
     </div>
 

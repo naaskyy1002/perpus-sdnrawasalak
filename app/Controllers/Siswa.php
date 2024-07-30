@@ -16,25 +16,10 @@ class Siswa extends BaseController
     // DATA SISWA
     public function data_siswa()
     {
-        // menampilkan page halaman saat di klik
-        $currentPage = $this->request->getVar('page_siswa') ? $this->request->getVar('page_siswa') :
-        1;
-
-        // mencari keyword yang sesuai untuk halaman data siswa
-        $keyword = $this->request->getVar('keyword');
-        if($keyword) {
-            $siswa = $this->siswaModel->search($keyword);
-        }else {
-            $siswa = $this->siswaModel;
-        }
-
-        $siswa = $this->siswaModel->paginate(3, 'siswa'); // menentukan seberapa banyak data siswa ditampilkan di views
-        $pager = $this->siswaModel->pager;
+        $siswa = $this->siswaModel->getSiswa();
         $data = [
             'title' => 'Data Siswa',
             'siswa' => $siswa,
-            'pager' => $pager,
-            'currentPage' => $currentPage,
         ];
         return view('admin/maindata/data_siswa', $data);
     }

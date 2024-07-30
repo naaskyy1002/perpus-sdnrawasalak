@@ -16,34 +16,6 @@
     <div class="card shadow mb-4"> 
         <div class="card-body">
             <div class="row mb-3">
-                <!-- <div class="pilih col-sm-6 col-md-3">
-                    <label for="pilihBulan">Pilih Bulan</label>
-                    <select id="pilihBulan" class="form-control">
-                        <option>Januari</option>
-                        <option>Februari</option>
-                        <option>Maret</option>
-                        <option>April</option>
-                        <option>Mei</option>
-                        <option>Juni</option>
-                        <option>Juli</option>
-                        <option>Agustus</option>
-                        <option>September</option>
-                        <option>Oktober</option>
-                        <option>November</option>
-                        <option>Desember</option>
-                    </select>
-                </div>
-                <div class="pilih col-sm-6 col-md-3">
-                    <label for="pilihTahun">Pilih Tahun</label>
-                    <select id="pilihTahun" class="form-control">
-                        <option>2020</option>
-                        <option>2021</option>
-                        <option>2022</option>
-                        <option>2023</option>
-                        <option>2024</option>
-                        <option>2025</option>
-                    </select>
-                </div> -->
                 <div class="ex col-sm-12 col-md-6 text-right d-flex align-items-end"> <!--justify-content-end-->
                     <a class="btn btn-primary" href="<?= base_url('addBuku') ?>" data-bs-toggle="modal" data-bs-target="#addModal">
                         <i class="ri-add-line"></i> Tambah</a>
@@ -55,16 +27,6 @@
             </div>
                 <section class="section">    
                     <div class="col-lg-12">
-                        <div class="row mb-3">               
-                            <div class="col-sm-12 col-md-6 ms-auto">
-                                <form action="" method="post" class="d-flex">
-                                    <div class="input-group mb-3">
-                                        <input type="text" class="form-control" placeholder="Masukkan Kata Kunci Pencarian" name="keyword">
-                                        <button class="btn btn-outline-secondary" type="submit" name="submit">Cari</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
                         <?php if (session()->getFlashdata('message')): ?>
                             <div class="alert alert-success" id="success-message">
                                 <?= session()->getFlashdata('message') ?>
@@ -77,70 +39,69 @@
                             </div>
                         <?php endif; ?>
                         <div class="table-responsive">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">              
-                            <thead>
-                                <tr class="text-center">
-                                    <th>No.</th>
-                                    <th>Kode Buku</th>
-                                    <th>Sampul</th>
-                                    <th>Judul</th>
-                                    <th>Pengarang</th>
-                                    <th>Kategori</th>
-                                    <th>Rak</th>
-                                    <th>Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php $i = 1 + (10 * ($currentPage - 1)); ?>
-                                <?php foreach($buku as $bk) : ?>
+                            <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">              
+                                <thead class="table-light">
                                     <tr class="text-center">
-                                        <td><?= $i++; ?></td>
-                                        <td><?= $bk['kode_buku'] ;?></td>
-                                        <td><img src="<?= base_url('assets/img/buku/' . $bk['sampul']) ?>" alt="sampulBuku" width="50"></td>
-                                        <td><?= $bk['judul_buku'] ;?></td>
-                                        <td><?= $bk['pengarang'] ;?></td>
-                                        <td><?= $bk['kategori'] ;?></td>
-                                        <td><?= $bk['no_rak'] ;?></td>
-                                        <td>
-                                            <a href="#" title="Detail" data-bs-toggle="modal" data-bs-target="#viewModal" class="viewModalid" 
-                                                data-vkodebuku="<?=$bk['kode_buku'];?>"
-                                                data-vsampul="<?= base_url('assets/img/buku/' . $bk['sampul']) ;?>"
-                                                data-vjudulbuku="<?=$bk['judul_buku'];?>"
-                                                data-vpengarang="<?=$bk['pengarang'];?>"
-                                                data-vpenerbit="<?=$bk['penerbit'];?>"
-                                                data-vtahunterbit="<?=$bk['tahun_terbit'];?>"
-                                                data-vkategori="<?=$bk['kategori'];?>"
-                                                data-vnorak="<?=$bk['no_rak'];?>"
-                                                data-vjumlahbuku="<?=$bk['jumlah_buku'];?>"
-                                                data-vtanggalmasuk="<?=$bk['tgl_masuk'];?>">
-                                                <i class="bi bi-eye"></i>
-                                            </a>
-                                            <a href="#" title="Edit" data-bs-toggle="modal" data-bs-target="#editModal" class="editModalid" 
-                                                data-eidbuku="<?=$bk['id_buku']?>"
-                                                data-ekodebuku="<?=$bk['kode_buku']?>"
-                                                data-esampul="<?= base_url('assets/img/buku/' . $bk['sampul']) ;?>"
-                                                data-eoldsampul="<?=$bk['sampul'] ;?>"
-                                                data-ejudulbuku="<?=$bk['judul_buku']?>"
-                                                data-epengarang="<?=$bk['pengarang']?>"
-                                                data-epenerbit="<?=$bk['penerbit']?>"
-                                                data-etahunterbit="<?=$bk['tahun_terbit']?>"
-                                                data-ekategori="<?=$bk['kategori']?>"
-                                                data-enorak="<?=$bk['no_rak']?>"
-                                                data-ejumlahbuku="<?=$bk['jumlah_buku'];?>"
-                                                data-etanggalmasuk="<?=$bk['tgl_masuk'];?>">
-                                                <i class="bi bi-pencil"></i>
-                                            </a>
-                                            <a href="#" title="Hapus" data-bs-toggle="modal" data-bs-target="#deleteModal" class="deleteModalid" 
-                                                data-idbuku="<?=$bk['id_buku'];?>">
-                                                <i class="bi bi-trash"></i>
-                                            </a>
-                                        </td>
+                                        <th>No.</th>
+                                        <th>Kode Buku</th>
+                                        <th>Sampul</th>
+                                        <th>Judul</th>
+                                        <th>Pengarang</th>
+                                        <th>Kategori</th>
+                                        <th>Rak</th>
+                                        <th>Aksi</th>
                                     </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    <?php $i = 1 ; ?>
+                                    <?php foreach($buku as $bk) : ?>
+                                        <tr class="text-center">
+                                            <td><?= $i++; ?></td>
+                                            <td><?= $bk['kode_buku'] ;?></td>
+                                            <td><img src="<?= base_url('assets/img/buku/' . $bk['sampul']) ?>" alt="sampulBuku" width="50"></td>
+                                            <td><?= $bk['judul_buku'] ;?></td>
+                                            <td><?= $bk['pengarang'] ;?></td>
+                                            <td><?= $bk['kategori'] ;?></td>
+                                            <td><?= $bk['no_rak'] ;?></td>
+                                            <td>
+                                                <a href="#" title="Detail" data-bs-toggle="modal" data-bs-target="#viewModal" class="viewModalid" 
+                                                    data-vkodebuku="<?=$bk['kode_buku'];?>"
+                                                    data-vsampul="<?= base_url('assets/img/buku/' . $bk['sampul']) ;?>"
+                                                    data-vjudulbuku="<?=$bk['judul_buku'];?>"
+                                                    data-vpengarang="<?=$bk['pengarang'];?>"
+                                                    data-vpenerbit="<?=$bk['penerbit'];?>"
+                                                    data-vtahunterbit="<?=$bk['tahun_terbit'];?>"
+                                                    data-vkategori="<?=$bk['kategori'];?>"
+                                                    data-vnorak="<?=$bk['no_rak'];?>"
+                                                    data-vjumlahbuku="<?=$bk['jumlah_buku'];?>"
+                                                    data-vtanggalmasuk="<?=$bk['tgl_masuk'];?>">
+                                                    <i class="bi bi-eye"></i>
+                                                </a>
+                                                <a href="#" title="Edit" data-bs-toggle="modal" data-bs-target="#editModal" class="editModalid" 
+                                                    data-eidbuku="<?=$bk['id_buku']?>"
+                                                    data-ekodebuku="<?=$bk['kode_buku']?>"
+                                                    data-esampul="<?= base_url('assets/img/buku/' . $bk['sampul']) ;?>"
+                                                    data-eoldsampul="<?=$bk['sampul'] ;?>"
+                                                    data-ejudulbuku="<?=$bk['judul_buku']?>"
+                                                    data-epengarang="<?=$bk['pengarang']?>"
+                                                    data-epenerbit="<?=$bk['penerbit']?>"
+                                                    data-etahunterbit="<?=$bk['tahun_terbit']?>"
+                                                    data-ekategori="<?=$bk['kategori']?>"
+                                                    data-enorak="<?=$bk['no_rak']?>"
+                                                    data-ejumlahbuku="<?=$bk['jumlah_buku'];?>"
+                                                    data-etanggalmasuk="<?=$bk['tgl_masuk'];?>">
+                                                    <i class="bi bi-pencil"></i>
+                                                </a>
+                                                <a href="#" title="Hapus" data-bs-toggle="modal" data-bs-target="#deleteModal" class="deleteModalid" 
+                                                    data-idbuku="<?=$bk['id_buku'];?>">
+                                                    <i class="bi bi-trash"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
                         </div>
-				        <?= $pager->links('buku', 'Pagination');?>
 		            </div>
                 </section>
             </div>

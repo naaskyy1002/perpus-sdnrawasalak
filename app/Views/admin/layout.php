@@ -27,13 +27,13 @@
 
   <!-- jQuery and Select2 -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
 
   <!-- Commented DataTables CSS and JS -->
-   <!-- <link href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" rel="stylesheet"> -->
-   <!-- <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script> -->
+   <link href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" rel="stylesheet">
+   <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 
 </head>
 
@@ -200,12 +200,6 @@
     </div>
   </div>
 
-  <!-- <script>
-    $(document).ready(function() {
-        $('#dataTable').DataTable();
-    });
-  </script> -->
-
 
   <!-- JavaScript Files -->
   <script src="<?= base_url('assets/vendor/apexcharts/apexcharts.min.js') ?>"></script>
@@ -217,6 +211,12 @@
   <script src="<?= base_url('assets/vendor/tinymce/tinymce.min.js') ?>"></script>
   <script src="<?= base_url('assets/vendor/php-email-form/validate.js') ?>"></script>
   <script src="<?= base_url('assets/js/main.js') ?>"></script>
+
+  <script>
+    $(document).ready(function() {
+        $('#dataTable').DataTable();
+    });
+  </script>
 
 </body>
 </html>

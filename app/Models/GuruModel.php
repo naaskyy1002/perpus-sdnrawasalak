@@ -14,13 +14,6 @@ class GuruModel extends Model
         $this->table = $table;
     }
 
-    public function search($keyword)
-    {
-        return $this->table('guru')
-                    ->like('nip', $keyword)
-                    ->orLike('nama_lengkap', $keyword);
-    }
-
     public function createGuru($data)
     {
         return $this->db->table('guru')

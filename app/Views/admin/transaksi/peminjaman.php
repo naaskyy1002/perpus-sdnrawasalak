@@ -27,16 +27,6 @@
       </div>
       <section class="section">
         <div class="col-lg-12">
-          <div class="row mb-3">
-            <div class="col-sm-12 col-md-6 ms-auto">
-              <form action="" method="post">
-                <div class="input-group mb-3">
-                  <input type="text" class="form-control" placeholder="Masukkan keyword pencarian" name="keyword">
-                  <button class="btn btn-outline-secondary" type="submit" name="submit">Cari</button>
-                </div>
-              </form>
-            </div>
-          </div>
           <?php if (session()->getFlashdata('message')): ?>
             <div class="alert alert-success" id="success-message">
               <?= session()->getFlashdata('message') ?>
@@ -48,44 +38,43 @@
             </div>
           <?php endif; ?>
           <div class="table-responsive">
-          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-            <thead>
-              <tr class="text-center">
-                <th>No.</th>
-                <th>Kode</th>
-                <th>Pengarang</th>
-                <th>Judul</th>
-                <th>Nama Peminjam</th>
-                <th>Tanggal Pinjam</th>
-                <th>Aksi</th>
-              </tr>
-            </thead>
-            <tbody>
-              <?php $i = 1 + (10 * ($currentPage - 1)); ?>
-              <?php foreach($peminjaman as $pj) : ?>
+            <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
+              <thead class="table-light">
                 <tr class="text-center">
-                  <td><?= $i++; ?></td>
-                  <td><?= $pj['kode_buku']; ?></td>
-                  <td><?= $pj['pengarang']; ?></td>
-                  <td><?= $pj['judul_buku']; ?></td>
-                  <td><?= $pj['username']; ?></td>
-                  <td><?= date('d-M-Y', strtotime($pj['tgl_pinjam'])) ?></td>
-                  <td>
-                    <a href="#" class="doneModalid" title="Selesai" data-bs-toggle="modal" data-bs-target="#doneModal"
-                      data-idtransaksi="<?= $pj['id_transaksi']; ?>">
-                      <i class="bi bi-check-lg" style="color: green;"></i>
-                    </a>
-                    <a href="#" title="Hapus" data-bs-toggle="modal" data-bs-target="#deleteModal" class="deleteModalid" 
-                      data-idtransaksi="<?=$pj['id_transaksi'];?>" data-kodebuku="<?=$pj['kode_buku'];?>">
-                      <i class="bi bi-trash"></i>
-                    </a>
-                  </td>
+                  <th>No.</th>
+                  <th>Kode</th>
+                  <th>Pengarang</th>
+                  <th>Judul</th>
+                  <th>Nama Peminjam</th>
+                  <th>Tanggal Pinjam</th>
+                  <th>Aksi</th>
                 </tr>
-              <?php endforeach; ?>
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                <?php $i = 1 ; ?>
+                <?php foreach($peminjaman as $pj) : ?>
+                  <tr class="text-center">
+                    <td><?= $i++; ?></td>
+                    <td><?= $pj['kode_buku']; ?></td>
+                    <td><?= $pj['pengarang']; ?></td>
+                    <td><?= $pj['judul_buku']; ?></td>
+                    <td><?= $pj['username']; ?></td>
+                    <td><?= date('d-M-Y', strtotime($pj['tgl_pinjam'])) ?></td>
+                    <td>
+                      <a href="#" class="doneModalid" title="Selesai" data-bs-toggle="modal" data-bs-target="#doneModal"
+                        data-idtransaksi="<?= $pj['id_transaksi']; ?>">
+                        <i class="bi bi-check-lg" style="color: green;"></i>
+                      </a>
+                      <a href="#" title="Hapus" data-bs-toggle="modal" data-bs-target="#deleteModal" class="deleteModalid" 
+                        data-idtransaksi="<?=$pj['id_transaksi'];?>" data-kodebuku="<?=$pj['kode_buku'];?>">
+                        <i class="bi bi-trash"></i>
+                      </a>
+                    </td>
+                  </tr>
+                <?php endforeach; ?>
+              </tbody>
+            </table>
           </div>
-          <?= $pager->links('transaksi', 'Pagination'); ?>
         </div>
       </section>
     </div>
@@ -151,10 +140,10 @@
   <!-- Selesai Modal-->
 
   <script>
-        $(".doneModalid").click(function() {
-            var idtransaksi = $(this).data('idtransaksi');
-            $("#id_transaksi").val(idtransaksi);
-        });
+    $(".doneModalid").click(function() {
+        var idtransaksi = $(this).data('idtransaksi');
+        $("#id_transaksi").val(idtransaksi);
+    });
   </script>
 
   <script>
@@ -188,35 +177,33 @@
     </div>
   </div>
 
-    <script>
-        $(".deleteModalid").click(function() {
-            var idtransaksi = $(this).data('idtransaksi');
-            $("#idtransaksi").val(idtransaksi);
+  <script>
+    $(".deleteModalid").click(function() {
+        var idtransaksi = $(this).data('idtransaksi');
+        $("#idtransaksi").val(idtransaksi);
 
-            var kodebuku = $(this).data('kodebuku');
-            $("#kode_buku").val(kodebuku);
-        });
-    </script>
+        var kodebuku = $(this).data('kodebuku');
+        $("#kode_buku").val(kodebuku);
+    });
+  </script>
 
-    <script>
-        // Function to hide element after 5 seconds
-        function hideAfterDelay(elementId) {
-            const element = document.getElementById(elementId);
-            if (element) {
-                setTimeout(() => {
-                    element.style.display = 'none';
-                }, 5000);
-            }
+  <script>
+    // Function to hide element after 5 seconds
+    function hideAfterDelay(elementId) {
+        const element = document.getElementById(elementId);
+        if (element) {
+            setTimeout(() => {
+                element.style.display = 'none';
+            }, 5000);
         }
+    }
 
-        // Hide success message after 5 seconds
-        hideAfterDelay('success-message');
+    // Hide success message after 5 seconds
+    hideAfterDelay('success-message');
 
-        // Hide error message after 5 seconds
-        hideAfterDelay('error-message');
-    </script>
+    // Hide error message after 5 seconds
+    hideAfterDelay('error-message');
+  </script>
 </main><!-- End #main -->
 
 <?=$this->endSection();?>
-
-

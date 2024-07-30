@@ -25,16 +25,6 @@
         </div>
         <section class="section">    
           <div class="col-lg-12">
-            <div class="row mb-3">                 
-              <div class="col-sm-12 col-md-6 ms-auto">
-                <form action="" method="post">
-                  <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Masukkan keyword pencarian" name="keyword">
-                    <button class="btn btn-outline-secondary" type="submit" name="submit">Cari</button>
-                  </div>
-                </form>
-              </div>
-            </div>
             <?php if (session()->getFlashdata('message')): ?>
             <div class="alert alert-success" id="success-message">
               <?= session()->getFlashdata('message') ?>
@@ -46,8 +36,8 @@
               </div>
             <?php endif; ?>
           <div class="table-responsive">
-          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-              <thead>
+          <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
+              <thead class="table-light">
                 <tr class="text-center">
                   <th>No.</th>
                   <th>Kode</th>
@@ -60,7 +50,7 @@
                 </tr>
               </thead>
               <tbody>
-                <?php $i = 1 + (10 * ($currentPage - 1)); ?>
+                <?php $i = 1; ?>
                 <?php foreach($pengembalian as $kb) : ?>
                 <tr class="text-center">
                   <td><?= $i++; ?></td>
@@ -81,7 +71,6 @@
               </tbody>
             </table>
             </div>
-				      <?= $pager->links('transaksi', 'Pagination');?>
 		      </div>
         </section>
       </div>

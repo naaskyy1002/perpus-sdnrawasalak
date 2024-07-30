@@ -9,17 +9,6 @@ class TransaksiModel extends Model
     protected $primaryKey = 'id_transaksi';
     protected $allowedFields = ['kode_buku', 'nisn', 'tgl_pinjam', 'tgl_kembali', 'status'];
 
-    public function search($keyword)
-    {
-        return $this->select('transaksi.*, buku.judul_buku, buku.pengarang, siswa.username')
-                    ->join('buku', 'buku.kode_buku = transaksi.kode_buku')
-                    ->join('siswa', 'siswa.nisn = transaksi.nisn')
-                    ->like('buku.judul_buku', $keyword)
-                    ->orLike('buku.kode_buku', $keyword)
-                    ->orLike('siswa.username', $keyword)
-                    ->findAll(); // Ganti getResultArray() dengan findAll()
-    }
-
     // mengambil data peminjaman yang belum dikembalikan
     public function getByPinjaman($nisn)
     {

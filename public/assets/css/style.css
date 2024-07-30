@@ -953,7 +953,6 @@ footer.sticky-footer .copyright {
   text-decoration: none;
   border-radius: 5px;
   font-family: "Open Sans", sans-serif;
-  /* font-family: "Poppins", sans-serif; */
   text-align: center;
   justify-content: center;
   width: 7%;
@@ -1004,33 +1003,11 @@ footer.sticky-footer .copyright {
   background: #fff;
   padding: 5px;
 }
-.search-box {
-  position: relative;        
-  float: right;
-  margin-bottom: 15px;
-}
-.search-box input {
-  height: 34px;
-  border-radius: 20px;
-  padding-left: 35px;
-  border-color: #ddd;
-  box-shadow: none;
-}
-.search-box input:focus {
-  border-color: #3FBAE4;
-}
-.search-box i {
-  color: #a0a5b1;
-  position: absolute;
-  font-size: 19px;
-  top: 50%;
-  transform: translateY(-50%);
-  left: 10px;
-}
 table.table tr th, table.table tr td {
   border-color: #e9e9e9;
   vertical-align: middle;
   text-align: center;
+  font-size: 14px;
 }
 table.table-striped tbody tr:nth-of-type(odd) {
   background-color: transparent;
@@ -1039,10 +1016,39 @@ table.table-striped.table-hover tbody tr:hover {
   background: transparent;
 }
 table.table th i {
-  font-size: 13px;
   margin: 0 5px;
   cursor: pointer;
 }
+.table thead th {
+  background-color:  #921b49b8;
+  color: white;
+}
+
+#dataTable_wrapper .dataTables_filter {
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+
+#dataTable_wrapper .dataTables_length select {
+  font-size: 15px;
+}
+
+/* Search box font size */
+#dataTable_wrapper .dataTables_filter input {
+  font-size: 15px; 
+}
+
+/* Pagination text font size */
+#dataTable_wrapper .dataTables_info {
+  font-size: 15px; 
+}
+
+/* Pagination controls (Previous/Next) font size */
+#dataTable_wrapper .dataTables_paginate .paginate_button {
+  font-size: 15px;
+}
+
+
 table.table td:last-child {
   width: 130px;
 }

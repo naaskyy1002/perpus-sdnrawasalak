@@ -19,7 +19,7 @@
         <div class="row">
           
           <!-- Total Buku Card -->
-          <div class="col-xxl-4 col-md-3">
+          <div class="col-xxl-4 col-md-3 mb-3">
             <div class="card info-card revenue-card">
               <div class="card-body">
                 <h5 class="card-title">TOTAL BUKU</h5>
@@ -29,7 +29,7 @@
                   </div>
                   <div class="ps-3">
                     <h6><?=$total_buku;?></h6> 
-                    <a href=<?=base_url('admin/buku');?> class="card-link detail-link">Lihat Detail</a> 
+                    <a href="<?=base_url('admin/buku');?>" class="card-link detail-link">Lihat Detail</a> 
                   </div>
                 </div>
               </div>
@@ -37,7 +37,7 @@
           </div><!-- End Total Buku Card -->
           
           <!-- Total Buku Rusak Card -->
-          <div class="col-xxl-4 col-md-3">
+          <div class="col-xxl-4 col-md-3 mb-3">
             <div class="card info-card revenue-card">
               <div class="card-body">
                 <h5 class="card-title">TOTAL BUKU RUSAK</h5>
@@ -47,7 +47,7 @@
                   </div>
                   <div class="ps-3">
                     <h6><?=$total_bkr;?></h6>
-                    <a href=<?=base_url('admin/bukuRusak');?> class="card-link detail-link">Lihat Detail</a>
+                    <a href="<?=base_url('admin/bukuRusak');?>" class="card-link detail-link">Lihat Detail</a>
                   </div>
                 </div>
               </div>
@@ -55,7 +55,7 @@
           </div><!-- End Total Buku Rusak Card -->
           
           <!-- Total Peminjaman Card -->
-          <div class="col-xxl-4 col-md-3">
+          <div class="col-xxl-4 col-md-3 mb-3">
             <div class="card info-card revenue-card">
               <div class="card-body">
                 <h5 class="card-title">TOTAL PEMINJAMAN</h5> 
@@ -65,7 +65,7 @@
                   </div>
                   <div class="ps-3">
                     <h6><?=$total_pinjam;?></h6>
-                    <a href=<?=base_url('admin/peminjaman');?> class="card-link detail-link">Lihat Detail</a>
+                    <a href="<?=base_url('admin/peminjaman');?>" class="card-link detail-link">Lihat Detail</a>
                   </div>
                 </div>
               </div>
@@ -73,7 +73,7 @@
           </div><!-- End Total Peminjaman Card -->
 
           <!-- Total Pengembalian Card -->
-          <div class="col-xxl-4 col-md-3">
+          <div class="col-xxl-4 col-md-3 mb-3">
             <div class="card info-card revenue-card">
               <div class="card-body">
                 <h5 class="card-title">TOTAL PENGEMBALIAN</h5> 
@@ -83,7 +83,7 @@
                   </div>
                   <div class="ps-3">
                     <h6><?=$total_kembali;?></h6>
-                    <a href=<?=base_url('admin/pengembalian');?> class="card-link detail-link">Lihat Detail</a>
+                    <a href="<?=base_url('admin/pengembalian');?>" class="card-link detail-link">Lihat Detail</a>
                   </div>
                 </div>
               </div>
@@ -94,19 +94,9 @@
           <div class="col-12">
             <div class="card recent-sales overflow-auto">
               <div class="card-body">
-                <h2 class="card-title">Transaksi Buku</h2>
-                <div class="row mb-3">                
-                  <div class="col-sm-12 col-md-6 ms-auto">
-                    <form action="" method="post">
-                      <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Masukkan keyword pencarian" name="keyword">
-                        <button class="btn btn-outline-secondary" type="submit" name="submit">Cari</button>
-                      </div>
-                    </form>
-                  </div>
-                </div>    
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">              
-                  <thead>
+                <h2 class="card-title">Transaksi Buku</h2> 
+                <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">              
+                  <thead class="table-light">
                     <tr class="text-center">
                       <th>No.</th>
                       <th>Kode Buku</th>
@@ -119,11 +109,11 @@
                     </tr>
                   </thead>          
                   <tbody>
-                    <?php $i = 1 + (10 * ($currentPage - 1)); ?>
+                    <?php $i = 1; ?>
                     <?php if (!empty($peminjaman)): ?>
                       <?php foreach($peminjaman as $pj) : ?>
                       <tr>
-                        <td><?= $i++ ?></td>
+                        <td class="text-center"><?= $i++ ?></td>
                         <td><?= $pj['kode_buku'] ?></td>
                         <td><?= $pj['pengarang'] ?></td>
                         <td><?= $pj['judul_buku'] ?></td>
@@ -131,7 +121,7 @@
                         <!-- strtotime -> untuk mengonversi string tanggal/waktu menjadi timestamp Unix -->
                         <td><?= date('d-M-Y', strtotime($pj['tgl_pinjam'])) ?></td>
                         <td><?= empty($pj['tgl_kembali']) ? '-' : date('d-M-Y', strtotime($pj['tgl_kembali'])) ?></td>
-                        <td>
+                        <td class="text-center">
                           <span class="badge <?= empty($pj['tgl_kembali']) ? 'bg-warning' : 'bg-success' ?>">
                             <?= empty($pj['tgl_kembali']) ? 'Dipinjam' : 'Selesai' ?>
                           </span>
@@ -140,12 +130,11 @@
                       <?php endforeach; ?>
                     <?php else: ?>
                     <tr>
-                        <td colspan="5" class="text-center">Tidak ada data transaksi terkini</td>
+                        <td colspan="8" class="text-center">Tidak ada data transaksi terkini</td>
                     </tr>
                     <?php endif; ?>
                   </tbody>
                 </table>
-                <?= $pager->links('transaksi', 'Pagination');?>
               </div>
             </div>
           </div><!-- End Peminjaman Buku -->

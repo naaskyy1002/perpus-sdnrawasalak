@@ -13,25 +13,16 @@
       </nav>
     </div><!-- End Page Title -->
 
-    <div class="card shadow mb-4">
-      <div class="col-lg-12">
-        <div class="table-responsive">
-          <div class="card-body">
-            <div class="table-title">
+    <div class="card shadow mb-4"> 
+      <div class="card-body">
+        <div class="row mb-3">
+          <div class="ex col-sm-12 col-md-6 text-right d-flex align-items-end">
               <a href="<?= base_url('addGuru') ?>" data-bs-toggle="modal" data-bs-target="#addModal" class="btn btn-primary">
                 <i class="ri-add-line"></i> Tambah Guru</a>
-              <div class="row mb-3">
-                <div class="col-sm-12 col-md-6 ms-auto">
-                  <form action="" method="post">
-                    <div class="input-group mb-3">
-                      <input type="text" class="form-control" placeholder="Masukkan keyword pencarian" name="keyword">
-                      <button class="btn btn-outline-secondary" type="submit" name="submit">Cari</button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-            </div>
+          </div>
+        </div>
+          <section class="section">    
+            <div class="col-lg-12">   
             <?php if (session()->getFlashdata('message')): ?>
                 <div class="alert alert-success" id="success-message">
                     <?= session()->getFlashdata('message') ?>
@@ -43,60 +34,61 @@
                     <?= session()->getFlashdata('errors') ?>
                 </div>
             <?php endif; ?>
-            <table class="table table-bordered">
-              <thead>
-                <tr class="text-center">
-                  <th>No.</th>
-                  <th>NIP</th>
-                  <th>Nama</th>
-                  <th>Jabatan</th>
-                  <th>Aksi</th>
-                </tr>
-              </thead>
-              <tbody>
-                <?php $i = 1 + (10 * ($currentPage - 1)); ?>
-                <?php foreach($guru as $gr) : ?>
-                <tr class="text-center">
-                  <td><?= $i++; ?></td>
-                  <td><?= $gr['nip'] ;?></td>
-                  <td><?= $gr['nama_lengkap'] ;?></td>
-                  <td><?= $gr['jabatan'] ;?></td>
-                  <td>
-                    <a href="#" title="Detail" class="viewModalid" data-bs-toggle="modal" data-bs-target="#viewModal"
-                      data-vfoto="<?= base_url('assets/img/guru/' . $gr['foto']);?>"
-                      data-vnip="<?=$gr['nip'];?>"
-                      data-vnamalengkap="<?=$gr['nama_lengkap'];?>"
-                      data-vdob="<?=$gr['dob'];?>"
-                      data-valamat="<?=$gr['alamat'];?>"
-                      data-vtelepon="<?=$gr['telp'];?>"
-                      data-vemail="<?=$gr['email'];?>"
-                      data-vjabatan="<?=$gr['jabatan'];?>">
-                      <i class="bi bi-eye"></i>
-                    </a>
-                    <a href="#" title="Edit" class="editModalid" data-bs-toggle="modal" data-bs-target="#editModal"
-                      data-eidguru="<?=$gr['nip'];?>"
-                      data-efoto="<?= base_url('assets/img/guru/' . $gr['foto']);?>"
-                      data-eoldfoto="<?=$gr['foto'] ;?>"
-                      data-enip="<?=$gr['nip'];?>"
-                      data-enamalengkap="<?=$gr['nama_lengkap'];?>"
-                      data-edob="<?=$gr['dob'];?>"
-                      data-ealamat="<?=$gr['alamat'];?>"
-                      data-etelepon="<?=$gr['telp'];?>"
-                      data-eemail="<?=$gr['email'];?>"
-                      data-ejabatan="<?=$gr['jabatan'];?>">
-                    <i class="bi bi-pencil"></i></a>
-                    <a href="#" title="Hapus" data-bs-toggle="modal" data-bs-target="#deleteModal" class="deleteModalid"
-                        data-nip="<?=$gr['nip'];?>">
-                        <i class="bi bi-trash"></i>
-                    </a>
-                  </td>
-                </tr>
-                <?php endforeach; ?>
-              </tbody>
-            </table>
-				      <?= $pager->links('guru', 'Pagination');?>
-		      </div>
-        </div>
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr class="text-center">
+                      <th>No.</th>
+                      <th>NIP</th>
+                      <th>Nama</th>
+                      <th>Jabatan</th>
+                      <th>Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php $i = 1; ?>
+                    <?php foreach($guru as $gr) : ?>
+                    <tr class="text-center">
+                      <td><?= $i++; ?></td>
+                      <td><?= $gr['nip'] ;?></td>
+                      <td><?= $gr['nama_lengkap'] ;?></td>
+                      <td><?= $gr['jabatan'] ;?></td>
+                      <td>
+                        <a href="#" title="Detail" class="viewModalid" data-bs-toggle="modal" data-bs-target="#viewModal"
+                          data-vfoto="<?= base_url('assets/img/guru/' . $gr['foto']);?>"
+                          data-vnip="<?=$gr['nip'];?>"
+                          data-vnamalengkap="<?=$gr['nama_lengkap'];?>"
+                          data-vdob="<?=$gr['dob'];?>"
+                          data-valamat="<?=$gr['alamat'];?>"
+                          data-vtelepon="<?=$gr['telp'];?>"
+                          data-vemail="<?=$gr['email'];?>"
+                          data-vjabatan="<?=$gr['jabatan'];?>">
+                          <i class="bi bi-eye"></i>
+                        </a>
+                        <a href="#" title="Edit" class="editModalid" data-bs-toggle="modal" data-bs-target="#editModal"
+                          data-eidguru="<?=$gr['nip'];?>"
+                          data-efoto="<?= base_url('assets/img/guru/' . $gr['foto']);?>"
+                          data-eoldfoto="<?=$gr['foto'] ;?>"
+                          data-enip="<?=$gr['nip'];?>"
+                          data-enamalengkap="<?=$gr['nama_lengkap'];?>"
+                          data-edob="<?=$gr['dob'];?>"
+                          data-ealamat="<?=$gr['alamat'];?>"
+                          data-etelepon="<?=$gr['telp'];?>"
+                          data-eemail="<?=$gr['email'];?>"
+                          data-ejabatan="<?=$gr['jabatan'];?>">
+                        <i class="bi bi-pencil"></i></a>
+                        <a href="#" title="Hapus" data-bs-toggle="modal" data-bs-target="#deleteModal" class="deleteModalid"
+                            data-nip="<?=$gr['nip'];?>">
+                            <i class="bi bi-trash"></i>
+                        </a>
+                      </td>
+                    </tr>
+                    <?php endforeach; ?>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
       </div>
     </div>
 

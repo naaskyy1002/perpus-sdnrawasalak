@@ -14,24 +14,15 @@
     </div><!-- End Page Title -->
 
     <div class="card shadow mb-4"> 
-      <div class="col-lg-12">
-        <div class="table-responsive">
-          <div class="card-body">
-            <div class="table-title">
+      <div class="card-body">
+        <div class="row mb-3">
+          <div class="ex col-sm-12 col-md-6 text-right d-flex align-items-end">
               <a href="<?= base_url('addSiswa') ?>" data-bs-toggle="modal" data-bs-target="#addModal" class="btn btn-primary">
-                <i class="ri-add-line"></i> Tambah Siswa</a>
-              <div class="row mb-3">
-                <div class="col-sm-12 col-md-6 ms-auto">
-                  <form action="" method="post">
-                    <div class="input-group mb-3">
-                      <input type="text" class="form-control" placeholder="Masukkan keyword pencarian" name="keyword">
-                      <button class="btn btn-outline-secondary" type="submit" name="submit">Cari</button>
-                    </div>
-                  </form>
-                </div>               
-              </div>
-              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">              
-            </div>
+                <i class="ri-add-line"></i> Tambah Siswa</a>   
+          </div>
+        </div>
+        <section class="section">    
+          <div class="col-lg-12"> 
             <?php if (session()->getFlashdata('message')): ?>
                 <div class="alert alert-success" id="success-message">
                     <?= session()->getFlashdata('message') ?>
@@ -43,7 +34,7 @@
                     <?= session()->getFlashdata('errors') ?>
                 </div>
             <?php endif; ?>
-            <table class="table table-bordered">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr class="text-center">
                   <th>No.</th>
@@ -54,7 +45,7 @@
                 </tr>
               </thead>
               <tbody>
-                <?php $i = 1 + (3 * ($currentPage - 1)); ?>
+                <?php $i = 1; ?>
                 <?php foreach($siswa as $sw) : ?>
                 <tr class="text-center">
                   <td><?= $i++; ?></td>
@@ -92,9 +83,8 @@
                 <?php endforeach; ?>
               </tbody>
             </table>
-				      <?= $pager->links('siswa', 'Pagination');?>
 		      </div>
-        </div>
+        </section>
       </div>
     </div>
 

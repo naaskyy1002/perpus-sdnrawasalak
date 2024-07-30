@@ -22,27 +22,11 @@ class Admin extends BaseController
     // Halaman awal admin = beranda
     public function home()
     {
-        // menampilkan page halaman saat di klik
-        $currentPage = $this->request->getVar('page_transaksi') ? $this->request->getVar('page_transaksi') :
-        1;
-
-        // mencari keyword yang sesuai untuk halaman beranda admin
-        $keyword = $this->request->getVar('keyword');
-        if($keyword) {
-            $pinjam = $this->transaksiModel->search($keyword);
-        }else {
-            $pinjam = $this->transaksiModel;
-        }
-
-        $pinjam = $this->transaksiModel->paginate(10, 'transaksi'); // menentukan seberapa banyak transaksi ditampilkan di views
-        $pager = $this->transaksiModel->pager;
         $pinjam = $this->transaksiModel->getPeminjaman();
         $data =[
             'title' => 'Beranda',
             'peminjaman' => $pinjam,
             'isi' => 'peminjaman',
-            'pager' => $pager,
-            'currentPage' => $currentPage,
             'total_buku' => $this->adminModel->totalBuku(),
             'total_bkr' => $this->adminModel->totalBkr(),
             'total_pinjam' => $this->adminModel->totalPinjam(),
@@ -62,24 +46,11 @@ class Admin extends BaseController
     // DATA ADMIN
     public function data_admin()
     {
-        $currentPage = $this->request->getVar('page_admin') ? $this->request->getVar('page_admin') :
-        1;
-
-        $keyword = $this->request->getVar('keyword');
-        if($keyword) {
-            $admin = $this->adminModel->search($keyword);
-        }else {
-            $admin = $this->adminModel;
-        }
-
-        $admin = $this->adminModel->paginate(10, 'admin');
-        $pager = $this->adminModel->pager;
+        $admin = $this->adminModel->getAdmin();
         
         $data = [
             'title' => 'Data Admin',
             'admin' => $admin,
-            'pager' => $pager,
-            'currentPage' => $currentPage,
         ];
         return view('admin/maindata/data_admin', $data);
     }

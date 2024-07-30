@@ -21,26 +21,10 @@ class Buku extends BaseController
     // BUKU LAYAK
     public function buku_layak()
     {
-        // menampilkan page halaman saat di klik
-        $currentPage = $this->request->getVar('page_buku') ? $this->request->getVar('page_buku') : 1;
-
-        // mencari keyword yang sesuai untuk halaman buku layak
-        $keyword = $this->request->getVar('keyword');
-        if($keyword) {
-            $buku = $this->bukuModel->search($keyword);
-        } else {
-            $this->bukuModel->setTable('buku');
-            $buku = $this->bukuModel;
-        }
-
-        $buku = $this->bukuModel->paginate(10, 'buku'); // menentukan seberapa banyak buku layak ditampilkan di views
-        $pager = $this->bukuModel->pager;
-
+        $buku = $this->bukuModel->getBuku();
         $data = [
             'title' => 'Data Buku Layak',
             'buku' => $buku,
-            'pager' => $pager,
-            'currentPage' => $currentPage,
         ];
 
         return view('admin/buku/buku_layak', $data);
@@ -49,24 +33,11 @@ class Buku extends BaseController
 
     public function printBuku()
     {
-        $currentPage = $this->request->getVar('page_printBuku') ? $this->request->getVar('page_printBuku') : 1;
-    
-        $keyword = $this->request->getVar('keyword');
-        if($keyword) {
-            $buku = $this->bukuModel->searching($keyword);
-        } else {
-            $this->bukuModel->setTable('buku');
-            $buku = $this->bukuModel;
-        }
-    
-        $buku = $this->bukuModel->paginate(10, 'printBuku');
-        $pager = $this->bukuModel->pager;
+        $buku = $this->bukuModel->getBuku();
     
         $data = [
             'title' => 'Daftar Buku Layak',
             'buku' => $buku,
-            'pager' => $pager,
-            'currentPage' => $currentPage,
         ];
         return view('admin/buku/printBuku', $data);
     }
@@ -329,26 +300,12 @@ class Buku extends BaseController
 
     // BUKU RUSAK
     public function buku_rusak()
-    {     
-        $currentPage = $this->request->getVar('page_bukuRusak') ? $this->request->getVar('page_bukuRusak') :
-        1;
-
-        $keyword = $this->request->getVar('keyword');
-        if($keyword) {
-            $bkrusak = $this->bukuModel->searching($keyword);
-        }else {
-            $this->bukuModel->setTable('buku_rusak');
-            $bkrusak = $this->bukuModel;
-        }
-
-        $bkrusak = $this->bukuModel->paginate(10, 'buku_rusak');
-        $pager = $this->bukuModel->pager;
+    { 
+        $bkrusak = $this->bukuModel->getBukuRusak();
 
         $data = [
             'title' => 'Data Buku Rusak',
             'bkrusak' => $bkrusak,
-            'pager' => $pager,
-            'currentPage' => $currentPage,
         ];
         
         return view('admin/buku/buku_rusak', $data);
@@ -356,25 +313,11 @@ class Buku extends BaseController
 
     public function printBkr()
     {
-        $currentPage = $this->request->getVar('page_printBkr') ? $this->request->getVar('page_printBkr') :
-        1;
-
-        $keyword = $this->request->getVar('keyword');
-        if($keyword) {
-            $bkrusak = $this->bukuModel->searching($keyword);
-        }else {
-            $this->bukuModel->setTable('buku_rusak');
-            $bkrusak = $this->bukuModel;
-        }
-
-        $bkrusak = $this->bukuModel->paginate(10, 'printBkr');
-        $pager = $this->bukuModel->pager;
+        $bkrusak = $this->bukuModel->getBukuRusak();
 
         $data = [
             'title' => 'Daftar Buku Rusak',
             'bkrusak' => $bkrusak,
-            'pager' => $pager,
-            'currentPage' => $currentPage,
         ];
         return view('admin/buku/printBkr', $data);
     }
