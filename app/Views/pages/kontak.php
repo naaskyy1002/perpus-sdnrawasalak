@@ -83,11 +83,15 @@
 
         <div class="col-xl-6">
           <div class="card p-4">
-            <form action="forms/contact.php" method="post" class="php-email-form">
+          <div class="alert alert-success alert-dismissible fade show d-none my-alert" role="alert">
+            <strong>Terima Kasih!</strong> Pesan Anda Sudah Terkirim.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+            <form action="forms/contact.php" method="post" class="php-email-form" name="submit-to-google-sheet">
               <div class="row gy-4">
 
                 <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Nama Anda" required>
+                  <input type="text" name="nama" class="form-control" placeholder="Nama Anda" required>
                 </div>
 
                 <div class="col-md-6 ">
@@ -95,19 +99,20 @@
                 </div>
 
                 <div class="col-md-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Subjek" required>
+                  <input type="text" class="form-control" name="subjek" placeholder="Subjek" required>
                 </div>
 
                 <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="6" placeholder="Pesan" required></textarea>
+                  <textarea class="form-control" name="pesan" rows="6" placeholder="Pesan" required></textarea>
                 </div>
 
                 <div class="col-md-12 text-center">
-                  <div class="loading">Memuat</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Pesan Anda telah terkirim. Terima kasih!</div>
+                  <button type="submit" class="btn btn-primary btn-kirim">Kirim Pesan</button>
 
-                  <button type="submit">Kirim Pesan</button>
+                  <button class="btn btn-primary btn-loading d-none" type="button" disabled>
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    Loading...
+                  </button>
                 </div>
 
               </div>
@@ -120,8 +125,44 @@
 
     </section>
 </main>
-<footer>
+    <footer>
         <span>Copyright &copy; <text class="text-primary">SDN Rawasalak</text> <?=date('Y')?></span>
     </footer>
+
+    <script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbyzk-ZFtVjpXTw-Ee_OTdKY-tsARM6kAyDSaekLND6koeqEWdzMFUiFDaLUMhZhQvYecg/exec';
+  const form = document.forms['submit-to-google-sheet'];
+  const btnKirim = document.querySelector('.btn-kirim');
+  const btnLoading = document.querySelector('.btn-loading');
+  const myAlert = document.querySelector('.my-alert');
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    // Tampilkan tombol loading dan sembunyikan tombol kirim
+    btnLoading.classList.toggle('d-none');
+    btnKirim.classList.toggle('d-none');
+
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then((response) => {
+        // Sembunyikan tombol loading dan tampilkan tombol kirim kembali
+        btnLoading.classList.toggle('d-none');
+        btnKirim.classList.toggle('d-none');
+        // Tampilkan alert
+        myAlert.classList.remove('d-none');
+
+        // Reset form
+        form.reset();
+        
+        // Sembunyikan alert setelah 5 detik
+        setTimeout(() => {
+          myAlert.classList.add('d-none');
+        }, 5000);
+
+        console.log('Success!', response);
+      })
+      .catch(error => console.error('Error!', error.message));
+  });
+</script>
+
 </body>
 </html>
