@@ -54,13 +54,12 @@
                 </a>
                 <div class="postcard__text t-dark">
                     <h1 class="postcard__title blue"><a href="#">SD NEGERI RAWASALAK</a></h1>
-                    <div class="postcard__subtitle small">
-                        <time datetime="2020-05-25 12:00:00">
-                            <i class="fas fa-calendar-alt mr-2"></i>25 Mei 1999
-                        </time>
+                    <div class="postcard__preview-txt">
+                        <p>SD Negeri Rawasalak terletak di Jalan Bhayangkara Gg. Beringin No. 53 RT. 05 RW. 07 Kelurahan Sriwidari, Kecamatan Gunung Puyuh, Kota Sukabumi, dengan Kode Pos 43121. Sekolah ini resmi beroperasi sejak tahun 1979 berdasarkan Surat Keputusan izin operasional yang dikeluarkan pada tahun tersebut.</p>
+                        <p>Sejak berdirinya, SDN Rawasalak telah mengalami berbagai perkembangan baik dari segi fisik maupun akademis. Dengan komitmen untuk memberikan pendidikan yang berkualitas, sekolah ini terus berupaya meningkatkan fasilitas dan sumber daya manusia.</p>
+                        <p>Dalam beberapa dekade terakhir, SDN Rawasalak telah menjadi salah satu sekolah dasar unggulan di wilayah Kecamatan Gunungpuyuh Kota Sukabumi, dikenal dengan dedikasi para guru dan staf serta berkolaborasinya bersama orangtua dan masyarakat dalam mendidik siswa-siswinya. Sekolah ini mengadopsi Kurikulum Merdeka dengan tema “Merdeka Belajar” dengan motto “Religius, Adaptif, Kreatif” dan slogan “MALAS adalah KEGELAPAN, KAMI adalah CAHAYA,” yang mencerminkan semangat dan nilai-nilai yang dipegang teguh oleh seluruh komunitas sekolah.</p>
+                        <p>Dengan berbagai prestasi yang telah diraih, SDN Rawasalak terus berkomitmen untuk menjadi lembaga pendidikan yang mampu mencetak generasi penerus yang berkompeten dan berakhlak mulia.</p>
                     </div>
-                    <div class="postcard__bar"></div>
-                    <div class="postcard__preview-txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, fugiat asperiores inventore beatae accusamus odit minima enim, commodi quia, doloribus eius! Ducimus nemo accusantium maiores velit corrupti tempora reiciendis molestiae repellat vero. Eveniet ipsam adipisci illo iusto quibusdam, sunt neque nulla unde ipsum dolores nobis enim quidem excepturi, illum quos!</div>
                 </div>
             </article>
 	</div>
@@ -155,31 +154,37 @@
         <div class="row">
             <div class="col-lg-4 mb-4">
                 <div class="card">
-                    <img src="https://images.unsplash.com/photo-1477862096227-3a1bb3b08330?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60" alt="" class="card-img-top">
+                    <img src="<?= base_url('assets/img/tentang_kami/pramuka.jpeg')?>" alt="" class="card-img-top">
                     <div class="card-body">
-                        <h5 class="card-title">Sunset</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut eum similique repellat a laborum, rerum voluptates ipsam eos quo tempore iusto dolore modi dolorum in pariatur. Incidunt repellendus praesentium quae!</p>
-                        <p class="card-text"><small class="text-muted"><i class="bi bi-calendar3"></i>Jan 20, 2018</small></p>
+                        <h5 class="card-title text-center">EKSTRAKURIKULER PRAMUKA</h5>
+                        <!-- <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut eum similique repellat a laborum, rerum voluptates ipsam eos quo tempore iusto dolore modi dolorum in pariatur. Incidunt repellendus praesentium quae!</p> -->
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 mb-4">
                 <div class="card">
-                    <img src="https://images.unsplash.com/photo-1477862096227-3a1bb3b08330?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60" alt="" class="card-img-top">
+                    <img src="<?= base_url('assets/img/tentang_kami/futsal.png')?>" alt="" class="card-img-top">
                     <div class="card-body">
-                        <h5 class="card-title">Sunset</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut eum similique repellat a laborum, rerum voluptates ipsam eos quo tempore iusto dolore modi dolorum in pariatur. Incidunt repellendus praesentium quae!</p>
-                        <p class="card-text"><small class="text-muted"><i class="bi bi-calendar3"></i>Jan 20, 2018</small></p>
+                        <h5 class="card-title text-center">EKSTRAKURIKULER FUTSAL</h5>
+                        <!-- <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut eum similique repellat a laborum, rerum voluptates ipsam eos quo tempore iusto dolore modi dolorum in pariatur. Incidunt repellendus praesentium quae!</p> -->
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 mb-4">
                 <div class="card">
-                    <img src="https://images.unsplash.com/photo-1477862096227-3a1bb3b08330?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60" alt="" class="card-img-top">
+                    <img src="<?= base_url('assets/img/tentang_kami/komputer.png')?>" alt="" class="card-img-top">
                     <div class="card-body">
-                        <h5 class="card-title">Sunset</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut eum similique repellat a laborum, rerum voluptates ipsam eos quo tempore iusto dolore modi dolorum in pariatur. Incidunt repellendus praesentium quae!</p>
-                        <p class="card-text"><small class="text-muted"><i class="bi bi-calendar3"></i>Jan 20, 2018</small></p>
+                        <h5 class="card-title text-center">EKSTRAKURIKULER KOMPUTER</h5>
+                        <!-- <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut eum similique repellat a laborum, rerum voluptates ipsam eos quo tempore iusto dolore modi dolorum in pariatur. Incidunt repellendus praesentium quae!</p> -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="card">
+                    <img src="<?= base_url('assets/img/tentang_kami/musik-gamelan.png')?>" alt="" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">EKSTRAKURIKULER MUSIK GAMELAN</h5>
+                        <!-- <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut eum similique repellat a laborum, rerum voluptates ipsam eos quo tempore iusto dolore modi dolorum in pariatur. Incidunt repellendus praesentium quae!</p> -->
                     </div>
                 </div>
             </div>
@@ -191,31 +196,28 @@
         <div class="row">
             <div class="col-lg-4 mb-4">
                 <div class="card">
-                    <img src="https://images.unsplash.com/photo-1477862096227-3a1bb3b08330?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60" alt="" class="card-img-top">
+                    <img src="<?= base_url('assets/img/tentang_kami/OSN-matematika.jpeg')?>" alt="" class="card-img-top">
                     <div class="card-body">
-                        <h5 class="card-title">Sunset</h5>
+                        <h5 class="card-title text-center">Mewakili Kota Sukabumi di OSN Matematika di tingkat Provinsi</h5>
                         <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut eum similique repellat a laborum, rerum voluptates ipsam eos quo tempore iusto dolore modi dolorum in pariatur. Incidunt repellendus praesentium quae!</p>
-                        <p class="card-text"><small class="text-muted"><i class="bi bi-calendar3"></i>Jan 20, 2018</small></p>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 mb-4">
                 <div class="card">
-                    <img src="https://images.unsplash.com/photo-1477862096227-3a1bb3b08330?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60" alt="" class="card-img-top">
+                    <img src="<?= base_url('assets/img/tentang_kami/olahraga-tradisional.jpeg')?>" alt="" class="card-img-top">
                     <div class="card-body">
-                        <h5 class="card-title">Sunset</h5>
+                        <h5 class="card-title text-center">Juara Olahraga Tradisional tingkat Kota</h5>
                         <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut eum similique repellat a laborum, rerum voluptates ipsam eos quo tempore iusto dolore modi dolorum in pariatur. Incidunt repellendus praesentium quae!</p>
-                        <p class="card-text"><small class="text-muted"><i class="bi bi-calendar3"></i>Jan 20, 2018</small></p>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 mb-4">
                 <div class="card">
-                    <img src="https://images.unsplash.com/photo-1477862096227-3a1bb3b08330?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60" alt="" class="card-img-top">
+                    <img src="<?= base_url('assets/img/tentang_kami/tari-tradisional.png')?>" alt="" class="card-img-top">
                     <div class="card-body">
-                        <h5 class="card-title">Sunset</h5>
+                        <h5 class="card-title text-center">Juara Tari Tradisional FTBI</h5>
                         <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut eum similique repellat a laborum, rerum voluptates ipsam eos quo tempore iusto dolore modi dolorum in pariatur. Incidunt repellendus praesentium quae!</p>
-                        <p class="card-text"><small class="text-muted"><i class="bi bi-calendar3"></i>Jan 20, 2018</small></p>
                     </div>
                 </div>
             </div>
