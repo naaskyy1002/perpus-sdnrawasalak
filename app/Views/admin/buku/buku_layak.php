@@ -74,6 +74,7 @@
                                                     data-vkategori="<?=$bk['kategori'];?>"
                                                     data-vnorak="<?=$bk['no_rak'];?>"
                                                     data-vjumlahbuku="<?=$bk['jumlah_buku'];?>"
+                                                    data-vsinopsis="<?= $bk['sinopsis'] ;?>"
                                                     data-vtanggalmasuk="<?=$bk['tgl_masuk'];?>">
                                                     <i class="bi bi-eye"></i>
                                                 </a>
@@ -89,6 +90,7 @@
                                                     data-ekategori="<?=$bk['kategori']?>"
                                                     data-enorak="<?=$bk['no_rak']?>"
                                                     data-ejumlahbuku="<?=$bk['jumlah_buku'];?>"
+                                                    data-esinopsis="<?= $bk['sinopsis'] ;?>"
                                                     data-etanggalmasuk="<?=$bk['tgl_masuk'];?>">
                                                     <i class="bi bi-pencil"></i>
                                                 </a>
@@ -163,6 +165,10 @@
                             <input type="number" name="a_jumlahbuku" class="form-control" required>
                         </div>
                         <div class="col-12">
+                            <label for="inputSinopsis" class="form-label">Sinopsis</label>
+                            <input type="text" name="a_sinopsis" class="form-control" required>
+                        </div>
+                        <div class="col-12">
                             <label for="inputMasuk" class="form-label">Tanggal Masuk Buku</label>
                             <input type="date" name="a_tanggalmasuk" class="form-control" required>
                         </div>
@@ -231,6 +237,11 @@
                             <input class="form-control" id="vjumlahbuku" type="number" disabled></input>
                         </div>
 
+                        <div class="form-group">
+                            <label>Sinopsis</label>
+                            <input class="form-control" id="vsinopsis" type="text" disabled></input>
+                        </div>
+
                         <div class="col-12">
                             <label>Tanggal Masuk Buku</label>
                             <input type="date" id="vtanggalmasuk" class="form-control" disabled>
@@ -273,6 +284,9 @@
 
             var vjumlahbuku = $(this).data('vjumlahbuku');
             $("#vjumlahbuku").val(vjumlahbuku);
+
+            var vsinopsis = $(this).data('vsinopsis');
+            $("#vsinopsis").val(vsinopsis);
 
             var vtanggalmasuk = $(this).data('vtanggalmasuk');
             $("#vtanggalmasuk").val(vtanggalmasuk);
@@ -339,6 +353,11 @@
                         </div>
 
                         <div class="form-group">
+                            <label>Sinopsis</label>
+                            <input class="form-control" id="esinopsis" name="e_sinopsis" type="text" required></input>
+                        </div>
+
+                        <div class="form-group">
                             <label>Tanggal Masuk Buku</label>
                             <input type="date" id="etanggalmasuk" name="e_tanggalmasuk" class="form-control" required>
                         </div>
@@ -397,6 +416,9 @@
 
                 var ejumlahbuku = $(this).data('ejumlahbuku');
                 $("#ejumlahbuku").val(ejumlahbuku);
+
+                var esinopsis = $(this).data('esinopsis');
+                $("#esinopsis").val(esinopsis);
 
                 var etanggalmasuk = $(this).data('etanggalmasuk');
                 $("#etanggalmasuk").val(etanggalmasuk);

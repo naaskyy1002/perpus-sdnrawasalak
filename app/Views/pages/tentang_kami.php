@@ -145,6 +145,9 @@
     <div class="container py-2">
 		<div class="h1 text-center text-dark" id="pageHeaderTitle">STRUKTUR SDN RAWASALAK</div>
             <article class="postcard light blue">
+                <div class="card">
+                    <img src="<?= base_url('assets/img/tentang_kami/STRUKTUR SDNR FIX.png')?>" alt="" class="card-img-top">
+                </div>
             </article>
         </div>
     </div>
@@ -199,7 +202,6 @@
                     <img src="<?= base_url('assets/img/tentang_kami/OSN-matematika.jpeg')?>" alt="" class="card-img-top">
                     <div class="card-body">
                         <h5 class="card-title text-center">Mewakili Kota Sukabumi di OSN Matematika di tingkat Provinsi</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut eum similique repellat a laborum, rerum voluptates ipsam eos quo tempore iusto dolore modi dolorum in pariatur. Incidunt repellendus praesentium quae!</p>
                     </div>
                 </div>
             </div>
@@ -208,7 +210,6 @@
                     <img src="<?= base_url('assets/img/tentang_kami/olahraga-tradisional.jpeg')?>" alt="" class="card-img-top">
                     <div class="card-body">
                         <h5 class="card-title text-center">Juara Olahraga Tradisional tingkat Kota</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut eum similique repellat a laborum, rerum voluptates ipsam eos quo tempore iusto dolore modi dolorum in pariatur. Incidunt repellendus praesentium quae!</p>
                     </div>
                 </div>
             </div>
@@ -217,39 +218,6 @@
                     <img src="<?= base_url('assets/img/tentang_kami/tari-tradisional.png')?>" alt="" class="card-img-top">
                     <div class="card-body">
                         <h5 class="card-title text-center">Juara Tari Tradisional FTBI</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut eum similique repellat a laborum, rerum voluptates ipsam eos quo tempore iusto dolore modi dolorum in pariatur. Incidunt repellendus praesentium quae!</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="team-boxed">
-        <div class="container">
-        <div class="h1 text-center text-dark" id="pageHeaderTitle">TESTIMONIAL</div>
-            <div class="row people">
-                <div class="col-md-6 col-lg-4 item">
-                    <div class="box"><img class="rounded-circle" src="assets/img/1.jpg">
-                        <h3 class="name">Ben Johnson</h3>
-                        <p class="title">Musician</p>
-                        <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, et interdum justo suscipit id. Etiam dictum feugiat tellus, a semper massa. </p>
-                        <div class="social"><a href="#"><i class="fa fa-facebook-official"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 item">
-                    <div class="box"><img class="rounded-circle" src="assets/img/2.jpg">
-                        <h3 class="name">Emily Clark</h3>
-                        <p class="title">Artist</p>
-                        <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, et interdum justo suscipit id. Etiam dictum feugiat tellus, a semper massa. </p>
-                        <div class="social"><a href="#"><i class="fa fa-facebook-official"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 item">
-                    <div class="box"><img class="rounded-circle" src="assets/img/3.jpg">
-                        <h3 class="name">Carl Kent</h3>
-                        <p class="title">Stylist</p>
-                        <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, et interdum justo suscipit id. Etiam dictum feugiat tellus, a semper massa. </p>
-                        <div class="social"><a href="#"><i class="fa fa-facebook-official"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div>
                     </div>
                 </div>
             </div>

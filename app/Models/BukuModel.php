@@ -16,7 +16,7 @@ class BukuModel extends Model
     // `allowedFields` untuk masing-masing tabel
     protected $allowedFieldsBuku = [
         'kode_buku', 'sampul', 'judul_buku', 'pengarang', 'penerbit', 
-        'tahun_terbit', 'kategori', 'no_rak', 'jumlah_buku', 'tgl_masuk'
+        'tahun_terbit', 'kategori', 'no_rak', 'jumlah_buku', 'sinopsis','tgl_masuk'
     ];
     protected $allowedFieldsBukuRusak = [
         'kode_buku', 'judul_buku', 'pengarang', 'tanggal_pendataan', 

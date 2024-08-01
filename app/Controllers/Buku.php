@@ -68,6 +68,7 @@ class Buku extends BaseController
         $sheet->setCellValue('H3', 'Kategori');
         $sheet->setCellValue('I3', 'No Rak');
         $sheet->setCellValue('J3', 'Jumlah Buku');
+        $sheet->setCellValue('K3', 'Sinopsis');
 
         // Menambahkan style untuk header
         $headerStyleArray = [
@@ -106,6 +107,7 @@ class Buku extends BaseController
             $sheet->setCellValue('H' . $row, $item['kategori']);
             $sheet->setCellValue('I' . $row, $item['no_rak']);
             $sheet->setCellValue('J' . $row, $item['jumlah_buku']);
+            $sheet->setCellValue('K' . $row, $item['sinopsis']);
 
             // Menambahkan gambar ke dalam sel
             $photoUrl = $baseUrl . $item['sampul'];
@@ -180,6 +182,7 @@ class Buku extends BaseController
         $kategori       = $this->request->getPost('a_kategori');
         $no_rak         = $this->request->getPost('a_norak');
         $jumlah_buku    = $this->request->getPost('a_jumlahbuku');
+        $sinopsis       = $this->request->getPost('a_sinopsis');
         $tgl_masuk      = $this->request->getPost('a_tanggalmasuk');
 
         // Proses upload sampul
@@ -198,6 +201,7 @@ class Buku extends BaseController
             'kategori'      => $kategori,
             'no_rak'        => $no_rak,
             'jumlah_buku'   => $jumlah_buku,
+            'sinopsis'      => $sinopsis,
             'tgl_masuk'     => $tgl_masuk,
         ];
 
@@ -229,6 +233,7 @@ class Buku extends BaseController
         $kategori     = $this->request->getPost('e_kategori');
         $no_rak       = $this->request->getPost('e_norak');
         $jumlah_buku  = $this->request->getPost('e_jumlahbuku');
+        $sinopsis     = $this->request->getPost('e_sinopsis');
         $tgl_masuk    = $this->request->getPost('e_tanggalmasuk');
 
         // Data untuk disimpan ke database
@@ -241,6 +246,7 @@ class Buku extends BaseController
             'kategori'      => $kategori,
             'no_rak'        => $no_rak,
             'jumlah_buku'   => $jumlah_buku,
+            'sinopsis'      => $sinopsis,
             'tgl_masuk'     => $tgl_masuk,
         ];
 
