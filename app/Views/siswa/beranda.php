@@ -40,6 +40,7 @@
                                     data-vkategori="<?= $buku_item['kategori'] ?>"
                                     data-vnorak="<?= $buku_item['no_rak'] ?>"
                                     data-vjumlahbuku="<?= $buku_item['jumlah_buku'] ?>"
+                                    data-vsinopsis="<?= $buku_item['sinopsis'] ?>"
                                 >Lihat Detail</a>
                             <?php else: ?>
                                 <p class="text-danger">Stok Buku Habis</p>
@@ -98,6 +99,10 @@
                                     <div class="col-lg-5 col-md-4 label"><strong>Jumlah Buku Tersedia</strong></div>
                                     <div class="col-lg-7 col-md-8">: <span id="vjumlahbuku"></span></div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-lg-5 col-md-4 label"><strong>Sinopsis</strong></div>
+                                    <span id="vsinopsis"></span>
+                                </div>
                             </ul>
                         </div>
                         
@@ -139,6 +144,9 @@
 
             var vjumlahbuku = $(this).data('vjumlahbuku');
             $("#vjumlahbuku").text(vjumlahbuku);
+
+            var vsinopsis = $(this).data('vsinopsis');
+            $("#vsinopsis").text(vsinopsis);
 
             $('#viewModal').modal('show');
         });

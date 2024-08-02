@@ -110,7 +110,6 @@
                   </thead>          
                   <tbody>
                     <?php $i = 1; ?>
-                    <?php if (!empty($peminjaman)): ?>
                       <?php foreach($peminjaman as $pj) : ?>
                       <tr>
                         <td class="text-center"><?= $i++ ?></td>
@@ -128,11 +127,6 @@
                         </td>
                       </tr>
                       <?php endforeach; ?>
-                    <?php else: ?>
-                    <tr>
-                        <td colspan="8" class="text-center">Tidak ada data transaksi terkini</td>
-                    </tr>
-                    <?php endif; ?>
                   </tbody>
                 </table>
               </div>

@@ -27,7 +27,7 @@
                                 </select> 
                             </div>
                             <div class="form-group">
-                                <label>NIS</label>
+                                <label>NISN</label>
                                 <input type="text" id="s_nis" name="s_nis" value="" class="form-control" readonly>
                             </div>
                             <div class="form-group">
@@ -101,7 +101,7 @@
                         <thead class="table-light">
                             <tr class="text-center">
                                 <th>No.</th>
-                                <th>NIS</th>
+                                <th>NISN</th>
                                 <th>Nama</th>
                                 <th>Kelas</th>
                             </tr>
