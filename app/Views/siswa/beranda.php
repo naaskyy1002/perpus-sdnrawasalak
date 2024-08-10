@@ -84,7 +84,7 @@
                                     <div class="col-lg-7 col-md-8">: <span id="vpenerbit"></span></div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-5 col-md-4 label"><strong>Terbit</strong> </div>
+                                    <div class="col-lg-5 col-md-4 label"><strong>Tahun Terbit</strong> </div>
                                     <div class="col-lg-7 col-md-8">: <span id="vtahunterbit"></span></div>
                                 </div>
                                 <div class="row">

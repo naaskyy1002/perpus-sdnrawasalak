@@ -44,7 +44,7 @@
                 </tr>
             </thead>
             <tbody>
-                <?php $i = 1 + (10 * ($currentPage - 1)); ?>
+                <?php $i = 1; ?>
                 <?php foreach ($buku as $bk): ?>
                 <tr class="text-center">
                 <td><?= $i++; ?></td>
