@@ -7,6 +7,19 @@
     box-sizing: border-box;
     font-family: "Open Sans",sans-serif;
 }
+header.scrolled {
+  background-color: white;
+  color: black;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header.scrolled nav ul li a {
+  color: black;
+}
+
+header.scrolled .logo .logo-text span {
+  color: black;
+}
 
 body {
   background: linear-gradient(to right, #a8937abb, #921b49b8);

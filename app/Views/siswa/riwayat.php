@@ -35,7 +35,7 @@
                                     // Mendapatkan tanggal pinjam dan tanggal kembali
                                     $tgl_pinjam = new DateTime($rw['tgl_pinjam']);
                                     $tgl_kembali = !empty($rw['tgl_kembali']) ? new DateTime($rw['tgl_kembali']) : null;
-                                    $batas_waktu = $tgl_pinjam->add(new DateInterval('P7D')); // Batas waktu 7 hari
+                                    $batas_waktu = $tgl_pinjam->add(new DateInterval('P3D')); // Batas waktu 3 hari
 
                                     // Menentukan status
                                     if ($tgl_kembali) {

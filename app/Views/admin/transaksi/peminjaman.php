@@ -102,7 +102,7 @@
               <label for="inputTanggal" class="form-label">Tanggal Pinjam</label>
               <input type="date" class="form-control" name="a_pinjam" required>
               <span class="text-danger">
-                *durasi peminjaman maksimal 7 hari
+                *durasi peminjaman maksimal 3 hari
               </span>
             </div>
             <div class="modal-footer">

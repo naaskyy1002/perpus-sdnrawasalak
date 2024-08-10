@@ -31,7 +31,7 @@
                 <?php if (!empty($pinjamanTerkini)): ?>
                     <?php foreach ($pinjamanTerkini as $pinjaman): ?>
                         <?php
-                            $tglHarusKembali = new DateTime($pinjaman['tgl_pinjam'] . ' +7 days');
+                            $tglHarusKembali = new DateTime($pinjaman['tgl_pinjam'] . ' +3 days');
                             $tglSekarang = new DateTime();
                             $terlambat = $tglSekarang > $tglHarusKembali;
                             $warna = $terlambat ? 'red' : 'black';
@@ -43,7 +43,7 @@
                             <td><?= esc($pinjaman['judul_buku']) ?></td>
                             <td><?= date('d-M-Y', strtotime($pinjaman['tgl_pinjam'])) ?></td>
                             <td style="color: <?= $warna ?>;">
-                                <?= date('d-M-Y', strtotime($pinjaman['tgl_pinjam'] . ' +7 days')) ?>
+                                <?= date('d-M-Y', strtotime($pinjaman['tgl_pinjam'] . ' +3 days')) ?>
                                 <?= $status ?>
                             </td>
                         </tr>

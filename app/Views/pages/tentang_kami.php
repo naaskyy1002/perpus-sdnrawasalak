@@ -226,6 +226,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const header = document.querySelector("header");
+            
+            window.addEventListener("scroll", function() {
+                if (window.scrollY > 50) {
+                    header.classList.add("scrolled");
+                } else {
+                    header.classList.remove("scrolled");
+                }
+            });
+        });
+    </script>
+
 </section>
 </main>
 
