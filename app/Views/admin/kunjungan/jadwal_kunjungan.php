@@ -36,6 +36,7 @@
           <?= session()->getFlashdata('errors') ?>
         </div>
       <?php endif; ?>
+      <div class="table-responsive">
       <table class="jk table table-bordered" width="100%" cellspacing="0">
         <thead>
           <tr class="text-center">
@@ -58,6 +59,7 @@
           </tr>
         </tbody>
       </table>
+      </div>
     </div>
   </div>
   <?php endforeach; ?>
