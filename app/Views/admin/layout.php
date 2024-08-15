@@ -139,11 +139,6 @@
             </a>
           </li>
           <li>
-            <a href="<?= base_url('admin/dataGuru');?>">
-              <i class="ri-group-line"></i><span>Data Guru</span>
-            </a>
-          </li>
-          <li>
             <a href="<?= base_url('admin/dataSiswa');?>">
               <i class="ri-group-line"></i><span>Data Siswa</span>
             </a>
@@ -158,6 +153,11 @@
       <li class="nav-item">
         <a class="nav-link" href="<?= base_url('admin/jadwalKunjungan');?>">
           <i class="ri-calendar-2-line"></i><span>Jadwal Kunjungan</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('admin/sapras');?>">
+          <i class="ri-luggage-deposit-line"></i><span>Sarana dan Prasarana</span>
         </a>
       </li>
       <li class="nav-item">

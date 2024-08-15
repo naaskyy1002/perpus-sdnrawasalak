@@ -61,13 +61,6 @@ $routes->group('admin',['filter' => 'isLoggedIn'], function($routes) {
     $routes->post('editAdmin', 'Admin::editAdmin');
     $routes->post('deleteAdmin', 'Admin::deleteAdmin');
 
-    // DATA GURU
-    $routes->get('dataGuru', 'Guru::data_guru');
-    $routes->post('dataGuru', 'Guru::data_guru');
-    $routes->post('addGuru', 'Guru::addGuru');
-    $routes->post('editGuru', 'Guru::editGuru');
-    $routes->post('deleteGuru', 'Guru::deleteGuru');
-
     // DATA SISWA
     $routes->get('dataSiswa', 'Siswa::data_siswa');
     $routes->post('dataSiswa', 'Siswa::data_siswa');
@@ -85,6 +78,15 @@ $routes->group('admin',['filter' => 'isLoggedIn'], function($routes) {
     $routes->get('jadwalKunjungan', 'Jadwal::jadwal_kunjungan');
     $routes->post('editJadwal', 'Jadwal::editJadwal');
     $routes->get('profilAdmin', 'Admin::profil_admin');
+
+    // SARANA PRASARANA
+    $routes->get('sapras', 'Sapras::sarana_prasarana');
+    $routes->post('sapras', 'Sapras::sarana_prasarana');
+    $routes->post('addSapras', 'Sapras::addSapras');
+    $routes->post('editSapras', 'Sapras::editSapras');
+    $routes->post('deleteSapras', 'Sapras::deleteSapras');
+    $routes->get('printSapras', 'Sapras::printSapras');
+    $routes->get('excelSapras', 'Sapras::excelSapras');
 });
 
 

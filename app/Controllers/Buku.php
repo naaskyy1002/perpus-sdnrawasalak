@@ -68,7 +68,6 @@ class Buku extends BaseController
         $sheet->setCellValue('H3', 'Kategori');
         $sheet->setCellValue('I3', 'No Rak');
         $sheet->setCellValue('J3', 'Jumlah Buku');
-        $sheet->setCellValue('K3', 'Sinopsis');
 
         // Menambahkan style untuk header
         $headerStyleArray = [
@@ -107,7 +106,6 @@ class Buku extends BaseController
             $sheet->setCellValue('H' . $row, $item['kategori']);
             $sheet->setCellValue('I' . $row, $item['no_rak']);
             $sheet->setCellValue('J' . $row, $item['jumlah_buku']);
-            $sheet->setCellValue('K' . $row, $item['sinopsis']);
 
             // Menambahkan gambar ke dalam sel
             $photoUrl = $baseUrl . $item['sampul'];
@@ -134,7 +132,7 @@ class Buku extends BaseController
             ],
         ];
 
-        $sheet->getStyle('A3:J' . ($row - 1))->applyFromArray($styleArray);
+        $sheet->getStyle('A3:K' . ($row - 1))->applyFromArray($styleArray);
 
         // Menyesuaikan lebar kolom secara otomatis
         foreach (range('A', 'K') as $col) {
@@ -277,6 +275,7 @@ class Buku extends BaseController
     public function deleteBuku()
     {
         $id = $this->request->getPost('id_buku');
+        $this->bukuModel->setTable('buku');
         $buku = $this->bukuModel->find($id);
     
         // Pastikan buku ditemukan

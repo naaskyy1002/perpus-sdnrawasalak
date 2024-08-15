@@ -1064,7 +1064,7 @@ table.table td a.viewModalid {
   color: #00b850;
 }
 table.table td a.editModalid {
-  color: #FFC107;
+  color: #e1c788;
 }
 table.table td a.deleteModalid {
   color: #E34724;
@@ -1127,5 +1127,77 @@ table.table td i {
   margin-top: 15px;
 }
 .btn-jk {
+  background-color: #FCDC94;
   margin-top: 15px;
 }
+
+.btn-jk:hover {
+  background-color: #f0c86a;
+}
+
+.btn-sukses {
+  background-color: #75A47F;
+}
+
+.bg-sukses {
+  background-color: #75A47F;
+}
+
+.btn-sukses:hover {
+  background-color: #4b8056;
+  color: white;
+}
+
+.btn-abu {
+  background-color: #B4B4B8;
+}
+
+.btn-abu:hover {
+  background-color: #7e7e80;
+  color: white;
+}
+
+.btn-tambah {
+  background-color: #a7dff9;
+}
+
+.btn-tambah:hover {
+  background-color: #95c6dc;
+}
+
+.btn-infos {
+  background-color: #92C7CF;
+}
+
+.btn-infos:hover {
+  background-color: #70c1ce;
+}
+
+.bg-edit {
+  background-color: #FCDC94;
+}
+
+.bg-tambah {
+  background-color: #a7dff9;
+}
+
+.btn-simpan {
+  background-color: #4777fa9a;
+  color: black;
+}
+
+.btn-simpan:hover {
+  background-color: #0344f7;
+  color: white;
+}
+
+.btn-hapus {
+  background-color: #D35D6E;
+  color: black;
+}
+
+.btn-hapus:hover {
+  background-color: #d24258;
+  color: white;
+}
+

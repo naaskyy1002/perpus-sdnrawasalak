@@ -16,7 +16,7 @@
   <?php foreach($jadwal as $jk) : ?>
   <div class="card shadow mb-4"> 
     <div class="card-body">
-    <a class="btn-jk btn btn-warning editModalid" href="#" data-bs-toggle="modal" data-bs-target="#editModal"
+    <a class="btn-jk btn editModalid" href="#" data-bs-toggle="modal" data-bs-target="#editModal"
         data-eidjk="<?= $jk['id_jk']; ?>"
         data-senin="<?= $jk['senin']; ?>"
         data-selasa="<?= $jk['selasa']; ?>"
@@ -67,7 +67,7 @@
   <!-- Modal -->
   <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
     <div class="modal-dialog d-flex justify-content-center">
-      <div class="modal-content text-dark bg-warning">
+      <div class="modal-content text-dark bg-edit">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel2">Edit Jadwal Kunjungan</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -107,8 +107,8 @@
             </div>
 
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
-              <button type="submit" class="btn btn-success">Simpan</button>
+              <button type="button" class="btn btn-abu" data-bs-dismiss="modal">Kembali</button>
+              <button type="submit" class="btn btn-sukses">Simpan</button>
             </div>
           </form>
         </div>

@@ -17,11 +17,11 @@
         <div class="card-body">
             <div class="row mb-3">
                 <div class="ex col-sm-12 col-md-6 text-right d-flex align-items-end"> <!--justify-content-end-->
-                    <a class="btn btn-primary" href="<?= base_url('addBuku') ?>" data-bs-toggle="modal" data-bs-target="#addModal">
+                    <a class="btn btn-tambah" href="<?= base_url('addBuku') ?>" data-bs-toggle="modal" data-bs-target="#addModal">
                         <i class="ri-add-line"></i> Tambah</a>
-                    <a href="/admin/excelBuku" target="_blank" class="btn btn-info btn-spacing">
+                    <a href="/admin/excelBuku" target="_blank" class="btn btn-infos btn-spacing">
                         <i class="ri-file-excel-2-line"></i> Excel</a>
-                    <a href="/admin/printBuku" target="_blank" class="btn btn-warning btn-spacing">
+                    <a href="/admin/printBuku" target="_blank" class="btn btn-jk btn-spacing">
                         <i class="ri-printer-line"></i> Print</a>
                 </div>
             </div>
@@ -112,8 +112,8 @@
 
     <!-- Tambah Modal -->
     <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-        <div class="modal-dialog d-flex justify-content-center">
-            <div class="modal-content w-75">
+        <div class="modal-dialog modal-lg d-flex justify-content-center">
+            <div class="modal-content text-dark bg-tambah">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel2">Tambah Buku Layak</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -125,7 +125,7 @@
                             <input type="text" name="a_kodebuku" class="form-control"required>
                         </div>
                         <div class="col-12">
-                            <label>Sampul</label>
+                            <label>Sampul (.jpg / .png / .jpeg)</label>
                             <input type="file" name="a_sampul" accept=".jpg,.png,.jpeg" onchange="ImgFile(this);" class="form-control-file" required>
                             <img id="previewImage" src="#" alt="Preview Image" style="display:none; width: 200px; margin-top: 10px;">
                         </div>
@@ -164,17 +164,17 @@
                             <label for="inputKondisi" class="form-label">Jumlah Buku</label>
                             <input type="number" name="a_jumlahbuku" class="form-control" required>
                         </div>
-                        <div class="col-12">
+                        <div class="col-12 mb-3">
                             <label for="inputSinopsis" class="form-label">Sinopsis</label>
-                            <input type="text" name="a_sinopsis" class="form-control" required>
+                            <textarea type="text" name="a_sinopsis" class="form-control" required></textarea>
                         </div>
                         <div class="col-12">
                             <label for="inputMasuk" class="form-label">Tanggal Masuk Buku</label>
                             <input type="date" name="a_tanggalmasuk" class="form-control" required>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
-                            <button type="submit" class="btn btn-primary">Simpan</button>
+                            <button type="button" class="btn btn-abu" data-bs-dismiss="modal">Kembali</button>
+                            <button type="submit" class="btn btn-simpan">Simpan</button>
                         </div>
                     </form>
                 </div>
@@ -185,8 +185,8 @@
 
     <!-- View Modal -->
     <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-        <div class="modal-dialog d-flex justify-content-center">
-            <div class="modal-content text-light bg-success">
+        <div class="modal-dialog modal-lg d-flex justify-content-center">
+            <div class="modal-content text-light bg-sukses">
                 <div class="modal-header">
                     <h5 class="modal-title">Detail Buku</h5>
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -239,7 +239,7 @@
 
                         <div class="form-group">
                             <label>Sinopsis</label>
-                            <input class="form-control" id="vsinopsis" type="text" disabled></input>
+                            <textarea class="form-control" id="vsinopsis" type="text" disabled></textarea>
                         </div>
 
                         <div class="col-12">
@@ -248,7 +248,7 @@
                         </div>
 
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                            <button type="button" class="btn btn-abu" data-bs-dismiss="modal">Tutup</button>
                         </div>
                     </form>
                 </div>
@@ -297,8 +297,8 @@
 
     <!-- Edit Modal-->
     <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog d-flex justify-content-center">
-                <div class="modal-content text-dark bg-warning">
+            <div class="modal-dialog modal-lg d-flex justify-content-center">
+                <div class="modal-content text-dark bg-edit">
                     <div class="modal-header">
                         <h5 class="modal-title">Ubah Data Buku</h5>
                         <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -354,7 +354,7 @@
 
                         <div class="form-group">
                             <label>Sinopsis</label>
-                            <input class="form-control" id="esinopsis" name="e_sinopsis" type="text" required></input>
+                            <textarea class="form-control" id="esinopsis" name="e_sinopsis" type="text" required></textarea>
                         </div>
 
                         <div class="form-group">
@@ -373,8 +373,8 @@
                         <input type="number" id="eidbuku" name="e_idbuku" hidden>
                         
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                            <button type="submit" class="btn btn-success">Simpan</button>
+                            <button type="button" class="btn btn-abu" data-bs-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-sukses">Simpan</button>
                         </div>
                     </form>
                 </div>
@@ -436,10 +436,10 @@
                     Apakah Anda Yakin Ingin Menghapus Data Buku Ini?
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    <button type="button" class="btn btn-abu" data-bs-dismiss="modal">Tutup</button>
                     <form method="post" action="<?= base_url('admin/deleteBuku') ?>">
                         <input type="hidden" id="idbuku" name="id_buku">
-                        <button type="submit" class="btn btn-danger">Hapus</button>
+                        <button type="submit" class="btn btn-hapus">Hapus</button>
                     </form>
                 </div>
             </div>

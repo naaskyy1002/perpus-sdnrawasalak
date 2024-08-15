@@ -17,7 +17,7 @@
       <div class="card-body">
         <div class="row mb-3">
           <div class="ex col-sm-12 col-md-6 text-right d-flex align-items-end">
-              <a href="<?= base_url('addSiswa') ?>" data-bs-toggle="modal" data-bs-target="#addModal" class="btn btn-primary">
+              <a href="<?= base_url('addSiswa') ?>" data-bs-toggle="modal" data-bs-target="#addModal" class="btn btn-tambah">
                 <i class="ri-add-line"></i> Tambah Siswa</a>   
           </div>
         </div>
@@ -93,7 +93,7 @@
     <!-- Tambah Modal -->
     <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
       <div class="modal-dialog d-flex justify-content-center"> <!-- mau besar tambahin modal-xl -->
-        <div class="modal-content w-75">
+        <div class="modal-content text-dark bg-tambah">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel2">Tambah Data Siswa</h5>
             <button  type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -142,8 +142,8 @@
                 </select>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
-                <button type="submit" class="btn btn-primary">Simpan</button>
+                <button type="button" class="btn btn-abu" data-bs-dismiss="modal">Kembali</button>
+                <button type="submit" class="btn btn-simpan">Simpan</button>
               </div>
             </form>
           </div>
@@ -167,7 +167,7 @@
     <!-- View Modal -->
     <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
       <div class="modal-dialog d-flex justify-content-center">
-        <div class="modal-content text-light bg-success">
+        <div class="modal-content text-light bg-sukses">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel2">Detail Data Siswa</h5>
             <button  type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -208,7 +208,7 @@
               </div>
 
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                <button type="button" class="btn btn-abu" data-bs-dismiss="modal">Tutup</button>
               </div>
             </form>
           </div>
@@ -259,7 +259,7 @@
     <!-- Edit Modal -->
     <div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog d-flex justify-content-center">
-        <div class="modal-content text-dark bg-warning">
+        <div class="modal-content text-dark bg-edit">
           <div class="modal-header">
             <h5 class="modal-title">Ubah Data Siswa</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -312,8 +312,8 @@
               </div>
               <input type="hidden" id="eidsiswa" name="e_idsiswa">
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                <button type="submit" class="btn btn-success">Simpan</button>
+                <button type="button" class="btn btn-abu" data-bs-dismiss="modal">Tutup</button>
+                <button type="submit" class="btn btn-sukses">Simpan</button>
               </div>
             </form>
           </div>
@@ -362,10 +362,10 @@
             Apakah Anda Yakin Ingin Menghapus Data Siswa Ini?
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            <button type="button" class="btn btn-abu" data-bs-dismiss="modal">Tutup</button>
             <form method="post" action="deleteSiswa">
               <input type="hidden" id="nisn" name="nisn">
-              <button type="submit" class="btn btn-danger">Hapus</button>
+              <button type="submit" class="btn btn-hapus">Hapus</button>
             </form>
           </div>
         </div>

@@ -17,9 +17,9 @@
       <div class="card-body">
         <div class="row mb-3">
           <div class="ex col-sm-12 col-md-6 text-right d-flex align-items-end">
-            <a href="/admin/excelKembali" target="_blank" class="btn btn-info btn-spacing">
+            <a href="/admin/excelKembali" target="_blank" class="btn btn-infos btn-spacing">
               <i class="ri-file-excel-2-line"></i> Excel</a>
-            <a href="/admin/printKembali" target="_blank" class="btn btn-warning btn-spacing">
+            <a href="/admin/printKembali" target="_blank" class="btn btn-jk btn-spacing">
               <i class="ri-printer-line"></i> Print</a>
           </div>
         </div>
@@ -84,10 +84,10 @@
                     Apakah Anda Yakin Ingin Menghapus Data Transaksi Ini?
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    <button type="button" class="btn btn-abu" data-bs-dismiss="modal">Tutup</button>
                     <form method="post" action="deleteTransaksiKB">
                         <input type="hidden" id="idtransaksi" name="id_transaksi">
-                        <button type="submit" class="btn btn-danger">Hapus</button>
+                        <button type="submit" class="btn btn-hapus">Hapus</button>
                     </form>
                 </div>
             </div>

@@ -18,7 +18,7 @@
       <div class="card-body">
         <div class="row mb-3">
           <div class="ex col-sm-12 col-md-6 text-right d-flex align-items-end">
-              <a href="<?= base_url('addAdmin') ?>" data-bs-toggle="modal" data-bs-target="#addModal"class="btn btn-primary">
+              <a href="<?= base_url('addAdmin') ?>" data-bs-toggle="modal" data-bs-target="#addModal"class="btn btn-tambah">
                 <i class="ri-add-line"></i> Tambah Admin</a>
           </div> 
         </div>
@@ -100,7 +100,7 @@
     <!-- Tambah Modal -->
     <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
       <div class="modal-dialog d-flex justify-content-center"> <!-- mau besar tambahin modal-xl -->
-        <div class="modal-content w-75">
+        <div class="modal-content text-dark bg-tambah">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel2">Tambah Data Admin</h5>
             <button  type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -149,8 +149,8 @@
                 <input type="password" name="a_password" class="form-control" id="Password" required/>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
-                <button type="submit" class="btn btn-primary">Simpan</button>
+                <button type="button" class="btn btn-abu" data-bs-dismiss="modal">Kembali</button>
+                <button type="submit" class="btn btn-simpan">Simpan</button>
               </div>
             </form>
           </div>
@@ -174,7 +174,7 @@
     <!-- View Modal -->
     <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
       <div class="modal-dialog d-flex justify-content-center">
-        <div class="modal-content text-light bg-success">
+        <div class="modal-content text-light bg-sukses">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel2">Detail Data Admin</h5>
             <button  type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -227,7 +227,7 @@
               </div>
 
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                <button type="button" class="btn btn-abu" data-bs-dismiss="modal">Tutup</button>
               </div>
             </form>
           </div>
@@ -287,7 +287,7 @@
     <!-- Edit Modal -->
     <div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog d-flex justify-content-center">
-            <div class="modal-content text-dark bg-warning">
+            <div class="modal-content text-dark bg-edit">
                 <div class="modal-header">
                     <h5 class="modal-title">Ubah Data Admin</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -342,8 +342,8 @@
                         <input type="hidden" id="eidadmin" name="e_idadmin">
 
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                            <button type="submit" class="btn btn-success">Simpan</button>
+                            <button type="button" class="btn btn-abu" data-bs-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-sukses">Simpan</button>
                         </div>
                     </form>
                 </div>
@@ -402,10 +402,10 @@
             Apakah Anda Yakin Ingin Menghapus Data Admin Ini?
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            <button type="button" class="btn btn-abu" data-bs-dismiss="modal">Tutup</button>
             <form method="post" action="deleteAdmin">
               <input type="hidden" id="nip" name="nip">
-              <button type="submit" class="btn btn-danger">Hapus</button>
+              <button type="submit" class="btn btn-hapus">Hapus</button>
             </form>
           </div>
         </div>
@@ -420,16 +420,16 @@
     </script>
     
     <script>
-            function ImgFile(input) {
-                const file = input.files[0];
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const previewImage = document.getElementById('previewImage');
-                    previewImage.src = e.target.result;
-                    previewImage.style.display = 'block';
-                };
-                reader.readAsDataURL(file);
-            }
+      function ImgFile(input) {
+        const file = input.files[0];
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const previewImage = document.getElementById('previewImage');
+          previewImage.src = e.target.result;
+          previewImage.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+      }
     </script>
 
     <script>

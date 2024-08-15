@@ -17,11 +17,11 @@
     <div class="card-body">
       <div class="row mb-3">
         <div class="ex col-sm-12 col-md-6 text-right d-flex align-items-end">
-          <a href="<?= base_url('addTransaksi') ?>" data-bs-toggle="modal" data-bs-target="#addModal" class="btn btn-primary">
+          <a href="<?= base_url('addTransaksi') ?>" data-bs-toggle="modal" data-bs-target="#addModal" class="btn btn-tambah">
             <i class="ri-add-line"></i> Tambah</a>
-          <a href="/admin/excelPinjam" target="_blank" class="btn btn-info btn-spacing">
+          <a href="/admin/excelPinjam" target="_blank" class="btn btn-infos btn-spacing">
             <i class="ri-file-excel-2-line"></i> Excel</a>
-          <a href="/admin/printPinjam" target="_blank" class="btn btn-warning btn-spacing">
+          <a href="/admin/printPinjam" target="_blank" class="btn btn-jk btn-spacing">
             <i class="ri-printer-line"></i> Print</a>
         </div>
       </div>
@@ -83,7 +83,7 @@
   <!-- Tambah Modal -->
   <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
     <div class="modal-dialog d-flex justify-content-center">
-      <div class="modal-content w-75">
+      <div class="modal-content text-dark bg-tambah">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel2">Tambah Peminjaman Buku</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -106,8 +106,8 @@
               </span>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
-              <button type="submit" class="btn btn-primary">Simpan</button>
+              <button type="button" class="btn btn-abu" data-bs-dismiss="modal">Kembali</button>
+              <button type="submit" class="btn btn-simpan">Simpan</button>
             </div>
           </form>
         </div>
@@ -130,8 +130,8 @@
             <input type="hidden" name="id_transaksi" id="id_transaksi">
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
-            <button type="submit" class="btn btn-primary">Konfirmasi</button>
+            <button type="button" class="btn btn-abu" data-bs-dismiss="modal">Kembali</button>
+            <button type="submit" class="btn btn-simpan">Konfirmasi</button>
           </div>
         </form>
       </div>
@@ -166,11 +166,11 @@
           Apakah Anda Yakin Ingin Menghapus Data Transaksi Ini?
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+          <button type="button" class="btn btn-abu" data-bs-dismiss="modal">Tutup</button>
           <form method="post" action="deleteTransaksi">
             <input type="hidden" id="idtransaksi" name="id_transaksi">
             <input type="hidden" id="kode_buku" name="kode_buku">
-            <button type="submit" class="btn btn-danger">Hapus</button>
+            <button type="submit" class="btn btn-hapus">Hapus</button>
           </form>
         </div>
       </div>

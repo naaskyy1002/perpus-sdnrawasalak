@@ -581,3 +581,31 @@ footer.sticky-footer .copyright {
     max-width: 1250px;
     width: 100%;
     }
+
+    .btn-simpan {
+        background-color: #4777fa9a;
+        color: black;
+      }
+      
+      .btn-simpan:hover {
+        background-color: #0344f7;
+        color: white;
+      }
+
+      .btn-abu {
+        background-color: #B4B4B8;
+      }
+      
+      .btn-abu:hover {
+        background-color: #7e7e80;
+        color: white;
+      }
+
+      .badge-telat {
+        background-color: #D35D6E;
+        color: black;
+      }
+
+      .badge-sukses {
+        background-color: #75A47F;
+      }

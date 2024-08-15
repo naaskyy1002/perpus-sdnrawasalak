@@ -16,40 +16,12 @@
     <div class="card shadow mb-4"> 
       <div class="card-body">
         <div class="row mb-3">
-          <!-- <div class="pilih col-sm-6 col-md-3">
-            <label for="pilihBulan">Pilih Bulan</label>
-              <select id="pilihBulan" class="form-control">
-                <option>Januari</option>
-                <option>Februari</option>
-                <option>Maret</option>
-                <option>April</option>
-                <option>Mei</option>
-                <option>Juni</option>
-                <option>Juli</option>
-                <option>Agustus</option>
-                <option>September</option>
-                <option>Oktober</option>
-                <option>November</option>
-                <option>Desember</option>
-              </select>
-          </div>
-          <div class="pilih col-sm-6 col-md-3">
-            <label for="pilihTahun">Pilih Tahun</label>
-            <select id="pilihTahun" class="form-control">
-              <option>2020</option>
-              <option>2021</option>
-              <option>2022</option>
-              <option>2023</option>
-              <option>2024</option>
-              <option>2025</option>
-            </select>
-          </div> -->
           <div class="ex col-sm-12 col-md-6 text-right d-flex align-items-end"> <!--justify-content-end-->
-            <a class="btn btn-primary" href="<?= base_url('addBkr') ?>" data-bs-toggle="modal" data-bs-target="#addModal">
+            <a class="btn btn-tambah" href="<?= base_url('addBkr') ?>" data-bs-toggle="modal" data-bs-target="#addModal">
               <i class="ri-add-line"></i> Tambah</a>
-            <a href="/admin/excelBkr" target="_blank" class="btn btn-info btn-spacing">
+            <a href="/admin/excelBkr" target="_blank" class="btn btn-infos btn-spacing">
               <i class="ri-file-excel-2-line"></i> Excel</a>
-            <a href="/admin/printBkr" target="_blank" class="btn btn-warning btn-spacing">
+            <a href="/admin/printBkr" target="_blank" class="btn btn-jk btn-spacing">
               <i class="ri-printer-line"></i> Print</a>
           </div>
         </div>
@@ -128,8 +100,8 @@
 
     <!-- Tambah Modal -->
     <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel2" role="dialog" aria-hidden="true">
-      <div class="modal-dialog d-flex justify-content-center">
-        <div class="modal-content w-75">
+      <div class="modal-dialog modal-lg d-flex justify-content-center">
+        <div class="modal-content text-dark bg-tambah">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel2">Tambah Buku Rusak</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -152,6 +124,7 @@
                 <label for="inputKategori" class="form-label">Kategori</label>
                 <select name="abkr_kategori" class="form-select" required>
                   <option value="" disabled selected>Pilih kategori Buku</option>
+                  <option value="Tematik">Tematik</option>
                   <option value="Sejarah">Sejarah</option>
                   <option value="Fiksi">Fiksi</option>
                   <option value="Non-Fiksi">Non-Fiksi</option>
@@ -163,21 +136,17 @@
                 <input type="date" name="abkr_tgldata" class="form-control" required>
               </div>
               <div class="col-12">
-                <label for="inputHalaman" class="form-label">Halaman</label>
-                <input type="text" name="abkr_hal" class="form-control" required>
-              </div>
-              <div class="col-12">
                 <label for="inputKeterangan" class="form-label">Keterangan</label>
                 <input type="text" name="abkr_ket" class="form-control" required>
               </div>
               <div class="col-12">
-                <label>Foto Bukti</label>
+                <label>Foto Bukti (.jpg / .png / .jpeg)</label>
                 <input type="file" name="abkr_bukti" accept=".jpg,.png" onchange="ImgFile(this);" class="form-control-file">
                 <img id="previewImage" src="#" alt="Preview Image" style="display:none; width: 200px; margin-top: 10px;">
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
-                <button type="submit" class="btn btn-primary">Simpan</button>
+                <button type="button" class="btn btn-abu" data-bs-dismiss="modal">Kembali</button>
+                <button type="submit" class="btn btn-simpan">Simpan</button>
               </div>
             </form>
           </div>
@@ -187,8 +156,8 @@
 
     <!-- View Modal-->
     <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="exampleModalLabel2" role="dialog" aria-hidden="true">
-      <div class="modal-dialog d-flex justify-content-center">
-        <div class="modal-content text-light bg-success">
+      <div class="modal-dialog modal-lg d-flex justify-content-center">
+        <div class="modal-content text-light bg-sukses">
           <div class="modal-header">
             <h5 class="modal-title">Detail Buku Rusak</h5>
             <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -222,7 +191,7 @@
                 <img id="vbkrbukti" src="" style="width: 150px;">
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                <button type="button" class="btn btn-abu" data-bs-dismiss="modal">Tutup</button>
               </div>
             </form>
           </div>
@@ -259,8 +228,8 @@
 
     <!-- Edit Modal-->
     <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel2" role="dialog" aria-hidden="true">
-      <div class="modal-dialog d-flex justify-content-center">
-        <div class="modal-content text-dark bg-warning">
+      <div class="modal-dialog modal-lg d-flex justify-content-center">
+        <div class="modal-content text-dark bg-edit">
           <div class="modal-header">
             <h5 class="modal-title">Ubah Data Buku Rusak</h5>
             <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -299,8 +268,8 @@
               <input type="number" id="ebkrid" name="ebkr_id" hidden>
 
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                <button type="submit" class="btn btn-success">Simpan</button>
+                <button type="button" class="btn btn-abu" data-bs-dismiss="modal">Batal</button>
+                <button type="submit" class="btn btn-sukses">Simpan</button>
               </div>
             </form>
           </div>
@@ -346,10 +315,10 @@
                     Apakah Anda Yakin Ingin Menghapus Data Buku Rusak Ini?
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    <button type="button" class="btn btn-abu" data-bs-dismiss="modal">Tutup</button>
                     <form method="post" action="<?= base_url('admin/deleteBkr') ?>">
                         <input type="hidden" id="idbuku" name="id_buku">
-                        <button type="submit" class="btn btn-danger">Hapus</button>
+                        <button type="submit" class="btn btn-hapus">Hapus</button>
                     </form>
                 </div>
             </div>
