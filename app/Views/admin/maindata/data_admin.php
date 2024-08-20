@@ -114,7 +114,7 @@
               </div>
               <div class="col-12">
                 <label for="NIP">NIP</label>
-                <input type="number" name="a_nip" class="form-control" id="NIP" required/>
+                <input type="number" name="a_nip" class="form-control" id="NIP"/>
               </div>
               <div class="col-12">
                 <label for="Nama">Nama</label>
@@ -296,7 +296,7 @@
                     <form method="post" enctype="multipart/form-data" action="<?= base_url('admin/editAdmin'); ?>">
                         <div class="col-12">
                             <label>NIP</label>
-                            <input type="number" class="form-control" id="enip" name="e_nip" required/>
+                            <input type="number" class="form-control" id="enip" name="e_nip"/>
                         </div>
                         <div class="col-12">
                             <label>Nama Lengkap</label>

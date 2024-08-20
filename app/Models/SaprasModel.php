@@ -14,7 +14,7 @@ class SaprasModel extends Model
 
     // `allowedFields` untuk masing-masing tabel
     protected $allowedFieldsSapras = [
-        'kode_barang', 'nama_barang', 'tanggal_masuk', 'kondisi_barang', 'nama_peminjam'
+        'kode_barang', 'nama_barang', 'tanggal_masuk', 'kondisi_barang','asal_barang','penyimpanan_barang','jumlah_barang', 'nama_peminjam'
     ];
 
     public function getSapras()

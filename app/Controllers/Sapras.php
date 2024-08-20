@@ -52,7 +52,7 @@ class Sapras extends BaseController
 
         // Menulis judul tabel
         $sheet->setCellValue('A1', 'Data Sarana Prasarana');
-        $sheet->mergeCells('A1:F1'); // Merge cells dari A1 sampai J1
+        $sheet->mergeCells('A1:I1'); // Merge cells dari A1 sampai J1
         $sheet->getStyle('A1')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER); // Center align
         $sheet->getStyle('A1')->getFont()->setBold(true); // Buat teks judul tebal
 
@@ -62,7 +62,10 @@ class Sapras extends BaseController
         $sheet->setCellValue('C3', 'Nama Barang');
         $sheet->setCellValue('D3', 'Tanggal Masuk');
         $sheet->setCellValue('E3', 'Kondisi Barang');
-        $sheet->setCellValue('F3', 'Nama Peminjam');
+        $sheet->setCellValue('F3', 'Asal Barang');
+        $sheet->setCellValue('G3', 'Penyimpanan Barang');
+        $sheet->setCellValue('H3', 'Jumlah Barang');
+        $sheet->setCellValue('I3', 'Nama Peminjam');
         
 
         // Menambahkan style untuk header
@@ -82,7 +85,7 @@ class Sapras extends BaseController
             ],
         ];
 
-        $sheet->getStyle('A3:F3')->applyFromArray($headerStyleArray);
+        $sheet->getStyle('A3:I3')->applyFromArray($headerStyleArray);
 
         // Menulis data ke dalam spreadsheet
         $row = 4; // Mulai dari baris kedua setelah header
@@ -97,7 +100,10 @@ class Sapras extends BaseController
             $sheet->setCellValue('C' . $row, $item['nama_barang']);
             $sheet->setCellValue('D' . $row, $item['tanggal_masuk']);
             $sheet->setCellValue('E' . $row, $item['kondisi_barang']);
-            $sheet->setCellValue('F' . $row, $item['nama_peminjam']);
+            $sheet->setCellValue('F' . $row, $item['asal_barang']);
+            $sheet->setCellValue('G' . $row, $item['penyimpanan_barang']);
+            $sheet->setCellValue('H' . $row, $item['jumlah_barang']);
+            $sheet->setCellValue('I' . $row, $item['nama_peminjam']);
 
             $row++; // looping data dari database
             $no++; // looping untuk nomor urut data
@@ -119,10 +125,10 @@ class Sapras extends BaseController
             ],
         ];
 
-        $sheet->getStyle('A3:F' . ($row - 1))->applyFromArray($styleArray);
+        $sheet->getStyle('A3:I' . ($row - 1))->applyFromArray($styleArray);
 
         // Menyesuaikan lebar kolom secara otomatis
-        foreach (range('A', 'F') as $col) {
+        foreach (range('A', 'I') as $col) {
             $sheet->getColumnDimension($col)->setAutoSize(true);
         }
 
@@ -148,6 +154,9 @@ class Sapras extends BaseController
         $nama_barang        = $this->request->getPost('a_namabarang');
         $tanggal_masuk      = $this->request->getPost('a_tanggalmasuk');
         $kondisi_barang     = $this->request->getPost('a_kondisibarang');
+        $asal_barang        = $this->request->getPost('a_asalbarang');
+        $penyimpanan_barang = $this->request->getPost('a_penyimpananbarang');
+        $jumlah_barang      = $this->request->getPost('a_jumlahbarang');
         $nama_peminjam      = $this->request->getPost('a_namapeminjam');
 
         // Data untuk disimpan ke database
@@ -156,6 +165,9 @@ class Sapras extends BaseController
             'nama_barang'        => $nama_barang,
             'tanggal_masuk'      => $tanggal_masuk,
             'kondisi_barang'     => $kondisi_barang,
+            'asal_barang'        => $asal_barang,
+            'penyimpanan_barang' => $penyimpanan_barang,
+            'jumlah_barang'      => $jumlah_barang,
             'nama_peminjam'      => $nama_peminjam,
         ];
 
@@ -169,20 +181,26 @@ class Sapras extends BaseController
     public function editSapras()
     {
         // Ambil data dari form
-        $id                 = $this->request->getPost('e_id');
-        $kode_barang        = $this->request->getPost('e_kodebarang');
-        $nama_barang        = $this->request->getPost('e_namabarang');
-        $tanggal_masuk      = $this->request->getPost('e_tanggalmasuk');
-        $kondisi_barang     = $this->request->getPost('e_kondisibarang');
-        $nama_peminjam      = $this->request->getPost('e_namapeminjam');
+        $id                     = $this->request->getPost('e_id');
+        $kode_barang            = $this->request->getPost('e_kodebarang');
+        $nama_barang            = $this->request->getPost('e_namabarang');
+        $tanggal_masuk          = $this->request->getPost('e_tanggalmasuk');
+        $kondisi_barang         = $this->request->getPost('e_kondisibarang');
+        $asal_barang            = $this->request->getPost('e_asalbarang');
+        $penyimpanan_barang     = $this->request->getPost('e_penyimpananbarang');
+        $jumlah_barang          = $this->request->getPost('e_jumlahbarang');
+        $nama_peminjam          = $this->request->getPost('e_namapeminjam');
 
         // Data untuk disimpan ke database
         $data = [
-            'kode_barang'       => $kode_barang,
-            'nama_barang'       => $nama_barang,
-            'tanggal_masuk'     => $tanggal_masuk,
-            'kondisi_barang'    => $kondisi_barang,
-            'nama_peminjam'     => $nama_peminjam,
+            'kode_barang'        => $kode_barang,
+            'nama_barang'        => $nama_barang,
+            'tanggal_masuk'      => $tanggal_masuk,
+            'kondisi_barang'     => $kondisi_barang,
+            'asal_barang'        => $asal_barang,
+            'penyimpanan_barang' => $penyimpanan_barang,
+            'jumlah_barang'      => $jumlah_barang,
+            'nama_peminjam'      => $nama_peminjam,
         ];
 
         // Update data buku di database

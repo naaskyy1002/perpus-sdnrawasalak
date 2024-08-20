@@ -46,6 +46,9 @@
                                         <th>Nama Barang</th>
                                         <th>Tanggal Masuk</th>
                                         <th>Kondisi Barang</th>
+                                        <th>Asal Barang</th>
+                                        <th>Penyimpanan Barang</th>
+                                        <th>Jumlah Barang</th>
                                         <th>Nama Peminjam</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -59,6 +62,9 @@
                                             <td><?= $sp['nama_barang'] ;?></td>
                                             <td><?= date('d-M-Y', strtotime($sp['tanggal_masuk'])) ?></td>
                                             <td><?= $sp['kondisi_barang'] ;?></td>
+                                            <td><?= $sp['asal_barang'] ;?></td>
+                                            <td><?= $sp['penyimpanan_barang'] ;?></td>
+                                            <td><?= $sp['jumlah_barang'] ;?></td>
                                             <td><?= $sp['nama_peminjam'] ;?></td>
                                             <td>
                                                 <a href="#" title="Edit" data-bs-toggle="modal" data-bs-target="#editModal" class="editModalid" 
@@ -67,6 +73,9 @@
                                                     data-enamabarang="<?=$sp['nama_barang'];?>"
                                                     data-etanggalmasuk="<?=$sp['tanggal_masuk']; ?>"
                                                     data-ekondisibarang="<?=$sp['kondisi_barang'];?>"
+                                                    data-easalbarang="<?= $sp['asal_barang'] ;?>"
+                                                    data-epenyimpananbarang="<?= $sp['penyimpanan_barang'] ;?>"
+                                                    data-ejumlahbarang="<?= $sp['jumlah_barang'] ;?>"
                                                     data-enamapeminjam="<?=$sp['nama_peminjam'];?>">    
                                                     <i class="bi bi-pencil"></i>
                                                 </a>
@@ -113,8 +122,20 @@
                             <input type="text" name="a_kondisibarang" class="form-control" required>
                         </div>
                         <div class="col-12">
+                            <label for="inputAsal" class="form-label">Asal Barang</label>
+                            <input type="text" name="a_asalbarang" class="form-control" required>
+                        </div>
+                        <div class="col-12">
+                            <label for="inputSimpan" class="form-label">Penyimpanan Barang</label>
+                            <input type="text" name="a_simpanbarang" class="form-control" required>
+                        </div>
+                        <div class="col-12">
+                            <label for="inputJumlah" class="form-label">Jumlah Barang</label>
+                            <input type="number" name="a_jumlahbarang" class="form-control" required>
+                        </div>
+                        <div class="col-12">
                             <label for="inputPeminjam" class="form-label">Nama Peminjam</label>
-                            <input type="text" name="a_namapeminjam" class="form-control" required>
+                            <input type="text" name="a_namapeminjam" class="form-control">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-abu" data-bs-dismiss="modal">Kembali</button>
@@ -155,10 +176,25 @@
                             <label>Kondisi Barang</label>
                             <input type="text" id="ekondisibarang" name="e_kondisibarang" class="form-control" required>
                         </div>
+
+                        <div class="form-group">
+                            <label>Asal Barang</label>
+                            <input type="text" id="easalbarang" name="e_asalbarang" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Penyimpanan Barang</label>
+                            <input type="text" id="epenyimpananbarang" name="e_penyimpananbarang" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Jumlah Barang</label>
+                            <input type="number" id="ejumlahbarang" name="e_jumlahbarang" class="form-control" required>
+                        </div>
                         
                         <div class="form-group">
                             <label>Nama Peminjam</label>
-                            <input type="text" id="enamapeminjam" name="e_namapeminjam" class="form-control" required>
+                            <input type="text" id="enamapeminjam" name="e_namapeminjam" class="form-control">
                         </div>
                         
                         <input type="number" id="eid" name="e_id" hidden>
@@ -189,6 +225,15 @@
 
                 var ekondisibarang = $(this).data('ekondisibarang');
                 $("#ekondisibarang").val(ekondisibarang);
+
+                var easalbarang = $(this).data('easalbarang');
+                $("#easalbarang").val(easalbarang);
+
+                var epenyimpananbarang = $(this).data('epenyimpananbarang');
+                $("#epenyimpananbarang").val(epenyimpananbarang);
+
+                var ejumlahbarang = $(this).data('ejumlahbarang');
+                $("#ejumlahbarang").val(ejumlahbarang);
 
                 var enamapeminjam = $(this).data('enamapeminjam');
                 $("#enamapeminjam").val(enamapeminjam);

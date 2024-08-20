@@ -36,6 +36,9 @@
                     <th>Nama Barang</th>
                     <th>Tanggal Masuk</th>
                     <th>Kondisi Barang</th>
+                    <th>Asal Barang</th>
+                    <th>Penyimpanan Barang</th>
+                    <th>Jumlah Barang</th>
                     <th>Nama Peminjam</th>
                 </tr>
             </thead>
@@ -48,6 +51,9 @@
                     <td><?= $sp['nama_barang'] ;?></td>
                     <td><?= $sp['tanggal_masuk'] ;?></td>
                     <td><?= $sp['kondisi_barang'] ;?></td>
+                    <td><?= $sp['asal_barang'] ;?></td>
+                    <td><?= $sp['penyimpanan_barang'] ;?></td>
+                    <td><?= $sp['jumlah_barang'] ;?></td>
                     <td><?= $sp['nama_peminjam'] ;?></td>
                 </tr>
                 <?php endforeach; ?>
