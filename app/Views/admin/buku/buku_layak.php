@@ -151,9 +151,10 @@
                                 <option value="" disabled selected>Pilih Kategori Buku</option>
                                 <option value="Tematik">Tematik</option>
                                 <option value="Sejarah">Sejarah</option>
+                                <option value="Referensi">Referensi</option>
                                 <option value="Fiksi">Fiksi</option>
                                 <option value="Non-Fiksi">Non-Fiksi</option>
-                                <option value="Referensi">Referensi</option>
+                                <option value="Komik">Komik</option>
                             </select>
                         </div>
                         <div class="col-12">

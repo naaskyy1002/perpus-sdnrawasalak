@@ -114,7 +114,7 @@
               </div>
               <div class="col-12">
                 <label for="NIP">NIP</label>
-                <input type="number" name="a_nip" class="form-control" id="NIP"/>
+                <input type="text" name="a_nip" class="form-control" id="NIP"/>
               </div>
               <div class="col-12">
                 <label for="Nama">Nama</label>
@@ -194,7 +194,7 @@
               </div>
               <div class="col-12">
                 <label for="Dob">Tanggal Lahir</label>
-                <input type="text" class="form-control" id="vdob" disabled/>
+                <input type="date" class="form-control" id="vdob" disabled/>
               </div>
               <div class="col-12">
                 <label for="Alamat">Alamat</label>
@@ -202,11 +202,11 @@
               </div>
               <div class="col-12">
                 <label for="Telepon">Handphone</label>
-                <input type="text" class="form-control" id="vtelepon" disabled/>
+                <input type="number" class="form-control" id="vtelepon" disabled/>
               </div>
               <div class="col-12">
                 <label for="Email">Email</label>
-                <input type="text" class="form-control" id="vemail" disabled/>
+                <input type="email" class="form-control" id="vemail" disabled/>
               </div>
               <div class="col-12">
                 <label for="Jabatan">Jabatan</label>
@@ -296,7 +296,7 @@
                     <form method="post" enctype="multipart/form-data" action="<?= base_url('admin/editAdmin'); ?>">
                         <div class="col-12">
                             <label>NIP</label>
-                            <input type="number" class="form-control" id="enip" name="e_nip"/>
+                            <input type="text" class="form-control" id="enip" name="e_nip"/>
                         </div>
                         <div class="col-12">
                             <label>Nama Lengkap</label>

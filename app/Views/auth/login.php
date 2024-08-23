@@ -21,6 +21,8 @@
   <link href="<?= base_url('assets/vendor/simple-datatables/style.css') ?>" rel="stylesheet">
   <!-- Template Main CSS File -->
   <link href="<?= base_url('assets/css/masuk.css') ?>" rel="stylesheet">
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqk1wZxUp/M5JqYmfL5t+SzJMCfgh84dIx0n0B+7N5qG250TqeCyABrAOq+IRcTxhgmZXt8+g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
@@ -57,7 +59,6 @@
                   <?php if (!empty(session()->getFlashdata('login_fail'))) { ?>
                   <div class="alert alert-danger alert-dismissible fade show alertdismiss" role="alert">
                       <?php echo session()->getFlashdata('login_fail') ?>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <?php } ?>
 
