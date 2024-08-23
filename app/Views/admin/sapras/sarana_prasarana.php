@@ -127,7 +127,7 @@
                         </div>
                         <div class="col-12">
                             <label for="inputSimpan" class="form-label">Penyimpanan Barang</label>
-                            <input type="text" name="a_simpanbarang" class="form-control" required>
+                            <input type="text" name="a_penyimpananbarang" class="form-control" required>
                         </div>
                         <div class="col-12">
                             <label for="inputJumlah" class="form-label">Jumlah Barang</label>
@@ -265,19 +265,6 @@
             var id = $(this).data('id');
             $("#id").val(id);
         });
-    </script>
-
-    <script>
-            function ImgFile(input) {
-                const file = input.files[0];
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const previewImage = document.getElementById('previewImage');
-                    previewImage.src = e.target.result;
-                    previewImage.style.display = 'block';
-                };
-                reader.readAsDataURL(file);
-            }
     </script>
 
     <script>

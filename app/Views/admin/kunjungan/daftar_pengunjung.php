@@ -124,6 +124,24 @@
             </section>
         </div>
     </div>
+    <script>
+        // Function to hide element after 5 seconds
+        function hideAfterDelay(elementId) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                setTimeout(() => {
+                    element.style.display = 'none';
+                }, 5000);
+            }
+        }
+
+        // Hide success message after 5 seconds
+        hideAfterDelay('success-message');
+
+        // Hide error message after 5 seconds
+        hideAfterDelay('error-message');
+    </script>
 </main>
+
 
 <?=$this->endSection()?>

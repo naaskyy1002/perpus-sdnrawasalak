@@ -191,6 +191,13 @@ class Sapras extends BaseController
         $jumlah_barang          = $this->request->getPost('e_jumlahbarang');
         $nama_peminjam          = $this->request->getPost('e_namapeminjam');
 
+        // Cek logika pengurangan atau penambahan jumlah barang
+        if ($nama_peminjam === '-') {
+            $jumlah_barang += 1; // Tambah 1 jika nama peminjam "-"
+        } elseif (!empty($nama_peminjam)) {
+            $jumlah_barang -= 1; // Kurangi 1 jika nama peminjam ada
+        }
+
         // Data untuk disimpan ke database
         $data = [
             'kode_barang'        => $kode_barang,
