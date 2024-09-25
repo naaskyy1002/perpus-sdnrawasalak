@@ -155,11 +155,11 @@
           <i class="ri-calendar-2-line"></i><span>Jadwal Kunjungan</span>
         </a>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" href="<?= base_url('admin/sapras');?>">
           <i class="ri-luggage-deposit-line"></i><span>Sarana dan Prasarana</span>
         </a>
-      </li>
+      </li> -->
       <li class="nav-item">
         <a class="nav-link" href="<?= base_url('/auth/logout');?>" data-bs-toggle="modal" data-bs-target="#modallogout">
           <i class="ri-logout-circle-line"></i>

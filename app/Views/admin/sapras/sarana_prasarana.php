@@ -284,7 +284,6 @@
         // Hide error message after 5 seconds
         hideAfterDelay('error-message');
     </script>
+</main>
 
-
-</main><!-- End #main -->
 <?=$this->endSection()?>

@@ -80,13 +80,13 @@ $routes->group('admin',['filter' => 'isLoggedIn'], function($routes) {
     $routes->get('profilAdmin', 'Admin::profil_admin');
 
     // SARANA PRASARANA
-    $routes->get('sapras', 'Sapras::sarana_prasarana');
-    $routes->post('sapras', 'Sapras::sarana_prasarana');
-    $routes->post('addSapras', 'Sapras::addSapras');
-    $routes->post('editSapras', 'Sapras::editSapras');
-    $routes->post('deleteSapras', 'Sapras::deleteSapras');
-    $routes->get('printSapras', 'Sapras::printSapras');
-    $routes->get('excelSapras', 'Sapras::excelSapras');
+    // $routes->get('sapras', 'Sapras::sarana_prasarana');
+    // $routes->post('sapras', 'Sapras::sarana_prasarana');
+    // $routes->post('addSapras', 'Sapras::addSapras');
+    // $routes->post('editSapras', 'Sapras::editSapras');
+    // $routes->post('deleteSapras', 'Sapras::deleteSapras');
+    // $routes->get('printSapras', 'Sapras::printSapras');
+    // $routes->get('excelSapras', 'Sapras::excelSapras');
 });
 
 
