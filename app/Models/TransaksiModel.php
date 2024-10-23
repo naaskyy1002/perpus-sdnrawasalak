@@ -130,11 +130,11 @@ class TransaksiModel extends Model
 
     public function printPinjam()
     {
-        return $this->findAll(); // Ganti getResultArray() dengan findAll()
+        return $this->findAll(); 
     }
 
     public function printKembali()
     {
-        return $this->findAll(); // Ganti getResultArray() dengan findAll()
+        return $this->findAll(); 
     }
 }
