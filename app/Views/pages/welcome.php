@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?= $title ?></title>
   <!-- Favicons -->
-  <link rel="icon" href="<?= base_url('assets/img/LOGO-BARU.png') ?>">
+  <link rel="icon" href="<?= base_url('assets/img/LOGO-BARU-RAWASALAK-2024.png') ?>">
   <link rel="apple-touch-icon" href="<?= base_url('assets/img/apple-touch-icon.png') ?>">
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
