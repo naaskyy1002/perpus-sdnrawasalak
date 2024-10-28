@@ -110,24 +110,56 @@
                   </thead>          
                   <tbody>
                     <?php $i = 1; ?>
-                      <?php foreach($peminjaman as $pj) : ?>
-                      <tr>
+                    <?php foreach($peminjaman as $pj) : ?>
+                    <tr>
                         <td class="text-center"><?= $i++ ?></td>
                         <td><?= $pj['kode_buku'] ?></td>
                         <td><?= $pj['pengarang'] ?></td>
                         <td><?= $pj['judul_buku'] ?></td>
                         <td><?= $pj['username'] ?></td>
-                        <!-- strtotime -> untuk mengonversi string tanggal/waktu menjadi timestamp Unix -->
+                        <!-- Tampilkan tanggal peminjaman -->
                         <td><?= date('d-M-Y', strtotime($pj['tgl_pinjam'])) ?></td>
-                        <td><?= empty($pj['tgl_kembali']) ? '-' : date('d-M-Y', strtotime($pj['tgl_kembali'])) ?></td>
-                        <td class="text-center">
-                          <span class="badge <?= empty($pj['tgl_kembali']) ? 'bg-warning' : 'bg-success' ?>">
-                            <?= empty($pj['tgl_kembali']) ? 'Dipinjam' : 'Selesai' ?>
-                          </span>
+                        <td>
+                            <?php
+                                if (empty($pj['tgl_kembali'])) {
+                                    // Hitung 3 hari setelah tanggal peminjaman
+                                    $tgl_pinjam = strtotime($pj['tgl_pinjam']);
+                                    $tgl_kembali_auto = strtotime('+3 days', $tgl_pinjam);
+                                    // Tampilkan tanggal 3 hari setelah peminjaman
+                                    echo date('d-M-Y', $tgl_kembali_auto);
+                                } else {
+                                    // Jika sudah ada tanggal kembali, tampilkan tanggal kembali yang sebenarnya
+                                    echo date('d-M-Y', strtotime($pj['tgl_kembali']));
+                                }
+                            ?>
                         </td>
-                      </tr>
-                      <?php endforeach; ?>
-                  </tbody>
+                        <td class="text-center">
+                            <?php
+                                // Logika penentuan status berdasarkan tanggal kembali
+                                $tgl_pinjam = strtotime($pj['tgl_pinjam']);
+                                $tgl_batas_kembali = strtotime('+3 days', $tgl_pinjam);
+                                $tgl_sekarang = strtotime(date('Y-m-d'));
+
+                                if (!empty($pj['tgl_kembali'])) {
+                                    $status = 'Selesai';
+                                    $badge_class = 'bg-success';
+                                } else {
+                                    if ($tgl_sekarang > $tgl_batas_kembali) {
+                                        $status = 'Terlambat';
+                                        $badge_class = 'bg-danger';
+                                    } else {
+                                        $status = 'Dipinjam';
+                                        $badge_class = 'bg-warning';
+                                    }
+                                }
+                            ?>
+                            <span class="badge <?= $badge_class ?>">
+                                <?= $status ?>
+                            </span>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>
                 </table>
               </div>
             </div>

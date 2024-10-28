@@ -21,12 +21,64 @@
             padding: 8px;
             text-align: center;
         }
+        .filter-form {
+            margin-bottom: 20px;
+        }
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            table {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
     <div>
         <h1 class="text-center">Data Pengembalian Buku</h1>
     </div>
+    <div class="text-center no-print filter-form">
+        <form action="" method="GET">
+            <label for="month">Pilih Bulan:</label>
+            <select name="month" id="month">
+                <?php for ($m = 1; $m <= 12; $m++): ?>
+                    <option value="<?= $m ?>" <?= (isset($_GET['month']) && $_GET['month'] == $m) ? 'selected' : '' ?>>
+                        <?= date('F', mktime(0, 0, 0, $m, 10)) ?>
+                    </option>
+                <?php endfor; ?>
+            </select>
+
+            <label for="year">Pilih Tahun:</label>
+            <select name="year" id="year">
+                <?php for ($y = 2020; $y <= date("Y"); $y++): ?>
+                    <option value="<?= $y ?>" <?= (isset($_GET['year']) && $_GET['year'] == $y) ? 'selected' : '' ?>>
+                        <?= $y ?>
+                    </option>
+                <?php endfor; ?>
+            </select>
+
+            <button type="submit">Tampilkan</button>
+        </form>
+    </div>
+
+    <?php
+    $filteredPeminjaman = [];
+    if (isset($_GET['month']) && isset($_GET['year'])) {
+        $month = $_GET['month'];
+        $year = $_GET['year'];
+        foreach ($peminjaman as $pj) {
+            $pjMonth = date('m', strtotime($pj['tgl_kembali']));
+            $pjYear = date('Y', strtotime($pj['tgl_kembali']));
+            if ($pjMonth == $month && $pjYear == $year) {
+                $filteredPeminjaman[] = $pj;
+            }
+        }
+    } else {
+        $filteredPeminjaman = $peminjaman; 
+    }
+    ?>
+
     <div>
         <table>
             <thead>
@@ -41,14 +93,14 @@
                 </tr>
             </thead>
             <tbody>
-                <?php $i = 1 ; ?>
-                <?php foreach ($peminjaman as $pj): ?>
+                <?php $i = 1; ?>
+                <?php foreach ($filteredPeminjaman as $pj): ?>
                 <tr class="text-center">
                     <td><?= $i++; ?></td>
-                    <td><?= $pj['kode_buku'] ;?></td>
-                    <td><?= $pj['pengarang'] ;?></td>
-                    <td><?= $pj['judul_buku'] ;?></td>
-                    <td><?= $pj['username'] ;?></td>
+                    <td><?= $pj['kode_buku']; ?></td>
+                    <td><?= $pj['pengarang']; ?></td>
+                    <td><?= $pj['judul_buku']; ?></td>
+                    <td><?= $pj['username']; ?></td>
                     <td><?= date('d-M-Y', strtotime($pj['tgl_pinjam'])) ?></td>
                     <td><?= date('d-M-Y', strtotime($pj['tgl_kembali'])) ?></td>
                 </tr>
@@ -56,10 +108,13 @@
             </tbody>
         </table>
         <br>
-        <p>Dicetak pada: <?=(date("d-m-Y H:i:s"));?> </p>
+        <p>Dicetak pada: <?= date("d-m-Y H:i:s"); ?> </p>
     </div>
+
     <script type="text/javascript">
-        window.print();
+        window.onload = function() {
+            window.print();
+        };
     </script>
 </body>
 </html>

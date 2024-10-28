@@ -47,6 +47,7 @@
                   <th>Judul</th>
                   <th>Nama Peminjam</th>
                   <th>Tanggal Pinjam</th>
+                  <th>Tanggal Harus Kembali</th>
                   <th>Aksi</th>
                 </tr>
               </thead>
@@ -60,6 +61,20 @@
                     <td><?= $pj['judul_buku']; ?></td>
                     <td><?= $pj['username']; ?></td>
                     <td><?= date('d-M-Y', strtotime($pj['tgl_pinjam'])) ?></td>
+                    <td>
+                      <?php
+                        if (empty($pj['tgl_kembali'])) {
+                          // Hitung 3 hari setelah tanggal peminjaman
+                          $tgl_pinjam = strtotime($pj['tgl_pinjam']);
+                          $tgl_kembali_auto = strtotime('+3 days', $tgl_pinjam);
+                          // Tampilkan tanggal 3 hari setelah peminjaman
+                        echo date('d-M-Y', $tgl_kembali_auto);
+                        } else {
+                        // Jika sudah ada tanggal kembali, tampilkan tanggal kembali yang sebenarnya
+                            echo date('d-M-Y', strtotime($pj['tgl_kembali']));
+                          }
+                      ?>
+                    </td>
                     <td>
                       <a href="#" class="doneModalid" title="Selesai" data-bs-toggle="modal" data-bs-target="#doneModal"
                         data-idtransaksi="<?= $pj['id_transaksi']; ?>">
