@@ -104,7 +104,7 @@
                       <th>Judul Buku</th>
                       <th>Nama Peminjam</th>
                       <th>Tanggal Pinjam</th>
-                      <th>Tanggal Kembali</th>
+                      <th>Tanggal Harus Kembali</th>
                       <th>Status</th>
                     </tr>
                   </thead>          
