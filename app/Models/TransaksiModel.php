@@ -9,6 +9,12 @@ class TransaksiModel extends Model
     protected $primaryKey = 'id_transaksi';
     protected $allowedFields = ['kode_buku', 'nisn', 'tgl_pinjam', 'tgl_kembali', 'status'];
 
+    public function totalTransaksi()
+    {
+        return $this->db->table('transaksi')
+                        ->countAll();
+    }
+
     // mengambil data peminjaman yang belum dikembalikan
     public function getByPinjaman($nisn)
     {

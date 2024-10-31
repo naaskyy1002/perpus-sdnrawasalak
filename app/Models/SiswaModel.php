@@ -20,6 +20,12 @@ class SiswaModel extends Model
                     ->getResultArray();
     }
 
+    public function totalSiswa()
+    {
+        return $this->db->table('siswa')
+                        ->countAll();
+    }
+
     public function createSiswa($data)
     {
         return $this->db->table('siswa')
