@@ -45,6 +45,7 @@
                   <th>Kode Buku</th>
                   <th>Judul</th>
                   <th>Pengarang</th>
+                  <th>Kategori</th>
                   <th>Tanggal Pendataan</th>
                   <th>Keterangan</th>
                   <th>Foto Bukti</th>
@@ -59,6 +60,7 @@
                   <td><?= $bkr['kode_buku'] ;?></td>
                   <td><?= $bkr['judul_buku'] ;?></td>
                   <td><?= $bkr['pengarang'] ;?></td>
+                  <td><?= $bkr['kategori'] ;?></td>
                   <td><?= date('d-M-Y', strtotime($bkr['tanggal_pendataan'])) ?></td>
                   <td><?= $bkr['keterangan'] ;?></td>
                   <td><img src="<?= base_url('assets/img/bukti/' . $bkr['foto_bukti']) ?>" alt="fotoBukti" width="50"></td>
@@ -67,6 +69,7 @@
                       data-vbkrkode="<?=$bkr['kode_buku'];?>"
                       data-vbkrjudul="<?=$bkr['judul_buku'] ?>"
                       data-vbkrpengarang="<?=$bkr['pengarang'];?>"
+                      data-vbkrkategori="<?= $bkr['kategori'] ;?>"
                       data-vbkrtgl="<?=$bkr['tanggal_pendataan'];?>"
                       data-vbkrbukti="<?= base_url('assets/img/bukti/' . $bkr['foto_bukti']) ;?>"
                       data-vbkrket="<?=$bkr['keterangan'];?>">
@@ -77,6 +80,7 @@
                       data-ebkrkode="<?=$bkr['kode_buku'];?>"
                       data-ebkrjudul="<?=$bkr['judul_buku'];?>"
                       data-ebkrpengarang="<?=$bkr['pengarang'];?>"
+                      data-ebkrkategori="<?=$bkr['kategori'] ;?>"
                       data-ebkrtgl="<?=$bkr['tanggal_pendataan'];?>"
                       data-ebkrket="<?=$bkr['keterangan'];?>"
                       data-ebkrbukti="<?= base_url('assets/img/bukti/' . $bkr['foto_bukti']) ;?>"
@@ -129,6 +133,8 @@
                   <option value="Fiksi">Fiksi</option>
                   <option value="Non-Fiksi">Non-Fiksi</option>
                   <option value="Referensi">Referensi</option>
+                  <option value="Komik">Komik</option>
+                  <option value="Kurikulum Merdeka">Kurikulum Merdeka</option>
                 </select>
               </div>
               <div class="col-12">
@@ -176,6 +182,10 @@
                 <label>Pengarang</label>
                 <input type="text" id="vbkrpengarang" name="vbkr_pengarang" class="form-control" disabled>
               </div>
+              <div class="form-group">
+                <label>Kategori</label>
+                <input type="text" id="vbkrkategori" name="vbkr_kategori" class="form-control" disabled>
+              </div>
               <div class="col-12">
                 <label>Tanggal Pendataan</label>
                 <input type="date" id="vbkrtgl" name="vbkr_tgl" class="form-control" disabled>
@@ -213,6 +223,9 @@
         var vbkrpengarang = $(this).data('vbkrpengarang');
         $("#vbkrpengarang").val(vbkrpengarang);
 
+        var vbkrkategori = $(this).data('vbkrkategori');
+        $("#vbkrkategori").val(vbkrkategori);
+
         var vbkrtgl = $(this).data('vbkrtgl');
         $("#vbkrtgl").val(vbkrtgl);
         
@@ -247,6 +260,19 @@
               <div class="col-12">
                 <label>Pengarang</label>
                 <input type="text" id="ebkrpengarang" name="ebkr_pengarang" class="form-control" required>
+              </div>
+              <div class="col-12">
+                <label>Kategori</label>
+                <select name="ebkr_kategori" class="form-select" id="ebkrkategori" required>
+                  <option value="" disabled selected>Pilih Kategori Buku</option>
+                  <option value="Tematik">Tematik</option>
+                  <option value="Sejarah">Sejarah</option>
+                  <option value="Referensi">Referensi</option>
+                  <option value="Fiksi">Fiksi</option>
+                  <option value="Non-Fiksi">Non-Fiksi</option>
+                  <option value="Komik">Komik</option>
+                  <option value="Kurikulum Merdeka">Kurikulum Merdeka</option>
+                </select>
               </div>
               <div class="col-12">
                 <label>Tanggal Pendataan</label>
@@ -290,6 +316,9 @@
 
         var ebkrpengarang = $(this).data('ebkrpengarang');
         $("#ebkrpengarang").val(ebkrpengarang);
+
+        var ebkrkategori = $(this).data('ebkrkategori');
+        $("#ebkrkategori").val(ebkrkategori);
 
         var ebkrtgl = $(this).data('ebkrtgl');
         $("#ebkrtgl").val(ebkrtgl);

@@ -44,6 +44,7 @@
                   <th>Pengarang</th>
                   <th>Judul</th>
                   <th>Nama Peminjam</th>
+                  <th>Kelas</th>
                   <th>Tanggal Pinjam</th>
                   <th>Tanggal Kembali</th>
                   <th>Aksi</th>
@@ -58,6 +59,7 @@
                   <td><?= $kb['pengarang'] ;?></td>
                   <td><?= $kb['judul_buku'] ;?></td>
                   <td><?= $kb['username'] ;?></td>
+                  <td><?= $kb['kelas'] ;?></td>
                   <td><?= date('d-M-Y', strtotime($kb['tgl_pinjam'])) ?></td>
                   <td><?= date('d-M-Y', strtotime($kb['tgl_kembali'])) ?></td>
                   <td>

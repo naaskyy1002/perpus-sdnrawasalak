@@ -18,7 +18,7 @@ class TransaksiModel extends Model
     // mengambil data peminjaman yang belum dikembalikan
     public function getByPinjaman($nisn)
     {
-        return $this->select('transaksi.*, buku.judul_buku, buku.pengarang, siswa.username')
+        return $this->select('transaksi.*, buku.judul_buku, buku.pengarang, siswa.username, siswa.kelas')
                     ->join('buku', 'buku.kode_buku = transaksi.kode_buku')
                     ->join('siswa', 'siswa.nisn = transaksi.nisn')
                     ->where('transaksi.nisn', $nisn)
@@ -29,7 +29,7 @@ class TransaksiModel extends Model
     // mengambil data peminjaman yang sudah dikembalikan
     public function getByRiwayat($nisn)
     {
-        return $this->select('transaksi.*, buku.judul_buku, buku.pengarang, siswa.username')
+        return $this->select('transaksi.*, buku.judul_buku, buku.pengarang, siswa.username, siswa.kelas')
                     ->join('buku', 'buku.kode_buku = transaksi.kode_buku')
                     ->join('siswa', 'siswa.nisn = transaksi.nisn')
                     ->where('transaksi.nisn', $nisn)

@@ -64,7 +64,7 @@
         <h2 class="text-center"><?= $title ?></h2>
     </div>
 
-    <div class="text-center no-print filter-form">
+    <div class="text-center no-print filter-form" style="display: flex; justify-content: space-between; margin-bottom: 20px;">
         <form action="" method="GET">
             <label for="month">Pilih Bulan:</label>
             <select name="month" id="month">
@@ -86,24 +86,44 @@
 
             <button type="submit">Tampilkan</button>
         </form>
+        <form action="" method="GET" style="display: flex; align-items: center;">
+            <div>
+                <label for="kategori">Pilih Kategori:</label>
+                <select name="kategori" id="kategori">
+                    <option value="">Semua Kategori</option>
+                    <option value="Tematik" <?= (isset($_GET['kategori']) && $_GET['kategori'] == 'Tematik') ? 'selected' : '' ?>>Tematik</option>
+                    <option value="Sejarah" <?= (isset($_GET['kategori']) && $_GET['kategori'] == 'Sejarah') ? 'selected' : '' ?>>Sejarah</option>
+                    <option value="Fiksi" <?= (isset($_GET['kategori']) && $_GET['kategori'] == 'Fiksi') ? 'selected' : '' ?>>Fiksi</option>
+                    <option value="Non-Fiksi" <?= (isset($_GET['kategori']) && $_GET['kategori'] == 'Non-Fiksi') ? 'selected' : '' ?>>Non-Fiksi</option>
+                    <option value="Referensi" <?= (isset($_GET['kategori']) && $_GET['kategori'] == 'Referensi') ? 'selected' : '' ?>>Referensi</option>
+                    <option value="Komik" <?= (isset($_GET['kategori']) && $_GET['kategori'] == 'Komik') ? 'selected' : '' ?>>Komik</option>
+                    <option value="Kurikulum Merdeka" <?= (isset($_GET['kategori']) && $_GET['kategori'] == 'Kurikulum Merdeka') ? 'selected' : '' ?>>Kurikulum Merdeka</option>
+                </select>
+                
+                <button type="submit" name="filter_kategori">Tampilkan Kategori</button>
+            </div>
+        </form>
     </div>
 
     <?php
-    // Filter data based on selected month and year
-    $filteredBukuRusak = [];
-    if (isset($_GET['month']) && isset($_GET['year'])) {
-        $month = $_GET['month'];
-        $year = $_GET['year'];
-        foreach ($bkrusak as $bkr) {
-            $bkrMonth = date('m', strtotime($bkr['tanggal_pendataan']));
-            $bkrYear = date('Y', strtotime($bkr['tanggal_pendataan']));
-            if ($bkrMonth == $month && $bkrYear == $year) {
-                $filteredBukuRusak[] = $bkr;
-            }
+        $filteredBukuRusak = $bkrusak;
+
+        if (isset($_GET['month']) && isset($_GET['year'])) {
+            $month = $_GET['month'];
+            $year = $_GET['year'];
+            $filteredBukuRusak = array_filter($filteredBukuRusak, function ($bkr) use ($month, $year) {
+                $bkrMonth = date('m', strtotime($bkr['tanggal_pendataan']));
+                $bkrYear = date('Y', strtotime($bkr['tanggal_pendataan']));
+                return $bkrMonth == $month && $bkrYear == $year;
+            });
         }
-    } else {
-        $filteredBukuRusak = $bkrusak; // No filter if month/year not selected
-    }
+
+        if (isset($_GET['kategori']) && $_GET['kategori'] != '') {
+            $kategori = $_GET['kategori'];  
+            $filteredBukuRusak = array_filter($filteredBukuRusak, function ($bkr) use ($kategori) {
+                return $bkr['kategori'] == $kategori;
+            });
+        }
     ?>
 
     <div>
@@ -114,6 +134,7 @@
                     <th>Kode Buku</th>
                     <th>Judul</th>
                     <th>Pengarang</th>
+                    <th>kategori</th>
                     <th>Tanggal Pendataan</th>
                     <th>Keterangan</th>
                     <th>Foto Bukti</th>
@@ -121,17 +142,22 @@
             </thead>
             <tbody>
                 <?php $i = 1; ?>
-                <?php foreach ($filteredBukuRusak as $bkr): ?>
-                <tr class="text-center">
-                    <td><?= $i++; ?></td>
-                    <td><?= $bkr['kode_buku'] ;?></td>
-                    <td><?= $bkr['judul_buku'] ;?></td>
-                    <td><?= $bkr['pengarang'] ;?></td>
-                    <td><?= $bkr['tanggal_pendataan'] ;?></td>
-                    <td><?= $bkr['keterangan'] ;?></td>
-                    <td><img src="<?= base_url('assets/img/bukti/' . $bkr['foto_bukti']) ?>" alt="fotoBukti" width="50"></td>
-                </tr>
-                <?php endforeach; ?>
+                <?php if (empty($filteredBukuRusak)): ?>
+                    <tr><td colspan="8" class="text-center">Tidak ada data buku rusak.</td></tr>
+                <?php else: ?>
+                    <?php foreach ($filteredBukuRusak as $bkr): ?>
+                    <tr class="text-center">
+                        <td><?= $i++; ?></td>
+                        <td><?= htmlspecialchars($bkr['kode_buku']);?></td>
+                        <td><?= htmlspecialchars($bkr['judul_buku']);?></td>
+                        <td><?= htmlspecialchars($bkr['pengarang']);?></td>
+                        <td><?= htmlspecialchars($bkr['kategori']);?></td>
+                        <td><?= htmlspecialchars($bkr['tanggal_pendataan']);?></td>
+                        <td><?= htmlspecialchars($bkr['keterangan']);?></td>
+                        <td><img src="<?= base_url('assets/img/bukti/' . $bkr['foto_bukti']) ?>" alt="fotoBukti" width="50"></td>
+                    </tr>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </tbody>
         </table>
         <br>

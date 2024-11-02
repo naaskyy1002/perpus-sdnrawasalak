@@ -337,7 +337,7 @@ class Buku extends BaseController
 
         // Menulis judul tabel
         $sheet->setCellValue('A1', 'Data Buku Rusak');
-        $sheet->mergeCells('A1:G1'); // Merge cells dari A1 sampai G1
+        $sheet->mergeCells('A1:H1'); // Merge cells dari A1 sampai G1
         $sheet->getStyle('A1')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER); // Center align
         $sheet->getStyle('A1')->getFont()->setBold(true); // Buat teks judul tebal
 
@@ -346,9 +346,10 @@ class Buku extends BaseController
         $sheet->setCellValue('B3', 'Kode Buku');
         $sheet->setCellValue('C3', 'Judul Buku');
         $sheet->setCellValue('D3', 'Pengarang');
-        $sheet->setCellValue('E3', 'Tanggal Pendataan');
-        $sheet->setCellValue('F3', 'Foto Bukti');
-        $sheet->setCellValue('G3', 'Keterangan');
+        $sheet->setCellValue('E3', 'Kategori');
+        $sheet->setCellValue('F3', 'Tanggal Pendataan');
+        $sheet->setCellValue('G3', 'Foto Bukti');
+        $sheet->setCellValue('H3', 'Keterangan');
 
         // Menambahkan style untuk header
         $headerStyleArray = [
@@ -367,7 +368,7 @@ class Buku extends BaseController
             ],
         ];
 
-        $sheet->getStyle('A3:G3')->applyFromArray($headerStyleArray);
+        $sheet->getStyle('A3:H3')->applyFromArray($headerStyleArray);
 
         // Menulis data ke dalam spreadsheet
         $row = 4; // Mulai dari baris kedua setelah header
@@ -381,14 +382,15 @@ class Buku extends BaseController
             $sheet->setCellValue('B' . $row, $item['kode_buku']);
             $sheet->setCellValue('C' . $row, $item['judul_buku']);
             $sheet->setCellValue('D' . $row, $item['pengarang']);
-            $sheet->setCellValue('E' . $row, $item['tanggal_pendataan']);
-            $sheet->setCellValue('F' . $row, $item['foto_bukti']); // Leave cell empty for image
-            $sheet->setCellValue('G' . $row, $item['keterangan']);
+            $sheet->setCellValue('E' . $row, $item['kategori']);
+            $sheet->setCellValue('F' . $row, $item['tanggal_pendataan']);
+            $sheet->setCellValue('G' . $row, $item['foto_bukti']); // Leave cell empty for image
+            $sheet->setCellValue('H' . $row, $item['keterangan']);
 
             // Menambahkan gambar ke dalam sel
             $photoUrl = $baseUrl . $item['foto_bukti'];
-            $sheet->setCellValue('H' . $row, $photoUrl);
-            $sheet->getCell('H' . $row)->getHyperlink()->setUrl($photoUrl);
+            $sheet->setCellValue('I' . $row, $photoUrl);
+            $sheet->getCell('I' . $row)->getHyperlink()->setUrl($photoUrl);
 
             $row++; // looping data dari database
             $no++; // looping untuk nomor urut data
@@ -410,10 +412,10 @@ class Buku extends BaseController
             ],
         ];
 
-        $sheet->getStyle('A3:G' . ($row - 1))->applyFromArray($styleArray);
+        $sheet->getStyle('A3:H' . ($row - 1))->applyFromArray($styleArray);
 
         // Menyesuaikan lebar kolom secara otomatis
-        foreach (range('A', 'G') as $col) {
+        foreach (range('A', 'H') as $col) {
             $sheet->getColumnDimension($col)->setAutoSize(true);
         }
 

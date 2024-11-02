@@ -19,7 +19,7 @@ class BukuModel extends Model
         'tahun_terbit', 'kategori', 'no_rak', 'jumlah_buku', 'sinopsis','tgl_masuk'
     ];
     protected $allowedFieldsBukuRusak = [
-        'kode_buku', 'judul_buku', 'pengarang', 'tanggal_pendataan', 
+        'kode_buku', 'judul_buku', 'pengarang', 'kategori' , 'tanggal_pendataan', 
         'foto_bukti', 'keterangan'
     ];
 
@@ -115,4 +115,10 @@ class BukuModel extends Model
         $this->setTable('buku_rusak');
         return $this->findAll();
     }
+
+    public function hapusBukuRusakKurikulumMerdeka()
+{
+    return $this->where('kategori', 'Kurikulum Merdeka')->delete();
+}
+
 }

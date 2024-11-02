@@ -46,6 +46,7 @@
                   <th>Pengarang</th>
                   <th>Judul</th>
                   <th>Nama Peminjam</th>
+                  <th>Kelas</th>
                   <th>Tanggal Pinjam</th>
                   <th>Tanggal Harus Kembali</th>
                   <th>Aksi</th>
@@ -60,6 +61,7 @@
                     <td><?= $pj['pengarang']; ?></td>
                     <td><?= $pj['judul_buku']; ?></td>
                     <td><?= $pj['username']; ?></td>
+                    <td><?= $pj['kelas']; ?></td>
                     <td><?= date('d-M-Y', strtotime($pj['tgl_pinjam'])) ?></td>
                     <td>
                       <?php

@@ -63,7 +63,7 @@
     <div>
         <h2 class="text-center">Data Pengembalian Buku</h2>
     </div>
-    <div class="text-center no-print filter-form">
+    <div class="text-center no-print filter-form" >
         <form action="" method="GET">
             <label for="month">Pilih Bulan:</label>
             <select name="month" id="month">
@@ -113,6 +113,7 @@
                     <th>Penulis</th>
                     <th>Judul</th>
                     <th>Nama Peminjam</th>
+                    <th>Kelas</th>
                     <th>Tanggal Pinjam</th>
                     <th>Tanggal Kembali</th>
                 </tr>
@@ -126,6 +127,7 @@
                     <td><?= $pj['pengarang']; ?></td>
                     <td><?= $pj['judul_buku']; ?></td>
                     <td><?= $pj['username']; ?></td>
+                    <td><?= $pj['kelas']; ?></td>
                     <td><?= date('d-M-Y', strtotime($pj['tgl_pinjam'])) ?></td>
                     <td><?= date('d-M-Y', strtotime($pj['tgl_kembali'])) ?></td>
                 </tr>

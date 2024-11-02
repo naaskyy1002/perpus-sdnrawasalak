@@ -64,7 +64,7 @@
         <h2 class="text-center"><?= $title; ?></h2>
     </div>
 
-    <div class="text-center no-print filter-form">
+    <div class="text-center no-print filter-form" style="display: flex; justify-content: space-between; margin-bottom: 20px;">
         <form action="" method="GET">
             <label for="month">Pilih Bulan:</label>
             <select name="month" id="month">
@@ -86,22 +86,42 @@
 
             <button type="submit">Tampilkan</button>
         </form>
+        <form action="" method="GET" style="display: flex; align-items: center;">
+            <div>
+                <label for="kategori">Pilih Kategori:</label>
+                <select name="kategori" id="kategori">
+                    <option value="">Semua Kategori</option>
+                    <option value="Tematik" <?= (isset($_GET['kategori']) && $_GET['kategori'] == 'Tematik') ? 'selected' : '' ?>>Tematik</option>
+                    <option value="Sejarah" <?= (isset($_GET['kategori']) && $_GET['kategori'] == 'Sejarah') ? 'selected' : '' ?>>Sejarah</option>
+                    <option value="Fiksi" <?= (isset($_GET['kategori']) && $_GET['kategori'] == 'Fiksi') ? 'selected' : '' ?>>Fiksi</option>
+                    <option value="Non-Fiksi" <?= (isset($_GET['kategori']) && $_GET['kategori'] == 'Non-Fiksi') ? 'selected' : '' ?>>Non-Fiksi</option>
+                    <option value="Referensi" <?= (isset($_GET['kategori']) && $_GET['kategori'] == 'Referensi') ? 'selected' : '' ?>>Referensi</option>
+                    <option value="Komik" <?= (isset($_GET['kategori']) && $_GET['kategori'] == 'Komik') ? 'selected' : '' ?>>Komik</option>
+                    <option value="Kurikulum Merdeka" <?= (isset($_GET['kategori']) && $_GET['kategori'] == 'Kurikulum Merdeka') ? 'selected' : '' ?>>Kurikulum Merdeka</option>
+                </select>
+                
+                <button type="submit" name="filter_kategori">Tampilkan Kategori</button>
+            </div>
+        </form>
     </div>
 
     <?php
-        $filteredBuku = [];
+        $filteredBuku = $buku;
         if (isset($_GET['month']) && isset($_GET['year'])) {
-            $month = str_pad($_GET['month'], 2, '0', STR_PAD_LEFT);
+            $month = $_GET['month'];
             $year = $_GET['year'];
-            foreach ($buku as $bk) {
-                $bkMonth = date('m', strtotime($bk['tgl_masuk']));
-                $bkYear = date('Y', strtotime($bk['tgl_masuk']));
-                if ($bkMonth == $month && $bkYear == $year) {
-                    $filteredBuku[] = $bk;
-                }
-            }
-        } else {
-            $filteredBuku = $buku; // No filter if month/year not selected
+            $filteredBuku = array_filter($filteredBuku, function ($buku) use ($month, $year) {
+                $bkMonth = date('m', strtotime($buku['tgl_masuk']));
+                $bkYear = date('Y', strtotime($buku['tgl_masuk']));
+                return $bkMonth == $month && $bkYear == $year;
+            });
+        }
+
+        if (isset($_GET['kategori']) && $_GET['kategori'] != '') {
+            $kategori = $_GET['kategori'];
+            $filteredBuku = array_filter($filteredBuku, function ($buku) use ($kategori) {
+                return $buku['kategori'] == $kategori;
+            });
         }
     ?>
 
@@ -124,21 +144,25 @@
             </thead>
             <tbody>
                 <?php $i = 1; ?>
-                <?php foreach ($filteredBuku as $bk): ?>
+                <?php if (empty($filteredBuku)): ?>
+                    <tr><td colspan="8" class="text-center">Tidak ada data buku.</td></tr>
+                <?php else: ?>
+                <?php foreach ($filteredBuku as $buku): ?>
                 <tr class="text-center">
                 <td><?= $i++; ?></td>
-                    <td><?= $bk['kode_buku'] ;?></td>
-                    <td><img src="<?= base_url('assets/img/buku/' . $bk['sampul']) ?>" alt="sampulBuku" width="50"></td>
-                    <td><?= $bk['judul_buku'] ;?></td>
-                    <td><?= $bk['pengarang'] ;?></td>
-                    <td><?= $bk['penerbit'] ;?></td>
-                    <td><?= $bk['tahun_terbit'] ;?></td>
-                    <td><?= $bk['kategori'] ;?></td>
-                    <td><?= $bk['no_rak'] ;?></td>
-                    <td><?= $bk['jumlah_buku'] ;?></td>
-                    <td><?= $bk['tgl_masuk'] ;?></td>
+                    <td><?= htmlspecialchars($buku['kode_buku']) ;?></td>
+                    <td><img src="<?= base_url('assets/img/buku/' . $buku['sampul']) ?>" alt="sampulBuku" width="50"></td>
+                    <td><?= htmlspecialchars($buku['judul_buku']) ;?></td>
+                    <td><?= htmlspecialchars($buku['pengarang']) ;?></td>
+                    <td><?= htmlspecialchars($buku['penerbit']) ;?></td>
+                    <td><?= htmlspecialchars($buku['tahun_terbit']) ;?></td>
+                    <td><?= htmlspecialchars($buku['kategori']) ;?></td>
+                    <td><?= htmlspecialchars($buku['no_rak']) ;?></td>
+                    <td><?= htmlspecialchars($buku['jumlah_buku']) ;?></td>
+                    <td><?= htmlspecialchars($buku['tgl_masuk']) ;?></td>
                 </tr>
                 <?php endforeach; ?>
+                <?php endif; ?>
             </tbody>
         </table>
         <br>
