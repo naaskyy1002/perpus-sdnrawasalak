@@ -3,12 +3,13 @@
 namespace App\Controllers;
 use App\Models\AdminModel;
 use App\Models\TransaksiModel;
+use App\Models\VisitorModel;
 
 class Admin extends BaseController
 {
     protected $adminModel;
-    protected $guruModel;
     protected $transaksiModel;
+    protected $visitorModel;
     protected $session;
 
     //menginisialisasi beberapa dependensi dan layanan yang diperlukan oleh kelas,
@@ -16,6 +17,7 @@ class Admin extends BaseController
     {
         $this->adminModel = new AdminModel();
         $this->transaksiModel = new TransaksiModel();
+        $this->visitorModel = new VisitorModel();
         $this->session = \Config\Services::session();
     }
 
@@ -23,6 +25,7 @@ class Admin extends BaseController
     public function home()
     {
         $pinjam = $this->transaksiModel->getPeminjaman();
+        $visitorData = $this->visitorModel->getMonthlyVisitorsThisYear();
         $data =[
             'title' => 'Beranda',
             'peminjaman' => $pinjam,
@@ -31,6 +34,7 @@ class Admin extends BaseController
             'total_bkr' => $this->adminModel->totalBkr(),
             'total_pinjam' => $this->adminModel->totalPinjam(),
             'total_kembali' => $this->adminModel->totalKembali(),
+            'visitorData' => $visitorData,
         ];
 
         return view('admin/body', $data);

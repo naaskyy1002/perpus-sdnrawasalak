@@ -90,6 +90,117 @@
             </div>
           </div><!-- End Total Pengembalian Card -->
 
+          <!-- Grafik Pengunjung Perpustakaan pertahun -->
+          <div class="col-12">
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <h6 class="card-title text-center">Grafik Pengunjung per Bulan di Tahun <?=date('Y')?></h6>
+              </div>
+              <div class="card-body">
+                <div class="chart-area">
+                  <canvas id="myAreaChart"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <script>
+              document.addEventListener("DOMContentLoaded", function() {
+              // Data dari PHP untuk pengunjung per bulan di tahun berjalan
+                const visitorData = <?= json_encode($visitorData); ?>;
+              // Ekstrak label (bulan) dan data (jumlah pengunjung) dari visitorData
+                const labels = visitorData.map(data => data.month);
+                const dataCounts = visitorData.map(data => data.count);
+              // Konfigurasi chart menggunakan Chart.js
+                const ctx = document.getElementById("myAreaChart").getContext("2d");
+                const myAreaChart = new Chart(ctx, {
+                  type: 'line',
+                  data: {
+                    labels: labels,
+                    datasets: [{
+                      label: "Pengunjung",
+                      lineTension: 0.3,
+                      backgroundColor: "rgba(78, 115, 223, 0.05)",
+                      borderColor: "rgba(78, 115, 223, 1)",
+                      pointRadius: 3,
+                      pointBackgroundColor: "rgba(78, 115, 223, 1)",
+                      pointBorderColor: "rgba(78, 115, 223, 1)",
+                      pointHoverRadius: 3,
+                      pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+                      pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+                      pointHitRadius: 10,
+                      pointBorderWidth: 2,
+                      data: dataCounts,
+                    }],
+                  },
+                  options: {
+                    maintainAspectRatio: false,
+                    layout: {
+                      padding: {
+                        left: 10,
+                        right: 25,
+                        top: 25,
+                        bottom: 0
+                      }
+                    },
+                    scales: {
+                      xAxes: [{
+                        time: {
+                          unit: 'month'
+                        },
+                        gridLines: {
+                          display: false,
+                          drawBorder: false
+                        },
+                        ticks: {
+                          maxTicksLimit: 12
+                        }
+                      }],
+                      yAxes: [{
+                        ticks: {
+                          maxTicksLimit: 5,
+                          padding: 10,
+                          callback: function(value, index, values) {
+                            return number_format(value);
+                          }
+                        },
+                        gridLines: {
+                          color: "rgb(234, 236, 244)",
+                          zeroLineColor: "rgb(234, 236, 244)",
+                          drawBorder: false,
+                          borderDash: [2],
+                          zeroLineBorderDash: [2]
+                        }
+                      }],
+                    },
+                    legend: {
+                      display: false
+                    },
+                    tooltips: {
+                      backgroundColor: "rgb(255,255,255)",
+                      bodyFontColor: "#858796",
+                      titleMarginBottom: 10,
+                      titleFontColor: '#6e707e',
+                      titleFontSize: 14,
+                      borderColor: '#dddfeb',
+                      borderWidth: 1,
+                      xPadding: 15,
+                      yPadding: 15,
+                      displayColors: false,
+                      intersect: false,
+                      mode: 'index',
+                      caretPadding: 10,
+                      callbacks: {
+                        label: function(tooltipItem, chart) {
+                          return tooltipItem.yLabel;
+                        }
+                      }
+                    }
+                  }
+                });
+              });
+            </script>
+          </div>
+
           <!-- Peminjaman Buku -->
           <div class="col-12">
             <div class="card recent-sales overflow-auto">

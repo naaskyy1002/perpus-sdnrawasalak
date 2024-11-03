@@ -17,6 +17,9 @@ class Visitor extends BaseController
 
     public function index()
     {
+        // Hapus pengunjung yang berusia lebih dari satu tahun
+        $this->visitorModel->deleteOldVisitors();
+        
         // Mengambil tanggal hari ini
         $today = date('Y-m-d');
         $visitors = $this->visitorModel->getVisitorsByDate($today);
